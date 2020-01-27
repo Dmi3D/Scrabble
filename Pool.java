@@ -1,5 +1,6 @@
-// A raw implementation of Pool class
-// First Draft
+// Implementation of Pool Class
+// Team Name: Leap Card
+// Team Members: Andra Antal-Berbecaru and Dmitriy Dranko
 
 import java.util.HashMap;
 import java.util.Map;
@@ -126,24 +127,45 @@ public class Pool
     // METHOD RETURNING A TILE DRAWN AT RANDOM FROM THE POOL
     public char drawTile()
     {
-        // STRING CONTAINING ALL POSSIBLE TILE LETTERS (INCLUDING * FOR BLANK TILE)
-        String tiles = "ABCDEFGHIJKLMNOPQRSTUVWXYZ*";
+        // RANDOMISING HASH MAP DIRECTLY
+        // NEEDS TO BE TESTED TO ENSURE THAT IT WORKS WITHOUT HAVING TO RESHUFFLE THE
+        // HASH MAP AFTER RANDOMISING EACH TILE, FOR THE PURPOSE OF PRESERVING THE
+        // NATURE OF RANDOMISATION
 
         // INITIALISING A Random OBJECT
         Random random = new Random();
 
-        // GENERATING A RANDOM CHARACTER FROM THE STRING WITH TILES
-        char drawnTile = tiles.charAt( random.nextInt( tiles.length() ) );
-        int tileFrequency = getTileFrequencies().get( drawnTile );
-        while (  tileFrequency < 1)
+        // GENERATING A RANDOM TILE FROM THE HASH MAP tileFrequencies
+        Object[] tiles = getTileFrequencies().keySet().toArray();
+
+        // GENERATING A RANDOM TILE FROM THE HASH MAP
+        Object drawnTile = tiles[random.nextInt( tiles.length )];
+
+        // QUERYING THE TILE'S CORRESPONDING FREQUENCY VALUE
+        int tileFrequency = getTileFrequencies().get( ( drawnTile ));
+
+        // CONTINUING TO GENERATE A RANDOM TILE UNTIL WE FIND ONE IN THE POOL
+        // i.e. THERE MIGHT BE CERTAIN TILES THAT REACHED A FREQUENCY OF 0
+        // AFTER MULTIPLE DRAWS, SO IT'S NECESSARY TO PREVENT THOSE TILES
+        // FROM BEING USED WHEN THEIR FREQUENCY REACHED ZERO
+        while ( tileFrequency < 1 )
         {
-            drawnTile = tiles.charAt( random.nextInt( tiles.length() ) );
-            tileFrequency =  getTileFrequencies().get( drawnTile );
+            // DRAWING A NEW TILE AGAIN
+            drawnTile = tiles[random.nextInt( tiles.length )];
+            // UPDATING THE tileFrequency TO STORE THE NEW DRAWN TILE'S
+            // CORRESPONDING FREQUENCY
+            tileFrequency = getTileFrequencies().get( drawnTile );
         }
-        getTileFrequencies().put( drawnTile, tileFrequency-1);
+
+        // DECREASING THE FREQUENCY OF THE DRAWN TILE THAT SATISFIES ABOVE
+        // CONDITION
+        getTileFrequencies().put( (Character) drawnTile, tileFrequency - 1);
+
+        // SUBTRACTING FROM THE VARIABLE HOLDING NUMBER OF TILES
         tilesInPool -= 1;
 
-        return drawnTile;
+        // RETURNING THE RANDOMLY DRAWN TILE TO THE CALLER
+        return (Character) drawnTile;
 
     }
 }
