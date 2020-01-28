@@ -2,12 +2,14 @@ public class Player
 {
     private String name;        //Stores the player name
     private int score;      //Stores the player's score
+    private Frame frame;    // Stored the player's frame 
 
     //Constructor of player
     public Player()
     {
         this.name = null;
         this.score = 0;
+        this.frame = new Frame();
     }
 
     //Sets the name of the player
@@ -41,6 +43,10 @@ public class Player
         this.score = 0;
     }
 
-    //insert code to allow access to a player's frame (tiles)
-    //once Frame class is finished
+    // METHOD RETURNING FRAME OF PLAYER
+    public String getFrame()
+    {
+        return Frame.getFrame();
+    }
+
 }
