@@ -33,7 +33,7 @@ public class Pool
                 Map.entry( 'Y', 4 ), Map.entry( 'Z', 10 ), Map.entry( '*', 0 ) );
 
         setTileFrequencies();
-        setTilesInPool();
+        setTilesInPool(100);
     }
 
     // ACCESSOR FOR tileValues Hash Map
@@ -87,9 +87,9 @@ public class Pool
         System.out.println( "NUMBER OF TILES CURRENTLY IN POOL: " + getTilesInPool() );
     }
 
-    public void setTilesInPool()
+    public void setTilesInPool(int tilesInPool)
     {
-        this.tilesInPool = 100;
+        this.tilesInPool = tilesInPool;
     }
 
     public void setTileFrequencies()
@@ -112,7 +112,7 @@ public class Pool
     // tile
     public void reset()
     {
-        setTilesInPool();
+        setTilesInPool(100);
         setTileFrequencies();
         System.out.println("The pool was successfully reset to original number of tiles.");
     }
@@ -132,6 +132,9 @@ public class Pool
         // HASH MAP AFTER RANDOMISING EACH TILE, FOR THE PURPOSE OF PRESERVING THE
         // NATURE OF RANDOMISATION
 
+        // VARIABLE FOR STORING THE FREQUENCY OF A TILE
+        int tileFrequency;
+
         // INITIALISING A Random OBJECT
         Random random = new Random();
 
@@ -140,9 +143,10 @@ public class Pool
 
         // GENERATING A RANDOM TILE FROM THE HASH MAP
         Object drawnTile = tiles[random.nextInt( tiles.length )];
+        assert drawnTile instanceof Character;
 
         // QUERYING THE TILE'S CORRESPONDING FREQUENCY VALUE
-        int tileFrequency = getTileFrequencies().get( ( drawnTile ));
+        tileFrequency = getTileFrequencies().get( ( drawnTile ));
 
         // CONTINUING TO GENERATE A RANDOM TILE UNTIL WE FIND ONE IN THE POOL
         // i.e. THERE MIGHT BE CERTAIN TILES THAT REACHED A FREQUENCY OF 0
@@ -154,6 +158,10 @@ public class Pool
             drawnTile = tiles[random.nextInt( tiles.length )];
             // UPDATING THE tileFrequency TO STORE THE NEW DRAWN TILE'S
             // CORRESPONDING FREQUENCY
+
+            // ENSURING drawnTile is of type Character
+            // AVOIDING SUSPICIOUS CALLS ERRORS
+            assert drawnTile instanceof Character;
             tileFrequency = getTileFrequencies().get( drawnTile );
         }
 
@@ -162,7 +170,7 @@ public class Pool
         getTileFrequencies().put( (Character) drawnTile, tileFrequency - 1);
 
         // SUBTRACTING FROM THE VARIABLE HOLDING NUMBER OF TILES
-        tilesInPool -= 1;
+        setTilesInPool( this.tilesInPool-1 );
 
         // RETURNING THE RANDOMLY DRAWN TILE TO THE CALLER
         return (Character) drawnTile;
