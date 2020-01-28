@@ -1,7 +1,14 @@
 public class Player
 {
-    String name;        //Stores the player name
-    int score = 0;      //Stores the player's score
+    private String name;        //Stores the player name
+    private int score;      //Stores the player's score
+
+    //Constructor of player
+    public Player()
+    {
+        this.name = null;
+        this.score = 0;
+    }
 
     //Sets the name of the player
     public void setName(String name)
@@ -25,6 +32,13 @@ public class Player
     public int getScore()
     {
         return this.score;
+    }
+
+    //Allows reset of player to default values
+    public void resetPlayer()
+    {
+        this.name = null;
+        this.score = 0;
     }
 
     //insert code to allow access to a player's frame (tiles)
