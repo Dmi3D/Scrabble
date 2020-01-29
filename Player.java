@@ -2,7 +2,7 @@ public class Player
 {
     private String name;        //Stores the player name
     private int score;      //Stores the player's score
-    private Frame frame;    // Stored the player's frame 
+    private Frame frame;    // Stored the player's frame
 
     //Constructor of player
     public Player()

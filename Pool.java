@@ -12,10 +12,10 @@ public class Pool
     Map<Character, Integer> tileValues;
 
     // Storing number of each tile
-    private HashMap<Character, Integer> tileFrequencies;
+    private static HashMap<Character, Integer> tileFrequencies;
 
     // Storing the number of tiles in the pool
-    private int tilesInPool;
+    private static int tilesInPool;
 
     // CLASS CONSTRUCTOR INITIALISING INSTANCE VARIABLES
     public Pool()
@@ -33,7 +33,7 @@ public class Pool
                 Map.entry( 'Y', 4 ), Map.entry( 'Z', 10 ), Map.entry( '*', 0 ) );
 
         setTileFrequencies();
-        setTilesInPool(100);
+        tilesInPool = 100;
     }
 
     // ACCESSOR FOR tileValues Hash Map
@@ -73,29 +73,16 @@ public class Pool
         return tileFrequencies;
     }
 
-    // Accessor for number of tiles in the pool at time of call
-
-    // ** MIGHT NEED TO CHANGE IT TO PRIVATE IF IT'S NOT SPECIFICALLY USED ELSEWHERE
-    public int getTilesInPool()
-    {
-        return tilesInPool;
-    }
-
     // DISPLAYS THE NUMBER OF TILES CURRENTLY IN THE POOL TO THE CALLER
     public void displayTiles()
     {
-        System.out.println( "NUMBER OF TILES CURRENTLY IN POOL: " + getTilesInPool() );
-    }
-
-    public void setTilesInPool(int tilesInPool)
-    {
-        this.tilesInPool = tilesInPool;
+        System.out.println( "NUMBER OF TILES CURRENTLY IN POOL: " + tilesInPool );
     }
 
     public void setTileFrequencies()
     {
         //Initialising a mutable HashMap containing the tile letters and their initial corresponding number
-        this.tileFrequencies = new HashMap<>(){
+        tileFrequencies = new HashMap<>(){
             {
                 put('A', 9); put('I', 9); put('O', 8); put('N', 6);
                 put('R', 6); put('T', 6); put('L', 4); put('S', 4);
@@ -112,7 +99,7 @@ public class Pool
     // tile
     public void reset()
     {
-        setTilesInPool(100);
+        tilesInPool = 100;
         setTileFrequencies();
         System.out.println("The pool was successfully reset to original number of tiles.");
     }
@@ -121,11 +108,11 @@ public class Pool
     // CHECKING TO SEE IF THE POOL IS EMPTY,
     public boolean isPoolEmpty()
     {
-        return getTilesInPool() == 0;
+        return tilesInPool == 0;
     }
 
     // METHOD RETURNING A TILE DRAWN AT RANDOM FROM THE POOL
-    public char drawTile()
+    public static char drawTile()
     {
         // RANDOMISING HASH MAP DIRECTLY
         // NEEDS TO BE TESTED TO ENSURE THAT IT WORKS WITHOUT HAVING TO RESHUFFLE THE
@@ -139,14 +126,14 @@ public class Pool
         Random random = new Random();
 
         // GENERATING A RANDOM TILE FROM THE HASH MAP tileFrequencies
-        Object[] tiles = getTileFrequencies().keySet().toArray();
+        Object[] tiles = tileFrequencies.keySet().toArray();
 
         // GENERATING A RANDOM TILE FROM THE HASH MAP
         Object drawnTile = tiles[random.nextInt( tiles.length )];
         assert drawnTile instanceof Character;
 
         // QUERYING THE TILE'S CORRESPONDING FREQUENCY VALUE
-        tileFrequency = getTileFrequencies().get( ( drawnTile ));
+        tileFrequency = tileFrequencies.get( ( drawnTile ));
 
         // CONTINUING TO GENERATE A RANDOM TILE UNTIL WE FIND ONE IN THE POOL
         // i.e. THERE MIGHT BE CERTAIN TILES THAT REACHED A FREQUENCY OF 0
@@ -162,18 +149,17 @@ public class Pool
             // ENSURING drawnTile is of type Character
             // AVOIDING SUSPICIOUS CALLS ERRORS
             assert drawnTile instanceof Character;
-            tileFrequency = getTileFrequencies().get( drawnTile );
+            tileFrequency = tileFrequencies.get( drawnTile );
         }
 
         // DECREASING THE FREQUENCY OF THE DRAWN TILE THAT SATISFIES ABOVE
         // CONDITION
-        getTileFrequencies().put( (Character) drawnTile, tileFrequency - 1);
+        tileFrequencies.put( (Character) drawnTile, tileFrequency - 1);
 
         // SUBTRACTING FROM THE VARIABLE HOLDING NUMBER OF TILES
-        setTilesInPool( this.tilesInPool-1 );
+        tilesInPool -= 1;
 
         // RETURNING THE RANDOMLY DRAWN TILE TO THE CALLER
         return (Character) drawnTile;
-
     }
 }
