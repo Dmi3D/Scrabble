@@ -13,8 +13,28 @@ public class Frame
     }
 
     /* RETURNS A CERTAIN TILE FROM THE FRAME */
-    //Insert code
-    //Should remove it from frame aswell as return it if remove was successful
+    public char getTile(char tileToBeRetrieved)
+    {
+        // If the tile is in the frame
+        if(isTileInFrame( tileToBeRetrieved ))
+        {
+            // Look through the tiles in the frame
+            for(char tile : tiles)
+            {
+                // When the tile is found in the frame
+                if(tile == tileToBeRetrieved)
+                {
+                    // Return SUCCESS state
+                    return tileToBeRetrieved;
+                }
+            }
+        }
+
+        // If the tile is not in the frame, return an empty tile
+        System.out.println("ERROR: RETURNING EMPTY TILE. TILE NOT FOUND");
+
+        return ' ';
+    }
 
     /* REMOVES A CERTAIN TILE FROM THE FRAME, RETURNS REMOVE SUCCESSFUL OR FAIL */
     private boolean removeTile(char tileFromPool)
