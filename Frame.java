@@ -114,13 +114,13 @@ public class Frame
     public void fillFrame()
     {
         // Look through the tiles in the frame
-       for(char tile : tiles)
+       for(int i = 0; i < tiles.length; i++)
        {
-           // If a tile is empty
-           if(tile == ' ')
+           //If a tile is empty
+           if(tiles[i] == ' ' || tiles[i] == 0)
            {
-               // Draw a tile from the pool and replace the empty tile
-               tile = Pool.drawTile();
+               //Draw a tile from the pool and replace the empty tile
+               tiles[i] = Pool.drawTile();
            }
        }
     }

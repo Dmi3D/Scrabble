@@ -43,7 +43,7 @@ public class Player
         this.score = 0;
     }
 
-    // METHOD RETURNING FRAME OF PLAYER
+   // METHOD RETURNING FRAME OF PLAYER
     public String getFrame()
     {
         return frame.getFrame();
