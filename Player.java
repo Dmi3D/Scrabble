@@ -46,7 +46,7 @@ public class Player
     // METHOD RETURNING FRAME OF PLAYER
     public String getFrame()
     {
-        return Frame.getFrame();
+        return frame.getFrame();
     }
 
 }
