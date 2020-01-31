@@ -114,6 +114,11 @@ public class Pool
     // METHOD RETURNING A TILE DRAWN AT RANDOM FROM THE POOL
     public static char drawTile()
     {
+        if (tilesInPool == 0)
+        {
+            return ' ';
+        }
+
         // RANDOMISING HASH MAP DIRECTLY
         // NEEDS TO BE TESTED TO ENSURE THAT IT WORKS WITHOUT HAVING TO RESHUFFLE THE
         // HASH MAP AFTER RANDOMISING EACH TILE, FOR THE PURPOSE OF PRESERVING THE
