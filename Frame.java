@@ -10,6 +10,13 @@ public class Frame
     {
         // Initialises array to size seven
         this.tiles = new char[7];
+
+        // For each tile in the frame
+        for ( int i = 0; i < tiles.length; i++ )
+        {
+            //Set tile to space character
+            tiles[i] = ' ';
+        }
     }
 
     /* RETURNS A CERTAIN TILE FROM THE FRAME */
@@ -37,19 +44,19 @@ public class Frame
     }
 
     /* REMOVES A CERTAIN TILE FROM THE FRAME, RETURNS REMOVE SUCCESSFUL OR FAIL */
-    private boolean removeTile(char tileFromPool)
+    public boolean removeTile(char tileFromPool)
     {
         // If the letter is in the frame
         if(isTileInFrame( tileFromPool ))
         {
             // Look through the letters in the frame
-            for(char tile : tiles)
+            for(int i = 0; i < tiles.length; i++)
             {
                 // When we find the letter
-                if(tile == tileFromPool)
+                if(tiles[i] == tileFromPool)
                 {
                     // Remove that tile
-                    tile = ' ';
+                    tiles[i] = ' ';
 
                     // Return SUCCESS state
                     return true;
@@ -117,7 +124,7 @@ public class Frame
        for(int i = 0; i < tiles.length; i++)
        {
            //If a tile is empty
-           if(tiles[i] == ' ' || tiles[i] == 0)
+           if(tiles[i] == ' ')
            {
                //Draw a tile from the pool and replace the empty tile
                tiles[i] = Pool.drawTile();
