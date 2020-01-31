@@ -106,7 +106,7 @@ public class Pool
 
 
     // CHECKING TO SEE IF THE POOL IS EMPTY,
-    public boolean isPoolEmpty()
+    public static boolean isPoolEmpty()
     {
         return tilesInPool == 0;
     }
