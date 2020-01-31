@@ -5,11 +5,11 @@ public class Player
     private Frame frame;    // Stored the player's frame
 
     //Constructor of player
-    public Player()
+    public Player(Frame frame)
     {
         this.name = null;
         this.score = 0;
-        this.frame = new Frame();
+        this.frame = frame;
     }
 
     //Sets the name of the player
@@ -41,6 +41,7 @@ public class Player
     {
         this.name = null;
         this.score = 0;
+        frame.reset();
     }
 
    // METHOD RETURNING FRAME OF PLAYER

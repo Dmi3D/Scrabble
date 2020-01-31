@@ -131,4 +131,11 @@ public class Frame
            }
        }
     }
+
+    /* RESETS THE FRAME TO ARRAY OF EMPTY SPACES */
+    public void reset()
+    {
+        Arrays.fill( tiles, ' ' );
+    }
+
 }
