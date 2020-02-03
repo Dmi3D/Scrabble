@@ -4,9 +4,57 @@ public class PlayerTest
 {
     public static void main( String[] args )
     {
-        /*
+        Pool pool = new Pool();
+
+        System.out.println("GAME HAS BEGUN\n");
+
+        System.out.println("The tiles and their associated scores: " + pool.getTileValues().toString());
+        System.out.println("Number of each tile in the pool: " + pool.getTileFrequencies().toString());
+        System.out.println("Total number of tiles in the pool: " + Pool.getTilesInPool() + "\n");
+
+        Frame frameOne = new Frame();
+        System.out.println("Frame One contains the following tiles drawn from the pool: " + frameOne.getFrame());
+        System.out.println("Tiles in pool at this stage: " + pool.getTileFrequencies().toString());
+        System.out.println("Total number of tiles in the pool at this stage: " + Pool.getTilesInPool() + "\n");
+
+        Frame frameTwo = new Frame();
+        System.out.println("Frame Two contains the following tiles drawn from the pool: " + frameTwo.getFrame());
+        System.out.println("Tiles in pool at this stage: " + pool.getTileFrequencies().toString());
+        System.out.println("Total number of tiles in the pool at this stage: " + Pool.getTilesInPool() + "\n");
+
+        Player playerOne = new Player( frameOne );
+        Player playerTwo = new Player( frameTwo );
+
+        Scanner input = new Scanner( System.in );
+
+        String playerName;
+
+        System.out.println( "Player One, please enter your name: " );
+        playerName = input.nextLine();
+
+        playerOne.setName( playerName );
+
+        System.out.println( "Player Two, please enter your name: " );
+        playerName = input.nextLine();
+
+        playerTwo.setName( playerName );
+
+        input.close();
+
+        System.out.println("Player One's name: " + playerOne.getName());
+        System.out.println("Player One's score: " + playerOne.getScore());
+        System.out.println("Player One's frame: " + playerOne.getFrame());
+
+        System.out.println();
+
+        System.out.println("Player Two's name: " + playerTwo.getName());
+        System.out.println("Player Two's score: " + playerTwo.getScore());
+        System.out.println("Player Two's frame: " + playerTwo.getFrame());
+    }
+}
+       /* *//*
             DMITRIY TESTING FRAME & POOL
-         */
+         *//*
 
         //Creating a pool
         Pool pool = new Pool();
@@ -41,9 +89,9 @@ public class PlayerTest
 
 
 
-        /*
+        *//*
             ANDRA TESTING POOL
-         */
+         *//*
 
         Pool bagOfTiles = new Pool();
 
@@ -96,9 +144,9 @@ public class PlayerTest
 
 
 
-        /*
+        *//*
             ANDRA TESTING PLAYER
-         */
+         *//*
 
         Frame frameOne = new Frame();
 
@@ -115,6 +163,6 @@ public class PlayerTest
         playerOne.resetPlayer();
 
         System.out.println("PlayerOne data: " + playerOne.getName() + ", " + playerOne.getScore()
-                + ", " + playerOne.getFrame());
-    }
-}
+                + ", " + playerOne.getFrame());*/
+/*    }
+}*/

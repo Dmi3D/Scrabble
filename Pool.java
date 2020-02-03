@@ -36,6 +36,11 @@ public class Pool
         tilesInPool = 100;
     }
 
+    public static int getTilesInPool()
+    {
+        return tilesInPool;
+    }
+
     // ACCESSOR FOR tileValues Hash Map
     public Map<Character, Integer> getTileValues()
     {
