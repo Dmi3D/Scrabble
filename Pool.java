@@ -36,6 +36,11 @@ public class Pool
         tilesInPool = 100;
     }
 
+    public static int getTilesInPool()
+    {
+        return tilesInPool;
+    }
+
     // ACCESSOR FOR tileValues Hash Map
     public Map<Character, Integer> getTileValues()
     {
@@ -106,7 +111,7 @@ public class Pool
 
 
     // CHECKING TO SEE IF THE POOL IS EMPTY,
-    public boolean isPoolEmpty()
+    public static boolean isPoolEmpty()
     {
         return tilesInPool == 0;
     }

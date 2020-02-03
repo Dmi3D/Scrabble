@@ -11,61 +11,54 @@ public class Frame
         // Initialises array to size seven
         this.tiles = new char[7];
 
-        // For each tile in the frame
-        for ( int i = 0; i < tiles.length; i++ )
-        {
-            //Set tile to space character
-            tiles[i] = ' ';
-        }
+        // Fill all the 0 char with ' ' char
+        Arrays.fill( tiles, ' ' ); //We represent empty tile as ' '
+
+        // Fill the frame with tiles
+        fillFrame();
     }
 
     /* RETURNS A CERTAIN TILE FROM THE FRAME */
-    public char getTile(char tileToBeRetrieved)
+    public char takeTile(char tileToBeRetrieved)
     {
+        int tileToBeRemoved = isTileInFrame(tileToBeRetrieved);
+
         // If the tile is in the frame
-        if(isTileInFrame( tileToBeRetrieved ))
+        if(tileToBeRemoved == -1)
         {
-            // Look through the tiles in the frame
-            for(char tile : tiles)
-            {
-                // When the tile is found in the frame
-                if(tile == tileToBeRetrieved)
-                {
-                    // Return SUCCESS state
-                    return tileToBeRetrieved;
-                }
-            }
+           return ' ';
         }
 
-        // If the tile is not in the frame, return an empty tile
-        System.out.println("ERROR: RETURNING EMPTY TILE. TILE NOT FOUND");
+        //Remove this tile from the frame
+        removeTile( tiles[tileToBeRemoved] );
 
-        return ' ';
+        //Fill that space with a frame if pool still contains tiles
+        if(!Pool.isPoolEmpty())
+        {
+            fillFrame();
+        }
+
+        // Return the tile we are taking
+        return tileToBeRetrieved;
     }
 
     /* REMOVES A CERTAIN TILE FROM THE FRAME, RETURNS REMOVE SUCCESSFUL OR FAIL */
-    public boolean removeTile(char tileFromPool)
+    private boolean removeTile(char tileFromPool)
     {
-        // If the letter is in the frame
-        if(isTileInFrame( tileFromPool ))
-        {
-            // Look through the letters in the frame
-            for(int i = 0; i < tiles.length; i++)
-            {
-                // When we find the letter
-                if(tiles[i] == tileFromPool)
-                {
-                    // Remove that tile
-                    tiles[i] = ' ';
+        //Storing index of tile to be removed
+        int tileToBeRemoved = isTileInFrame(tileFromPool);
 
-                    // Return SUCCESS state
-                    return true;
-                }
-            }
+        //If tile to be removed is not in the frame, remove nothing & return FAIL state
+        if(tileToBeRemoved == -1)
+        {
+            return false;
         }
 
-        // If the tileFromPool is not in the frame, return FAIL state
-        return false;
+        //Set tile to empty tile ' '
+        tiles[tileToBeRemoved] = ' ';
+
+        // Return SUCCESS state
+        return true;
     }
 
     /* CHECKS IF THE FRAME IS EMPTY */
@@ -87,28 +80,28 @@ public class Frame
     }
 
     /* CHECKS IF A CERTAIN TILE IS IN A FRAME */
-    public boolean isTileInFrame(char tileToBeFound)
+    private int isTileInFrame(char tileToBeFound)
     {
         // If the frame is empty
         if(isEmpty())
         {
-            // Return FAIL state
-            return false;
+            // Return FAIL index
+            return -1;
         }
 
         //Otherwise, look through the tiles in the frame
-        for(char tile : tiles)
+        for(int i = 0; i < tiles.length; i++)
         {
             // If the tile is found in the frame
-            if(tile == tileToBeFound)
+            if(tiles[i] == tileToBeFound)
             {
-                // Return SUCCESS state
-                return true;
+                // Return index of tile
+                return i;
             }
         }
 
-        // If the tile is not found in the frame, return FAIL state
-        return false;
+        // If the tile is not found in the frame, return FAIL index
+        return -1;
     }
 
     /* RETURNS THE FRAME IN THE FORM OF A STRING */
@@ -118,7 +111,7 @@ public class Frame
     }
 
     /* FILLS ALL EMPTY SPACES IN THE FRAME*/
-    public void fillFrame()
+    private void fillFrame()
     {
         // Look through the tiles in the frame
        for(int i = 0; i < tiles.length; i++)
@@ -135,7 +128,11 @@ public class Frame
     /* RESETS THE FRAME TO ARRAY OF EMPTY SPACES */
     public void reset()
     {
+        // Fill the frame with empty tiles
         Arrays.fill( tiles, ' ' );
+
+        // Fill the frame with tiles from pool
+        fillFrame();
     }
 
 }
