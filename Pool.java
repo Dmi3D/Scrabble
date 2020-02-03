@@ -81,7 +81,7 @@ public class Pool
 
     public void setTileFrequencies()
     {
-        //Initialising a mutable HashMap containing the tile letters and their initial corresponding number
+        // Initialising a mutable HashMap containing the tile letters and their initial corresponding number
         tileFrequencies = new HashMap<>(){
             {
                 put('A', 9); put('I', 9); put('O', 8); put('N', 6);
