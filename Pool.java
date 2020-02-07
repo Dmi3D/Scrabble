@@ -8,19 +8,19 @@ import java.util.Random;
 
 public class Pool
 {
-    // Storing value of each tile
-    Map<Character, Integer> tileValues;
+    // Storing tiles and their corresponding values
+    private Map<Character, Integer> tileValues;
 
-    // Storing number of each tile
+    // Storing tiles and corresponding frequency in the pool
     private static HashMap<Character, Integer> tileFrequencies;
 
     // Storing the number of tiles in the pool
     private static int tilesInPool;
 
-    // CLASS CONSTRUCTOR INITIALISING INSTANCE VARIABLES
+    /* CLASS CONSTRUCTOR INITIALISING INSTANCE VARIABLES */
     public Pool()
     {
-        // Initialising an immutable HashMap containing the tile letters and their corresponding tile scores
+        // Initialising an immutable HashMap containing the tile letters and their corresponding tile values/scores
         tileValues = Map.ofEntries(
                 Map.entry( 'A', 1 ), Map.entry( 'B', 3 ), Map.entry( 'C', 3 ),
                 Map.entry( 'D', 2 ), Map.entry( 'E', 1 ), Map.entry( 'F', 4 ),
@@ -36,18 +36,19 @@ public class Pool
         tilesInPool = 100;
     }
 
+    /* ACCESSOR METHOD FOR RETRIEVING THE NUMBER OF TILES IN THE POOL */
     public static int getTilesInPool()
     {
         return tilesInPool;
     }
 
-    // ACCESSOR FOR tileValues Hash Map
+    /* ACCESSOR FOR RETRIEVING HASHMAP STORING TILES AND THEIR VALUES */
     public Map<Character, Integer> getTileValues()
     {
         return tileValues;
     }
 
-    // QUERYING THE VALUE OF A TILE
+    /* QUERYING THE VALUE OF A TILE */
     public int getTileValue(char tile)
     {
         char newTile;
