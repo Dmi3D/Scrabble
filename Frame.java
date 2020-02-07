@@ -19,18 +19,15 @@ public class Frame
     }
 
     /* RETURNS A CERTAIN TILE FROM THE FRAME */
-    public char takeTile(char tileToBeRetrieved)
+    public char removeTile(char tileToBeRetrieved)
     {
-        int tileToBeRemoved = isTileInFrame(tileToBeRetrieved);
-
-        // If the tile is in the frame
-        if(tileToBeRemoved == -1)
+        // If the tile cannot be set to blank because it does not exist
+        if(!setBlank(tileToBeRetrieved))
         {
            return ' ';
         }
 
-        //Remove this tile from the frame
-        removeTile( tiles[tileToBeRemoved] );
+        //If we reach here, the tile has been set to blank
 
         //Fill that space with a frame if pool still contains tiles
         if(!Pool.isPoolEmpty())
@@ -38,24 +35,24 @@ public class Frame
             fillFrame();
         }
 
-        // Return the tile we are taking
+        // Return the tile we are taking from the frame
         return tileToBeRetrieved;
     }
 
-    /* REMOVES A CERTAIN TILE FROM THE FRAME, RETURNS REMOVE SUCCESSFUL OR FAIL */
-    private boolean removeTile(char tileFromPool)
+    /* SETS A CERTAIN TILE IN THE FRAME TO BLANK, RETURNS SUCCESS OR FAIL */
+    private boolean setBlank(char tileFromPool)
     {
-        //Storing index of tile to be removed
-        int tileToBeRemoved = isTileInFrame(tileFromPool);
+        //Storing index of tile to be blanked
+        int tileToBeBlanked = isTileInFrame(tileFromPool);
 
         //If tile to be removed is not in the frame, remove nothing & return FAIL state
-        if(tileToBeRemoved == -1)
+        if(tileToBeBlanked == -1)
         {
             return false;
         }
 
         //Set tile to empty tile ' '
-        tiles[tileToBeRemoved] = ' ';
+        tiles[tileToBeBlanked] = ' ';
 
         // Return SUCCESS state
         return true;
@@ -105,9 +102,9 @@ public class Frame
     }
 
     /* RETURNS THE FRAME IN THE FORM OF A STRING */
-    public String getFrame()
+    public void displayFrame()
     {
-        return Arrays.toString(tiles);
+        System.out.println(Arrays.toString(tiles));
     }
 
     /* FILLS ALL EMPTY SPACES IN THE FRAME*/
