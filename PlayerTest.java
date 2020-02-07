@@ -13,43 +13,79 @@ public class PlayerTest
         System.out.println("Total number of tiles in the pool: " + Pool.getTilesInPool() + "\n");
 
         Frame frameOne = new Frame();
-        System.out.println("Frame One contains the following tiles drawn from the pool: " + frameOne.getFrame());
-        System.out.println("Tiles in pool at this stage: " + pool.getTileFrequencies().toString());
+        System.out.println("Frame One contains the following tiles drawn from the pool: ");
+        frameOne.displayFrame();
+        System.out.println();
+        System.out.println(" Tiles in pool at this stage: " + pool.getTileFrequencies().toString());
         System.out.println("Total number of tiles in the pool at this stage: " + Pool.getTilesInPool() + "\n");
 
         Frame frameTwo = new Frame();
-        System.out.println("Frame Two contains the following tiles drawn from the pool: " + frameTwo.getFrame());
+        System.out.print("Frame Two contains the following tiles drawn from the pool: ");
+        frameTwo.displayFrame();
+        System.out.println();
         System.out.println("Tiles in pool at this stage: " + pool.getTileFrequencies().toString());
         System.out.println("Total number of tiles in the pool at this stage: " + Pool.getTilesInPool() + "\n");
 
         Player playerOne = new Player( frameOne );
         Player playerTwo = new Player( frameTwo );
 
-        Scanner input = new Scanner( System.in );
+        System.out.println("********** TESTING NAME SETTING FUNCTIONALITY OF PLAYERS **********");
 
-        String playerName;
+        System.out.println( "Setting player one's name to 'Dmitriy'" );
+        playerOne.setName( "Dmitriy" );
 
-        System.out.println( "Player One, please enter your name: " );
-        playerName = input.nextLine();
-
-        playerOne.setName( playerName );
-
-        System.out.println( "Player Two, please enter your name: " );
-        playerName = input.nextLine();
-
-        playerTwo.setName( playerName );
-
-        input.close();
-
-        System.out.println("Player One's name: " + playerOne.getName());
-        System.out.println("Player One's score: " + playerOne.getScore());
-        System.out.println("Player One's frame: " + playerOne.getFrame());
+        System.out.println("Expected name for player one: 'Dmitriy'. Actual: '" + playerOne.getName() + "'");
+        System.out.println("Expected score for " + playerOne.getName() + ": 0. Actual: " + playerOne.getScore());
+        System.out.print(playerOne.getName() + "'s frame: ");
+        frameOne.displayFrame();
 
         System.out.println();
 
-        System.out.println("Player Two's name: " + playerTwo.getName());
-        System.out.println("Player Two's score: " + playerTwo.getScore());
-        System.out.println("Player Two's frame: " + playerTwo.getFrame());
+        System.out.println( "Setting player two's name to 'Andra' " );
+        playerTwo.setName( "Andra" );
+
+        System.out.println("Expected name for player one: 'Andra'. Actual: '" + playerTwo.getName() + "'");
+        System.out.println("Expected score for " + playerOne.getName() + ": 0. Actual: " + playerOne.getScore());
+        System.out.print(playerTwo.getName() + "'s frame: ");
+        frameTwo.displayFrame();
+
+        System.out.println();
+
+        System.out.println("Checking if the pool is empty. Should return false. Returned: " + Pool.isPoolEmpty() + "\n");
+
+        // Increasing player's scores
+        System.out.println("********** TESTING INCREMENT FUNCTIONALITY OF SCORE **********");
+        playerOne.incrementScore( 12 );
+        System.out.println("Incrementing " + playerOne.getName() + "'s score by 12. Expected: 12. Actual: " + playerOne.getScore());
+
+        playerTwo.incrementScore( 17 );
+        System.out.println("Incrementing " + playerOne.getName() + "'s score by 17. Expected: 17. Actual: " + playerTwo.getScore() + "\n");
+
+        // Removing a tile from a player's frame when making a move
+        System.out.println("********** TESTING TILE REMOVAL FROM FRAME FUNCTIONALITY **********");
+        char tileToRemove = frameOne.getFrame()[0];
+        char removedTile = frameOne.removeTile( tileToRemove );
+        System.out.println("Should remove '" + tileToRemove + "' from the frame. Removed: " + removedTile);
+
+        System.out.print(playerOne.getName() + "'s frame with '" + removedTile + "' removed: ");
+        frameOne.displayFrame();    // at this stage, the frame already has another tile in place
+        System.out.println();
+
+        // Removing a tile from a player's frame when making a move
+        System.out.println("********** TESTING TILE REMOVAL FROM FRAME FUNCTIONALITY **********");
+        tileToRemove = frameTwo.getFrame()[3];
+        removedTile = frameTwo.removeTile( tileToRemove );
+
+        System.out.println("Should remove '" + tileToRemove + "' from the frame. Removed: " + removedTile);
+
+        System.out.print(playerTwo.getName() + "'s frame with '" + removedTile + "' removed: ");
+        frameTwo.displayFrame();    // at this stage, the frame already has another tile in place
+        System.out.println();
+
+
+        System.out.println("Frequencies of tiles in pool. Should be decrementing frequencies: " + pool.getTileFrequencies().toString());
+        System.out.println("Expected 84 tiles in pool at this stage. Actual: " + Pool.getTilesInPool() + "\n");
+
     }
 }
        /* *//*
