@@ -31,7 +31,7 @@ public class Player
         return this.score;
     }
 
-    public String getFrame()
+    public char[] getFrame()
     {
         return frame.getFrame();
     }

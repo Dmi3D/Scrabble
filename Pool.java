@@ -65,17 +65,12 @@ public class Pool
         return -1;
     }
 
-    public void displayTiles()
-    {
-        System.out.println( "NUMBER OF TILES CURRENTLY IN POOL: " + tilesInPool );
-    }
-
     public void setTileFrequencies()
     {
         // Initialising a mutable HashMap as tiles get removed from and added to pool during the game
         tileFrequencies = new HashMap<>(){
             {
-                put('E', 12) put('A', 9); put('I', 9); put('O', 8);
+                put('E', 12); put('A', 9); put('I', 9); put('O', 8);
                 put('N', 6); put('R', 6); put('T', 6); put('L', 4);
                 put('S', 4); put('U', 4); put('D', 4); put('G', 3);
                 put('B', 2); put('C', 2); put('M', 2); put('P', 2);

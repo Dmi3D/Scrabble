@@ -15,6 +15,12 @@ public class Frame
         fillFrame();
     }
 
+    // Providing access to the frame of tiles
+    public char[] getFrame()
+    {
+        return tiles;
+    }
+
     /* RETURNS A CERTAIN TILE FROM THE FRAME */
     public char removeTile(char tileToBeRetrieved)
     {

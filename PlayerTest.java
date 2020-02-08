@@ -63,6 +63,7 @@ public class PlayerTest
 
         // Removing a tile from a player's frame when making a move
         System.out.println("********** TESTING TILE REMOVAL FROM FRAME FUNCTIONALITY **********");
+        System.out.println(playerOne.);
         char tileToRemove = frameOne.getFrame()[0];
         char removedTile = frameOne.removeTile( tileToRemove );
         System.out.println("Should remove '" + tileToRemove + "' from the frame. Removed: " + removedTile);
