@@ -15,6 +15,21 @@ public class Frame
         fillFrame();
     }
 
+    public char getTile(char tileToBeReturned)
+    {
+        int index = isTileInFrame(tileToBeReturned);
+
+        if(index == -1)
+        {
+            return ' ';
+        }
+
+        else
+        {
+            return tiles[index];
+        }
+    }
+
     // Providing access to the frame of tiles
     public char[] getFrame()
     {
