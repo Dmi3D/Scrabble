@@ -1,4 +1,3 @@
-// Implementation of Pool Class
 // Team Name: Leap Card
 // Team Members: Andra Antal-Berbecaru and Dmitriy Dranko
 
@@ -8,19 +7,15 @@ import java.util.Random;
 
 public class Pool
 {
-    // Storing tiles and their corresponding values
     private Map<Character, Integer> tileValues;
 
-    // Storing tiles and corresponding frequency in the pool
     private static HashMap<Character, Integer> tileFrequencies;
 
-    // Storing the number of tiles in the pool
     private static int tilesInPool;
 
-    /* CLASS CONSTRUCTOR INITIALISING INSTANCE VARIABLES */
     public Pool()
     {
-        // Initialising an immutable HashMap containing the tile letters and their corresponding tile values/scores
+        // Initialising an immutable HashMap as the tile values never change
         tileValues = Map.ofEntries(
                 Map.entry( 'A', 1 ), Map.entry( 'B', 3 ), Map.entry( 'C', 3 ),
                 Map.entry( 'D', 2 ), Map.entry( 'E', 1 ), Map.entry( 'F', 4 ),
@@ -36,50 +31,40 @@ public class Pool
         tilesInPool = 100;
     }
 
-    /* ACCESSOR METHOD FOR RETRIEVING THE NUMBER OF TILES IN THE POOL */
-    public static int getTilesInPool()
-    {
-        return tilesInPool;
-    }
-
-    /* ACCESSOR FOR RETRIEVING HASHMAP STORING TILES AND THEIR VALUES */
-    public Map<Character, Integer> getTileValues()
-    {
-        return tileValues;
-    }
-
-    /* QUERYING THE VALUE OF A TILE */
-    public int getTileValue(char tile)
-    {
-        char newTile;
-        // IF CHARACTER IS A LETTER OR A STAR (*) REPRESENTING A BLANK TILE
-        if (Character.isLetter( tile ) || tile == '*')
-        {
-            if( Character.isLowerCase( tile ))
-            {
-                // CONVERT TO UPPERCASE IF CHARACTER PROVIDED WAS LOWERCASE
-                newTile = Character.toUpperCase( tile );
-
-                // RETURN VALUE OF newTile IN tileValues HASH MAP
-                return getTileValues().get( newTile );
-            }
-
-            // RETURNING THE VALUE OF THE TILE BY ACCESSING tileValues HASH MAP
-            return getTileValues().get( tile );
-        }
-        // IF CHARACTER PROVIDED AT METHOD CALL IS NOT A LETTER AND NOT A STAR,
-        // THEN RETURN VALUE -1 AS THERE IS NO VALUE FOR SUCH TILE
-        return -1;
-
-    }
-
-    // ACCESSOR FOR tileFrequencies Hash Map
     public HashMap<Character, Integer> getTileFrequencies()
     {
         return tileFrequencies;
     }
 
-    // DISPLAYS THE NUMBER OF TILES CURRENTLY IN THE POOL TO THE CALLER
+    public Map<Character, Integer> getTileValues()
+    {
+        return tileValues;
+    }
+
+    public static int getTilesInPool()
+    {
+        return tilesInPool;
+    }
+
+    public int getTileValue(char tile)
+    {
+        char newTile;
+        // '*' represents a blank in Scrabble
+        if (Character.isLetter( tile ) || tile == '*')
+        {
+            if( Character.isLowerCase( tile ))
+            {
+                newTile = Character.toUpperCase( tile );
+                return getTileValues().get( newTile );
+            }
+
+            return getTileValues().get( tile );
+        }
+        // Return value is -1 for any characters provided at method call
+        // that do not satisfy the conditions above
+        return -1;
+    }
+
     public void displayTiles()
     {
         System.out.println( "NUMBER OF TILES CURRENTLY IN POOL: " + tilesInPool );
@@ -87,22 +72,20 @@ public class Pool
 
     public void setTileFrequencies()
     {
-        // Initialising a mutable HashMap containing the tile letters and their initial corresponding number
+        // Initialising a mutable HashMap as tiles get removed from and added to pool during the game
         tileFrequencies = new HashMap<>(){
             {
-                put('A', 9); put('I', 9); put('O', 8); put('N', 6);
-                put('R', 6); put('T', 6); put('L', 4); put('S', 4);
-                put('U', 4); put('D', 4); put('G', 3); put('B', 2);
-                put('C', 2); put('M', 2); put('P', 2); put('F', 2);
-                put('H', 2); put('V', 2); put('W', 2); put('Y', 2);
-                put('K', 1); put('J', 1); put('X', 1); put('Q', 1);
-                put('Z', 1); put('*', 2);
+                put('E', 12) put('A', 9); put('I', 9); put('O', 8);
+                put('N', 6); put('R', 6); put('T', 6); put('L', 4);
+                put('S', 4); put('U', 4); put('D', 4); put('G', 3);
+                put('B', 2); put('C', 2); put('M', 2); put('P', 2);
+                put('F', 2); put('H', 2); put('V', 2); put('W', 2);
+                put('Y', 2); put('K', 1); put('J', 1); put('X', 1);
+                put('Q', 1); put('Z', 1); put('*', 2);
             }};
     }
 
-    // Method that resets the pool i.e. the number of tiles in the pool get back to original
-    // which is 100 for total number of tiles, and the original frequency for each individual
-    // tile
+
     public void reset()
     {
         tilesInPool = 100;
@@ -110,14 +93,11 @@ public class Pool
         System.out.println("The pool was successfully reset to original number of tiles.");
     }
 
-
-    // CHECKING TO SEE IF THE POOL IS EMPTY,
     public static boolean isPoolEmpty()
     {
         return tilesInPool == 0;
     }
 
-    // METHOD RETURNING A TILE DRAWN AT RANDOM FROM THE POOL
     public static char drawTile()
     {
         if (tilesInPool == 0)
@@ -125,52 +105,29 @@ public class Pool
             return ' ';
         }
 
-        // RANDOMISING HASH MAP DIRECTLY
-        // NEEDS TO BE TESTED TO ENSURE THAT IT WORKS WITHOUT HAVING TO RESHUFFLE THE
-        // HASH MAP AFTER RANDOMISING EACH TILE, FOR THE PURPOSE OF PRESERVING THE
-        // NATURE OF RANDOMISATION
-
-        // VARIABLE FOR STORING THE FREQUENCY OF A TILE
-        int tileFrequency;
-
-        // INITIALISING A Random OBJECT
+        Object[] tiles = tileFrequencies.keySet().toArray();
         Random random = new Random();
 
-        // GENERATING A RANDOM TILE FROM THE HASH MAP tileFrequencies
-        Object[] tiles = tileFrequencies.keySet().toArray();
-
-        // GENERATING A RANDOM TILE FROM THE HASH MAP
+        // Generating a random tile from the array of keys from the hashmap of frequencies
         Object drawnTile = tiles[random.nextInt( tiles.length )];
+
+        // Avoiding errors of suspicious calls due to object drawnTile being a Character
         assert drawnTile instanceof Character;
 
-        // QUERYING THE TILE'S CORRESPONDING FREQUENCY VALUE
-        tileFrequency = tileFrequencies.get( ( drawnTile ));
-
-        // CONTINUING TO GENERATE A RANDOM TILE UNTIL WE FIND ONE IN THE POOL
-        // i.e. THERE MIGHT BE CERTAIN TILES THAT REACHED A FREQUENCY OF 0
-        // AFTER MULTIPLE DRAWS, SO IT'S NECESSARY TO PREVENT THOSE TILES
-        // FROM BEING USED WHEN THEIR FREQUENCY REACHED ZERO
+        int tileFrequency = tileFrequencies.get( ( drawnTile ));
         while ( tileFrequency < 1 )
         {
             // DRAWING A NEW TILE AGAIN
             drawnTile = tiles[random.nextInt( tiles.length )];
-            // UPDATING THE tileFrequency TO STORE THE NEW DRAWN TILE'S
-            // CORRESPONDING FREQUENCY
-
-            // ENSURING drawnTile is of type Character
-            // AVOIDING SUSPICIOUS CALLS ERRORS
             assert drawnTile instanceof Character;
             tileFrequency = tileFrequencies.get( drawnTile );
         }
 
-        // DECREASING THE FREQUENCY OF THE DRAWN TILE THAT SATISFIES ABOVE
-        // CONDITION
+        // Decrementing frequency of drawn tile in its corresponding position in the hashmap
         tileFrequencies.put( (Character) drawnTile, tileFrequency - 1);
 
-        // SUBTRACTING FROM THE VARIABLE HOLDING NUMBER OF TILES
         tilesInPool -= 1;
 
-        // RETURNING THE RANDOMLY DRAWN TILE TO THE CALLER
         return (Character) drawnTile;
     }
 }

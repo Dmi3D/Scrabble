@@ -1,10 +1,9 @@
 public class Player
 {
-    private String name;        //Stores the player name
-    private int score;      //Stores the player's score
-    private Frame frame;    // Stored the player's frame
+    private String name;
+    private int score;
+    private Frame frame;
 
-    //Constructor of player
     public Player(Frame frame)
     {
         this.name = null;
@@ -12,42 +11,40 @@ public class Player
         this.frame = frame;
     }
 
-    //Sets the name of the player
     public void setName(String name)
     {
         this.name = name;
     }
 
-    //Increments the player score according to passed in value
-    public void incrementScore(int score)
-    {
-        this.score += score;
-    }
-
-    //Returns the player name
     public String getName()
     {
         return this.name;
     }
 
-    //Returns the player score
+    public void incrementScore(int score)
+    {
+        this.score += score;
+    }
+
     public int getScore()
     {
         return this.score;
     }
 
-    //Allows reset of player to default values
+    public String getFrame()
+    {
+        return frame.getFrame();
+    }
+
     public void resetPlayer()
     {
         this.name = null;
         this.score = 0;
+        /* Frame associated with player also gets reset by calling its own reset function.
+           This is done to ensure that the frame will not have tiles taken from the pool
+           used in the previous game. When game is reset, the frame will get tiles from
+           the reset pool */
         frame.reset();
-    }
-
-   // METHOD RETURNING FRAME OF PLAYER
-    public String getFrame()
-    {
-        return frame.getFrame();
     }
 
 }
