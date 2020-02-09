@@ -31,9 +31,9 @@ public class Player
         return this.score;
     }
 
-    public char[] getFrame()
+    public Frame getPlayerFrame()
     {
-        return frame.getFrame();
+        return frame;
     }
 
     public void resetPlayer()
