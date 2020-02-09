@@ -46,7 +46,7 @@ public class Pool
         return tilesInPool;
     }
 
-    public int getTileValue(char tile)
+    public int getValue(char tile)
     {
         char newTile;
         // '*' represents a blank in Scrabble
@@ -83,12 +83,11 @@ public class Pool
 
     public void reset()
     {
-        tilesInPool = 100;
         setTileFrequencies();
-        System.out.println("The pool was successfully reset to original number of tiles.");
+        tilesInPool = 100;
     }
 
-    public static boolean isPoolEmpty()
+    public static boolean isEmpty()
     {
         return tilesInPool == 0;
     }

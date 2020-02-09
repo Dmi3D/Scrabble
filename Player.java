@@ -36,9 +36,9 @@ public class Player
         return frame;
     }
 
-    public void resetPlayer()
+    public void reset()
     {
-        this.name = null;
+        this.name = " ";
         this.score = 0;
         /* Frame associated with player also gets reset by calling its own reset function.
            This is done to ensure that the frame will not have tiles taken from the pool

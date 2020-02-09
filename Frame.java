@@ -15,19 +15,14 @@ public class Frame
         fillFrame();
     }
 
-    public char getTile(char tileToBeReturned)
+    public char getTile(int index)
     {
-        int index = isTileInFrame(tileToBeReturned);
-
-        if(index == -1)
-        {
-            return ' ';
-        }
-
-        else
+        if(index >= 0 && index < 7)
         {
             return tiles[index];
         }
+
+        return ' ';
     }
 
     // Providing access to the frame of tiles
@@ -48,7 +43,7 @@ public class Frame
         // If we reach here, the tile has been set to blank
 
         // Filling that space with a frame if pool still contains tiles
-        if(!Pool.isPoolEmpty())
+        if(!Pool.isEmpty())
         {
             fillFrame();
         }
@@ -61,7 +56,7 @@ public class Frame
     private boolean setBlank(char tileFromPool)
     {
         // Storing index of tile to be blanked
-        int tileToBeBlanked = isTileInFrame(tileFromPool);
+        int tileToBeBlanked = getIndexOfTile(tileFromPool);
 
         // If tile to be removed is not in the frame, remove nothing & return FAIL state
         if(tileToBeBlanked == -1)
@@ -90,7 +85,7 @@ public class Frame
     }
 
     /* CHECKS IF A CERTAIN TILE IS IN A FRAME */
-    private int isTileInFrame(char tileToBeFound)
+    public int getIndexOfTile(char tileToBeFound)
     {
         if(isEmpty())
         {
