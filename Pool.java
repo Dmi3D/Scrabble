@@ -46,7 +46,7 @@ public class Pool
         return tilesInPool;
     }
 
-    public int getTileValue(char tile)
+    public int getValue(char tile)
     {
         char newTile;
         // '*' represents a blank in Scrabble
