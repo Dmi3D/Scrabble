@@ -17,7 +17,7 @@ public class Frame
 
     public char getTile(int index)
     {
-        if(isTileInFrame(tiles[index]) != -1)
+        if(index >= 0 && index < 7)
         {
             return tiles[index];
         }

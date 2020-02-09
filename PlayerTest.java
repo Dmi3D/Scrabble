@@ -131,7 +131,7 @@ public class PlayerTest
                 frameTwo.removeTile(playerTwo.getPlayerFrame().getFrame()[i]);
             }
 
-            System.out.println("Removed " + i*2 +" tiles from the pool to replace all tiles in each players frame.");
+            System.out.println("Removed " + i * 2 + " tiles from the pool to replace all tiles in each players frame.");
             System.out.println("Number of tiles in the pool at this stage: " + Pool.getTilesInPool() +"\n");
         }
 
@@ -139,21 +139,42 @@ public class PlayerTest
 
         System.out.println("\n********** TESTING IF FRAMES ARE EMPTY AFTER REMOVING ALL TILES FROM THEM **********\n");
 
-        System.out.println("All tiles are being removed one by one from both frames in the background.\n");
+        System.out.println("(All tiles are being removed one by one from both frames in the background)\n");
 
-        for ( int i = 0; i < 7; i++ )
+        for (int i = 0; i < 7; i++)
         {
-            frameOne.removeTile( playerOne.getPlayerFrame().getFrame()[i] );
-            frameTwo.removeTile( playerTwo.getPlayerFrame().getFrame()[i] );
-            // To be implemented
-            //System.out.println("Removed tile " + frameOne.getTile(i) + playerOne.getName() + "'s frame now: ");
-            //playerOne.getPlayerFrame().displayFrame();
+            System.out.print(playerOne.getName() + "'s Frame: ");
+            playerOne.getPlayerFrame().displayFrame();
+
+            System.out.println("Removed tile '" + playerOne.getPlayerFrame().getTile(i) + "'");
+
+            playerOne.getPlayerFrame().removeTile( playerOne.getPlayerFrame().getFrame()[i] );
+
+            System.out.print(playerOne.getName() + "'s frame now: ");
+            playerOne.getPlayerFrame().displayFrame();
+
+            System.out.println();
         }
 
-        System.out.println("Testing to see that " + playerOne.getName() + "'s is empty now. Should return true. Actual: "
+        System.out.println("Testing to see that " + playerOne.getName() + "'s frame is empty now. Expected: true. Actual: "
             + playerOne.getPlayerFrame().isEmpty() + "\n");
 
-        System.out.println("Testing to see that " + playerTwo.getName() + "'s is empty now. Should return true. Actual: "
+        for (int i = 0; i < 7; i++)
+        {
+            System.out.print(playerTwo.getName() + "'s Frame: ");
+            playerTwo.getPlayerFrame().displayFrame();
+
+            System.out.println("Removed tile '" + playerTwo.getPlayerFrame().getTile(i) + "'");
+
+            playerTwo.getPlayerFrame().removeTile( playerTwo.getPlayerFrame().getFrame()[i] );
+
+            System.out.print(playerTwo.getName() + "'s frame now: ");
+            playerTwo.getPlayerFrame().displayFrame();
+
+            System.out.println();
+        }
+
+        System.out.println("Testing to see that " + playerTwo.getName() + "'s frame is empty now. Expected: true. Actual: "
                 + playerTwo.getPlayerFrame().isEmpty() + "\n");
 
         System.out.println();
