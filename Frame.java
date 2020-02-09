@@ -56,7 +56,7 @@ public class Frame
     private boolean setBlank(char tileFromPool)
     {
         // Storing index of tile to be blanked
-        int tileToBeBlanked = isTileInFrame(tileFromPool);
+        int tileToBeBlanked = getIndexOfTile(tileFromPool);
 
         // If tile to be removed is not in the frame, remove nothing & return FAIL state
         if(tileToBeBlanked == -1)
@@ -85,7 +85,7 @@ public class Frame
     }
 
     /* CHECKS IF A CERTAIN TILE IS IN A FRAME */
-    private int isTileInFrame(char tileToBeFound)
+    public int getIndexOfTile(char tileToBeFound)
     {
         if(isEmpty())
         {
