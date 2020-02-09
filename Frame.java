@@ -43,7 +43,7 @@ public class Frame
         // If we reach here, the tile has been set to blank
 
         // Filling that space with a frame if pool still contains tiles
-        if(!Pool.isPoolEmpty())
+        if(!Pool.isEmpty())
         {
             fillFrame();
         }

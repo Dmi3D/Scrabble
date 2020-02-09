@@ -84,7 +84,7 @@ public class PlayerTest
         char replacedTile = PlayerOne.getPlayerFrame().getFrame()[indexOfTile];
 
         System.out.println("Should remove '" + tileToRemove + "' from the frame. Removed: " + removedTile);
-        System.out.println("'" + tileToRemove + "' has been replaced by '" + replacedTile + "' at index " + indexOfTile);
+        System.out.println("'" + tileToRemove + "' has been replaced by '" + replacedTile + "' from the pool at index " + indexOfTile);
 
         System.out.print(PlayerOne.getName() + "'s frame with '" + removedTile + "' removed: ");
         PlayerOne.getPlayerFrame().displayFrame(); // at this stage, the frame already has another tile in place
@@ -100,7 +100,7 @@ public class PlayerTest
         replacedTile = PlayerTwo.getPlayerFrame().getFrame()[indexOfTile];
 
         System.out.println("Should remove '" + tileToRemove + "' from the frame. Removed: " + removedTile);
-        System.out.println("'" + tileToRemove + "' has been replaced by '" + replacedTile + "' at index " + indexOfTile);
+        System.out.println("'" + tileToRemove + "' has been replaced by '" + replacedTile + "' from the pool at index " + indexOfTile);
 
         System.out.print(PlayerTwo.getName() + "'s frame with '" + removedTile + "' removed: ");
         PlayerTwo.getPlayerFrame().displayFrame();    // at this stage, the frame already has another tile in place
@@ -146,7 +146,7 @@ public class PlayerTest
 
         System.out.println("\n***************** TESTING POOL AND FRAMES TO SEE IF THEY'RE EMPTY ******************\n");
 
-        System.out.println("Checking if the Pool is empty. Actual: false. Returned: " + Pool.isPoolEmpty() + "\n");
+        System.out.println("Checking if the Pool is empty. Actual: false. Returned: " + Pool.isEmpty() + "\n");
 
         System.out.println("Checking if " + PlayerOne.getName() + "'s frame is empty. Actual: false. Returned: " +
                 PlayerOne.getPlayerFrame().isEmpty() + "\n");
@@ -155,6 +155,9 @@ public class PlayerTest
                 PlayerTwo.getPlayerFrame().isEmpty() + "\n");
 
         System.out.println("\n********* TESTING TO SEE IF POOL IS EMPTY AFTER REMOVING ALL TILES FROM IT *********\n");
+
+        System.out.println("(Here, we are removing all tiles from each frame." +
+                "\n The frame auto pulls tiles from the pool each time we do this)\n");
 
         // Removing tiles from frames and filling them a few times to exhaust the number of tiles in the Pool //
         for (int numOfTimes = 0; numOfTimes < 6; numOfTimes++)
@@ -167,11 +170,19 @@ public class PlayerTest
                 FrameTwo.removeTile(PlayerTwo.getPlayerFrame().getFrame()[i]);
             }
 
-            System.out.println("Removed " + i * 2 + " tiles from the Pool to replace all tiles in each players frame.");
-            System.out.println("Number of tiles in the Pool at this stage: " + Pool.getTilesInPool() +"\n");
+            System.out.println("Removed " + i * 2 + " tiles from the Pool.");
+            System.out.print("Number of tiles in the Pool at this stage: " + Pool.getTilesInPool() + "\n");
+
+            System.out.print(PlayerOne.getName() + "'s Frame: ");
+            PlayerOne.getPlayerFrame().displayFrame();
+
+            System.out.print(PlayerTwo.getName() + "'s Frame: ");
+            PlayerTwo.getPlayerFrame().displayFrame();
+
+            System.out.println();
         }
 
-        System.out.println("Testing to see that Pool is empty now. Should return true. Actual: " + Pool.isPoolEmpty() + "\n");
+        System.out.println("Testing to see that Pool is empty now. Should return true. Actual: " + Pool.isEmpty() + "\n");
 
         System.out.println("\n********** TESTING IF FRAMES ARE EMPTY AFTER REMOVING ALL TILES FROM THEM **********\n");
 
@@ -213,122 +224,64 @@ public class PlayerTest
         System.out.println("Testing to see that " + PlayerTwo.getName() + "'s frame is empty now. Expected: true. Actual: "
                 + PlayerTwo.getPlayerFrame().isEmpty() + "\n");
 
+        System.out.println("\n**************************** TESTING IF RESETTING WORKS ****************************\n");
+
+        System.out.println("Number of each tile in the Pool (All should be 0):\n" + Pool.getTileFrequencies().toString());
+        System.out.println("Checking if pool is empty. Expected: true. Actual: " + Pool.isEmpty() + "\n");
+
+        System.out.print(PlayerOne.getName() + "'s frame (Should be empty): ");
+        PlayerOne.getPlayerFrame().displayFrame();
+
+        System.out.println("Checking if " + PlayerOne.getName() + "'s frame is empty." +
+                " Expecting: true. Actual: " + PlayerOne.getPlayerFrame().isEmpty());
+
+        System.out.println(PlayerOne.getName() + "'s score: " + PlayerOne.getScore());
+
         System.out.println();
-        
+
+        System.out.print(PlayerTwo.getName() + "'s frame (Should be empty): ");
+        PlayerTwo.getPlayerFrame().displayFrame();
+
+        System.out.println("Checking if " + PlayerTwo.getName() + "'s frame is empty." +
+                " Expecting: true. Actual: " + PlayerTwo.getPlayerFrame().isEmpty());
+
+        System.out.println(PlayerTwo.getName() + "'s score: " + PlayerTwo.getScore());
+
+        System.out.println();
+
+        System.out.println("-- RESETTING POOL --\n");
+
+        Pool.reset();
+
+        System.out.println("Number of each tile in the Pool:\n" + Pool.getTileFrequencies().toString() + "\n");
+
+        System.out.println("-- RESETTING PLAYERS (AND FRAMES AS A RESULT)--\n");
+
+        PlayerOne.reset();
+
+        System.out.println("Player One's name should be empty: " + PlayerOne.getName());
+        System.out.println("Player One's score should be 0: " + PlayerOne.getScore());
+
+        PlayerOne.setName("Bobby");
+
+        System.out.println("Setting Player One's name to 'Bobby': " + PlayerOne.getName());
+
+        System.out.print(PlayerOne.getName() + "'s Frame: ");
+        PlayerOne.getPlayerFrame().displayFrame();
+
+        System.out.println();
+
+        PlayerTwo.reset();
+
+        System.out.println("Player Two's name should be empty: " + PlayerTwo.getName());
+        System.out.println("Player Two's score should be 0: " + PlayerTwo.getScore());
+
+        PlayerTwo.setName("James");
+
+        System.out.println("Setting Player Two's name to 'James': " + PlayerTwo.getName());
+
+        System.out.print(PlayerTwo.getName() + "'s Frame: ");
+        PlayerTwo.getPlayerFrame().displayFrame();
 
     }
 }
-       /* *//*
-            DMITRIY TESTING FRAME & POOL
-         *//*
-
-        //Creating a pool
-        Pool pool = new Pool();
-
-        //Creating a new frame
-        Frame testFrame = new Frame();
-
-        System.out.println("isEmpty should return false: " +  testFrame.isEmpty());
-
-        //Testing print the frame
-        System.out.println("Filled frame: " + testFrame.getFrame());
-
-        //Removing letter from the frame
-        System.out.println("Attempting to remove A from the frame");
-        System.out.println("Char taken: " + testFrame.takeTile('A' ));
-
-        //Removing letter from the frame
-        System.out.println("Attempting to remove B from the frame");
-        System.out.println("Char taken: " + testFrame.takeTile('B' ));
-
-        //Removing letter from the frame
-        System.out.println("Attempting to remove C from the frame");
-        System.out.println("Char taken: " + testFrame.takeTile('C' ));
-
-        System.out.println("isEmpty should return false: " +  testFrame.isEmpty());
-
-        //Testing print the frame
-        System.out.println("Frame with A removed (if it was there initially): " + testFrame.getFrame());
-
-        //Testing print the frame
-        System.out.println("Frame should be full again: " + testFrame.getFrame());
-
-
-
-        *//*
-            ANDRA TESTING POOL
-         *//*
-
-        Pool bagOfTiles = new Pool();
-
-        System.out.println( "The tiles and their values: " + bagOfTiles.getTileValues().toString() );
-        System.out.println( "Tiles in pool at the moment: " + bagOfTiles.getTileFrequencies().toString() );
-
-        bagOfTiles.getTileFrequencies().put( 'A', 7 );
-        bagOfTiles.getTileFrequencies().put( '*', 0 );
-
-        System.out.println( "Tiles in pool at the moment: " + bagOfTiles.getTileFrequencies().toString() );
-
-        for ( int i = 0; i < 7; i++ )
-        {
-            char tileDrawn = Pool.drawTile();
-            System.out.println("Drawn tile: " + tileDrawn);
-            bagOfTiles.displayTiles();
-        }
-
-        System.out.println("Tiles and frequencies in the pool now: " + bagOfTiles.getTileFrequencies().toString());
-
-        boolean isEmpty = bagOfTiles.isPoolEmpty();
-
-        if ( isEmpty )
-        {
-            System.out.println("Pool is empty");
-        }
-
-        else
-        {
-            System.out.println("Pool is not empty. ");
-            bagOfTiles.displayTiles();
-            System.out.println(" Tiles and frequencies: " + bagOfTiles.getTileFrequencies().toString() );
-        }
-
-        Scanner scanner = new Scanner( System.in );
-
-        for (int i = 0; i < 10; i++)
-        {
-            char tile = scanner.next().charAt( 0 );
-            int tileValue = bagOfTiles.getTileValue( tile );
-
-            if ( tileValue == -1 )
-            {
-                System.out.println(tile + " is not a tile. try again.");
-                continue;
-            }
-
-            System.out.println("Value of " + tile + " = " + tileValue);
-        }
-
-
-
-        *//*
-            ANDRA TESTING PLAYER
-         *//*
-
-        Frame frameOne = new Frame();
-
-        Player playerOne = new Player(frameOne);
-        playerOne.setName( "Andra" );
-
-        System.out.println("Current score for: " + playerOne.getName() + " = " + playerOne.getScore());
-        System.out.println(playerOne.getName() + "'s Frame: " + playerOne.getFrame());
-
-        playerOne.incrementScore( 12 );
-
-        System.out.println("Current score for: " + playerOne.getName() + " = " + playerOne.getScore());
-
-        playerOne.resetPlayer();
-
-        System.out.println("PlayerOne data: " + playerOne.getName() + ", " + playerOne.getScore()
-                + ", " + playerOne.getFrame());*/
-/*    }
-}*/
