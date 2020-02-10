@@ -1,4 +1,4 @@
-# Leap-Card-port
+# Assignment One
 This is our implementation of Scrabble. 
 
 Points to note: 
