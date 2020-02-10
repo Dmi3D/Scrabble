@@ -2,11 +2,11 @@ public class PlayerTest
 {
     public static void main( String[] args )
     {
-        Pool Pool = new Pool();
+        Pool ThePool = new Pool();
 
         System.out.println("\n****************** TESTING INITIALISATION OF POOL *******************\n");
 
-        System.out.println("The tiles and their associated scores:\n" + Pool.getTileValues().toString() + "\n");
+        System.out.println("The tiles and their associated scores:\n" + ThePool.getTileValues().toString() + "\n");
 
         System.out.println("Number of each tile in the Pool:\n" + Pool.getTileFrequencies().toString() + "\n");
 
@@ -121,7 +121,7 @@ public class PlayerTest
         for(int i = 0; i < 7; i++)
         {
             char tile = PlayerOne.getPlayerFrame().getTile(i);
-            int value = Pool.getValue(tile);
+            int value = ThePool.getValue(tile);
 
             System.out.println("Value of '" + tile + "' at position " + i + ": " + value);
         }
@@ -137,7 +137,7 @@ public class PlayerTest
         for(int i = 0; i < 7; i++)
         {
             char tile = PlayerTwo.getPlayerFrame().getTile(i);
-            int value = Pool.getValue(tile);
+            int value = ThePool.getValue(tile);
 
             System.out.println("Value of '" + tile + "' at position " + i + ": " + value);
         }
@@ -251,7 +251,7 @@ public class PlayerTest
 
         System.out.println("-- RESETTING POOL --\n");
 
-        Pool.reset();
+        ThePool.reset();
 
         System.out.println("Number of each tile in the Pool:\n" + Pool.getTileFrequencies().toString() + "\n");
 

@@ -31,7 +31,7 @@ public class Pool
         tilesInPool = 100;
     }
 
-    public HashMap<Character, Integer> getTileFrequencies()
+    public static HashMap<Character, Integer> getTileFrequencies()
     {
         return tileFrequencies;
     }
@@ -65,7 +65,7 @@ public class Pool
         return -1;
     }
 
-    public void setTileFrequencies()
+    private void setTileFrequencies()
     {
         // Initialising a mutable HashMap as tiles get removed from and added to pool during the game
         tileFrequencies = new HashMap<>(){
