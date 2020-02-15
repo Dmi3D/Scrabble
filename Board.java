@@ -1,5 +1,7 @@
 // Board Class Implementation
 
+import java.util.Arrays;
+
 public class Board
 {
     // BOARD 2D ARRAY DIMENSION
@@ -7,17 +9,15 @@ public class Board
 
     private char[][] board;
 
+    private int[][] values;
+
     public Board()
     {
-        board = new char[BOUNDS][BOUNDS];
+        this.board = new char[BOUNDS][BOUNDS];
+        this.values = new int[BOUNDS][BOUNDS];
+        initScores();
     }
 
-    //TODO
-    //storing weighted square values
-    //placing word on board (no score calculation needed)
-    //word placement checking (long)
-    //displays board in ASCII characters on console
-    //board reset
 
     /* Places an individual tile on a square of the board */
     private char placeTile(int rowNumber, char columnLetter, char tile)
@@ -36,12 +36,12 @@ public class Board
     {
         System.out.print("     |");
 
-        //Printing the top horizontal cords with spaces and dividers
+        //Printing the letter cords
         for (int i = 0; i < board[0].length; i++)
         {
             System.out.print("   ");
 
-            System.out.print( (char) ('A' + i));
+            System.out.print((char) ('A' + i));
 
             System.out.print("   |");
         }
@@ -50,10 +50,10 @@ public class Board
 
         for (int i = 0; i < board.length; i++)
         {
-            //Print dividers between vertical cords
+            //Print dividers between number cords
             System.out.print("-----+");
 
-            //
+            //Prints row divider
             for (int j = 0; j < board[0].length; j++)
             {
                 System.out.print("-------+");
@@ -61,44 +61,46 @@ public class Board
 
             System.out.print("\n");
 
+            //Prints number cords
             if(i < 9)
                 System.out.print("   " + (i + 1) + " |");
             else
                 System.out.print("  " + (i + 1) + " |");
 
-            for ( int j = 0; j < board[0].length; j++)
+            //Prints the insides of the board
+            for (int j = 0; j < board[0].length; j++)
             {
-                int spaces;
-
-                spaces = 9;
-
                 char tile = board[i][j];
 
                 boolean isNull = tile == '\u0000';
 
-                for (int  k = 0; k < 2; k++)
-                {
-                    System.out.print("   ");
+                System.out.print("   ");
 
-                    if(k == 1)
-                        break;
+                if(!isNull)
+                    System.out.print(tile);
+                else
+                    System.out.print(" ");
 
-                    if(!isNull)
-                        System.out.print(tile);
-                    else
-                        System.out.print(" ");
-                }
+                System.out.print("   ");
+
                 System.out.print("|");
             }
             System.out.print("\n");
         }
 
+        //The following prints the bottom line of the board
         System.out.print("-----+");
 
         for (int j = 0; j < board[0].length; j++)
         {
             System.out.print("-------+");
         }
+    }
+
+    //TO BE COMPLETE
+    private void initScores()
+    {
+        Arrays.fill(values, 1);
     }
 
     public static void main(String[] args)
