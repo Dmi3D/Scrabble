@@ -2,17 +2,35 @@
 
 public class Board
 {
+    // BOARD 2D ARRAY DIMENSION
     private static final int BOUNDS = 15;
 
-    private char[][] board = new char[BOUNDS][BOUNDS];
+    private char[][] board;
+
+    public Board()
+    {
+        board = new char[BOUNDS][BOUNDS];
+    }
 
     //TODO
-    // storing current tile positions
     //storing weighted square values
     //placing word on board (no score calculation needed)
     //word placement checking (long)
     //displays board in ASCII characters on console
     //board reset
+
+    /* Places an individual tile on a square of the board */
+    private char placeTile(int rowNumber, char columnLetter, char tile)
+    {
+        rowNumber--;
+        int columnNumber = tile - 'A';
+        if ( rowNumber < 0 || rowNumber > 14 || columnNumber < 0 || columnNumber > 14 )
+        {
+            return '\u0000';    // cannot place a tile on an index out of bounds
+        }
+        return tile;
+    }
+
 
     public void displayBoard()
     {
