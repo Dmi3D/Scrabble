@@ -17,7 +17,7 @@ public class Board
     {
         this.board = new char[BOUNDS][BOUNDS];
         this.values = new int[BOUNDS][BOUNDS];
-        //initScores();
+        initScores();
     }
 
     /* Places word on board in direction indicated, starting at position indicated */
@@ -26,7 +26,7 @@ public class Board
     {
         // CONSIDER WRITING EXCEPTIONS AND THROWING THEM WHENEVER CERTAIN CONDITION IS MET E.G. WordOutOfBoundsException
 
-        boolean isPlaced = true;
+        boolean isPlaced;
         startRow--;
         int startColumn = columnLetter - 'A';
         if ( startRow < 0 || startRow > BOUNDS-1 || startColumn < 0 || startColumn > BOUNDS-1 )
@@ -36,40 +36,28 @@ public class Board
         else
         {
             char[] letters = word.toCharArray();
-            if ( direction == 'H' ) // when word is to be placed horizontally
+            int endRow = ( startRow + letters.length ) - 1; // getting the column in which the last letter of the word will fall (for horizontally placed words)
+            int endColumn = (startColumn + letters.length) - 1; // getting the row in which the last letter of the word will fall (for vertically placed words)
+            if ( (endColumn > BOUNDS-1 && direction == 'H') || (endRow > BOUNDS-1 && direction == 'V'))
             {
-                int endColumn = (startColumn + letters.length) - 1; // getting the column in which the last letter of the word will fall
-                if ( endColumn > BOUNDS-1 )
+                isPlaced = false; // when word to be placed goes past the bounds of the board's columns
+            }
+            else
+            {
+                for ( char letter : letters )
                 {
-                    isPlaced = false;   // when word to be placed goes past the bounds of the board's columns
-                }
-                else
-                {
-                    for ( char letter : letters )
+                    if ( direction == 'H' ) // when word is to be placed horizontally
                     {
                         placeTile( letter, startRow, startColumn ); // placing each tile in corresponding position
                         startColumn++;  // incrementing column number
                     }
-                    isPlaced = true;
-                }
-            }
-            else if ( direction == 'V' )
-            {
-                int endRow = ( startRow + letters.length ) - 1;
-                if ( endRow > BOUNDS - 1 )
-                {
-                    isPlaced = false;
-                }
-                else
-                {
-                    for ( char letter : letters )
+                    else if ( direction == 'V' )
                     {
                         placeTile( letter, startRow, startColumn ); // placing each tile in corresponding position
                         startRow++;  // incrementing row number
                     }
-                    isPlaced = true;
-
                 }
+                isPlaced = true;
             }
         }
 
@@ -163,16 +151,16 @@ public class Board
 
         Board.displayBoard();
 
-        for ( int i = 0; i < 3; i++ )
+        for ( int i = 0; i < 5; i++ )   // TESTING 5 WORD PLACEMENTS
         {
             Scanner scanner = new Scanner( System.in );
             System.out.print( "Please enter word you want to place on the board: " );
             String word = scanner.next();
             System.out.print( "\nPlease enter the direction in which you want to place the word ('V' for Up->Down or 'H' for Left->Right): " );
             char direction = scanner.next().charAt( 0 );
-            System.out.print( "\nPlease enter row number of the first letter." );
+            System.out.print( "\nPlease enter row number of the first letter: " );
             int row = scanner.nextInt();
-            System.out.print( "\nPlease enter column letter of the first letter" );
+            System.out.print( "\nPlease enter column letter of the first letter: " );
             char column = scanner.next().charAt( 0 );
             Board.placeWord( word, direction, row, column );
             Board.displayBoard();
