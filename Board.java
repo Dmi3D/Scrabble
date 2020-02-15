@@ -1,6 +1,8 @@
 // Board Class Implementation
 
 import java.util.Arrays;
+import java.util.Scanner;
+
 
 public class Board
 {
@@ -15,20 +17,70 @@ public class Board
     {
         this.board = new char[BOUNDS][BOUNDS];
         this.values = new int[BOUNDS][BOUNDS];
-        initScores();
+        //initScores();
+    }
+
+    /* Places word on board in direction indicated, starting at position indicated */
+    /* Precondition: word is verified to contain letters available in the player's frame */
+    public boolean placeWord(String word, char direction, int startRow, char columnLetter)
+    {
+        // CONSIDER WRITING EXCEPTIONS AND THROWING THEM WHENEVER CERTAIN CONDITION IS MET E.G. WordOutOfBoundsException
+
+        boolean isPlaced = true;
+        startRow--;
+        int startColumn = columnLetter - 'A';
+        if ( startRow < 0 || startRow > BOUNDS-1 || startColumn < 0 || startColumn > BOUNDS-1 )
+        {
+               isPlaced = false;    // when word is to be placed out of bounds
+        }
+        else
+        {
+            char[] letters = word.toCharArray();
+            if ( direction == 'H' ) // when word is to be placed horizontally
+            {
+                int endColumn = (startColumn + letters.length) - 1; // getting the column in which the last letter of the word will fall
+                if ( endColumn > BOUNDS-1 )
+                {
+                    isPlaced = false;   // when word to be placed goes past the bounds of the board's columns
+                }
+                else
+                {
+                    for ( char letter : letters )
+                    {
+                        placeTile( letter, startRow, startColumn ); // placing each tile in corresponding position
+                        startColumn++;  // incrementing column number
+                    }
+                    isPlaced = true;
+                }
+            }
+            else if ( direction == 'V' )
+            {
+                int endRow = ( startRow + letters.length ) - 1;
+                if ( endRow > BOUNDS - 1 )
+                {
+                    isPlaced = false;
+                }
+                else
+                {
+                    for ( char letter : letters )
+                    {
+                        placeTile( letter, startRow, startColumn ); // placing each tile in corresponding position
+                        startRow++;  // incrementing row number
+                    }
+                    isPlaced = true;
+
+                }
+            }
+        }
+
+        return isPlaced;
     }
 
 
     /* Places an individual tile on a square of the board */
-    private char placeTile(int rowNumber, char columnLetter, char tile)
+    private void placeTile(char tile, int rowNumber, int columnNumber)
     {
-        rowNumber--;
-        int columnNumber = tile - 'A';
-        if ( rowNumber < 0 || rowNumber > 14 || columnNumber < 0 || columnNumber > 14 )
-        {
-            return '\u0000';    // cannot place a tile on an index out of bounds
-        }
-        return tile;
+        board[rowNumber][columnNumber] = tile;
     }
 
 
@@ -95,6 +147,8 @@ public class Board
         {
             System.out.print("-------+");
         }
+
+        System.out.println("\n\n");
     }
 
     //TO BE COMPLETE
@@ -107,7 +161,22 @@ public class Board
     {
         Board Board = new Board();
 
-        Board.board[14][14] = 'A';
         Board.displayBoard();
+
+        for ( int i = 0; i < 3; i++ )
+        {
+            Scanner scanner = new Scanner( System.in );
+            System.out.print( "Please enter word you want to place on the board: " );
+            String word = scanner.next();
+            System.out.print( "\nPlease enter the direction in which you want to place the word ('V' for Up->Down or 'H' for Left->Right): " );
+            char direction = scanner.next().charAt( 0 );
+            System.out.print( "\nPlease enter row number of the first letter." );
+            int row = scanner.nextInt();
+            System.out.print( "\nPlease enter column letter of the first letter" );
+            char column = scanner.next().charAt( 0 );
+            Board.placeWord( word, direction, row, column );
+            Board.displayBoard();
+        }
+
     }
 }
