@@ -20,6 +20,13 @@ public class Board
         initScores();
     }
 
+    public char getTileAtPosition(int rowNum, char columnLetter)
+    {
+        rowNum--;
+        int columnNum = columnLetter - 'A';
+        return board[rowNum][columnNum];
+    }
+
     /* Places word on board in direction indicated, starting at position indicated */
     /* Precondition: word is verified to contain letters available in the player's frame */
     public boolean placeWord(String word, char direction, int startRow, char columnLetter)
