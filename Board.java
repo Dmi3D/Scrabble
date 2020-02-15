@@ -18,31 +18,33 @@ public class Board
     {
         System.out.print("     |");
 
-        for ( int i = 1; i <= board[0].length; i++)
+        //Printing the top horizontal cords with spaces and dividers
+        for (int i = 0; i < board[0].length; i++)
         {
-            System.out.print("    ");
-            System.out.print(i);
-            System.out.print("    |");
+            System.out.print("   ");
+
+            System.out.print( (char) ('A' + i));
+
+            System.out.print("   |");
         }
 
-        System.out.println();
+        System.out.print("\n");
 
         for (int i = 0; i < board.length; i++)
         {
+            //Print dividers between vertical cords
             System.out.print("-----+");
 
+            //
             for (int j = 0; j < board[0].length; j++)
             {
-                if(j < 9)
-                    System.out.print("---------+");
-                else
-                    System.out.print("----------+");
+                System.out.print("-------+");
             }
 
-            System.out.println();
+            System.out.print("\n");
 
             if(i < 9)
-                System.out.print("  " + (i + 1) + "  |");
+                System.out.print("   " + (i + 1) + " |");
             else
                 System.out.print("  " + (i + 1) + " |");
 
@@ -58,17 +60,10 @@ public class Board
 
                 for (int  k = 0; k < 2; k++)
                 {
-                    for (int l = 0; l < spaces / 2; l++ )
-                    {
-                        System.out.print(" ");
-                    }
+                    System.out.print("   ");
 
                     if(k == 1)
-                    {
-                        if(j >= 9)
-                            System.out.print( " " );
                         break;
-                    }
 
                     if(!isNull)
                         System.out.print(tile);
@@ -77,25 +72,22 @@ public class Board
                 }
                 System.out.print("|");
             }
-            System.out.println();
+            System.out.print("\n");
         }
 
         System.out.print("-----+");
 
         for (int j = 0; j < board[0].length; j++)
         {
-            if(j < 9)
-                System.out.print("---------+");
-            else
-                System.out.print("----------+");
+            System.out.print("-------+");
         }
     }
 
-    public static void main( String[] args )
+    public static void main(String[] args)
     {
         Board Board = new Board();
 
-        Board.board[1][1] = 'A';
+        Board.board[14][14] = 'A';
         Board.displayBoard();
     }
 }
