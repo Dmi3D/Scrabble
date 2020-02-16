@@ -7,12 +7,12 @@ public class Board
 
     private char[][] board;
 
-    private Score[][] scores;
+    private Weight[][] weights;
 
     public Board()
     {
         this.board = new char[BOUNDS][BOUNDS];
-        this.scores = new Score[BOUNDS][BOUNDS];
+        this.weights = new Weight[BOUNDS][BOUNDS];
         initScores();
     }
 
@@ -144,11 +144,11 @@ public class Board
 
     private void initScores()
     {
-        for(int i = 0; i < scores.length; i++)
+        for(int i = 0; i < weights.length; i++)
         {
-            for (int j = 0; j < scores.length; j++)
+            for (int j = 0; j < weights.length; j++)
             {
-                scores[i][j] = new Score(1, true);
+                weights[i][j] = new Weight();
             }
         }
     }
@@ -159,7 +159,7 @@ public class Board
 
         column = (char) (column - 'A');
 
-        return scores[row][column].getValue();
+        return weights[row][column].getWeight();
     }
 
     private String getTypeAtPosition(int row, char column)
@@ -168,9 +168,14 @@ public class Board
 
         column = (char) (column - 'A');
 
-        boolean isWord = scores[row][column].isWordScore();
+        Weight weightAtIndex = weights[row][column];
 
-        if(isWord)
+        boolean isWord = weightAtIndex.isWordScore();
+
+        if (weightAtIndex.getWeight() == 0)
+            return "none";
+
+        else if(isWord)
             return "word";
 
         else
