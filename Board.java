@@ -148,7 +148,19 @@ public class Board
         {
             for (int j = 0; j < weights.length; j++)
             {
-                weights[i][j] = new Weight();
+                if((j == i && i == 5) || ((j == (BOUNDS-1-i)) && i == 5))
+                    weights[i][j] = new Weight(3, false);
+
+                else if((j == i && i == 0) || ((j == i) && (i == (BOUNDS-1))))
+                    weights[i][j] = new Weight(3, true);
+
+                else if(((BOUNDS-1) - j == i && i == 0) || (((BOUNDS-1) - j == i) && (i == (BOUNDS-1))))
+                    weights[i][j] = new Weight(3, true);
+
+                else if(j == i || (BOUNDS-1) - j == i)
+                    weights[i][j] = new Weight(2, true);
+                else
+                    weights[i][j] = new Weight();
             }
         }
     }
@@ -182,6 +194,69 @@ public class Board
             return "letter";
     }
 
+    //THIS WILL BE REMOVED. PURELY FOR TESTING
+    public void displayScoresMatrix()
+    {
+        System.out.print("     |");
+
+        //Printing the letter cords
+        for (int i = 0; i < weights[0].length; i++)
+        {
+            System.out.print("   ");
+
+            System.out.print((char) ('A' + i));
+
+            System.out.print("   |");
+        }
+
+        System.out.print("\n");
+
+        for (int i = 0; i < weights.length; i++)
+        {
+            //Print dividers between number cords
+            System.out.print("-----+");
+
+            //Prints row divider
+            for (int j = 0; j < weights[0].length; j++)
+            {
+                System.out.print("-------+");
+            }
+
+            System.out.print("\n");
+
+            //Prints number cords
+            if(i < 9)
+                System.out.print("   " + (i + 1) + " |");
+            else
+                System.out.print("  " + (i + 1) + " |");
+
+            //Prints the insides of the scores
+            for (int j = 0; j < weights[0].length; j++)
+            {
+                Weight location = weights[i][j];
+
+                System.out.print("   ");
+
+                System.out.print(location.getWeight() + "," + location.isWordScore());
+
+                System.out.print("   ");
+
+                System.out.print("|");
+            }
+            System.out.print("\n");
+        }
+
+        //The following prints the bottom line of the scores
+        System.out.print("-----+");
+
+        for (int j = 0; j < weights[0].length; j++)
+        {
+            System.out.print("-------+");
+        }
+
+        System.out.println("\n\n");
+    }
+
     public static void main(String[] args)
     {
         Board Board = new Board();
@@ -190,6 +265,8 @@ public class Board
 
         System.out.println(Board.getScoreAtPosition(1, 'A'));
         System.out.println(Board.getTypeAtPosition(1, 'A'));
+
+        Board.displayScoresMatrix();
 
       /*  for ( int i = 0; i < 5; i++ )   // TESTING 5 WORD PLACEMENTS
         {
