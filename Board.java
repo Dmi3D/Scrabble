@@ -1,9 +1,5 @@
 // Board Class Implementation
 
-import java.util.Arrays;
-import java.util.Scanner;
-
-
 public class Board
 {
     // BOARD 2D ARRAY DIMENSION
@@ -11,12 +7,12 @@ public class Board
 
     private char[][] board;
 
-    private int[][] values;
+    private Score[][] scores;
 
     public Board()
     {
         this.board = new char[BOUNDS][BOUNDS];
-        this.values = new int[BOUNDS][BOUNDS];
+        this.scores = new Score[BOUNDS][BOUNDS];
         initScores();
     }
 
@@ -146,19 +142,51 @@ public class Board
         System.out.println("\n\n");
     }
 
-    //TO BE COMPLETE
     private void initScores()
     {
-        Arrays.fill(values, 1);
+        for(int i = 0; i < scores.length; i++)
+        {
+            for (int j = 0; j < scores.length; j++)
+            {
+                scores[i][j] = new Score(1, true);
+            }
+        }
+    }
+
+    private int getScoreAtPosition(int row, char column)
+    {
+        row--;
+
+        column = (char) (column - 'A');
+
+        return scores[row][column].getValue();
+    }
+
+    private String getTypeAtPosition(int row, char column)
+    {
+        row--;
+
+        column = (char) (column - 'A');
+
+        boolean isWord = scores[row][column].isWordScore();
+
+        if(isWord)
+            return "word";
+
+        else
+            return "letter";
     }
 
     public static void main(String[] args)
     {
         Board Board = new Board();
 
-        Board.displayBoard();
+        //Board.displayBoard();
 
-        for ( int i = 0; i < 5; i++ )   // TESTING 5 WORD PLACEMENTS
+        System.out.println(Board.getScoreAtPosition(1, 'A'));
+        System.out.println(Board.getTypeAtPosition(1, 'A'));
+
+      /*  for ( int i = 0; i < 5; i++ )   // TESTING 5 WORD PLACEMENTS
         {
             Scanner scanner = new Scanner( System.in );
             System.out.print( "Please enter word you want to place on the board: " );
@@ -171,7 +199,6 @@ public class Board
             char column = scanner.next().charAt( 0 );
             Board.placeWord( word, direction, row, column );
             Board.displayBoard();
-        }
-
+        }*/
     }
 }
