@@ -15,6 +15,11 @@ public class Frame
         fillFrame();
     }
 
+    public Frame(Frame anotherFrame)    // copy Constructor
+    {
+        this.tiles = anotherFrame.tiles;
+    }
+
     public char getTile(int index)
     {
         if(index >= 0 && index < 7)
