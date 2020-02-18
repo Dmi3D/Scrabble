@@ -46,7 +46,7 @@ public class Square
             return "word";
 
         else
-            return "letter";
+            return "letr";
     }
 
     public boolean isEmpty()

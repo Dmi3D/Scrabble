@@ -1,8 +1,5 @@
 // Board Class Implementation
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
-
 public class Board
 {
     // BOARD 2D ARRAY DIMENSION
@@ -197,11 +194,11 @@ public class Board
             //Prints the insides of the scores
             for (int j = 0; j < board[0].length; j++)
             {
-                Square location = board[i][j];
-
                 System.out.print("   ");
 
-                System.out.print(location.getWeight() + "," + location.getType());
+                char col = (char) (j + 'A');
+
+                System.out.print(getWeightAt(i+1, col) + "," + getTypeAt(i+1, col));
 
                 System.out.print("   ");
 
@@ -226,10 +223,19 @@ public class Board
         if(row < 1 || row > 15 || letter < 'A' || letter > 'O')
             return "none";
 
+        row--;
         int col = letter - 'A';
 
         return board[row][col].getType();
     }
+
+/*    public String getTypeAt(int row, int col)
+    {
+        if(row < 0 || row > 14 || col < 0 || col > 14)
+            return "none";
+
+        return board[row][col].getType();
+    }*/
 
     public int getWeightAt(int row, char letter)
     {
