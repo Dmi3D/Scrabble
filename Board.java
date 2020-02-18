@@ -34,15 +34,16 @@ public class Board
 
         boolean isPlaced;
         startRow--;
-        int startColumn = columnLetter - 'A';
+        int startColumn = Character.toUpperCase(columnLetter) - 'A';
+        direction = Character.toUpperCase(direction);
 
-        if (!playerHasTiles( word, player ) || startRow < 0 || startRow > BOUNDS-1 || startColumn < 0 || startColumn > BOUNDS-1 )
+        if (!playerHasTiles( word.toUpperCase(), player ) || startRow < 0 || startRow > BOUNDS-1 || startColumn < 0 || startColumn > BOUNDS-1 )
         {
             isPlaced = false;    // when word can't be placed
         }
         else
         {
-            char[] letters = word.toCharArray();
+            char[] letters = word.toUpperCase().toCharArray();
             int endRow = ( startRow + letters.length ) - 1; // getting the column in which the last letter of the word will fall (for horizontally placed words)
             int endColumn = (startColumn + letters.length) - 1; // getting the row in which the last letter of the word will fall (for vertically placed words)
             if ( (endColumn > BOUNDS-1 && direction == 'H') || (endRow > BOUNDS-1 && direction == 'V'))
@@ -53,12 +54,12 @@ public class Board
             {
                 for ( char letter : letters )
                 {
-                    if ( direction == 'H' ) // when word is to be placed horizontally
+                    if (direction == 'H') // when word is to be placed horizontally
                     {
                         placeTile( letter, startRow, startColumn ); // placing each tile in corresponding position
                         startColumn++;  // incrementing column number
                     }
-                    else if ( direction == 'V' )
+                    else if (direction == 'V')
                     {
                         placeTile( letter, startRow, startColumn ); // placing each tile in corresponding position
                         startRow++;  // incrementing row number
@@ -288,8 +289,8 @@ public class Board
 
         //Board.displayBoard();
 
-        System.out.println(Board.getScoreAtPosition(1, 'A'));
-        System.out.println(Board.getTypeAtPosition(1, 'A'));
+        //System.out.println(Board.getScoreAtPosition(1, 'A'));
+        //System.out.println(Board.getTypeAtPosition(1, 'A'));
 
         //Board.displayScoresMatrix();
 
