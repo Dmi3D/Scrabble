@@ -59,6 +59,15 @@ public class Board
             }
         }
 
+        // removing letters of the word from the player's frame after it has been successfully placed on the board
+        if ( isPlaced )
+        {
+            for ( int i = 0; i < word.length(); i++ )
+            {
+                player.getPlayerFrame().removeTile( word.charAt( i ) );
+            }
+        }
+
         return isPlaced;
     }
 
@@ -292,7 +301,7 @@ public class Board
         System.out.println("The frame: ");
         playerOne.getPlayerFrame().displayFrame();
 
-        
+
         System.out.println(Board.getWeightAt(1, 'A'));
         System.out.println(Board.getTypeAt(1, 'A'));
 
