@@ -17,7 +17,11 @@ public class Frame
 
     public Frame(Frame anotherFrame)    // copy Constructor
     {
-        this.tiles = anotherFrame.tiles;
+        this.tiles = new char[7];
+        for ( int i = 0; i < 7; i++ )
+        {
+            this.tiles[i] = anotherFrame.getTile(i);
+        }
     }
 
     public char getTile(int index)
