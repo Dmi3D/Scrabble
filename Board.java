@@ -1,5 +1,8 @@
 // Board Class Implementation
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 public class Board
 {
     // BOARD 2D ARRAY DIMENSION
