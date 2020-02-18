@@ -9,22 +9,12 @@ public class Board
     // BOARD 2D ARRAY DIMENSION
     private static final int BOUNDS = 15;
 
-    private char[][] board;
-
-    private Weight[][] weights;
+    private Square[][] board;
 
     public Board()
     {
-        this.board = new char[BOUNDS][BOUNDS];
-        this.weights = new Weight[BOUNDS][BOUNDS];
+        this.board = new Square[BOUNDS][BOUNDS];
         initScores();
-    }
-
-    public char getTileAtPosition(int rowNum, char columnLetter)
-    {
-        rowNum--;
-        int columnNum = columnLetter - 'A';
-        return board[rowNum][columnNum];
     }
 
     /* Places word on board in direction indicated, starting at position indicated */
@@ -76,7 +66,7 @@ public class Board
     /* Places an individual tile on a square of the board */
     private void placeTile(char tile, int rowNumber, int columnNumber)
     {
-        board[rowNumber][columnNumber] = tile;
+        board[rowNumber][columnNumber].setTile(tile);
     }
 
 
@@ -118,7 +108,7 @@ public class Board
             //Prints the insides of the board
             for (int j = 0; j < board[0].length; j++)
             {
-                char tile = board[i][j];
+                char tile = board[i][j].getTile();
 
                 boolean isNull = tile == '\u0000';
 
@@ -149,82 +139,53 @@ public class Board
 
     private void initScores()
     {
-        for(int i = 0; i < weights.length; i++)
+        for(int i = 0; i < board.length; i++)
         {
-            for (int j = 0; j < weights.length; j++)
+            for (int j = 0; j < board.length; j++)
             {
                 if((j == i && i == 5) || ((j == (BOUNDS-1-i)) && i == 5))
-                    weights[i][j] = new Weight(3, false);
+                    board[i][j] = new Square(3, false);
 
                 else if((j == i && i == 0) || ((j == i) && (i == (BOUNDS-1))))
-                    weights[i][j] = new Weight(3, true);
+                    board[i][j] = new Square(3, true);
 
                 else if(((BOUNDS-1) - j == i && i == 0) || (((BOUNDS-1) - j == i) && (i == (BOUNDS-1))))
-                    weights[i][j] = new Weight(3, true);
+                    board[i][j] = new Square(3, true);
 
                 else if(j == i || (BOUNDS-1) - j == i)
-                    weights[i][j] = new Weight(2, true);
+                    board[i][j] = new Square(2, true);
                 else
-                    weights[i][j] = new Weight();
+                    board[i][j] = new Square();
             }
         }
     }
 
-    private int getScoreAtPosition(int row, char column)
-    {
-        row--;
-
-        column = (char) (column - 'A');
-
-        return weights[row][column].getWeight();
-    }
-
-    private String getTypeAtPosition(int row, char column)
-    {
-        row--;
-
-        column = (char) (column - 'A');
-
-        Weight weightAtIndex = weights[row][column];
-
-        boolean isWord = weightAtIndex.isWordScore();
-
-        if (weightAtIndex.getWeight() == 0)
-            return "none";
-
-        else if(isWord)
-            return "word";
-
-        else
-            return "letter";
-    }
-
     //THIS WILL BE REMOVED. PURELY FOR TESTING
-    public void displayScoresMatrix()
+    public void displayWeightsMatrix()
     {
         System.out.print("     |");
 
         //Printing the letter cords
-        for (int i = 0; i < weights[0].length; i++)
+        for (int i = 0; i < board[0].length; i++)
         {
-            System.out.print("   ");
+            System.out.print("     ");
 
             System.out.print((char) ('A' + i));
 
-            System.out.print("   |");
+            System.out.print("      |");
         }
 
         System.out.print("\n");
 
-        for (int i = 0; i < weights.length; i++)
+        for (int i = 0; i < board.length; i++)
         {
             //Print dividers between number cords
             System.out.print("-----+");
 
             //Prints row divider
-            for (int j = 0; j < weights[0].length; j++)
+            for (int j = 0; j < board[0].length; j++)
             {
-                System.out.print("-------+");
+                System.out.print("------------+");
             }
 
             System.out.print("\n");
@@ -236,13 +197,13 @@ public class Board
                 System.out.print("  " + (i + 1) + " |");
 
             //Prints the insides of the scores
-            for (int j = 0; j < weights[0].length; j++)
+            for (int j = 0; j < board[0].length; j++)
             {
-                Weight location = weights[i][j];
+                Square location = board[i][j];
 
                 System.out.print("   ");
 
-                System.out.print(location.getWeight() + "," + location.isWordScore());
+                System.out.print(location.getWeight() + "," + location.getType());
 
                 System.out.print("   ");
 
@@ -254,25 +215,26 @@ public class Board
         //The following prints the bottom line of the scores
         System.out.print("-----+");
 
-        for (int j = 0; j < weights[0].length; j++)
+        for (int j = 0; j < board[0].length; j++)
         {
-            System.out.print("-------+");
+            System.out.print("------------+");
         }
 
         System.out.println("\n\n");
     }
 
+
     /* CHECKING IF A PLAYER'S RACK OF TILES CONTAINS ALL THE LETTERS NEEDED FOR THEIR WORD */
     private boolean playerHasTiles(String word, Player player)
     {
         boolean playerHasTiles = true;
-        Frame frameCopy = new Frame(player.getPlayerFrame());
+        Frame frameCopy = new Frame( player.getPlayerFrame() );
         for ( int i = 0; i < word.length(); i++ )
         {
-            if (frameCopy.getIndexOfTile(word.charAt(i)) != -1)
+            if ( frameCopy.getIndexOfTile( word.charAt( i ) ) != -1 )
             {
-                frameCopy.removeTile(word.charAt(i));   // removing each tile of the word from the frame copy
-                                                        // when it is found to exist on both the frame and in the word
+                frameCopy.removeTile( word.charAt( i ) );   // removing each tile of the word from the frame copy
+                // when it is found to exist on both the frame and in the word
             }
             else
             {
@@ -283,16 +245,31 @@ public class Board
         return playerHasTiles;
     }
 
+    public String getTypeAt(int row, char letter)
+    {
+        if(row < 1 || row > 15 || letter < 'A' || letter > 'O')
+            return "none";
+
+        int col = letter - 'A';
+
+        return board[row][col].getType();
+    }
+
+    public int getWeightAt(int row, char letter)
+    {
+        if(row < 1 || row > 15 || letter < 'A' || letter > 'O')
+            return 0;
+
+        row--;
+
+        int col = letter - 'A';
+
+        return board[row][col].getWeight();
+    }
+
     public static void main(String[] args)
     {
         Board Board = new Board();
-
-        //Board.displayBoard();
-
-        //System.out.println(Board.getScoreAtPosition(1, 'A'));
-        //System.out.println(Board.getTypeAtPosition(1, 'A'));
-
-        //Board.displayScoresMatrix();
 
         Pool thePool = new Pool();
         Frame frameOne = new Frame();
@@ -315,7 +292,11 @@ public class Board
         System.out.println("The frame: ");
         playerOne.getPlayerFrame().displayFrame();
 
+        
+        System.out.println(Board.getWeightAt(1, 'A'));
+        System.out.println(Board.getTypeAt(1, 'A'));
 
+        Board.displayWeightsMatrix();
 
     }
 }
