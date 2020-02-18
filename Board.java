@@ -2,6 +2,7 @@
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Board
 {
@@ -27,17 +28,17 @@ public class Board
     }
 
     /* Places word on board in direction indicated, starting at position indicated */
-    /* Precondition: word is verified to contain letters available in the player's frame */
-    public boolean placeWord(String word, char direction, int startRow, char columnLetter)
+    public boolean placeWord(String word, char direction, int startRow, char columnLetter, Player player)
     {
         // CONSIDER WRITING EXCEPTIONS AND THROWING THEM WHENEVER CERTAIN CONDITION IS MET E.G. WordOutOfBoundsException
 
         boolean isPlaced;
         startRow--;
         int startColumn = columnLetter - 'A';
-        if ( startRow < 0 || startRow > BOUNDS-1 || startColumn < 0 || startColumn > BOUNDS-1 )
+
+        if (!playerHasTiles( word, player ) || startRow < 0 || startRow > BOUNDS-1 || startColumn < 0 || startColumn > BOUNDS-1 )
         {
-               isPlaced = false;    // when word is to be placed out of bounds
+            isPlaced = false;    // when word can't be placed
         }
         else
         {
@@ -260,6 +261,27 @@ public class Board
         System.out.println("\n\n");
     }
 
+    /* CHECKING IF A PLAYER'S RACK OF TILES CONTAINS ALL THE LETTERS NEEDED FOR THEIR WORD */
+    private boolean playerHasTiles(String word, Player player)
+    {
+        boolean playerHasTiles = true;
+        Frame frameCopy = new Frame(player.getPlayerFrame());
+        for ( int i = 0; i < word.length(); i++ )
+        {
+            if (frameCopy.getIndexOfTile(word.charAt(i)) != -1)
+            {
+                frameCopy.removeTile(word.charAt(i));   // removing each tile of the word from the frame copy
+                                                        // when it is found to exist on both the frame and in the word
+            }
+            else
+            {
+                playerHasTiles = false;
+                break;
+            }
+        }
+        return playerHasTiles;
+    }
+
     public static void main(String[] args)
     {
         Board Board = new Board();
@@ -269,21 +291,30 @@ public class Board
         System.out.println(Board.getScoreAtPosition(1, 'A'));
         System.out.println(Board.getTypeAtPosition(1, 'A'));
 
-        Board.displayScoresMatrix();
+        //Board.displayScoresMatrix();
 
-      /*  for ( int i = 0; i < 5; i++ )   // TESTING 5 WORD PLACEMENTS
-        {
-            Scanner scanner = new Scanner( System.in );
-            System.out.print( "Please enter word you want to place on the board: " );
-            String word = scanner.next();
-            System.out.print( "\nPlease enter the direction in which you want to place the word ('V' for Up->Down or 'H' for Left->Right): " );
-            char direction = scanner.next().charAt( 0 );
-            System.out.print( "\nPlease enter row number of the first letter: " );
-            int row = scanner.nextInt();
-            System.out.print( "\nPlease enter column letter of the first letter: " );
-            char column = scanner.next().charAt( 0 );
-            Board.placeWord( word, direction, row, column );
-            Board.displayBoard();
-        }*/
+        Pool thePool = new Pool();
+        Frame frameOne = new Frame();
+        Player playerOne = new Player(frameOne);
+        System.out.print("The frame: ");
+        playerOne.getPlayerFrame().displayFrame();
+        System.out.println();
+
+        Scanner scanner = new Scanner( System.in );
+        System.out.print( "Please enter word you want to place on the board: " );
+        String word = scanner.next();
+        System.out.print( "\nPlease enter the direction in which you want to place the word ('V' for Up->Down or 'H' for Left->Right): " );
+        char direction = scanner.next().charAt( 0 );
+        System.out.print( "\nPlease enter row number of the first letter: " );
+        int row = scanner.nextInt();
+        System.out.print( "\nPlease enter column letter of the first letter: " );
+        char column = scanner.next().charAt( 0 );
+        Board.placeWord( word, direction, row, column, playerOne );
+        Board.displayBoard();
+        System.out.println("The frame: ");
+        playerOne.getPlayerFrame().displayFrame();
+
+
+
     }
 }
