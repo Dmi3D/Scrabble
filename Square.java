@@ -51,9 +51,6 @@ public class Square
 
     public boolean isEmpty()
     {
-        if(weight == 0)
-            return true;
-
-        return false;
+        return weight == 0;
     }
 }
