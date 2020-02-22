@@ -23,7 +23,7 @@ public class Board
         int startColumn = Character.toUpperCase(columnLetter) - 'A';
         direction = Character.toUpperCase(direction);
 
-        if (!playerHasTiles( word.toUpperCase(), player ) || isNotWithinBounds( startRow, startColumn ) )
+        if (!playerHasTiles( word.toUpperCase(), player ) || isNotWithinBounds( startRow, startColumn ))
         {
             isPlaced = false;    // when word can't be placed
         }
@@ -88,12 +88,13 @@ public class Board
         return isEmpty();
     }
 
-    private boolean goesThroughCentre(int startRow, int startColumn)
+    // Horizontal -> stationaryValue = row, movingValue = column
+    // Vertical -> stationaryValue = column, movingValue = row
+    private boolean goesThroughCentre(int stationaryValue, int movingValue, int wordLength)
     {
-        int centerRow = 8;
-        int centerColumn = 8;
-
-    }
+        int centerValue = 7;
+        return (stationaryValue == centerValue && movingValue <= centerValue && centerValue <= (movingValue + wordLength-1));
+}
 
     private boolean canPlaceWordInDirection(String word, char direction, int row, int column)
     {
@@ -104,16 +105,21 @@ public class Board
         {
             return false; // when word to be placed goes past the bounds of the board's columns
         }
+        else if ((isFirstWord() && direction == 'H' && !goesThroughCentre(row, column, word.length())) ||
+                (isFirstWord() && direction == 'V' && !goesThroughCentre(column, row, word.length())))
+        {
+            return false;   // when word to be placed is the first word and it doesn't go through the centre of the board
+        }
         else
         {
             for ( char letter : letters )
             {
-                if (direction == 'H') // when word is to be placed horizontally
+                if ( direction == 'H' ) // when word is to be placed horizontally
                 {
                     placeTile( letter, row, column ); // placing each tile in corresponding position
                     column++;  // incrementing column number
                 }
-                else if (direction == 'V')
+                else if ( direction == 'V' )
                 {
                     placeTile( letter, row, column ); // placing each tile in corresponding position
                     row++;  // incrementing row number
