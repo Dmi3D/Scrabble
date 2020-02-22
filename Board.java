@@ -269,6 +269,8 @@ public class Board
     private boolean goesThroughCentre(String word, char direction, int row, int column)
     {
        int centreIndex = 7;
+       int startIndex = 0;
+       int endIndex = 0;
 
        if(direction == '>')
        {
@@ -276,12 +278,8 @@ public class Board
            if(row != centreIndex)
                return false;
 
-           int startIndex = column;
-           int endIndex = column + word.length()-1;
-
-           //If the centre index is in-between the to be placed word
-           if(centreIndex >= startIndex || centreIndex <= endIndex)
-               return true;
+           startIndex = column;
+           endIndex = column + word.length()-1;
        }
 
         else if(direction == 'V')
@@ -290,15 +288,12 @@ public class Board
             if(column != centreIndex)
                 return false;
 
-            int startIndex = row;
-            int endIndex = row + word.length()-1;
-
-            //If the centre index is in-between the to be placed word
-            if(centreIndex >= startIndex || centreIndex <= endIndex)
-                return true;
+            startIndex = row;
+            endIndex = row + word.length()-1;
         }
 
-        return false;
+        //Return true if the centre index is in-between the to be placed word
+        return centreIndex >= startIndex && centreIndex <= endIndex;
 }
 
     private boolean canPlaceWordInDirection(String word, char direction, int row, int column)
@@ -315,6 +310,7 @@ public class Board
 
         else if(isFirstWord())
         {
+            //edit this
             if(direction == '>' && !goesThroughCentre(word, direction, row, column))
                 return false;
 
