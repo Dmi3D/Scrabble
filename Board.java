@@ -8,11 +8,13 @@ public class Board
     private static final int BOUNDS = 15;
 
     private Square[][] board;
+    private int numOfWords;
 
     public Board()
     {
         this.board = new Square[BOUNDS][BOUNDS];
         initScores();
+        numOfWords = 0;
     }
 
     /* Places word on board in direction indicated, starting at position indicated */
@@ -39,6 +41,7 @@ public class Board
             {
                 player.getPlayerFrame().removeTile( word.charAt( i ) );
             }
+            numOfWords++;
         }
         return isPlaced;
     }
@@ -83,6 +86,7 @@ public class Board
         return (row < 0 || row > BOUNDS-1 || column < 0 || column > BOUNDS-1);
     }
 
+    // checks if the word being placed is the first one to be placed on the board
     private boolean isFirstWord()
     {
         return isEmpty();
@@ -318,17 +322,7 @@ public class Board
 
     private boolean isEmpty()
     {
-        for ( Square[] squares : board )
-        {
-            for ( Square square : squares )
-            {
-                if ( square.hasTile() )
-                {
-                    return false;
-                }
-            }
-        }
-        return true;
+        return numOfWords == 0;
     }
 
     public static void main(String[] args)
