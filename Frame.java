@@ -15,6 +15,15 @@ public class Frame
         fillFrame();
     }
 
+    public Frame(Frame anotherFrame)    // copy Constructor
+    {
+        this.tiles = new char[7];
+        for ( int i = 0; i < 7; i++ )
+        {
+            this.tiles[i] = anotherFrame.getTile(i);
+        }
+    }
+
     public char getTile(int index)
     {
         if(index >= 0 && index < 7)
@@ -39,13 +48,6 @@ public class Frame
         }
 
         // If we reach here, the tile has been set to blank
-
-        // Filling that space in the frame with a tile, if pool still contains tiles
-        if(!Pool.isEmpty())
-        {
-            fillFrame();
-        }
-
         return tileToBeRetrieved;
     }
 
