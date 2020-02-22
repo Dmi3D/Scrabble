@@ -53,4 +53,10 @@ public class Square
     {
         return weight == 0;
     }
+
+    public boolean hasTile()
+    {
+        return !(getTile() == '\u0000');
+    }
+
 }

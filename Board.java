@@ -43,7 +43,6 @@ public class Board
         return isPlaced;
     }
 
-
     /* Places an individual tile on a square of the board */
     private void placeTile(char tile, int rowNumber, int columnNumber)
     {
@@ -82,6 +81,18 @@ public class Board
     private boolean isNotWithinBounds(int row, int column)
     {
         return (row < 0 || row > BOUNDS-1 || column < 0 || column > BOUNDS-1);
+    }
+
+    private boolean isFirstWord()
+    {
+        return isEmpty();
+    }
+
+    private boolean goesThroughCentre(int startRow, int startColumn)
+    {
+        int centerRow = 8;
+        int centerColumn = 8;
+
     }
 
     private boolean canPlaceWordInDirection(String word, char direction, int row, int column)
@@ -265,7 +276,6 @@ public class Board
         System.out.println("\n\n");
     }
 
-
     public String getTypeAt(int row, char letter)
     {
         if(row < 1 || row > 15 || letter < 'A' || letter > 'O')
@@ -295,6 +305,21 @@ public class Board
         int col = letter - 'A';
 
         return board[row][col].getWeight();
+    }
+
+    private boolean isEmpty()
+    {
+        for ( Square[] squares : board )
+        {
+            for ( Square square : squares )
+            {
+                if ( square.hasTile() )
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     public static void main(String[] args)
