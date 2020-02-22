@@ -90,10 +90,13 @@ public class Board
 
     // Horizontal -> stationaryValue = row, movingValue = column
     // Vertical -> stationaryValue = column, movingValue = row
+    // It checks if a word goes through the center
     private boolean goesThroughCentre(int stationaryValue, int movingValue, int wordLength)
     {
         int centerValue = 7;
-        return (stationaryValue == centerValue && movingValue <= centerValue && centerValue <= (movingValue + wordLength-1));
+        boolean correctCenterValue = stationaryValue == centerValue;
+        boolean movesThroughCenterValue = movingValue <= centerValue && centerValue <= (movingValue + wordLength-1);
+        return (correctCenterValue && movesThroughCenterValue);
 }
 
     private boolean canPlaceWordInDirection(String word, char direction, int row, int column)
