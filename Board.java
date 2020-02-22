@@ -54,21 +54,28 @@ public class Board
     private boolean playerHasTiles(String word, Player player)
     {
         boolean playerHasTiles = true;
-        Frame frameCopy = new Frame( player.getPlayerFrame() );
-        for ( int i = 0; i < word.length(); i++ )
+        if ( word.length() < 1 )    // ensuring player has at least 1 tile provided for placement
         {
-            if ( frameCopy.getIndexOfTile( word.charAt( i ) ) != -1 )
+            playerHasTiles = false;
+        }
+        else
+        {
+            Frame frameCopy = new Frame( player.getPlayerFrame() );
+
+            for ( int i = 0; i < word.length(); i++ )
             {
-                frameCopy.removeTile( word.charAt( i ) );   // removing each tile of the word from the frame copy
-                // when it is found to exist on both the frame and in the word
-            }
-            else
-            {
-                playerHasTiles = false;
-                break;
+                if ( frameCopy.getIndexOfTile( word.charAt( i ) ) != -1 )
+                {
+                    frameCopy.removeTile( word.charAt( i ) );   // removing each tile of the word from the frame copy
+                    // when it is found to exist on both the frame and in the word
+                }
+                else
+                {
+                    playerHasTiles = false;
+                    break;
+                }
             }
         }
-
         return playerHasTiles;
     }
 
