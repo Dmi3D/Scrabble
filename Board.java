@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class Board
 {
     // BOARD 2D ARRAY DIMENSION
@@ -103,19 +101,81 @@ public class Board
         {
             for (int j = 0; j < board.length; j++)
             {
-                if((j == i && i == 5) || ((j == (BOUNDS-1-i)) && i == 5))
-                    board[i][j] = new Square(3, false);
+                board[i][j] = new Square();
 
-                else if((j == i && i == 0) || ((j == i) && (i == (BOUNDS-1))))
-                    board[i][j] = new Square(3, true);
+                // INITIALISING SQUARES ON THE DIAGONALS
+                if(j == i || (BOUNDS-1) - j == i)
+                {
+                    if (i == 0 || i == BOUNDS - 1)
+                        board[i][j] = new Square(3, true);
 
-                else if(((BOUNDS-1) - j == i && i == 0) || (((BOUNDS-1) - j == i) && (i == (BOUNDS-1))))
-                    board[i][j] = new Square(3, true);
+                    else if(i == 5 || i == BOUNDS-1 - 5)
+                        board[i][j] = new Square(3, false);
 
-                else if(j == i || (BOUNDS-1) - j == i)
-                    board[i][j] = new Square(2, true);
-                else
-                    board[i][j] = new Square();
+                    else if(i == 6 || i == BOUNDS-1 - 6)
+                        board[i][j] = new Square(2, false);
+
+                    else
+                        board[i][j] = new Square(2, true);
+                }
+
+                // INITIALISING SQUARES ON TOP AND BOTTOM WALL
+                if(i == 0 || i == (BOUNDS - 1))
+                {
+                    if(j == 3 || j == (BOUNDS - 1) - 3)
+                        board[i][j] = new Square(2, false);
+
+                    else if(j == 7)
+                        board[i][j] = new Square(3, true);
+                }
+
+                // INITIALISING SQUARES ON LEFT AND RIGHT WALL
+                if(j == 0 || j == (BOUNDS - 1))
+                {
+                    if(i == 3 || i == (BOUNDS - 1) - 3)
+                        board[i][j] = new Square(2, false);
+
+                    else if(i == 7)
+                        board[i][j] = new Square(3, true);
+                }
+
+                // INITIALISING TRIANGLE SQUARES TOP AND BOTTOM
+                if((i >= 1 && i <= 3) || (i <= (BOUNDS -1) - 1 && i >= (BOUNDS-1) - 3))
+                {
+                    if(i == 1 || i == (BOUNDS -1) - 1)
+                    {
+                        if(j == 5 || j == (BOUNDS -1) - 5)
+                            board[i][j] = new Square(3, false);
+                    }
+
+                    else if(i == 2 || i == (BOUNDS -1) - 2)
+                    {
+                        if(j == 6 || j == (BOUNDS -1) - 6)
+                            board[i][j] = new Square(2, false);
+                    }
+
+                    else if(j == 7)
+                        board[i][j] = new Square(2, false);
+                }
+
+                // INITIALISING TRIANGLE SQUARES LEFT AND RIGHT
+                if((j >= 1 && j <= 3) || (j <= (BOUNDS -1) - 1 && j >= (BOUNDS-1) - 3))
+                {
+                    if(j == 1 || j == (BOUNDS -1) - 1)
+                    {
+                        if(i == 5 || i == (BOUNDS -1) - 5)
+                            board[i][j] = new Square(3, false);
+                    }
+
+                    else if(j == 2 || j == (BOUNDS -1) - 2)
+                    {
+                        if(i == 6 || i == (BOUNDS -1) - 6)
+                            board[i][j] = new Square(2, false);
+                    }
+
+                    else if(i == 7)
+                        board[i][j] = new Square(2, false);
+                }
             }
         }
     }
@@ -340,7 +400,7 @@ public class Board
     }
 
     /* RETURNS SQUARE AT A CERTAIN POSITION ON THE BOARD */
-    private Square getSquareAt(int row, char letter)
+    public Square getSquareAt(int row, char letter)
     {
         row = getRowIndex(row);
         int col = getColumnIndex(letter);
@@ -349,6 +409,51 @@ public class Board
             return null;
 
         return board[row][col];
+    }
+
+    /* RETURNS SQUARE AT A CERTAIN POSITION ON THE BOARD */
+    private Square getSquareAt(int row, int column)
+    {
+        if(row < 0 || row > 14 || column < 0 || column > 14)
+            return null;
+
+        return board[row][column];
+    }
+
+    private boolean doesOverlap(String word, char direction, int row, int column)
+    {
+        int startIndex = -1;
+        int endIndex = -1;
+
+        if(direction == 'A')
+        {
+            startIndex = row;
+            endIndex = getEndIndex(word, row);
+        }
+
+        else if(direction == 'D')
+        {
+            startIndex = column;
+            endIndex = getEndIndex(word, column);
+        }
+
+        //If there is any letter between the start index and the end index of a word
+        for(int i = startIndex; i <= endIndex; i++)
+        {
+            if(direction == 'A')
+            {
+                if (getSquareAt(row, i).getTile() != '\u0000')
+                    return true;
+            }
+
+            else if(direction == 'D')
+            {
+                if (getSquareAt(i, column).getTile() != '\u0000')
+                    return true;
+            }
+        }
+
+        return false;
     }
 
     /* CHECKS IF THE BOARD IS EMPTY */
@@ -361,5 +466,12 @@ public class Board
     {
         this.board = new Square[BOUNDS][BOUNDS];
         numOfWords = 0;
+    }
+
+    public static void main(String[] args)
+    {
+        Board board = new Board();
+
+
     }
 }

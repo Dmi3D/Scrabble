@@ -1,7 +1,3 @@
-import jdk.swing.interop.SwingInterOpUtils;
-
-import java.util.Scanner;
-
 public class BoardTest
 {
     public static void main(String[] args)
@@ -161,9 +157,5 @@ public class BoardTest
 //        System.out.print( "\nPlease enter the direction in which you want to place the word ('A' for across or 'D' for down): " );
 //        System.out.print( "\nPlease enter row number of the first letter: " );
 //        System.out.print( "\nPlease enter column letter of the first letter: " );
-
-
-
-
     }
 }
