@@ -105,7 +105,7 @@ public class Frame
         System.out.println(Arrays.toString(tiles));
     }
 
-    private void fillFrame(Pool pool)
+    public void fillFrame(Pool pool)
     {
        for(int i = 0; i < tiles.length; i++)
        {

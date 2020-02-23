@@ -416,4 +416,10 @@ public class Board
     {
         return numOfWords == 0;
     }
+
+    public void reset()
+    {
+        this.board = new Square[BOUNDS][BOUNDS];
+        numOfWords = 0;
+    }
 }
