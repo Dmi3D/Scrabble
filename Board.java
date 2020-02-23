@@ -120,7 +120,7 @@ public class Board
         }
     }
 
-    //THIS WILL BE REMOVED. PURELY FOR TESTING.
+    // THIS WILL BE REMOVED. PURELY FOR TESTING.
     /* DISPLAYS THE BOARD'S WEIGHTS AND TYPE ONLY */
     private void displayBoardWithWeights()
     {
@@ -211,10 +211,10 @@ public class Board
             {
                 char letterToPlace = word.charAt( i );
 
-                if(direction == '>')
+                if(direction == 'A')
                     placeTile(letterToPlace, row, column+i);
 
-                else if(direction == 'V')
+                else if(direction == 'D')
                     placeTile(letterToPlace, row+i, column);
 
                 player.getPlayerFrame().removeTile( word.charAt( i ) );
@@ -287,7 +287,7 @@ public class Board
        int startIndex = -1;
        int endIndex = -1;
 
-       if(direction == '>')
+       if(direction == 'A')
        {
            //If we are not on the same row as the centre
            if(row != centreIndex)
@@ -297,7 +297,7 @@ public class Board
            endIndex = getEndIndex(word, startIndex);
        }
 
-        else if(direction == 'V')
+        else if(direction == 'D')
         {
             //If we are not on the same column as the centre
             if(column != centreIndex)
@@ -317,22 +317,22 @@ public class Board
         int startIndex = -1;
         int endIndex = -1;
 
-        if(direction == '>')
+        if(direction == 'A')
         {
             startIndex = row;
             endIndex = getEndIndex(word, startIndex);
         }
 
-        else if(direction == 'V')
+        else if(direction == 'D')
         {
             startIndex = column;
             endIndex = getEndIndex(word, startIndex);
         }
 
-        //If the word will not fit on board
-        if ( (startIndex < 0 || endIndex > BOUNDS-1) )
+        // If the word will not fit on board
+        if ( startIndex < 0 || startIndex > BOUNDS-1 || endIndex > BOUNDS-1 )
         {
-            return false; // when word to be placed goes past the bounds of the board's columns
+            return false; // When word to be placed goes past the bounds of the board's columns
         }
 
         return true;
