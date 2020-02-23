@@ -310,11 +310,7 @@ public class Board
 
         else if(isFirstWord())
         {
-            //edit this
-            if(direction == '>' && !goesThroughCentre(word, direction, row, column))
-                return false;
-
-            else if(direction == 'V' && !goesThroughCentre(word, direction, column, row))
+            if(!goesThroughCentre(word, direction, row, column))
                 return false;
         }
 
