@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Board
 {
     // BOARD 2D ARRAY DIMENSION
@@ -13,20 +15,7 @@ public class Board
         numOfWords = 0;
     }
 
-    //Returns correct row index for matrix
-    private int getRow(int row)
-    {
-        return --row;
-    }
-
-    //Returns correct column index for matrix
-    private int getColumn(char columnLetter)
-    {
-        int column = Character.toUpperCase(columnLetter) - 'A';
-        return column;
-    }
-
-
+    /* DISPLAYS THE TILES ON THE BOARD */
     public void displayBoard()
     {
         System.out.print("     |");
@@ -94,7 +83,20 @@ public class Board
         System.out.println("\n\n");
     }
 
-    //Initialises the Square's scores and types
+    /* RETURNS CORRECT ROW INDEX FOR MATRIX */
+    private int getRow(int row)
+    {
+        return --row;
+    }
+
+    /* RETURNS CORRECT COLUMN INDEX FOR MATRIX */
+    private int getColumn(char columnLetter)
+    {
+        int column = Character.toUpperCase(columnLetter) - 'A';
+        return column;
+    }
+
+    /* INITIALISES THE SQUARES WEIGHT AND TYPE IN BOARD */
     private void initScores()
     {
         for(int i = 0; i < board.length; i++)
@@ -119,8 +121,8 @@ public class Board
     }
 
     //THIS WILL BE REMOVED. PURELY FOR TESTING.
-    //Displays the board's scores and types only
-    public void displayWeightsMatrix()
+    /* DISPLAYS THE BOARD'S WEIGHTS AND TYPE ONLY */
+    private void displayBoardWithWeights()
     {
         System.out.print("     |");
 
@@ -182,20 +184,24 @@ public class Board
         System.out.println("\n\n");
     }
 
-    //Places a word on the board in certain direction, with a starting index
-    public boolean placeWord(String word, char direction, int startRow, char columnLetter, Player player)
+    /* PLACES A WORD WITH A CERTAIN DIRECTION. PASS IN STARTING POINT */
+    public boolean placeWord(String word, char direction, int row, char columnLetter, Player player)
     {
         boolean canPlace = false;
 
-        startRow = getRow(startRow);
+        row = getRow(row);
 
-        int startColumn = getColumn(columnLetter);
+        int column = getColumn(columnLetter);
 
         direction = Character.toUpperCase(direction);
 
-        if (playerHasTiles( word, player ) || !isNotWithinBounds( startRow, startColumn ) || canPlaceWordInDirection( word, direction, startRow, startColumn ))
+        if (playerHasTiles( word, player ) && isWithinBounds( word, direction, row, column ))
         {
-            canPlace = true;    // when word can be placed
+            if(isFirstWord())
+                canPlace = goesThroughCentre(word, direction, row, column);
+
+            else
+                canPlace = true;    // when word can be placed
         }
 
         if ( canPlace )
@@ -203,6 +209,14 @@ public class Board
             //Removing letters of the word from the player's frame after it has been successfully placed on the board
             for ( int i = 0; i < word.length(); i++ )
             {
+                char letterToPlace = word.charAt( i );
+
+                if(direction == '>')
+                    placeTile(letterToPlace, row, column+i);
+
+                else if(direction == 'V')
+                    placeTile(letterToPlace, row+i, column);
+
                 player.getPlayerFrame().removeTile( word.charAt( i ) );
             }
 
@@ -212,7 +226,7 @@ public class Board
         return canPlace;
     }
 
-    /* Places an individual tile on a square of the board */
+    /* PLACES A TILE ON THE BOARD */
     private void placeTile(char tile, int row, int column)
     {
         board[row][column].setTile(tile);
@@ -254,18 +268,19 @@ public class Board
         return playerHasTiles;
     }
 
-    private boolean isNotWithinBounds(int row, int column)
-    {
-        return (row < 0 || row > BOUNDS-1 || column < 0 || column > BOUNDS-1);
-    }
-
-    // checks if the word being placed is the first one to be placed on the board
+    /* CHECKS IF THE WORD BEING PLACES IS THE FIRST WORD */
     private boolean isFirstWord()
     {
         return isEmpty();
     }
 
-    //Checks if a word would go through the centre
+    /* RETURNS THE END INDEX CORRESPONDING TO THE STARTING INDEX AND THE WORD'S LENGTH */
+    private int getEndIndex(String word, int startIndex)
+    {
+        return startIndex + word.length()-1;
+    }
+
+    /* CHECKS TO SEE IF THE WORD IS GOING THROUGH THE CENTRE */
     private boolean goesThroughCentre(String word, char direction, int row, int column)
     {
        int centreIndex = 7;
@@ -279,7 +294,7 @@ public class Board
                return false;
 
            startIndex = column;
-           endIndex = column + word.length()-1;
+           endIndex = getEndIndex(word, startIndex);
        }
 
         else if(direction == 'V')
@@ -289,50 +304,41 @@ public class Board
                 return false;
 
             startIndex = row;
-            endIndex = row + word.length()-1;
+            endIndex = getEndIndex(word, startIndex);
         }
 
         //Return true if the centre index is in-between the to be placed word
         return centreIndex >= startIndex && centreIndex <= endIndex;
 }
 
-    private boolean canPlaceWordInDirection(String word, char direction, int row, int column)
+    /* CHECKS TO SEE IF THE WORD IS PLACED WITHIN THE BOUNDS OF THE BOARD */
+    private boolean isWithinBounds(String word, char direction, int row, int column)
     {
-        int lastRowIndex = ( row + word.length() ) - 1; // getting the column in which the last letter of the word will fall (for horizontally placed words)
+        int startIndex = -1;
+        int endIndex = -1;
 
-        int lastColumnIndex = (column + word.length() ) - 1; // getting the row in which the last letter of the word will fall (for vertically placed words)
+        if(direction == '>')
+        {
+            startIndex = row;
+            endIndex = getEndIndex(word, startIndex);
+        }
+
+        else if(direction == 'V')
+        {
+            startIndex = column;
+            endIndex = getEndIndex(word, startIndex);
+        }
 
         //If the word will not fit on board
-        if ( (lastColumnIndex > BOUNDS-1 && direction == '>') || (lastRowIndex > BOUNDS-1 && direction == 'V'))
+        if ( (startIndex < 0 || endIndex > BOUNDS-1) )
         {
             return false; // when word to be placed goes past the bounds of the board's columns
-        }
-
-        else if(isFirstWord())
-        {
-            if(!goesThroughCentre(word, direction, row, column))
-                return false;
-        }
-
-        for (int i = 0; i < word.length(); i++)
-        {
-            char letterToPlace = word.charAt(i);
-
-            if ( direction == '>' ) // when word is to be placed horizontally
-            {
-                placeTile( letterToPlace, row, column ); // placing each tile in corresponding position
-                column++;  // incrementing column number
-            }
-            else if ( direction == 'V' )
-            {
-                placeTile( letterToPlace, row, column ); // placing each tile in corresponding position
-                row++;  // incrementing row number
-            }
         }
 
         return true;
     }
 
+    /* RETURNS SQUARE AT A CERTAIN POSITION ON THE BOARD */
     private Square getSquareAt(int row, char letter)
     {
         row = getRow(row);
@@ -344,6 +350,7 @@ public class Board
         return board[row][col];
     }
 
+    /* CHECKS IF THE BOARD IS EMPTY */
     private boolean isEmpty()
     {
         return numOfWords == 0;
@@ -353,7 +360,7 @@ public class Board
     {
         Board Board = new Board();
 
-      /*  Pool thePool = new Pool();
+        Pool thePool = new Pool();
         Frame frameOne = new Frame();
         Player playerOne = new Player(frameOne);
         System.out.print("The frame: ");
@@ -369,13 +376,13 @@ public class Board
         int row = scanner.nextInt();
         System.out.print( "\nPlease enter column letter of the first letter: " );
         char column = scanner.next().charAt( 0 );
-        System.out.println("Could we place: " + Board.placeWord( word, direction, row, column, playerOne ));
+        Board.placeWord( word, direction, row, column, playerOne );
         Board.displayBoard();System.out.println("The frame: ");
-        playerOne.getPlayerFrame().displayFrame();*/
-        System.out.println(Board.getSquareAt(1, 'A').getWeight());
+        playerOne.getPlayerFrame().displayFrame();
+        /*System.out.println(Board.getSquareAt(1, 'A').getWeight());
         System.out.println(Board.getSquareAt(1, 'A').getType());
 
-        Board.displayWeightsMatrix();
+        Board.displayBoardWithWeights();*/
 
     }
 }
