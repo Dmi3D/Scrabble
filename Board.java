@@ -21,7 +21,7 @@ public class Board
     {
         System.out.print("     |");
 
-        //Printing the letter cords
+        // Printing the letter cords
         for (int i = 0; i < board[0].length; i++)
         {
             System.out.print("   ");
@@ -35,10 +35,10 @@ public class Board
 
         for (int i = 0; i < board.length; i++)
         {
-            //Print dividers between number cords
+            // Print dividers between number cords
             System.out.print("-----+");
 
-            //Prints row divider
+            // Prints row divider
             for (int j = 0; j < board[0].length; j++)
             {
                 System.out.print("-------+");
@@ -46,13 +46,13 @@ public class Board
 
             System.out.print("\n");
 
-            //Prints number cords
+            // Prints number cords
             if(i < 9)
                 System.out.print("   " + (i + 1) + " |");
             else
                 System.out.print("  " + (i + 1) + " |");
 
-            //Prints the insides of the board
+            // Prints the insides of the board
             for (int j = 0; j < board[0].length; j++)
             {
                 char tile = board[i][j].getTile();
@@ -73,7 +73,7 @@ public class Board
             System.out.print("\n");
         }
 
-        //The following prints the bottom line of the board
+        // The following prints the bottom line of the board
         System.out.print("-----+");
 
         for (int j = 0; j < board[0].length; j++)
@@ -105,7 +105,7 @@ public class Board
             {
                 board[i][j] = new Square();
 
-                // INITIALISING SQUARES ON THE DIAGONALS
+                // Initialising squares on the diagonals
                 if(j == i || (BOUNDS-1) - j == i)
                 {
                     if (i == 0 || i == BOUNDS - 1)
@@ -121,7 +121,7 @@ public class Board
                         board[i][j] = new Square(2, true);
                 }
 
-                // INITIALISING SQUARES ON TOP AND BOTTOM WALL
+                // Initialising squares on top and bottom wall
                 if(i == 0 || i == (BOUNDS - 1))
                 {
                     if(j == 3 || j == (BOUNDS - 1) - 3)
@@ -131,7 +131,7 @@ public class Board
                         board[i][j] = new Square(3, true);
                 }
 
-                // INITIALISING SQUARES ON LEFT AND RIGHT WALL
+                // Initialising squares on left and right wall
                 if(j == 0 || j == (BOUNDS - 1))
                 {
                     if(i == 3 || i == (BOUNDS - 1) - 3)
@@ -141,7 +141,7 @@ public class Board
                         board[i][j] = new Square(3, true);
                 }
 
-                // INITIALISING TRIANGLE SQUARES TOP AND BOTTOM
+                // Iitialising triangle squares top and bottom
                 if((i >= 1 && i <= 3) || (i <= (BOUNDS -1) - 1 && i >= (BOUNDS-1) - 3))
                 {
                     if(i == 1 || i == (BOUNDS -1) - 1)
@@ -160,7 +160,7 @@ public class Board
                         board[i][j] = new Square(2, false);
                 }
 
-                // INITIALISING TRIANGLE SQUARES LEFT AND RIGHT
+                // Initialising triangle squares left and right
                 if((j >= 1 && j <= 3) || (j <= (BOUNDS -1) - 1 && j >= (BOUNDS-1) - 3))
                 {
                     if(j == 1 || j == (BOUNDS -1) - 1)
@@ -182,13 +182,13 @@ public class Board
         }
     }
 
-    // THIS WILL BE REMOVED. PURELY FOR TESTING.
+    // To remove after testing
     /* DISPLAYS THE BOARD'S WEIGHTS AND TYPE ONLY */
     public void displayBoardWithWeights()
     {
         System.out.print("     |");
 
-        //Printing the letter cords
+        // Printing the letter cords
         for (int i = 0; i < board[0].length; i++)
         {
             System.out.print("     ");
@@ -202,10 +202,10 @@ public class Board
 
         for (int i = 0; i < board.length; i++)
         {
-            //Print dividers between number cords
+            // Print dividers between number cords
             System.out.print("-----+");
 
-            //Prints row divider
+            // Prints row divider
             for (int j = 0; j < board[0].length; j++)
             {
                 System.out.print("------------+");
@@ -213,13 +213,13 @@ public class Board
 
             System.out.print("\n");
 
-            //Prints number cords
+            // Prints number cords
             if(i < 9)
                 System.out.print("   " + (i + 1) + " |");
             else
                 System.out.print("  " + (i + 1) + " |");
 
-            //Prints the insides of the scores
+            // Prints the insides of the scores
             for (int j = 0; j < board[0].length; j++)
             {
                 System.out.print("   ");
@@ -235,7 +235,7 @@ public class Board
             System.out.print("\n");
         }
 
-        //The following prints the bottom line of the scores
+        // The following prints the bottom line of the scores
         System.out.print("-----+");
 
         for (int j = 0; j < board[0].length; j++)
@@ -256,7 +256,7 @@ public class Board
         direction = Character.toUpperCase(direction);
 
         string = string.toUpperCase();
-        char word[] = new char[string.length()];
+        char[] word = new char[string.length()];
 
         for(int i = 0; i < string.length(); i++)
         {
@@ -274,7 +274,7 @@ public class Board
         }
 
         // Store overlapping tiles (if any)
-        Stack overLappingTiles = getOverlappingTiles(word, direction, row, column);
+        Stack<Character> overLappingTiles = getOverlappingTiles(word, direction, row, column);
 
         if(!overLappingTiles.empty())
             removeOverlappingTiles(word, overLappingTiles);
@@ -282,7 +282,6 @@ public class Board
         if(!isOverlapValid(word, direction, row, column))
             return false;
 
-        System.out.println("Word after checking for overlap: " + Arrays.toString(word));
         // If the player has the remaining tiles needed
         if (playerHasTiles( word, player ))
         {
@@ -290,7 +289,7 @@ public class Board
             if(isFirstWord())
                 canPlace = goesThroughCentre(word, direction, row, column);
 
-            //We have checked everything, so it can be placed
+            // We have checked everything, so it can be placed
             else
                 canPlace = true;    // when word can be placed
         }
@@ -298,7 +297,7 @@ public class Board
         // If we can place, place tiles
         if ( canPlace )
         {
-            //Placing tile on board and removing it from frame
+            // Placing tile on board and removing it from frame
             for ( int i = 0; i < word.length; i++ )
             {
                 char letterToPlace = word[i];
@@ -339,14 +338,14 @@ public class Board
 
             if ( direction == 'A' )
             {
-                //If overlapping is not valid
+                // If overlapping is not valid
                 if(letterToPlace != ' ' && getSquareAt(row, column+i).getTile() != '\u0000')
                     return false;
             }
 
             else if ( direction == 'D' )
             {
-                //If overlapping is not valid
+                // If overlapping is not valid
                 if(letterToPlace != ' ' && getSquareAt(row+i, column).getTile() != '\u0000')
                     return false;
             }
@@ -356,7 +355,7 @@ public class Board
     }
 
     /* REMOVES LETTERS FROM WORD WHICH OVERLAP WITH PATH OF WORD */
-    private void removeOverlappingTiles(char[] word, Stack overlappingTiles)
+    private void removeOverlappingTiles(char[] word, Stack<Character> overlappingTiles)
     {
         // While there are still overlapping letters to check for
         while(!overlappingTiles.isEmpty())
@@ -375,7 +374,7 @@ public class Board
     }
 
     /* CREATES A STACK OF OVERLAPPED LETTERS ON A WORD'S PATH */
-    private Stack getOverlappingTiles(char[] word, char direction, int row, int column)
+    private Stack<Character> getOverlappingTiles(char[] word, char direction, int row, int column)
     {
         Stack<Character> overlappingLetters = new Stack<>();
 
@@ -394,7 +393,7 @@ public class Board
             endIndex = getEndIndex(word, row);
         }
 
-        //If there is any letter between the start index and the end index of a word
+        // If there is any letter between the start index and the end index of a word
         for(int i = startIndex; i <= endIndex; i++)
         {
             if(direction == 'A')
@@ -424,11 +423,11 @@ public class Board
             startIndex = column;
             endIndex = getEndIndex(word, column);
 
-            //If there is a letter at the short start of the word
+            // If there is a letter at the short start of the word
             if(startIndex-1 >= 0 && getSquareAt(row, startIndex-1).getTile() != '\u0000')
                 return true;
 
-            //If there is a letter at the short end of the word
+            //I f there is a letter at the short end of the word
             if(endIndex+1 <= BOUNDS-1 && getSquareAt(row, endIndex+1).getTile() != '\u0000')
                 return true;
         }
@@ -438,20 +437,20 @@ public class Board
             startIndex = row;
             endIndex = getEndIndex(word, row);
 
-            //If there is a letter at the short start of the word
+            // If there is a letter at the short start of the word
             if(startIndex-1 >= 0 && getSquareAt(startIndex-1, column).getTile() != '\u0000')
                 return true;
 
-            //If there is a letter at the short end of the word
+            // If there is a letter at the short end of the word
             if(endIndex+1 <= BOUNDS-1 && getSquareAt(endIndex+1, column).getTile() != '\u0000')
                 return true;
 
         }
 
-        //If there is any letter on the long sides of the word
+        // If there is any letter on the long sides of the word
         for(int i = startIndex; i <= endIndex; i++)
         {
-            //If no letters above and below
+            // If no letters above and below
             if(direction == 'A')
             {
                 if (getSquareAt(row-1, i).getTile() != '\u0000')
@@ -499,7 +498,7 @@ public class Board
             {
                 if ( frameCopy.getIndexOfTile( matchingTile ) != -1 )
                 {
-                    frameCopy.removeTile( matchingTile );   // removing each tile of the word from the frame copy
+                    frameCopy.removeTile( matchingTile );   // Removing each tile of the word from the frame copy
                     // when it is found to exist on both the frame and in the word
                 }
                 else
@@ -534,7 +533,7 @@ public class Board
 
        if(direction == 'A')
        {
-           //If we are not on the same row as the centre
+           // If we are not on the same row as the centre
            if(row != centreIndex)
                return false;
 
@@ -544,7 +543,7 @@ public class Board
 
         else if(direction == 'D')
         {
-            //If we are not on the same column as the centre
+            // If we are not on the same column as the centre
             if(column != centreIndex)
                 return false;
 
@@ -552,14 +551,14 @@ public class Board
             endIndex = getEndIndex(word, startIndex);
         }
 
-        //Return true if the centre index is in-between the to be placed word
+        // Return true if the centre index is in-between the to be placed word
         return centreIndex >= startIndex && centreIndex <= endIndex;
 }
 
     /* CHECKS TO SEE IF THE WORD IS PLACED WITHIN THE BOUNDS OF THE BOARD */
     private boolean isWithinBounds(char[] word, char direction, int row, int column)
     {
-        //If the starting position is out of bounds
+        // If the starting position is out of bounds
         if(row < 0 || row > BOUNDS-1 || column < 0 || column > BOUNDS-1)
             return false;
 
@@ -575,13 +574,10 @@ public class Board
             endIndex = getEndIndex(word, row);
         }
 
-        // If the word will not fit on board
-        if ( endIndex > BOUNDS-1 )
-        {
-            return false; // When word to be placed goes past the bounds of the board's columns
-        }
-
-        return true;
+        if (endIndex > BOUNDS - 1)      // When word to be placed goes past the bounds of the board's columns
+            return false;
+        else
+            return true;
     }
 
     /* RETURNS SQUARE AT A CERTAIN POSITION ON THE BOARD */
