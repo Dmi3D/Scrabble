@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Stack;
 
 public class Board
@@ -266,6 +267,12 @@ public class Board
         if(!isWithinBounds(word, direction, row, column))
             return false;
 
+        // If the word will not touch any other word on the board
+        if(!isTouching(word, direction, row, column) && !isFirstWord())
+        {
+            return false;
+        }
+
         // Store overlapping tiles (if any)
         Stack overLappingTiles = getOverlappingTiles(word, direction, row, column);
 
@@ -275,6 +282,7 @@ public class Board
         if(!isOverlapValid(word, direction, row, column))
             return false;
 
+        System.out.println("Word after checking for overlap: " + Arrays.toString(word));
         // If the player has the remaining tiles needed
         if (playerHasTiles( word, player ))
         {
@@ -403,6 +411,67 @@ public class Board
         }
 
         return overlappingLetters;
+    }
+
+    /* CHECKS IF A WORD WILL TOUCH ANOTHER WORD ON THE BOARD */
+    private boolean isTouching(char[] word, char direction, int row, int column)
+    {
+        int startIndex = -1;
+        int endIndex = -1;
+
+        if(direction == 'A')
+        {
+            startIndex = column;
+            endIndex = getEndIndex(word, column);
+
+            //If there is a letter at the short start of the word
+            if(startIndex-1 >= 0 && getSquareAt(row, startIndex-1).getTile() != '\u0000')
+                return true;
+
+            //If there is a letter at the short end of the word
+            if(endIndex+1 <= BOUNDS-1 && getSquareAt(row, endIndex+1).getTile() != '\u0000')
+                return true;
+        }
+
+        else if(direction == 'D')
+        {
+            startIndex = row;
+            endIndex = getEndIndex(word, row);
+
+            //If there is a letter at the short start of the word
+            if(startIndex-1 >= 0 && getSquareAt(startIndex-1, column).getTile() != '\u0000')
+                return true;
+
+            //If there is a letter at the short end of the word
+            if(endIndex+1 <= BOUNDS-1 && getSquareAt(endIndex+1, column).getTile() != '\u0000')
+                return true;
+
+        }
+
+        //If there is any letter on the long sides of the word
+        for(int i = startIndex; i <= endIndex; i++)
+        {
+            //If no letters above and below
+            if(direction == 'A')
+            {
+                if (getSquareAt(row-1, i).getTile() != '\u0000')
+                    return true;
+
+                if (getSquareAt(row+1, i).getTile() != '\u0000')
+                    return true;
+            }
+
+            else if(direction == 'D')
+            {
+                if (getSquareAt(i, column-1).getTile() != '\u0000')
+                    return true;
+
+                if (getSquareAt(i, column+1).getTile() != '\u0000')
+                    return true;
+            }
+        }
+
+        return false;
     }
 
     /* PLACES A TILE ON THE BOARD */
