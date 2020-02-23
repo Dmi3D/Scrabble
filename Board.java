@@ -245,8 +245,15 @@ public class Board
     }
 
     /* PLACES A WORD WITH A CERTAIN DIRECTION. PASS IN STARTING POINT */
-    public boolean placeWord(String word, char direction, int row, char columnLetter, Player player)
+    public boolean placeWord(String string, char direction, int row, char columnLetter, Player player)
     {
+        char word[] = new char[string.length()];
+
+        for(int i = 0; i < string.length(); i++)
+        {
+            word[i] = string.charAt(i);
+        }
+
         boolean canPlace = false;
 
         row = getRowIndex(row);
@@ -266,11 +273,11 @@ public class Board
 
         if ( canPlace )
         {
-            word = word.toUpperCase();
+            string = string.toUpperCase();
             // Removing letters of the word from the player's frame after it has been successfully placed on the board
-            for ( int i = 0; i < word.length(); i++ )
+            for ( int i = 0; i < string.length(); i++ )
             {
-                char letterToPlace = word.charAt( i );
+                char letterToPlace = string.charAt( i );
 
                 if ( direction == 'A' )
                     placeTile(letterToPlace, row, column+i);
@@ -278,7 +285,7 @@ public class Board
                 else if ( direction == 'D' )
                     placeTile(letterToPlace, row+i, column);
 
-               player.getPlayerFrame().removeTile(word.charAt( i ));
+               player.getPlayerFrame().removeTile(string.charAt( i ));
             }
 
             numOfWords++;
@@ -294,13 +301,11 @@ public class Board
     }
 
     /* CHECKING IF A PLAYER'S RACK OF TILES CONTAINS ALL THE LETTERS NEEDED FOR THEIR WORD */
-    private boolean playerHasTiles(String word, Player player)
+    private boolean playerHasTiles(char[] word, Player player)
     {
         boolean playerHasTiles = true;
 
-        word = word.toUpperCase();
-
-        if ( word.length() < 1 )    // ensuring player has at least 1 tile provided for placement
+        if ( word.length < 1 )    // ensuring player has at least 1 tile provided for placement
         {
             playerHasTiles = false;
         }
@@ -309,9 +314,9 @@ public class Board
         {
             Frame frameCopy = new Frame( player.getPlayerFrame() );
 
-            for ( int i = 0; i < word.length(); i++ )
+            for ( int i = 0; i < word.length; i++ )
             {
-                char matchingTile = word.charAt( i );
+                char matchingTile = word[i];
 
                 if ( frameCopy.getIndexOfTile( matchingTile ) != -1 )
                 {
@@ -336,13 +341,13 @@ public class Board
     }
 
     /* RETURNS THE END INDEX CORRESPONDING TO THE STARTING INDEX AND THE WORD'S LENGTH */
-    private int getEndIndex(String word, int startIndex)
+    private int getEndIndex(char[] word, int startIndex)
     {
-        return startIndex + word.length()-1;
+        return startIndex + word.length-1;
     }
 
     /* CHECKS TO SEE IF THE WORD IS GOING THROUGH THE CENTRE */
-    private boolean goesThroughCentre(String word, char direction, int row, int column)
+    private boolean goesThroughCentre(char[] word, char direction, int row, int column)
     {
        int centreIndex = 7;
        int startIndex = -1;
@@ -373,7 +378,7 @@ public class Board
 }
 
     /* CHECKS TO SEE IF THE WORD IS PLACED WITHIN THE BOUNDS OF THE BOARD */
-    private boolean isWithinBounds(String word, char direction, int row, int column)
+    private boolean isWithinBounds(char[] word, char direction, int row, int column)
     {
         int startIndex = -1;
         int endIndex = -1;
@@ -420,7 +425,7 @@ public class Board
         return board[row][column];
     }
 
-    private boolean doesOverlap(String word, char direction, int row, int column)
+    private boolean doesOverlap(char[] word, char direction, int row, int column)
     {
         int startIndex = -1;
         int endIndex = -1;
@@ -466,12 +471,5 @@ public class Board
     {
         this.board = new Square[BOUNDS][BOUNDS];
         numOfWords = 0;
-    }
-
-    public static void main(String[] args)
-    {
-        Board board = new Board();
-
-
     }
 }
