@@ -92,8 +92,7 @@ public class Board
     /* RETURNS CORRECT COLUMN INDEX FOR MATRIX */
     private int getColumnIndex(char columnLetter)
     {
-        int column = Character.toUpperCase(columnLetter) - 'A';
-        return column;
+        return Character.toUpperCase(columnLetter) - 'A';
     }
 
     /* INITIALISES THE SQUARES WEIGHT AND TYPE IN BOARD */
@@ -257,6 +256,7 @@ public class Board
 
         char word[] = new char[string.length()];
 
+
         for(int i = 0; i < string.length(); i++)
         {
             word[i] = string.charAt(i);
@@ -269,7 +269,7 @@ public class Board
         // Store overlapping tiles (if any)
         Stack overLappingTiles = getOverlappingTiles(word, direction, row, column);
 
-//        System.out.println("Wat is in stack: " + overLappingTiles.toString());
+        System.out.println("Wat is in stack: " + overLappingTiles.toString());
 
         if(!overLappingTiles.empty())
             removeOverlappingTiles(word, overLappingTiles);
@@ -314,19 +314,17 @@ public class Board
     private void removeOverlappingTiles(char[] word, Stack overlappingTiles)
     {
         // While there are still overlapping letters to check for
-        while(!overlappingTiles.empty())
+        while(!overlappingTiles.isEmpty())
         {
             char overlappingLetter = (char) overlappingTiles.peek();
+            System.out.println("Peak: " + overlappingLetter);
 
             for(int i = 0; i < word.length; i++)
             {
                 if (overlappingLetter == word[i])
-                {
                     word[i] = ' ';
-                    overlappingTiles.pop();
-                }
 
-                else
+                if(!overlappingTiles.isEmpty())
                     overlappingTiles.pop();
             }
         }
@@ -391,10 +389,8 @@ public class Board
         {
             Frame frameCopy = new Frame( player.getPlayerFrame() );
 
-            for ( int i = 0; i < word.length; i++ )
+            for ( char matchingTile : word )
             {
-                char matchingTile = word[i];
-
                 if ( frameCopy.getIndexOfTile( matchingTile ) != -1 )
                 {
                     frameCopy.removeTile( matchingTile );   // removing each tile of the word from the frame copy
@@ -509,9 +505,15 @@ public class Board
         return numOfWords == 0;
     }
 
+    public int getNumOfWords()
+    {
+        return numOfWords;
+    }
+
     public void reset()
     {
         this.board = new Square[BOUNDS][BOUNDS];
+        initScores();
         numOfWords = 0;
     }
 }
