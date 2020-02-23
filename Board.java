@@ -411,6 +411,51 @@ public class Board
         return board[row][col];
     }
 
+    /* RETURNS SQUARE AT A CERTAIN POSITION ON THE BOARD */
+    private Square getSquareAt(int row, int column)
+    {
+        if(row < 0 || row > 14 || column < 0 || column > 14)
+            return null;
+
+        return board[row][column];
+    }
+
+    private boolean doesOverlap(String word, char direction, int row, int column)
+    {
+        int startIndex = -1;
+        int endIndex = -1;
+
+        if(direction == 'A')
+        {
+            startIndex = row;
+            endIndex = getEndIndex(word, row);
+        }
+
+        else if(direction == 'D')
+        {
+            startIndex = column;
+            endIndex = getEndIndex(word, column);
+        }
+
+        //If there is any letter between the start index and the end index of a word
+        for(int i = startIndex; i <= endIndex; i++)
+        {
+            if(direction == 'A')
+            {
+                if (getSquareAt(row, i).getTile() != '\u0000')
+                    return true;
+            }
+
+            else if(direction == 'D')
+            {
+                if (getSquareAt(i, column).getTile() != '\u0000')
+                    return true;
+            }
+        }
+
+        return false;
+    }
+
     /* CHECKS IF THE BOARD IS EMPTY */
     private boolean isEmpty()
     {
@@ -421,5 +466,12 @@ public class Board
     {
         this.board = new Square[BOUNDS][BOUNDS];
         numOfWords = 0;
+    }
+
+    public static void main(String[] args)
+    {
+        Board board = new Board();
+
+
     }
 }
