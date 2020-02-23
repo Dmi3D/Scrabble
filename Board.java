@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.Stack;
 
 public class Board
@@ -82,18 +81,6 @@ public class Board
         }
 
         System.out.println("\n\n");
-    }
-
-    /* RETURNS CORRECT ROW INDEX FOR MATRIX */
-    private int getRowIndex(int row)
-    {
-        return row-1;
-    }
-
-    /* RETURNS CORRECT COLUMN INDEX FOR MATRIX */
-    private int getColumnIndex(char columnLetter)
-    {
-        return Character.toUpperCase(columnLetter) - 'A';
     }
 
     /* INITIALISES THE SQUARES WEIGHT AND TYPE IN BOARD */
@@ -282,7 +269,6 @@ public class Board
         if(!isOverlapValid(word, direction, row, column))
             return false;
 
-        System.out.println("Word after checking for overlap: " + Arrays.toString(word));
         // If the player has the remaining tiles needed
         if (playerHasTiles( word, player ))
         {
@@ -330,87 +316,32 @@ public class Board
         return canPlace;
     }
 
-    /* CHECKS IF OVERLAP IS VALID BY NOT ALLOWING CHARACTERS TO TRY OVERLAP */
-    private boolean isOverlapValid(char[] word, char direction, int row, int column)
+    /* CHECKS TO SEE IF THE WORD IS PLACED WITHIN THE BOUNDS OF THE BOARD */
+    private boolean isWithinBounds(char[] word, char direction, int row, int column)
     {
-        for ( int i = 0; i < word.length; i++ )
-        {
-            char letterToPlace = word[i];
+        //If the starting position is out of bounds
+        if(row < 0 || row > BOUNDS-1 || column < 0 || column > BOUNDS-1)
+            return false;
 
-            if ( direction == 'A' )
-            {
-                //If overlapping is not valid
-                if(letterToPlace != ' ' && getSquareAt(row, column+i).getTile() != '\u0000')
-                    return false;
-            }
-
-            else if ( direction == 'D' )
-            {
-                //If overlapping is not valid
-                if(letterToPlace != ' ' && getSquareAt(row+i, column).getTile() != '\u0000')
-                    return false;
-            }
-        }
-
-        return true;
-    }
-
-    /* REMOVES LETTERS FROM WORD WHICH OVERLAP WITH PATH OF WORD */
-    private void removeOverlappingTiles(char[] word, Stack overlappingTiles)
-    {
-        // While there are still overlapping letters to check for
-        while(!overlappingTiles.isEmpty())
-        {
-            char overlappingLetter = (char) overlappingTiles.peek();
-
-            for(int i = 0; i < word.length; i++)
-            {
-                if (overlappingLetter == word[i])
-                    word[i] = ' ';
-
-                if(!overlappingTiles.isEmpty())
-                    overlappingTiles.pop();
-            }
-        }
-    }
-
-    /* CREATES A STACK OF OVERLAPPED LETTERS ON A WORD'S PATH */
-    private Stack getOverlappingTiles(char[] word, char direction, int row, int column)
-    {
-        Stack<Character> overlappingLetters = new Stack<>();
-
-        int startIndex = -1;
         int endIndex = -1;
 
         if(direction == 'A')
         {
-            startIndex = column;
             endIndex = getEndIndex(word, column);
         }
 
         else if(direction == 'D')
         {
-            startIndex = row;
             endIndex = getEndIndex(word, row);
         }
 
-        //If there is any letter between the start index and the end index of a word
-        for(int i = startIndex; i <= endIndex; i++)
+        // If the word will not fit on board
+        if ( endIndex > BOUNDS-1 )
         {
-            if(direction == 'A')
-            {
-                if (getSquareAt(row, i).getTile() != '\u0000')
-                    overlappingLetters.push(getSquareAt(row, i).getTile());
-            }
-
-            else if(direction == 'D')
-            {
-                if (getSquareAt(i, column).getTile() != '\u0000')
-                    overlappingLetters.push(getSquareAt(i, column).getTile());
-            }
+            return false; // When word to be placed goes past the bounds of the board's columns
         }
 
-        return overlappingLetters;
+        return true;
     }
 
     /* CHECKS IF A WORD WILL TOUCH ANOTHER WORD ON THE BOARD */
@@ -474,11 +405,124 @@ public class Board
         return false;
     }
 
-    /* PLACES A TILE ON THE BOARD */
-    private void placeTile(char tile, int row, int column)
+    /* CHECKS IF THE WORD BEING PLACES IS THE FIRST WORD */
+    private boolean isFirstWord()
     {
-        if(tile != ' ')
-            board[row][column].setTile(tile);
+        return isEmpty();
+    }
+
+    /* CHECKS TO SEE IF THE WORD IS GOING THROUGH THE CENTRE */
+    private boolean goesThroughCentre(char[] word, char direction, int row, int column)
+    {
+        int centreIndex = 7;
+        int startIndex = -1;
+        int endIndex = -1;
+
+        if(direction == 'A')
+        {
+            //If we are not on the same row as the centre
+            if(row != centreIndex)
+                return false;
+
+            startIndex = column;
+            endIndex = getEndIndex(word, startIndex);
+        }
+
+        else if(direction == 'D')
+        {
+            //If we are not on the same column as the centre
+            if(column != centreIndex)
+                return false;
+
+            startIndex = row;
+            endIndex = getEndIndex(word, startIndex);
+        }
+
+        //Return true if the centre index is in-between the to be placed word
+        return centreIndex >= startIndex && centreIndex <= endIndex;
+    }
+
+    /* CREATES A STACK OF OVERLAPPED LETTERS ON A WORD'S PATH */
+    private Stack getOverlappingTiles(char[] word, char direction, int row, int column)
+    {
+        Stack<Character> overlappingLetters = new Stack<>();
+
+        int startIndex = -1;
+        int endIndex = -1;
+
+        if(direction == 'A')
+        {
+            startIndex = column;
+            endIndex = getEndIndex(word, column);
+        }
+
+        else if(direction == 'D')
+        {
+            startIndex = row;
+            endIndex = getEndIndex(word, row);
+        }
+
+        //If there is any letter between the start index and the end index of a word
+        for(int i = startIndex; i <= endIndex; i++)
+        {
+            if(direction == 'A')
+            {
+                if (getSquareAt(row, i).getTile() != '\u0000')
+                    overlappingLetters.push(getSquareAt(row, i).getTile());
+            }
+
+            else if(direction == 'D')
+            {
+                if (getSquareAt(i, column).getTile() != '\u0000')
+                    overlappingLetters.push(getSquareAt(i, column).getTile());
+            }
+        }
+
+        return overlappingLetters;
+    }
+
+    /* REMOVES LETTERS FROM WORD WHICH OVERLAP WITH PATH OF WORD */
+    private void removeOverlappingTiles(char[] word, Stack overlappingTiles)
+    {
+        // While there are still overlapping letters to check for
+        while(!overlappingTiles.isEmpty())
+        {
+            char overlappingLetter = (char) overlappingTiles.peek();
+
+            for(int i = 0; i < word.length; i++)
+            {
+                if (overlappingLetter == word[i])
+                    word[i] = ' ';
+
+                if(!overlappingTiles.isEmpty())
+                    overlappingTiles.pop();
+            }
+        }
+    }
+
+    /* CHECKS IF OVERLAP IS VALID BY NOT ALLOWING CHARACTERS TO TRY OVERLAP */
+    private boolean isOverlapValid(char[] word, char direction, int row, int column)
+    {
+        for ( int i = 0; i < word.length; i++ )
+        {
+            char letterToPlace = word[i];
+
+            if ( direction == 'A' )
+            {
+                //If overlapping is not valid
+                if(letterToPlace != ' ' && getSquareAt(row, column+i).getTile() != '\u0000')
+                    return false;
+            }
+
+            else if ( direction == 'D' )
+            {
+                //If overlapping is not valid
+                if(letterToPlace != ' ' && getSquareAt(row+i, column).getTile() != '\u0000')
+                    return false;
+            }
+        }
+
+        return true;
     }
 
     /* CHECKING IF A PLAYER'S RACK OF TILES CONTAINS ALL THE LETTERS NEEDED FOR THEIR WORD */
@@ -513,75 +557,17 @@ public class Board
         return playerHasTiles;
     }
 
-    /* CHECKS IF THE WORD BEING PLACES IS THE FIRST WORD */
-    private boolean isFirstWord()
+    /* PLACES A TILE ON THE BOARD */
+    private void placeTile(char tile, int row, int column)
     {
-        return isEmpty();
+        if(tile != ' ')
+            board[row][column].setTile(tile);
     }
 
     /* RETURNS THE END INDEX CORRESPONDING TO THE STARTING INDEX AND THE WORD'S LENGTH */
     private int getEndIndex(char[] word, int startIndex)
     {
         return startIndex + word.length-1;
-    }
-
-    /* CHECKS TO SEE IF THE WORD IS GOING THROUGH THE CENTRE */
-    private boolean goesThroughCentre(char[] word, char direction, int row, int column)
-    {
-       int centreIndex = 7;
-       int startIndex = -1;
-       int endIndex = -1;
-
-       if(direction == 'A')
-       {
-           //If we are not on the same row as the centre
-           if(row != centreIndex)
-               return false;
-
-           startIndex = column;
-           endIndex = getEndIndex(word, startIndex);
-       }
-
-        else if(direction == 'D')
-        {
-            //If we are not on the same column as the centre
-            if(column != centreIndex)
-                return false;
-
-            startIndex = row;
-            endIndex = getEndIndex(word, startIndex);
-        }
-
-        //Return true if the centre index is in-between the to be placed word
-        return centreIndex >= startIndex && centreIndex <= endIndex;
-}
-
-    /* CHECKS TO SEE IF THE WORD IS PLACED WITHIN THE BOUNDS OF THE BOARD */
-    private boolean isWithinBounds(char[] word, char direction, int row, int column)
-    {
-        //If the starting position is out of bounds
-        if(row < 0 || row > BOUNDS-1 || column < 0 || column > BOUNDS-1)
-            return false;
-
-        int endIndex = -1;
-
-        if(direction == 'A')
-        {
-            endIndex = getEndIndex(word, column);
-        }
-
-        else if(direction == 'D')
-        {
-            endIndex = getEndIndex(word, row);
-        }
-
-        // If the word will not fit on board
-        if ( endIndex > BOUNDS-1 )
-        {
-            return false; // When word to be placed goes past the bounds of the board's columns
-        }
-
-        return true;
     }
 
     /* RETURNS SQUARE AT A CERTAIN POSITION ON THE BOARD */
@@ -605,17 +591,31 @@ public class Board
         return board[row][column];
     }
 
+    /* RETURNS CORRECT ROW INDEX FOR MATRIX */
+    private int getRowIndex(int row)
+    {
+        return row-1;
+    }
+
+    /* RETURNS CORRECT COLUMN INDEX FOR MATRIX */
+    private int getColumnIndex(char columnLetter)
+    {
+        return Character.toUpperCase(columnLetter) - 'A';
+    }
+
     /* CHECKS IF THE BOARD IS EMPTY */
     private boolean isEmpty()
     {
         return numOfWords == 0;
     }
 
+    /* RETURNS THE NUMBER OF WORDS CURRENTLY ON THE BOARD */
     public int getNumOfWords()
     {
         return numOfWords;
     }
 
+    /* RESETS THE BOARD TO ITS ORIGINAL STATE */
     public void reset()
     {
         this.board = new Square[BOUNDS][BOUNDS];
