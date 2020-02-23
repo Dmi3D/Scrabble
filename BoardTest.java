@@ -1,12 +1,10 @@
-import java.util.Scanner;
-
 public class BoardTest
 {
     public static void main(String[] args)
     {
         Board Board = new Board();
 
-        Pool thePool = new Pool();
+        /*Pool thePool = new Pool();
         Frame frameOne = new Frame(thePool);
         Player playerOne = new Player(frameOne);
         System.out.print("The frame: ");
@@ -24,11 +22,11 @@ public class BoardTest
         char column = scanner.next().charAt( 0 );
         Board.placeWord( word, direction, row, column, playerOne );
         Board.displayBoard();System.out.println("The frame: ");
-        playerOne.getPlayerFrame().displayFrame();
-        /*System.out.println(Board.getSquareAt(1, 'A').getWeight());
+        playerOne.getPlayerFrame().displayFrame();*/
+        System.out.println(Board.getSquareAt(1, 'A').getWeight());
         System.out.println(Board.getSquareAt(1, 'A').getType());
 
-        Board.displayBoardWithWeights();*/
+        Board.displayBoardWithWeights();
 
     }
 }
