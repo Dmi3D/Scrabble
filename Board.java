@@ -84,13 +84,13 @@ public class Board
     }
 
     /* RETURNS CORRECT ROW INDEX FOR MATRIX */
-    private int getRow(int row)
+    private int getRowIndex(int row)
     {
         return --row;
     }
 
     /* RETURNS CORRECT COLUMN INDEX FOR MATRIX */
-    private int getColumn(char columnLetter)
+    private int getColumnIndex(char columnLetter)
     {
         int column = Character.toUpperCase(columnLetter) - 'A';
         return column;
@@ -189,9 +189,9 @@ public class Board
     {
         boolean canPlace = false;
 
-        row = getRow(row);
+        row = getRowIndex(row);
 
-        int column = getColumn(columnLetter);
+        int column = getColumnIndex(columnLetter);
 
         direction = Character.toUpperCase(direction);
 
@@ -341,8 +341,8 @@ public class Board
     /* RETURNS SQUARE AT A CERTAIN POSITION ON THE BOARD */
     private Square getSquareAt(int row, char letter)
     {
-        row = getRow(row);
-        int col = getColumn(letter);
+        row = getRowIndex(row);
+        int col = getColumnIndex(letter);
 
         if(row < 0 || row > 14 || col < 0 || col > 14)
             return null;
