@@ -284,8 +284,8 @@ public class Board
     private boolean goesThroughCentre(String word, char direction, int row, int column)
     {
        int centreIndex = 7;
-       int startIndex = 0;
-       int endIndex = 0;
+       int startIndex = -1;
+       int endIndex = -1;
 
        if(direction == '>')
        {
