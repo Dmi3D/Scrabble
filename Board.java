@@ -206,18 +206,19 @@ public class Board
 
         if ( canPlace )
         {
-            //Removing letters of the word from the player's frame after it has been successfully placed on the board
+            word = word.toUpperCase();
+            // Removing letters of the word from the player's frame after it has been successfully placed on the board
             for ( int i = 0; i < word.length(); i++ )
             {
                 char letterToPlace = word.charAt( i );
 
-                if(direction == 'A')
+                if ( direction == 'A' )
                     placeTile(letterToPlace, row, column+i);
 
-                else if(direction == 'D')
+                else if ( direction == 'D' )
                     placeTile(letterToPlace, row+i, column);
-
-                player.getPlayerFrame().removeTile( word.charAt( i ) );
+                
+               player.getPlayerFrame().removeTile(word.charAt( i ));
             }
 
             numOfWords++;
@@ -370,7 +371,7 @@ public class Board
         Scanner scanner = new Scanner( System.in );
         System.out.print( "Please enter word you want to place on the board: " );
         String word = scanner.next();
-        System.out.print( "\nPlease enter the direction in which you want to place the word ('V' for Up->Down or '>' for Left->Right): " );
+        System.out.print( "\nPlease enter the direction in which you want to place the word ('A' for across or 'D' for down): " );
         char direction = scanner.next().charAt( 0 );
         System.out.print( "\nPlease enter row number of the first letter: " );
         int row = scanner.nextInt();
