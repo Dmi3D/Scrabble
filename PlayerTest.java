@@ -8,29 +8,29 @@ public class PlayerTest
 
         System.out.println("The tiles and their associated scores:\n" + ThePool.getTileValues().toString() + "\n");
 
-        System.out.println("Number of each tile in the Pool:\n" + Pool.getTileFrequencies().toString() + "\n");
+        System.out.println("Number of each tile in the Pool:\n" + ThePool.getTileFrequencies().toString() + "\n");
 
-        System.out.println("Expected total number of tiles in the Pool: 100. Actual: " + Pool.getTilesInPool() + "\n");
+        System.out.println("Expected total number of tiles in the Pool: 100. Actual: " + ThePool.getTilesInPool() + "\n");
 
         System.out.println("\n****************** TESTING INITIALISATION OF FRAME *******************\n");
 
-        Frame FrameOne = new Frame();
+        Frame FrameOne = new Frame(ThePool);
 
         System.out.print("Frame One contains the following tiles drawn from the Pool: ");
         FrameOne.displayFrame();
 
         System.out.println();
-        System.out.println("Tiles in Pool at this stage:\n" + Pool.getTileFrequencies().toString() + "\n");
-        System.out.println("Expected total number of tiles in the Pool: (100 - 7 = 93). Actual: " + Pool.getTilesInPool() + "\n");
+        System.out.println("Tiles in Pool at this stage:\n" + ThePool.getTileFrequencies().toString() + "\n");
+        System.out.println("Expected total number of tiles in the Pool: (100 - 7 = 93). Actual: " + ThePool.getTilesInPool() + "\n");
 
-        Frame FrameTwo = new Frame();
+        Frame FrameTwo = new Frame(ThePool);
 
         System.out.print("Frame Two contains the following tiles drawn from the Pool: ");
         FrameTwo.displayFrame();
 
         System.out.println();
-        System.out.println("Tiles in Pool at this stage:\n" + Pool.getTileFrequencies().toString() + "\n");
-        System.out.println("Expected total number of tiles in the Pool: (93 - 7 = 86). Actual: " + Pool.getTilesInPool() + "\n");
+        System.out.println("Tiles in Pool at this stage:\n" + ThePool.getTileFrequencies().toString() + "\n");
+        System.out.println("Expected total number of tiles in the Pool: (93 - 7 = 86). Actual: " + ThePool.getTilesInPool() + "\n");
 
         Player PlayerOne = new Player(FrameOne);
         Player PlayerTwo = new Player(FrameTwo);
@@ -107,8 +107,8 @@ public class PlayerTest
         System.out.println();
 
 
-        System.out.println("Frequencies of tiles in Pool. Should be decrementing frequencies:\n" + Pool.getTileFrequencies().toString() +"\n");
-        System.out.println("Expected total number of tiles in the Pool: 84. Actual: " + Pool.getTilesInPool() + "\n");
+        System.out.println("Frequencies of tiles in Pool. Should be decrementing frequencies:\n" + ThePool.getTileFrequencies().toString() +"\n");
+        System.out.println("Expected total number of tiles in the Pool: 84. Actual: " + ThePool.getTilesInPool() + "\n");
 
         System.out.println("\n****************** TESTING QUERY OF A TILE'S VALUE FUNCTIONALITY *******************\n");
 
@@ -146,7 +146,7 @@ public class PlayerTest
 
         System.out.println("\n***************** TESTING POOL AND FRAMES TO SEE IF THEY'RE EMPTY ******************\n");
 
-        System.out.println("Checking if the Pool is empty. Actual: false. Returned: " + Pool.isEmpty() + "\n");
+        System.out.println("Checking if the Pool is empty. Actual: false. Returned: " + ThePool.isEmpty() + "\n");
 
         System.out.println("Checking if " + PlayerOne.getName() + "'s frame is empty. Actual: false. Returned: " +
                 PlayerOne.getPlayerFrame().isEmpty() + "\n");
@@ -171,7 +171,7 @@ public class PlayerTest
             }
 
             System.out.println("Removed " + i * 2 + " tiles from the Pool.");
-            System.out.print("Number of tiles in the Pool at this stage: " + Pool.getTilesInPool() + "\n");
+            System.out.print("Number of tiles in the Pool at this stage: " + ThePool.getTilesInPool() + "\n");
 
             System.out.print(PlayerOne.getName() + "'s Frame: ");
             PlayerOne.getPlayerFrame().displayFrame();
@@ -182,7 +182,7 @@ public class PlayerTest
             System.out.println();
         }
 
-        System.out.println("Testing to see that Pool is empty now. Should return true. Actual: " + Pool.isEmpty() + "\n");
+        System.out.println("Testing to see that Pool is empty now. Should return true. Actual: " + ThePool.isEmpty() + "\n");
 
         System.out.println("\n********** TESTING IF FRAMES ARE EMPTY AFTER REMOVING ALL TILES FROM THEM **********\n");
 
@@ -226,8 +226,8 @@ public class PlayerTest
 
         System.out.println("\n**************************** TESTING IF RESETTING WORKS ****************************\n");
 
-        System.out.println("Number of each tile in the Pool (All should be 0):\n" + Pool.getTileFrequencies().toString());
-        System.out.println("Checking if pool is empty. Expected: true. Actual: " + Pool.isEmpty() + "\n");
+        System.out.println("Number of each tile in the Pool (All should be 0):\n" + ThePool.getTileFrequencies().toString());
+        System.out.println("Checking if pool is empty. Expected: true. Actual: " + ThePool.isEmpty() + "\n");
 
         System.out.print(PlayerOne.getName() + "'s frame (Should be empty): ");
         PlayerOne.getPlayerFrame().displayFrame();
@@ -253,11 +253,11 @@ public class PlayerTest
 
         ThePool.reset();
 
-        System.out.println("Number of each tile in the Pool:\n" + Pool.getTileFrequencies().toString() + "\n");
+        System.out.println("Number of each tile in the Pool:\n" + ThePool.getTileFrequencies().toString() + "\n");
 
         System.out.println("-- RESETTING PLAYERS (AND FRAMES AS A RESULT)--\n");
 
-        PlayerOne.reset();
+        PlayerOne.reset(ThePool);
 
         System.out.println("Player One's name should be empty: " + PlayerOne.getName());
         System.out.println("Player One's score should be 0: " + PlayerOne.getScore());
@@ -271,7 +271,7 @@ public class PlayerTest
 
         System.out.println();
 
-        PlayerTwo.reset();
+        PlayerTwo.reset(ThePool);
 
         System.out.println("Player Two's name should be empty: " + PlayerTwo.getName());
         System.out.println("Player Two's score should be 0: " + PlayerTwo.getScore());

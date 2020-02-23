@@ -9,7 +9,7 @@ public class Pool
 {
     private Map<Character, Integer> tileValues;
 
-    private static HashMap<Character, Integer> tileFrequencies;
+    private HashMap<Character, Integer> tileFrequencies;
 
     private static int tilesInPool;
 
@@ -31,7 +31,7 @@ public class Pool
         tilesInPool = 100;
     }
 
-    public static HashMap<Character, Integer> getTileFrequencies()
+    public HashMap<Character, Integer> getTileFrequencies()
     {
         return tileFrequencies;
     }
@@ -41,7 +41,7 @@ public class Pool
         return tileValues;
     }
 
-    public static int getTilesInPool()
+    public int getTilesInPool()
     {
         return tilesInPool;
     }
@@ -87,12 +87,12 @@ public class Pool
         tilesInPool = 100;
     }
 
-    public static boolean isEmpty()
+    public boolean isEmpty()
     {
         return tilesInPool == 0;
     }
 
-    public static char drawTile()
+    public char drawTile()
     {
         if (tilesInPool == 0)
         {

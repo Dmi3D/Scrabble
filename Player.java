@@ -36,7 +36,7 @@ public class Player
         return frame;
     }
 
-    public void reset()
+    public void reset(Pool pool)
     {
         this.name = " ";
         this.score = 0;
@@ -44,7 +44,7 @@ public class Player
            This is done to ensure that the frame will not have tiles taken from the pool
            used in the previous game. When game is reset, the frame will get tiles from
            the reset pool */
-        frame.reset();
+        frame.reset(pool);
     }
 
 }

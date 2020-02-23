@@ -4,7 +4,7 @@ public class Frame
 {
     private char[] tiles;
 
-    public Frame()
+    public Frame(Pool pool)
     {
         this.tiles = new char[7];
 
@@ -12,7 +12,7 @@ public class Frame
         Arrays.fill( tiles, ' ' );
 
         // The frame object is filled automatically when created
-        fillFrame();
+        fillFrame(pool);
     }
 
     public Frame(Frame anotherFrame)    // copy Constructor
@@ -105,25 +105,25 @@ public class Frame
         System.out.println(Arrays.toString(tiles));
     }
 
-    private void fillFrame()
+    private void fillFrame(Pool pool)
     {
        for(int i = 0; i < tiles.length; i++)
        {
            if(tiles[i] == ' ')
            {
                // Replacing the empty tile in the frame with the drawn tile from the pool
-               tiles[i] = Pool.drawTile();
+               tiles[i] = pool.drawTile();
            }
        }
     }
 
-    public void reset()
+    public void reset(Pool pool)
     {
         // Fill the frame with empty tiles
         Arrays.fill( tiles, ' ' );
 
         // Filling the frame with tiles from pool.
-        fillFrame();
+        fillFrame(pool);
     }
 
 }
