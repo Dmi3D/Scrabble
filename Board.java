@@ -122,7 +122,7 @@ public class Board
 
     // THIS WILL BE REMOVED. PURELY FOR TESTING.
     /* DISPLAYS THE BOARD'S WEIGHTS AND TYPE ONLY */
-    private void displayBoardWithWeights()
+    public void displayBoardWithWeights()
     {
         System.out.print("     |");
 
@@ -355,5 +355,11 @@ public class Board
     private boolean isEmpty()
     {
         return numOfWords == 0;
+    }
+
+    public void reset()
+    {
+        this.board = new Square[BOUNDS][BOUNDS];
+        numOfWords = 0;
     }
 }
