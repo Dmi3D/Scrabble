@@ -217,7 +217,7 @@ public class Board
 
                 else if ( direction == 'D' )
                     placeTile(letterToPlace, row+i, column);
-                
+
                player.getPlayerFrame().removeTile(word.charAt( i ));
             }
 
