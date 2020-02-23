@@ -90,8 +90,7 @@ public class Board
     /* RETURNS CORRECT COLUMN INDEX FOR MATRIX */
     private int getColumnIndex(char columnLetter)
     {
-        int column = Character.toUpperCase(columnLetter) - 'A';
-        return column;
+        return Character.toUpperCase(columnLetter) - 'A';
     }
 
     /* INITIALISES THE SQUARES WEIGHT AND TYPE IN BOARD */
@@ -247,7 +246,7 @@ public class Board
     /* PLACES A WORD WITH A CERTAIN DIRECTION. PASS IN STARTING POINT */
     public boolean placeWord(String string, char direction, int row, char columnLetter, Player player)
     {
-        char word[] = new char[string.length()];
+        char[] word = new char[string.length()];
 
         for(int i = 0; i < string.length(); i++)
         {
@@ -314,10 +313,8 @@ public class Board
         {
             Frame frameCopy = new Frame( player.getPlayerFrame() );
 
-            for ( int i = 0; i < word.length; i++ )
+            for ( char matchingTile : word )
             {
-                char matchingTile = word[i];
-
                 if ( frameCopy.getIndexOfTile( matchingTile ) != -1 )
                 {
                     frameCopy.removeTile( matchingTile );   // removing each tile of the word from the frame copy
