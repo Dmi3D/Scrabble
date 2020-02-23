@@ -130,7 +130,7 @@ public class Board
                 }
 
                 // INITIALISING SQUARES ON LEFT AND RIGHT WALL
-                if(j == 0 || j == (BOUNDS - 1) - 3)
+                if(j == 0 || j == (BOUNDS - 1))
                 {
                     if(i == 3 || i == (BOUNDS - 1) - 3)
                         board[i][j] = new Square(2, false);
