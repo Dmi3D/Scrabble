@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Stack;
 
 public class Board
@@ -243,38 +244,40 @@ public class Board
         direction = Character.toUpperCase(direction);
 
         string = string.toUpperCase();
-        char[] word = new char[string.length()];
+        char[] lettersToSearchInFrame = new char[string.length()];
+        char[] wordToPlace = new char[string.length()];
 
         for(int i = 0; i < string.length(); i++)
         {
-            word[i] = string.charAt(i);
+            lettersToSearchInFrame[i] = string.charAt(i);
+            wordToPlace[i] = string.charAt(i);
         }
 
         // If word is not within bounds, it cannot be placed
-        if(!isWithinBounds(word, direction, row, column))
+        if(!isWithinBounds(wordToPlace, direction, row, column))
             return false;
 
         // If the word will not touch any other word on the board
-        if(!isTouching(word, direction, row, column) && !isFirstWord())
+        if(!isTouching(wordToPlace, direction, row, column) && !isFirstWord())
         {
             return false;
         }
 
         // Store overlapping tiles (if any)
-        Stack<Character> overLappingTiles = getOverlappingTiles(word, direction, row, column);
+        Stack<Character> overLappingTiles = getOverlappingTiles(wordToPlace, direction, row, column);
 
-        if(!overLappingTiles.empty())
-            removeOverlappingTiles(word, overLappingTiles);
-
-        if(!isOverlapValid(word, direction, row, column))
+        if(!isOverlapValid(wordToPlace, direction, row, column))
             return false;
 
+        else
+            removeOverlappingTiles( lettersToSearchInFrame,  overLappingTiles);
+
         // If the player has the remaining tiles needed
-        if (playerHasTiles( word, player ))
+        if (playerHasTiles( lettersToSearchInFrame, player ))
         {
             // If it is the first word, we can only place if it goes through the centre
             if(isFirstWord())
-                canPlace = goesThroughCentre(word, direction, row, column);
+                canPlace = goesThroughCentre(lettersToSearchInFrame, direction, row, column);
 
             // We have checked everything, so it can be placed
             else
@@ -285,29 +288,21 @@ public class Board
         if ( canPlace )
         {
             // Placing tile on board and removing it from frame
-            for ( int i = 0; i < word.length; i++ )
+            for ( int i = 0; i < wordToPlace.length; i++ )
             {
-                char letterToPlace = word[i];
+                char letterToPlace = wordToPlace[i];
 
                 if ( direction == 'A' )
                 {
-                    //If overlapping is not valid
-                    if(letterToPlace != ' ' && getSquareAt(row, column+i).getTile() != '\u0000')
-                        return false;
-
-                    placeTile(letterToPlace, row, column + i);
+                    placeTile(letterToPlace, row, column+i);
                 }
 
                 else if ( direction == 'D' )
                 {
-                    //If overlapping is not valid
-                    if(letterToPlace != ' ' && getSquareAt(row+i, column).getTile() != '\u0000')
-                        return false;
-
-                    placeTile(letterToPlace, row + i, column);
+                    placeTile(letterToPlace, row+i, column);
                 }
 
-               player.getPlayerFrame().removeTile(string.charAt( i ));
+               player.getPlayerFrame().removeTile(letterToPlace);
             }
 
             numOfWords++;
@@ -482,19 +477,22 @@ public class Board
     /* REMOVES LETTERS FROM WORD WHICH OVERLAP WITH PATH OF WORD */
     private void removeOverlappingTiles(char[] word, Stack<Character> overlappingTiles)
     {
-        // While there are still overlapping letters to check for
-        while(!overlappingTiles.isEmpty())
+        for (int i = 0; i < word.length; i++)
         {
-            char overlappingLetter = (char) overlappingTiles.peek();
-
-            for (int i = 0; i < word.length; i++)
+            if (!overlappingTiles.isEmpty())
             {
-                if (overlappingLetter == word[i])
-                    word[i] = ' ';
+                char overlappingLetter = (char) overlappingTiles.peek();
 
-                if (!overlappingTiles.isEmpty())
+                if (overlappingLetter == word[i])
+                {
+                    word[i] = ' ';
                     overlappingTiles.pop();
+                    i = 0;
+                }
             }
+
+            else
+                break;
         }
     }
 
@@ -505,21 +503,23 @@ public class Board
         {
             char letterToPlace = word[i];
 
-            if ( direction == 'A' )
+            if ( direction == 'A' && getSquareAt(row, column+i).getTile() != '\u0000')
             {
                 // If overlapping is not valid
-                if(letterToPlace != ' ' && getSquareAt(row, column+i).getTile() != '\u0000')
+                if(letterToPlace != getSquareAt(row, column+i).getTile())
                     return false;
             }
 
-            else if ( direction == 'D' )
+            else if ( direction == 'D' && getSquareAt(row+i, column).getTile() != '\u0000')
             {
                 // If overlapping is not valid
-                if(letterToPlace != ' ' && getSquareAt(row+i, column).getTile() != '\u0000')
+                if(letterToPlace != getSquareAt(row+i, column).getTile())
+                {
+                    System.out.println("Overlap is not valid as " + letterToPlace + "does not match " + getSquareAt(row+i, column).getTile());
                     return false;
+                }
             }
         }
-
         return true;
     }
 
