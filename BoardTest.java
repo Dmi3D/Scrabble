@@ -170,7 +170,7 @@ public class BoardTest
         char tileOnBoard = Board.getSquareAt( 8, 'F' ).getTile();
         for ( int i = 2; i < 6; i++ )
         {
-            if ( i == 3 || i == 2) {
+            if ( i == 3 ) {
                 word.append( tileOnBoard );
             }else {
                 word.append( PlayerTwo.getPlayerFrame().getTile( i ) );
