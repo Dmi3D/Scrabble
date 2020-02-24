@@ -182,9 +182,11 @@ public class BoardTest
         canPlace = Board.placeWord( word.toString(), 'D', 7, 'F', PlayerTwo );
         System.out.println("Method call to placeWord() should return true. Actual: " + canPlace + "\n");
         if(!canPlace)
-            System.out.println("You have encountered VERY rare situation where the given word won't have the required letters. \nAs a result, trying to place should be false. Actual: " + canPlace + ". \nTHE FOLLOWING TESTS ASSUMED THIS PASSED, SO PLEASE REFRESH TO FIX.\n");
-
-        System.out.println("Board now contains " + Board.getNumOfWords() +  " words:");
+        {
+            System.out.println( "You have encountered VERY rare situation where the given word won't have the required letter. \nAs a result, trying to place should be false. Actual: " + canPlace + ". \nTHE FOLLOWING TESTS ASSUMED THIS PASSED, SO PLEASE REFRESH TO FIX.\n" );
+            System.exit( 1 );
+        }
+        System.out.println("Board now contains four words:");
         Board.displayBoard();
         System.out.print(PlayerTwo.getName() + "'s frame remains the same now as no tiles have been removed: ");
         PlayerOne.getPlayerFrame().displayFrame();
