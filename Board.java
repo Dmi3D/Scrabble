@@ -515,7 +515,6 @@ public class Board
                 // If overlapping is not valid
                 if(letterToPlace != getSquareAt(row+i, column).getTile())
                 {
-                    System.out.println("Overlap is not valid as " + letterToPlace + "does not match " + getSquareAt(row+i, column).getTile());
                     return false;
                 }
             }
