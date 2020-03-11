@@ -3,6 +3,16 @@ import java.util.Stack;
 
 public class Board
 {
+    // error codes
+    public static final int WORD_INCORRECT_FIRST_PLAY = 0;
+    public static final int WORD_OUT_OF_BOUNDS = 1;
+    public static final int WORD_LETTER_NOT_IN_FRAME = 2;
+    public static final int WORD_LETTER_CLASH = 3;
+    public static final int WORD_NO_LETTER_PLACED = 4;  // to be added
+    public static final int WORD_NO_CONNECTION = 5;
+
+    private int errorCode;
+
     // BOARD 2D ARRAY DIMENSION
     private static final int BOUNDS = 15;
 
@@ -255,11 +265,15 @@ public class Board
 
         // If word is not within bounds, it cannot be placed
         if(!isWithinBounds(wordToPlace, direction, row, column))
+        {
+            errorCode = WORD_OUT_OF_BOUNDS;
             return false;
+        }
 
-        // If the word will not touch any other word on the board
+        // If the word (not the first word placed) will not touch any other word on the board
         if(!isTouching(wordToPlace, direction, row, column) && !isFirstWord())
         {
+            errorCode = WORD_NO_CONNECTION;
             return false;
         }
 
@@ -267,7 +281,10 @@ public class Board
         Stack<Character> overLappingTiles = getOverlappingTiles(wordToPlace, direction, row, column);
 
         if(!isOverlapValid(wordToPlace, direction, row, column))
+        {
+            errorCode = WORD_LETTER_CLASH;
             return false;
+        }
 
         else
             removeOverlappingTiles( lettersToSearchInFrame,  overLappingTiles);
@@ -277,7 +294,12 @@ public class Board
         {
             // If it is the first word, we can only place if it goes through the centre
             if(isFirstWord())
-                canPlace = goesThroughCentre(lettersToSearchInFrame, direction, row, column);
+            {
+                canPlace = goesThroughCentre( lettersToSearchInFrame, direction, row, column );
+
+                if ( !canPlace )
+                    errorCode = WORD_INCORRECT_FIRST_PLAY;
+            }
 
             // We have checked everything, so it can be placed
             else
@@ -546,6 +568,7 @@ public class Board
                 else
                 {
                     playerHasTiles = false;
+                    errorCode = WORD_LETTER_NOT_IN_FRAME;
                     break;
                 }
             }
