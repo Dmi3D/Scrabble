@@ -1407,7 +1407,7 @@
    <right>
       <VBox prefHeight="507.0" prefWidth="318.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="choiceButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handlePassButton" prefHeight="40.0" prefWidth="225.0" text="PASSS" textAlignment="CENTER">
+            <Button fx:id="choiceButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handlePassButton" prefHeight="40.0" prefWidth="225.0" text="PASS" textAlignment="CENTER">
                <VBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
