@@ -8,24 +8,21 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Blend?>
-<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="507.0" prefWidth="318.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.PlaceWordController">
-   <FlowPane prefHeight="103.0" prefWidth="318.0">
+   <AnchorPane prefHeight="70.0" prefWidth="318.0">
       <children>
-         <Button fx:id="menuButton" alignment="CENTER" mnemonicParsing="false" onAction="#onButtonClicked" prefHeight="30.0" prefWidth="70.0" text="MENU" textFill="#a466ca">
+         <Button fx:id="menuButton" alignment="CENTER" layoutX="14.0" layoutY="4.0" mnemonicParsing="false" onAction="#onButtonClicked" prefHeight="30.0" prefWidth="70.0" text="MENU" textFill="#a466ca">
             <font>
                <Font name="Bookman Old Style" size="15.0" />
             </font>
-            <FlowPane.margin>
-               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-            </FlowPane.margin>
          </Button>
       </children>
-   </FlowPane>
+   </AnchorPane>
    <Pane prefHeight="38.0" prefWidth="277.0">
       <children>
           <!--word input textfield-->
