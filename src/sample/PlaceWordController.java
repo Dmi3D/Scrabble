@@ -18,10 +18,10 @@ public class PlaceWordController
     private TextField wordInputField;
 
     @FXML
-    private ChoiceBox<Integer> rowChoiceBox;
+    private ChoiceBox<String> rowChoiceBox;
 
     @FXML
-    private ChoiceBox<Character> columnChoiceBox;
+    private ChoiceBox<String> columnChoiceBox;
 
     @FXML
     private ChoiceBox<String> directionChoiceBox;
@@ -44,10 +44,7 @@ public class PlaceWordController
             wordInputField.clear();
             handleKeyReleased();
         }
-        else if ( event.getSource().equals( menuButton ) )
-        {
-            //call menu content
-        }
+
 
     }
 
@@ -60,13 +57,13 @@ public class PlaceWordController
     @FXML
     private char getColumnInput()
     {
-        return columnChoiceBox.getValue();
+        return columnChoiceBox.getValue().charAt( 0 );
     }
 
     @FXML
     private int getRowInput()
     {
-        return rowChoiceBox.getValue();
+        return Integer.parseInt(rowChoiceBox.getValue());
     }
 
     @FXML
@@ -86,8 +83,5 @@ public class PlaceWordController
         boolean disableButtons = getWordInput().isEmpty() || getWordInput().trim().isEmpty();
         placeWordButton.setDisable( disableButtons );
     }
-
-
-
 
 }
