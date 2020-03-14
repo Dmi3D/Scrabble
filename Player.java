@@ -4,14 +4,14 @@ public class Player
     private int score;
     private Frame frame;
 
-    public Player(Frame frame)
+    public Player( Frame frame )
     {
         this.name = null;
         this.score = 0;
         this.frame = frame;
     }
 
-    public void setName(String name)
+    public void setName( String name )
     {
         this.name = name;
     }
@@ -21,7 +21,7 @@ public class Player
         return this.name;
     }
 
-    public void incrementScore(int score)
+    public void incrementScore( int score )
     {
         this.score += score;
     }
@@ -36,7 +36,7 @@ public class Player
         return frame;
     }
 
-    public void reset(Pool pool)
+    public void reset( Pool pool )
     {
         this.name = " ";
         this.score = 0;
@@ -44,7 +44,7 @@ public class Player
            This is done to ensure that the frame will not have tiles taken from the pool
            used in the previous game. When game is reset, the frame will get tiles from
            the reset pool */
-        frame.reset(pool);
+        frame.reset( pool );
     }
 
 }

@@ -9,7 +9,7 @@ public class Square
         this.weight = 0;
     }
 
-    public Square(int value, boolean isWordScore)
+    public Square( int value, boolean isWordScore )
     {
         this.weight = value;
         this.isWordScore = isWordScore;
@@ -25,7 +25,7 @@ public class Square
         return tile;
     }
 
-    public void setTile(char tile)
+    public void setTile( char tile )
     {
         this.tile = tile;
     }
@@ -39,10 +39,10 @@ public class Square
     {
         boolean isWord = isWordScore();
 
-        if (getWeight() == 0)
+        if ( getWeight() == 0 )
             return "none";
 
-        else if(isWord)
+        else if ( isWord )
             return "word";
 
         else
@@ -56,7 +56,7 @@ public class Square
 
     public boolean hasTile()
     {
-        return !(getTile() == '\u0000');
+        return !( getTile() == '\u0000' );
     }
 
 }

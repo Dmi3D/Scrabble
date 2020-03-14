@@ -46,13 +46,13 @@ public class Pool
         return tilesInPool;
     }
 
-    public int getValue(char tile)
+    public int getValue( char tile )
     {
         char newTile;
         // '*' represents a blank in Scrabble
-        if (Character.isLetter( tile ) || tile == '*')
+        if ( Character.isLetter( tile ) || tile == '*' )
         {
-            if( Character.isLowerCase( tile ))
+            if ( Character.isLowerCase( tile ) )
             {
                 newTile = Character.toUpperCase( tile );
                 return getTileValues().get( newTile );
@@ -68,16 +68,38 @@ public class Pool
     private void setTileFrequencies()
     {
         // Initialising a mutable HashMap as tiles get removed from and added to pool during the game
-        tileFrequencies = new HashMap<>(){
+        tileFrequencies = new HashMap<>()
+        {
             {
-                put('E', 12); put('A', 9); put('I', 9); put('O', 8);
-                put('N', 6); put('R', 6); put('T', 6); put('L', 4);
-                put('S', 4); put('U', 4); put('D', 4); put('G', 3);
-                put('B', 2); put('C', 2); put('M', 2); put('P', 2);
-                put('F', 2); put('H', 2); put('V', 2); put('W', 2);
-                put('Y', 2); put('K', 1); put('J', 1); put('X', 1);
-                put('Q', 1); put('Z', 1); put('*', 2);
-            }};
+                put( 'E', 12 );
+                put( 'A', 9 );
+                put( 'I', 9 );
+                put( 'O', 8 );
+                put( 'N', 6 );
+                put( 'R', 6 );
+                put( 'T', 6 );
+                put( 'L', 4 );
+                put( 'S', 4 );
+                put( 'U', 4 );
+                put( 'D', 4 );
+                put( 'G', 3 );
+                put( 'B', 2 );
+                put( 'C', 2 );
+                put( 'M', 2 );
+                put( 'P', 2 );
+                put( 'F', 2 );
+                put( 'H', 2 );
+                put( 'V', 2 );
+                put( 'W', 2 );
+                put( 'Y', 2 );
+                put( 'K', 1 );
+                put( 'J', 1 );
+                put( 'X', 1 );
+                put( 'Q', 1 );
+                put( 'Z', 1 );
+                put( '*', 2 );
+            }
+        };
     }
 
 
@@ -94,7 +116,7 @@ public class Pool
 
     public char drawTile()
     {
-        if (tilesInPool == 0)
+        if ( tilesInPool == 0 )
         {
             return ' ';
         }
@@ -108,8 +130,8 @@ public class Pool
         // Avoiding errors of suspicious calls due to object drawnTile being a Character
         assert drawnTile instanceof Character;
 
-        int tileFrequency = tileFrequencies.get( ( drawnTile ));
-        while ( tileFrequency < 1 )
+        int tileFrequency = tileFrequencies.get( ( drawnTile ) );
+        while (tileFrequency < 1)
         {
             // DRAWING A NEW TILE AGAIN
             drawnTile = tiles[random.nextInt( tiles.length )];
@@ -118,7 +140,7 @@ public class Pool
         }
 
         // Decrementing frequency of drawn tile in its corresponding position in the hashmap
-        tileFrequencies.put( (Character) drawnTile, tileFrequency - 1);
+        tileFrequencies.put( (Character) drawnTile, tileFrequency - 1 );
 
         tilesInPool -= 1;
 

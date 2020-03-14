@@ -4,7 +4,7 @@ public class Frame
 {
     private char[] tiles;
 
-    public Frame(Pool pool)
+    public Frame( Pool pool )
     {
         this.tiles = new char[7];
 
@@ -12,21 +12,21 @@ public class Frame
         Arrays.fill( tiles, ' ' );
 
         // The frame object is filled automatically when created
-        fillFrame(pool);
+        fillFrame( pool );
     }
 
-    public Frame(Frame anotherFrame)    // copy Constructor
+    public Frame( Frame anotherFrame )    // copy Constructor
     {
         this.tiles = new char[7];
         for ( int i = 0; i < 7; i++ )
         {
-            this.tiles[i] = anotherFrame.getTile(i);
+            this.tiles[i] = anotherFrame.getTile( i );
         }
     }
 
-    public char getTile(int index)
+    public char getTile( int index )
     {
-        if(index >= 0 && index < 7)
+        if ( index >= 0 && index < 7 )
         {
             return tiles[index];
         }
@@ -39,25 +39,25 @@ public class Frame
         return tiles;
     }
 
-    public char removeTile(char tileToBeRetrieved)
+    public char removeTile( char tileToBeRetrieved )
     {
         // If the tile cannot be set to blank because it does not exist
-        if(!setBlank(tileToBeRetrieved))
+        if ( !setBlank( tileToBeRetrieved ) )
         {
-           return ' ';
+            return ' ';
         }
 
         // If we reach here, the tile has been set to blank
         return tileToBeRetrieved;
     }
 
-    private boolean setBlank(char tileFromPool)
+    private boolean setBlank( char tileFromPool )
     {
         // Storing index of tile to be blanked
-        int tileToBeBlanked = getIndexOfTile(tileFromPool);
+        int tileToBeBlanked = getIndexOfTile( tileFromPool );
 
         // If tile to be removed is not in the frame
-        if(tileToBeBlanked == -1)
+        if ( tileToBeBlanked == -1 )
         {
             return false;
         }
@@ -70,9 +70,9 @@ public class Frame
 
     public boolean isEmpty()
     {
-        for(char tile : tiles)
+        for ( char tile : tiles )
         {
-            if(tile != ' ')
+            if ( tile != ' ' )
             {
                 return false;
             }
@@ -81,16 +81,16 @@ public class Frame
         return true;
     }
 
-    public int getIndexOfTile(char tileToBeFound)
+    public int getIndexOfTile( char tileToBeFound )
     {
-        if(isEmpty())
+        if ( isEmpty() )
         {
             return -1;
         }
 
-        for(int i = 0; i < tiles.length; i++)
+        for ( int i = 0; i < tiles.length; i++ )
         {
-            if(tiles[i] == tileToBeFound)
+            if ( tiles[i] == tileToBeFound )
             {
                 // Return index of tile found in the frame
                 return i;
@@ -102,23 +102,23 @@ public class Frame
 
     public void displayFrame()
     {
-        System.out.println(Arrays.toString(tiles));
+        System.out.println( Arrays.toString( tiles ) );
     }
 
-    public void fillFrame(Pool pool)
+    public void fillFrame( Pool pool )
     {
-       for(int i = 0; i < tiles.length; i++)
-       {
-           if(tiles[i] == ' ')
-           {
-               // Replacing the empty tile in the frame with the drawn tile from the pool
-               tiles[i] = pool.drawTile();
-           }
-       }
+        for ( int i = 0; i < tiles.length; i++ )
+        {
+            if ( tiles[i] == ' ' )
+            {
+                // Replacing the empty tile in the frame with the drawn tile from the pool
+                tiles[i] = pool.drawTile();
+            }
+        }
     }
 
     /* EXCHANGES THE LETTERS PASSED IN WITH OTHER RANDOM LETTERS FROM THE POOL */
-    public void exchangeTiles(char[] lettersToExchange , Pool pool)
+    public void exchangeTiles( char[] lettersToExchange, Pool pool )
     {
         for ( char letter : lettersToExchange )
         {
@@ -131,13 +131,13 @@ public class Frame
 
     }
 
-    public void reset(Pool pool)
+    public void reset( Pool pool )
     {
         // Fill the frame with empty tiles
         Arrays.fill( tiles, ' ' );
 
         // Filling the frame with tiles from pool.
-        fillFrame(pool);
+        fillFrame( pool );
     }
 
 }
