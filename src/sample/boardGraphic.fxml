@@ -12,7 +12,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.TextFlow?>
 
-
 <BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainFXMLController">
    <center>
       <GridPane alignment="CENTER" gridLinesVisible="true" prefHeight="500.0" prefWidth="550.0">
@@ -1408,7 +1407,7 @@
    <right>
       <VBox prefHeight="507.0" prefWidth="318.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="choiceButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handlePassButton" prefHeight="40.0" prefWidth="225.0" text="PASS" textAlignment="CENTER">
+            <Button fx:id="choiceButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handlePassButton" prefHeight="40.0" prefWidth="225.0" text="PASSS" textAlignment="CENTER">
                <VBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
