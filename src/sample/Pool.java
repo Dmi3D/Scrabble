@@ -1,4 +1,4 @@
-// Team Name: Leap Card
+package sample;// Team Name: Leap Card
 // Team Members: Andra Antal-Berbecaru and Dmitriy Dranko
 
 import java.util.HashMap;
