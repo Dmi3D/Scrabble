@@ -1417,7 +1417,7 @@
                   <Font name="Bookman Old Style" size="17.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#handleExchangeButton" prefHeight="40.0" prefWidth="200.0" text="EXCHANGE TILES" textFill="#a466ca">
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleExchangeButton" prefHeight="40.0" prefWidth="200.0" text="EXCHANGE TILES" textFill="#a466ca">
                <font>
                   <Font name="Bookman Old Style" size="17.0" />
                </font>
@@ -1425,7 +1425,7 @@
                   <Insets bottom="5.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#handlePlaceWordButton" prefHeight="40.0" prefWidth="200.0" text="PLACE WORD" textFill="#a466ca">
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#handlePlaceWordButton" prefHeight="40.0" prefWidth="200.0" text="PLACE WORD" textFill="#a466ca">
                <font>
                   <Font name="Bookman Old Style" size="17.0" />
                </font>
@@ -1433,7 +1433,7 @@
                   <Insets bottom="5.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#handleHelpButton" prefHeight="40.0" prefWidth="200.0" text="HELP" textFill="#a466ca">
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleHelpButton" prefHeight="40.0" prefWidth="200.0" text="HELP" textFill="#a466ca">
                <VBox.margin>
                   <Insets bottom="5.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
@@ -1441,7 +1441,7 @@
                   <Font name="Bookman Old Style" size="17.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#handleQuitButton" prefHeight="40.0" prefWidth="200.0" text="QUIT" textFill="#a466ca">
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleQuitButton" prefHeight="40.0" prefWidth="200.0" text="QUIT" textFill="#a466ca">
                <VBox.margin>
                   <Insets bottom="5.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
