@@ -1,3 +1,5 @@
+package sample;
+
 public class Square
 {
     private char tile;
