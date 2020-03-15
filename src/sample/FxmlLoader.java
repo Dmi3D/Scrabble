@@ -74,6 +74,24 @@ public class FxmlLoader
         return content;
     }
 
+    public AnchorPane getQuitContent() throws IOException
+    {
+        try
+        {
+            FXMLLoader fxmlLoader = new FXMLLoader( getClass().getResource( "quitContent.fxml" ) );
+
+            content = fxmlLoader.load();
+        }
+        catch (IOException e)
+        {
+            System.out.println(" please check FxmlLoader.");
+        }
+
+        return content;
+    }
+
+
+
 
 
 

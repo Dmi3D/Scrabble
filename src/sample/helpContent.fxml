@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="124.0" prefWidth="442.0" xmlns="http://javafx.com/javafx/11.0.1">
+<AnchorPane prefHeight="124.0" prefWidth="442.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox prefHeight="124.0" prefWidth="442.0">
          <children>

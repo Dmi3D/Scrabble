@@ -1439,7 +1439,7 @@
                         <Font name="Bookman Old Style" size="17.0" />
                      </font>
                   </Button>
-                  <Button alignment="CENTER" layoutX="245.0" layoutY="311.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" text="QUIT" textFill="#a466ca" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="22.19999999999999">
+                  <Button alignment="CENTER" layoutX="245.0" layoutY="311.0" mnemonicParsing="false" onAction="#handleQuitButton" prefHeight="35.0" prefWidth="200.0" text="QUIT" textFill="#a466ca" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="22.19999999999999">
                      <font>
                         <Font name="Bookman Old Style" size="17.0" />
                      </font>

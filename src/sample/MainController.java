@@ -54,6 +54,15 @@ public class MainController
         BorderPane.setMargin( rightPanel.getBottom(), new Insets( 0, 10, 10, 10 )  );
     }
 
+    @FXML
+    public void handleQuitButton( javafx.event.ActionEvent actionEvent ) throws IOException
+    {
+        System.out.println("Help Button Clicked"); // debug
+        FxmlLoader content = new FxmlLoader();
+        rightPanel.setBottom( content.getQuitContent() );
+        BorderPane.setMargin( rightPanel.getBottom(), new Insets( 0, 10, 10, 10 )  );
+    }
+
 
 
 
