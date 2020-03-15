@@ -1,31 +1,101 @@
 package sample;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.AnchorPane;
 
-import java.net.URL;
+import java.io.IOException;
 
+// class loading files and their content based on fxml file
 public class FxmlLoader
 {
-    private VBox content;
+    private AnchorPane content;
 
-    public VBox getPage(String fileName)
+    public AnchorPane getChallengeContent() throws IOException
     {
         try
         {
-            URL fileUrl = MainController.class.getResource( "/sample/" + fileName + ".fxml" );
-            if ( fileUrl == null )
-            {
-                throw new java.io.FileNotFoundException( "FXML file cannot be found" );
-            }
+            FXMLLoader fxmlLoader = new FXMLLoader( getClass().getResource( "challengeContent.fxml" ) );
 
-            content = FXMLLoader.load( fileUrl );
-
+            content = fxmlLoader.load();
         }
-        catch(Exception e)
+        catch (IOException e)
         {
-            System.out.println("No page " + fileName + " please check FxmlLoader.");
+            System.out.println(" please check FxmlLoader.");
         }
+
         return content;
     }
+
+    public AnchorPane getExchangeContent() throws IOException
+    {
+        try
+        {
+            FXMLLoader fxmlLoader = new FXMLLoader( getClass().getResource( "exchangeContent.fxml" ) );
+
+            content = fxmlLoader.load();
+        }
+        catch (IOException e)
+        {
+            System.out.println(" please check FxmlLoader.");
+        }
+
+        return content;
+    }
+
+    public AnchorPane getPlaceWordContent() throws IOException
+    {
+        try
+        {
+            FXMLLoader fxmlLoader = new FXMLLoader( getClass().getResource( "placeWordContent.fxml" ) );
+
+            content = fxmlLoader.load();
+        }
+        catch (IOException e)
+        {
+            System.out.println(" please check FxmlLoader.");
+        }
+
+        return content;
+    }
+
+    public AnchorPane getHelpContent() throws IOException
+    {
+        try
+        {
+            FXMLLoader fxmlLoader = new FXMLLoader( getClass().getResource( "helpContent.fxml" ) );
+
+            content = fxmlLoader.load();
+        }
+        catch (IOException e)
+        {
+            System.out.println(" please check FxmlLoader.");
+        }
+
+        return content;
+    }
+
+    public AnchorPane getQuitContent() throws IOException
+    {
+        try
+        {
+            FXMLLoader fxmlLoader = new FXMLLoader( getClass().getResource( "quitContent.fxml" ) );
+
+            content = fxmlLoader.load();
+        }
+        catch (IOException e)
+        {
+            System.out.println(" please check FxmlLoader.");
+        }
+
+        return content;
+    }
+
+
+
+
+
+
+
+
+
 }
