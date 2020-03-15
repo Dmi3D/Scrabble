@@ -2,11 +2,14 @@ package sample;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 
 import java.awt.*;
+import java.io.IOException;
 
 public class PlaceWordController
 {
@@ -36,7 +39,7 @@ public class PlaceWordController
     }
 
     @FXML
-    public void onButtonClicked( ActionEvent event)
+    public void onButtonClicked( ActionEvent event) throws IOException
     {
         if ( event.getSource().equals( placeWordButton ) )
         {
@@ -44,8 +47,15 @@ public class PlaceWordController
             wordInputField.clear();
             handleKeyReleased();
         }
-
-
+        else if ( event.getSource().equals( menuButton ) )
+        {
+            System.out.println("Loading choice buttons content"); // debug
+            /*ChoiceButtonsContent content = new ChoiceButtonsContent();
+            MainController controller = new MainController();
+            controller.mainPane.setRight( content.getChoiceButtonsContent() );
+            BorderPane.setMargin( controller.mainPane.getCenter(), new Insets( 0, 0, 10, 0 ) );
+            BorderPane.setMargin( controller.mainPane.getRight(), new Insets( 0, 0, 0, 10 ) );*/
+        }
     }
 
     @FXML

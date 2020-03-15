@@ -13,7 +13,7 @@ public class FxmlLoader
     {
         try
         {
-            URL fileUrl = MainFXMLController.class.getResource( "/sample/" + fileName + ".fxml" );
+            URL fileUrl = MainController.class.getResource( "/sample/" + fileName + ".fxml" );
             if ( fileUrl == null )
             {
                 throw new java.io.FileNotFoundException( "FXML file cannot be found" );
