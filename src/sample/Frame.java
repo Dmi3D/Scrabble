@@ -119,6 +119,32 @@ public class Frame
         }
     }
 
+    public void fillFrameWithWord( char[] word )
+    {
+        int letterIndex = 0;
+        int frameIndex = 0;
+
+        while (letterIndex < word.length && frameIndex < tiles.length)
+        {
+            while(word[letterIndex] == ' ')
+            {
+                letterIndex++;
+            }
+
+            if ( tiles[frameIndex] == ' ' )
+            {
+                tiles[frameIndex] = word[letterIndex];
+                frameIndex++;
+                letterIndex++;
+            }
+
+            else
+            {
+                frameIndex++;
+            }
+        }
+    }
+
     /* EXCHANGES THE LETTERS PASSED IN WITH OTHER RANDOM LETTERS FROM THE POOL */
     public void exchangeTiles( char[] lettersToExchange, Pool pool )
     {

@@ -1,5 +1,6 @@
 package sample;
 
+import java.util.Arrays;
 import java.util.Stack;
 
 public class Board
@@ -9,12 +10,15 @@ public class Board
 
     private Square[][] board;
     private int numOfWords;
+    private char[] lastWordPlaced;
+    private int[][] lastLettersPlacedLocations; //Stores locations of the letters of the last placed word
 
     public Board()
     {
         this.board = new Square[BOUNDS][BOUNDS];
         initScores();
         numOfWords = 0;
+        lastWordPlaced = null;
     }
 
     /* DISPLAYS THE TILES ON THE BOARD */
@@ -264,7 +268,7 @@ public class Board
         }
 
         // If it is the first word, we can only place if it goes through the centre
-        if ( isFirstWord() && !goesThroughCentre( word, direction, row, column ))
+        if ( isFirstWord() && !goesThroughCentre( word, direction, row, column ) )
             return false;
 
         return true;
@@ -288,6 +292,7 @@ public class Board
         // If we can place, place tiles
         if ( canPlaceWord( word, direction, row, column, player ) )
         {
+            lastLettersPlacedLocations = new int[2][word.length];
             int placedTiles = 0;
 
             //Placing tile on board and removing it from frame
@@ -301,12 +306,14 @@ public class Board
                 if ( direction == 'A' )
                 {
                     placeTile( letterToPlace, row, column + i );
+                    setLastLettersPlacedLocations( row, column + i, placedTiles );
                     placedTiles++;
                 }
 
                 else if ( direction == 'D' )
                 {
                     placeTile( letterToPlace, row + i, column );
+                    setLastLettersPlacedLocations( row + i, column, placedTiles );
                     placedTiles++;
                 }
 
@@ -320,6 +327,7 @@ public class Board
 
             numOfWords++;
 
+            setLastWordPlaced( word );
             return true;
         }
 
@@ -628,11 +636,44 @@ public class Board
         return numOfWords;
     }
 
+    /* SETS THE LAST WORD PLACED ON THE BOARD */
+    private void setLastWordPlaced( char[] lastWordPlaced )
+    {
+        this.lastWordPlaced = lastWordPlaced;
+    }
+
+    /* RETURNS THE LAST WORD PLACED ON THE BOARD */
+    public char[] getLastWordPlaced()
+    {
+        return lastWordPlaced;
+    }
+
+    /* SETS THE LOCATIONS OF THE LETTERS PLACED IN THE LSAT MOVE */
+    private void setLastLettersPlacedLocations( int row, int column, int letterCount )
+    {
+        lastLettersPlacedLocations[0][letterCount] = row;
+        lastLettersPlacedLocations[1][letterCount] = column;
+    }
+
+    /* REMOVES THE LAST PLACED WORD FROM THE BOARD */
+    public void removeLastWordPlaced()
+    {
+        for ( int i = 0; i < lastLettersPlacedLocations[0].length; i++ )
+        {
+            int row = lastLettersPlacedLocations[0][i];
+            int column = lastLettersPlacedLocations[1][i];
+            board[row][column].setTile( ' ' );
+        }
+
+        numOfWords--;
+    }
+
     /* RESETS THE BOARD TO ITS ORIGINAL STATE */
     public void reset()
     {
         this.board = new Square[BOUNDS][BOUNDS];
         initScores();
         numOfWords = 0;
+        setLastWordPlaced( null );
     }
 }

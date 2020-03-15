@@ -1,5 +1,7 @@
 package sample;
 
+import java.util.Arrays;
+
 public class BoardTest
 {
     public static void main( String[] args )
@@ -30,6 +32,7 @@ public class BoardTest
         }
         System.out.println( "Word to place consists of tiles in " + PlayerOne.getName() + "'s frame from index 0 to 4. Word: '" + word + "'. Length: " + word.length() );
         System.out.println( "Attempting to place the word down the board starting at position (2, H)." );
+
         boolean canPlace = Board.placeWord( word.toString(), 'D', 2, 'H', PlayerOne );
         System.out.println( "Method call to placeWord() should return false. Actual: " + canPlace + "\n" );
 
@@ -195,9 +198,27 @@ public class BoardTest
         System.out.println( "Method call to placeWord() should return true. Actual: " + canPlace + "\n" );
         System.out.println( "Board now contains four words:" );
         Board.displayBoard();
-        System.out.print( PlayerTwo.getName() + "'s frame remains the same now as no tiles have been removed: " );
-        PlayerOne.getPlayerFrame().displayFrame();
-        PlayerOne.getPlayerFrame().displayFrame();
+
+        PlayerTwo.getPlayerFrame().displayFrame();
+
+
+        System.out.println( "\n********************************* REMOVING WORD BECAUSE CHALLENGER WON ********************************\n" );
+        System.out.println( "Attempting to remove last placed word: " + Arrays.toString( Board.getLastWordPlaced() ));
+
+        System.out.print( PlayerTwo.getName() + "'s frame: " );
+        PlayerTwo.getPlayerFrame().displayFrame();
+
+        System.out.println( "Removing last placed word from board." );
+        Board.removeLastWordPlaced();
+
+        System.out.println( "Putting back the word into the frame." );
+
+        PlayerTwo.getPlayerFrame().fillFrameWithWord( Board.getLastWordPlaced() );
+        System.out.print( PlayerTwo.getName() + "'s frame with letter's refiled: " );
+        PlayerTwo.getPlayerFrame().displayFrame();
+
+        System.out.println( "Board currently should have 3 words currently. Actually: " + Board.getNumOfWords() );
+        Board.displayBoard();
 
 
         System.out.println( "\n**************************** ILLEGAL PLACEMENT OF WORD THAT OVERLAPS WITH TILES ALREADY ON BOARD ******************************\n" );
@@ -217,12 +238,12 @@ public class BoardTest
         System.out.println( "Word to place: '" + word + "'. Length: " + word.length() );
         canPlace = Board.placeWord( word.toString(), 'A', 10, 'D', PlayerOne );
         System.out.println( "Method call to placeWord() should return false. Actual: " + canPlace + "\n" );
-        System.out.println( "Board still contains four words:" );
+        System.out.println( "Board still contains three words:" );
         Board.displayBoard();
 
 
         System.out.println( "**************************************************** RESETTING THE BOARD ******************************************************\n" );
-        System.out.println( "Board currently should have 4 words currently. Actually: " + Board.getNumOfWords() );
+        System.out.println( "Board currently should have 3 words currently. Actually: " + Board.getNumOfWords() );
         System.out.println( "Board will be reset." );
         Board.reset();
         System.out.println( "Board should now have 0 words. Actual: " + Board.getNumOfWords() );
