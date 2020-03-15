@@ -11,15 +11,15 @@ public class Board
 
     private Square[][] board;
     private int numOfWords;
-    private char[] lastWordPlaced;
-    private int[][] lastLettersPlacedLocations; //Stores locations of the letters of the last placed word
+    private char[] lastTilesPlaced;
+    private int[][] lastTilesPlacedLocations; //Stores locations of the letters of the last placed word
 
     public Board()
     {
         this.board = new Square[BOUNDS][BOUNDS];
         initScores();
         numOfWords = 0;
-        lastWordPlaced = null;
+        lastTilesPlaced = null;
     }
 
     /* DISPLAYS THE TILES ON THE BOARD */
@@ -275,55 +275,208 @@ public class Board
         return true;
     }
 
-    public int calculateScoreOfLastPlacedWord( Pool pool )
+    private char[] convertStringToArray(String string)
     {
-        int[] scores = new int[getLastWordPlaced().length];
+        string = string.toUpperCase();
 
-        char[] word = getLastWordPlaced();
+        char[] arr = new char[string.length()];
 
+        for ( int i = 0; i < string.length(); i++ )
+        {
+            arr[i] = string.charAt( i );
+        }
+
+        return arr;
+    }
+
+    //word is last word placed, direction, row and column are start points, pool is to get values
+    private ArrayList<String> getWordsCreated( char[] tilesPlaced, char direction, int row, int column)
+    {
+        ArrayList<String> wordsCreated = new ArrayList<>();
+
+        int startIndex = -1;
+        int endIndex = -1;
+
+        //Get the originally created word stored
+        if ( direction == 'A' )
+        {
+            startIndex = column;
+
+            //If there is a letter at the left of the placed tile, keep going left
+            while ( startIndex - 1 >= 0 && getSquareAt( row, startIndex - 1 ).getTile() != '\u0000' )
+            {
+                startIndex--;
+            }
+
+            //If there is a letter at the right of the placed tile, keep going right
+            while ( endIndex + 1 < BOUNDS && getSquareAt( row, endIndex + 1 ).getTile() != '\u0000' )
+            {
+                endIndex++;
+            }
+
+            int lengthOfWord = endIndex - startIndex;
+
+            String word = "";
+
+            for(int i = 0; i < lengthOfWord; i++)
+            {
+                word += getSquareAt( row, startIndex ).getTile();
+
+                startIndex++;
+            }
+
+            wordsCreated.add( word );
+        }
+
+        //Get the originally created word stored
+        else if ( direction == 'D' )
+        {
+            startIndex = row;
+
+            //If there is a letter at the left of the placed tile, keep going left
+            while ( startIndex - 1 >= 0 && getSquareAt( startIndex - 1, column ).getTile() != '\u0000' )
+            {
+                startIndex--;
+            }
+
+            //If there is a letter at the right of the placed tile, keep going right
+            while ( endIndex + 1 < BOUNDS && getSquareAt( endIndex + 1, column ).getTile() != '\u0000' )
+            {
+                endIndex++;
+            }
+
+            int lengthOfWord = endIndex - startIndex;
+
+            String word = "";
+
+            for(int i = 0; i < lengthOfWord; i++)
+            {
+                word += getSquareAt( startIndex, column ).getTile();
+
+                startIndex++;
+            }
+
+            wordsCreated.add( word );
+        }
+
+        /*//If there is any letter on the long sides of the word
+        for ( int i = startIndex; i <= endIndex; i++ )
+        {
+            //If no letters above and below
+            if ( direction == 'A' )
+            {
+                if ( row != 0 && getSquareAt( row - 1, i ).getTile() != '\u0000' )
+                    return true;
+
+                if ( row != BOUNDS - 1 && getSquareAt( row + 1, i ).getTile() != '\u0000' )
+                    return true;
+            }
+
+            else if ( direction == 'D' )
+            {
+                if ( column != 0 && getSquareAt( i, column - 1 ).getTile() != '\u0000' )
+                    return true;
+
+                if ( column != BOUNDS - 1 && getSquareAt( i, column + 1 ).getTile() != '\u0000' )
+                    return true;
+            }
+        }*/
+
+        return wordsCreated;
+    }
+
+    /* RETURNS VALID SCORE OF THE WORD */ //check for bingo
+    private int getScoreOfWord( char[] word, char[] tilesPlaced, Pool pool )
+    {
+        //Removing actual placed tiles from word
+        for(int i = 0; i < tilesPlaced.length; i++)
+        {
+            for(int j = 0; j < word.length; j++)
+            {
+                if(tilesPlaced[i] != ' ')
+                {
+                    word[j] = ' ';
+                }
+            }
+        }
+
+        int scoreOfTilesOnBoard = 0;
+
+        //CALCULATING SCORE OF TILES ALREADY ON BOARD
+        for ( int i = 0; i < word.length; i++ )
+        {
+            if(word[i] != ' ')
+            {
+                scoreOfTilesOnBoard += pool.getValue( word[i] );
+            }
+        }
+
+
+        //CALCULATING SCORE OF TILES WHICH WERE PLACED
+        int[] scoresOfPlacedTiles = new int[getLastTilesPlaced().length];
         ArrayList<Integer> wordScores = new ArrayList<>();
 
-        //For each letter in last word placed
-        for ( int i = 0; i < scores.length; i++ )
+        // For each letter in last word placed
+        for ( int i = 0; i < scoresOfPlacedTiles.length; i++ )
         {
-            int row = lastLettersPlacedLocations[0][i];
-            int column = lastLettersPlacedLocations[1][i];
+            int row = lastTilesPlacedLocations[0][i];
+            int column = lastTilesPlacedLocations[1][i];
             Square square = getSquareAt( row, column );
 
-            if ( word[i] != ' ' )
+            if ( tilesPlaced[i] != ' ' )
             {
-                scores[i] = pool.getValue( word[i] );
+                scoresOfPlacedTiles[i] = pool.getValue( tilesPlaced[i] );
 
-                //If the tile is on a letter score
+                // If the tile is on a letter score
                 if ( square.getType().equals( "letr" ) )
                 {
-                    //Multiply that specific letter score by the weight
-                    scores[i] *= square.getWeight();
+                    // Multiply that specific letter score by the weight
+                    scoresOfPlacedTiles[i] *= square.getWeight();
                 }
 
-                //If the tile is on a word score
+                // If the tile is on a word score
                 else if ( square.getType().equals( "word" ) )
                 {
-                    //Add the weight of the word score to an array list
+                    // Add the weight of the word score to an array list
                     wordScores.add( square.getWeight() );
                 }
             }
         }
 
-        System.out.println( "Array of scores: " + Arrays.toString( scores ) );
-        int totalScore = Arrays.stream( scores ).sum();
+        int scoresOfTilesPlaced = Arrays.stream( scoresOfPlacedTiles ).sum();
 
-        //If the word passed over word scores
+
+        //ADDING SCORES OF TILES WHICH WERE ALREADY ON BOARD AND THE TILES WHICH WERE PLACED
+        int totalScoreOfWord = scoreOfTilesOnBoard + scoresOfTilesPlaced;
+
+        //If placed tile was on a word score, multiply result
         if ( !wordScores.isEmpty() )
         {
-            //Multiply the total score by the word scores
+            // Multiply the total score by the word scoresOfPlacedTiles
             for ( int i = 0; i < wordScores.size(); i++ )
             {
-                totalScore *= wordScores.get( i );
+                totalScoreOfWord *= wordScores.get( i );
             }
         }
 
-        return totalScore;
+        return totalScoreOfWord;
+    }
+
+    public int getScoreFromLastMove(  )
+    {
+        /*
+            int score = 0;
+            ArrayList<String> wordsCreated = getWordsCreated();
+
+            for(int i = 0; i < wordsCreated.size(); i++)
+            {
+                score += getScoreOfWord(wordsCreated.get( i ));
+            }
+
+            return score;
+
+         */
+        return 0;
     }
 
     /* PLACES A WORD WITH A CERTAIN DIRECTION. PASS IN STARTING POINT */
@@ -333,18 +486,12 @@ public class Board
         int column = getColumnIndex( columnLetter );
         direction = Character.toUpperCase( direction );
 
-        string = string.toUpperCase();
-        char[] word = new char[string.length()];
+        char[] word = convertStringToArray( string );
 
-        for ( int i = 0; i < string.length(); i++ )
-        {
-            word[i] = string.charAt( i );
-        }
-
-        // If we can place, place tiles
+        // If we can place, place tiles (and auto remove them from frame)
         if ( canPlaceWord( word, direction, row, column, player ) )
         {
-            lastLettersPlacedLocations = new int[2][word.length];
+            lastTilesPlacedLocations = new int[2][word.length];
             int placedTiles = 0;
 
             //Placing tile on board and removing it from frame
@@ -379,7 +526,7 @@ public class Board
 
             numOfWords++;
 
-            setLastWordPlaced( word );
+            setLastTilesPlaced( word );
             return true;
         }
 
@@ -689,31 +836,31 @@ public class Board
     }
 
     /* SETS THE LAST WORD PLACED ON THE BOARD */
-    private void setLastWordPlaced( char[] lastWordPlaced )
+    private void setLastTilesPlaced( char[] lastTilesPlaced )
     {
-        this.lastWordPlaced = lastWordPlaced;
+        this.lastTilesPlaced = lastTilesPlaced;
     }
 
     /* RETURNS THE LAST WORD PLACED ON THE BOARD */
-    public char[] getLastWordPlaced()
+    public char[] getLastTilesPlaced()
     {
-        return lastWordPlaced;
+        return lastTilesPlaced;
     }
 
     /* SETS THE LOCATIONS OF THE LETTERS PLACED IN THE LSAT MOVE */
     private void setLastLettersPlacedLocations( int row, int column, int letterCount )
     {
-        lastLettersPlacedLocations[0][letterCount] = row;
-        lastLettersPlacedLocations[1][letterCount] = column;
+        lastTilesPlacedLocations[0][letterCount] = row;
+        lastTilesPlacedLocations[1][letterCount] = column;
     }
 
     /* REMOVES THE LAST PLACED WORD FROM THE BOARD */
     public void removeLastWordPlaced()
     {
-        for ( int i = 0; i < lastLettersPlacedLocations[0].length; i++ )
+        for ( int i = 0; i < lastTilesPlacedLocations[0].length; i++ )
         {
-            int row = lastLettersPlacedLocations[0][i];
-            int column = lastLettersPlacedLocations[1][i];
+            int row = lastTilesPlacedLocations[0][i];
+            int column = lastTilesPlacedLocations[1][i];
             board[row][column].setTile( ' ' );
         }
 
@@ -726,6 +873,6 @@ public class Board
         this.board = new Square[BOUNDS][BOUNDS];
         initScores();
         numOfWords = 0;
-        setLastWordPlaced( null );
+        setLastTilesPlaced( null );
     }
 }

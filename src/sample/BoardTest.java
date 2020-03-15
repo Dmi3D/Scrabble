@@ -207,7 +207,7 @@ public class BoardTest
 
 
         System.out.println( "\n********************************* REMOVING WORD BECAUSE CHALLENGER WON ********************************\n" );
-        System.out.println( "Attempting to remove last placed word: " + Arrays.toString( Board.getLastWordPlaced() ));
+        System.out.println( "Attempting to remove last placed word: " + Arrays.toString( Board.getLastTilesPlaced() ));
 
         System.out.print( PlayerTwo.getName() + "'s frame: " );
         PlayerTwo.getPlayerFrame().displayFrame();
@@ -217,7 +217,7 @@ public class BoardTest
 
         System.out.println( "Putting back the word into the frame." );
 
-        PlayerTwo.getPlayerFrame().fillFrameWithWord( Board.getLastWordPlaced() );
+        PlayerTwo.getPlayerFrame().fillFrameWithWord( Board.getLastTilesPlaced() );
         System.out.print( PlayerTwo.getName() + "'s frame with letter's refiled: " );
         PlayerTwo.getPlayerFrame().displayFrame();
 
