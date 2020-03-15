@@ -1424,7 +1424,7 @@
                         <Font name="Bookman Old Style" size="17.0" />
                      </font>
                   </Button>
-                  <Button alignment="CENTER" layoutX="239.0" layoutY="214.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" text="EXCHANGE TILES" textFill="#a466ca" AnchorPane.bottomAnchor="130.0" AnchorPane.rightAnchor="22.600000000000023">
+                  <Button alignment="CENTER" layoutX="239.0" layoutY="214.0" mnemonicParsing="false" onAction="#handleExchangeButton" prefHeight="35.0" prefWidth="200.0" text="EXCHANGE TILES" textFill="#a466ca" AnchorPane.bottomAnchor="130.0" AnchorPane.rightAnchor="22.600000000000023">
                      <font>
                         <Font name="Bookman Old Style" size="17.0" />
                      </font>
