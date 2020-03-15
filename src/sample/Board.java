@@ -1,5 +1,6 @@
 package sample;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Stack;
 
@@ -272,6 +273,57 @@ public class Board
             return false;
 
         return true;
+    }
+
+    public int calculateScoreOfLastPlacedWord( Pool pool )
+    {
+        int[] scores = new int[getLastWordPlaced().length];
+
+        char[] word = getLastWordPlaced();
+
+        ArrayList<Integer> wordScores = new ArrayList<>();
+
+        //For each letter in last word placed
+        for ( int i = 0; i < scores.length; i++ )
+        {
+            int row = lastLettersPlacedLocations[0][i];
+            int column = lastLettersPlacedLocations[1][i];
+            Square square = getSquareAt( row, column );
+
+            if ( word[i] != ' ' )
+            {
+                scores[i] = pool.getValue( word[i] );
+
+                //If the tile is on a letter score
+                if ( square.getType().equals( "letr" ) )
+                {
+                    //Multiply that specific letter score by the weight
+                    scores[i] *= square.getWeight();
+                }
+
+                //If the tile is on a word score
+                else if ( square.getType().equals( "word" ) )
+                {
+                    //Add the weight of the word score to an array list
+                    wordScores.add( square.getWeight() );
+                }
+            }
+        }
+
+        System.out.println( "Array of scores: " + Arrays.toString( scores ) );
+        int totalScore = Arrays.stream( scores ).sum();
+
+        //If the word passed over word scores
+        if ( !wordScores.isEmpty() )
+        {
+            //Multiply the total score by the word scores
+            for ( int i = 0; i < wordScores.size(); i++ )
+            {
+                totalScore *= wordScores.get( i );
+            }
+        }
+
+        return totalScore;
     }
 
     /* PLACES A WORD WITH A CERTAIN DIRECTION. PASS IN STARTING POINT */

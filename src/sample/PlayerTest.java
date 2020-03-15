@@ -62,16 +62,16 @@ public class PlayerTest
         // Increasing player's scores
         System.out.println( "\n********************* TESTING INCREMENT FUNCTIONALITY OF SCORE *********************\n" );
 
-        PlayerOne.incrementScore( 12 );
+        PlayerOne.increaseScore( 12 );
         System.out.println( "Incrementing " + PlayerOne.getName() + "'s score by 12. Expected: (0 + 12 = 12). Actual: " + PlayerOne.getScore() );
 
-        PlayerOne.incrementScore( 6 );
+        PlayerOne.increaseScore( 6 );
         System.out.println( "Incrementing " + PlayerOne.getName() + "'s score by 5. Expected: (12 + 6 = 18). Actual: " + PlayerOne.getScore() + "\n" );
 
-        PlayerTwo.incrementScore( 17 );
+        PlayerTwo.increaseScore( 17 );
         System.out.println( "Incrementing " + PlayerTwo.getName() + "'s score by 17. Expected: (0 + 17 = 17). Actual: " + PlayerTwo.getScore() );
 
-        PlayerTwo.incrementScore( 3 );
+        PlayerTwo.increaseScore( 3 );
         System.out.println( "Incrementing " + PlayerTwo.getName() + "'s score by 3. Expected: (17 + 3 = 20). Actual: " + PlayerTwo.getScore() + "\n" );
 
         // Removing a tile from a player's frame when making a move
