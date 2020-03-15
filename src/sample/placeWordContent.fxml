@@ -4,29 +4,20 @@
 <?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.DialogPane?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.Blend?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="124.0" prefWidth="442.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.PlaceWordController">
    <children>
-      <DialogPane layoutY="70.4000015258789" prefHeight="60.0" prefWidth="318.0" />
-      <Label alignment="CENTER" layoutX="318.0" layoutY="26.0" text="DIRECTION" textFill="#a466ca">
-         <font>
-            <Font name="Bookman Old Style" size="17.0" />
-         </font>
-      </Label>
-       <Label alignment="CENTER" layoutX="36.0" layoutY="23.0" prefHeight="25.0" prefWidth="53.0" text="ROW" textAlignment="CENTER" textFill="#a466ca">
+       <Label alignment="CENTER" layoutX="25.0" layoutY="22.0" prefHeight="25.0" prefWidth="53.0" text="ROW" textAlignment="CENTER" textFill="#a466ca">
            <font>
                <Font name="Bookman Old Style" size="17.0" />
            </font>
        </Label>
        <!--row choicebox-->
-      <ChoiceBox fx:id="rowChoiceBox" layoutX="90.0" layoutY="18.0" prefHeight="35.0" prefWidth="35.0">
+      <ChoiceBox fx:id="rowChoiceBox" layoutX="79.0" layoutY="23.0" prefHeight="15.0" prefWidth="30.0">
            <!--row choices-->
           <items>
               <FXCollections fx:factory="observableArrayList">
@@ -48,36 +39,24 @@
               </FXCollections>
           </items>
       </ChoiceBox>
-       <Label alignment="CENTER" layoutY="73.0" prefHeight="26.0" prefWidth="79.0" text="COLUMN" textAlignment="CENTER" textFill="#a466ca" AnchorPane.leftAnchor="5.0">
+       <Label alignment="CENTER" layoutX="130.0" layoutY="22.0" prefHeight="26.0" prefWidth="79.0" text="COLUMN" textAlignment="CENTER" textFill="#a466ca" AnchorPane.leftAnchor="130.0">
            <font>
                <Font name="Bookman Old Style" size="17.0" />
            </font>
        </Label>
-       <Button fx:id="placeWordButton" alignment="CENTER" contentDisplay="CENTER" layoutX="161.0" layoutY="69.0" mnemonicParsing="false" onAction="#onButtonClicked" prefHeight="35.0" prefWidth="120.0" text="PLACE WORD" textAlignment="CENTER" textFill="#a466ca" AnchorPane.bottomAnchor="26.200001525878903" AnchorPane.rightAnchor="161.0">
+       <Button fx:id="placeWordButton" alignment="CENTER" contentDisplay="CENTER" layoutX="317.0" layoutY="61.0" mnemonicParsing="false" onAction="#onButtonClicked" prefHeight="35.0" prefWidth="70.0" text="PLACE" textAlignment="CENTER" textFill="#a466ca">
            <font>
                <Font name="Bookman Old Style" size="14.0" />
            </font>
        </Button>
        <!--word input textfield-->
-      <TextField fx:id="wordInputField" layoutX="145.0" layoutY="18.0" onKeyReleased="#handleKeyReleased" prefHeight="35.0" prefWidth="150.0" promptText="Word" AnchorPane.rightAnchor="146.60000000000002" AnchorPane.topAnchor="18.0">
+      <TextField fx:id="wordInputField" layoutX="277.0" layoutY="18.0" onKeyReleased="#handleKeyReleased" prefHeight="15.0" prefWidth="150.0" promptText="Word" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="18.0">
          <font>
             <Font name="Bookman Old Style" size="17.0" />
          </font>
       </TextField>
-       <ChoiceBox fx:id="directionChoiceBox" layoutX="318.0" layoutY="65.0" prefHeight="35.0" prefWidth="100.0" AnchorPane.leftAnchor="318.0">
-           <effect>
-               <Blend mode="COLOR_BURN" />
-           </effect>
-   
-                    <items>
-               <FXCollections fx:factory="observableArrayList">
-                   <String fx:value="Across" />
-                   <String fx:value="Down" />
-               </FXCollections>
-           </items>
-       </ChoiceBox>
        <!--column choicebox-->
-      <ChoiceBox fx:id="columnChoiceBox" layoutX="90.0" layoutY="69.0" prefHeight="35.0" prefWidth="35.0">
+      <ChoiceBox fx:id="columnChoiceBox" layoutX="218.0" layoutY="23.0" prefHeight="15.0" prefWidth="30.0">
            <!--column choices-->
           <items>
               <FXCollections fx:factory="observableArrayList">
@@ -99,5 +78,18 @@
               </FXCollections>
           </items>
       </ChoiceBox>
+      <ChoiceBox fx:id="directionChoiceBox" layoutX="134.0" layoutY="64.0" prefHeight="30.0" prefWidth="100.0">
+              <items>
+                  <FXCollections fx:factory="observableArrayList">
+                  <String fx:value="Across" />
+                  <String fx:value="Down" />
+                  </FXCollections>
+              </items>
+      </ChoiceBox>
+      <Label alignment="CENTER" layoutY="64.0" prefHeight="30.0" prefWidth="129.0" text="DIRECTION" textFill="#a466ca">
+         <font>
+            <Font name="Bookman Old Style" size="17.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

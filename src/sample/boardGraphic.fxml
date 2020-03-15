@@ -1407,44 +1407,54 @@
    </center>
    <!--Border Pane right side of pane with content-->
    <right>
-      <AnchorPane prefHeight="507.0" prefWidth="449.0" BorderPane.alignment="BOTTOM_CENTER">
+      <BorderPane fx:id="rightPanel" BorderPane.alignment="BOTTOM_CENTER">
          <BorderPane.margin>
             <Insets left="10.0" />
          </BorderPane.margin>
-         <children>
-            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="236.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" text="CHALLENGE" textAlignment="CENTER" textFill="#a466ca" AnchorPane.bottomAnchor="235.0" AnchorPane.leftAnchor="22.5">
-               <font>
-                  <Font name="Bookman Old Style" size="17.0" />
-               </font>
-            </Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="290.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" text="PASS" textAlignment="CENTER" textFill="#a466ca" AnchorPane.bottomAnchor="185.0" AnchorPane.leftAnchor="22.5">
-               <font>
-                  <Font name="Bookman Old Style" size="17.0" />
-               </font>
-            </Button>
-            <Button alignment="CENTER" layoutX="262.0" layoutY="236.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" text="EXCHANGE TILES" textFill="#a466ca" AnchorPane.bottomAnchor="235.0" AnchorPane.rightAnchor="22.5">
-               <font>
-                  <Font name="Bookman Old Style" size="17.0" />
-               </font>
-            </Button>
-            <Button alignment="CENTER" layoutX="262.0" layoutY="290.0" mnemonicParsing="false" onAction="#handlePlaceWordButton" prefHeight="35.0" prefWidth="200.0" text="PLACE WORD" textFill="#a466ca" AnchorPane.bottomAnchor="185.0" AnchorPane.rightAnchor="22.5">
-               <font>
-                  <Font name="Bookman Old Style" size="17.0" />
-               </font>
-            </Button>
-            <Button alignment="CENTER" layoutX="14.0" layoutY="339.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" text="HELP" textFill="#a466ca" AnchorPane.bottomAnchor="135.0" AnchorPane.leftAnchor="22.5">
-               <font>
-                  <Font name="Bookman Old Style" size="17.0" />
-               </font>
-            </Button>
-            <Button alignment="CENTER" layoutX="262.0" layoutY="337.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" text="QUIT" textFill="#a466ca" AnchorPane.bottomAnchor="135.0" AnchorPane.rightAnchor="22.5">
-               <font>
-                  <Font name="Bookman Old Style" size="17.0" />
-               </font>
-            </Button>
-            <DialogPane layoutX="12.0" layoutY="14.0" prefHeight="200.0" prefWidth="455.0" />
-            <AnchorPane layoutX="12.0" layoutY="378.0" prefHeight="124.0" prefWidth="442.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="380.0" />
-         </children>
-      </AnchorPane>
+         <center>
+            <AnchorPane prefHeight="383.0" prefWidth="449.0">
+               <children>
+                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="214.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" text="CHALLENGE" textAlignment="CENTER" textFill="#a466ca" AnchorPane.bottomAnchor="130.0" AnchorPane.leftAnchor="14.0">
+                     <font>
+                        <Font name="Bookman Old Style" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="263.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" text="PASS" textAlignment="CENTER" textFill="#a466ca" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="14.0">
+                     <font>
+                        <Font name="Bookman Old Style" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button alignment="CENTER" layoutX="239.0" layoutY="214.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" text="EXCHANGE TILES" textFill="#a466ca" AnchorPane.bottomAnchor="130.0" AnchorPane.rightAnchor="22.600000000000023">
+                     <font>
+                        <Font name="Bookman Old Style" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button alignment="CENTER" layoutX="239.0" layoutY="263.0" mnemonicParsing="false" onAction="#handlePlaceWordButton" prefHeight="35.0" prefWidth="200.0" text="PLACE WORD" textFill="#a466ca" AnchorPane.bottomAnchor="80.0" AnchorPane.rightAnchor="22.600000000000023">
+                     <font>
+                        <Font name="Bookman Old Style" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button alignment="CENTER" layoutX="14.0" layoutY="311.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" text="HELP" textFill="#a466ca" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="14.0">
+                     <font>
+                        <Font name="Bookman Old Style" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button alignment="CENTER" layoutX="245.0" layoutY="311.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" text="QUIT" textFill="#a466ca" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="22.19999999999999">
+                     <font>
+                        <Font name="Bookman Old Style" size="17.0" />
+                     </font>
+                  </Button>
+                  <DialogPane layoutX="3.0" prefHeight="200.0" prefWidth="455.0" />
+               </children>
+            </AnchorPane>
+         </center>
+         <bottom>
+            <AnchorPane prefHeight="124.0" prefWidth="442.0" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" />
+               </BorderPane.margin>
+            </AnchorPane>
+         </bottom>
+      </BorderPane>
    </right>
 </BorderPane>

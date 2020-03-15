@@ -12,7 +12,7 @@ public class UI extends Application {
     public void start(Stage window) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource( "boardGraphic.fxml" ));
         window.setTitle("Scrabble");
-        window.setScene(new Scene(root, 855, 500));
+        window.setScene(new Scene(root, 1028, 500));
         window.setResizable(false);
         window.show();
     }

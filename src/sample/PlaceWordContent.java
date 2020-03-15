@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
@@ -8,8 +9,8 @@ import java.io.IOException;
 public class PlaceWordContent
 {
 
-    private VBox content;
-    public VBox getPlaceWordContent() throws IOException
+    private AnchorPane content;
+    public AnchorPane getPlaceWordContent() throws IOException
     {
         try
         {
