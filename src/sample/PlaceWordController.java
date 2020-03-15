@@ -44,8 +44,11 @@ public class PlaceWordController
             wordInputField.clear();
             handleKeyReleased();
         }
+        else if ( event.getSource().equals( menuButton ) )
+        {
+            System.out.println("Menu button placed");
 
-
+        }
     }
 
     @FXML

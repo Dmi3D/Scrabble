@@ -6,8 +6,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 import java.awt.event.ActionEvent;
+import java.io.IOException;
 
-public class MainFXMLController
+public class MainController
 {
 
     @FXML
@@ -20,13 +21,12 @@ public class MainFXMLController
     }*/
 
    @FXML
-    private void handlePlaceWordButton( ActionEvent event )
+    public void handlePlaceWordButton( javafx.event.ActionEvent actionEvent ) throws IOException
    {
-       System.out.println("Place Word Button Clicked"); // debug
-       FxmlLoader loader = new FxmlLoader();
-       VBox placeWordContent = loader.getPage( "placeWordFxml" );
-       mainPane.setRight( placeWordContent );
-   }
+        System.out.println("Place Word Button Clicked"); // debug
+        PlaceWordContent content = new PlaceWordContent();
+        mainPane.setRight( content.getPlaceWordContent() );
+    }
 
 
 }
