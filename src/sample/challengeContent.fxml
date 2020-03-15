@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="124.0" prefWidth="442.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ChallengeContentController">
+   <children>
+      <Label layoutX="45.0" layoutY="20.0" prefHeight="84.0" prefWidth="352.0" text="NOT SUPPORTED AT THE MOMENT. PLEASE SUBTRACT ANY SUCCESSFULL CHALLENGE MANUALLY AT THE END AND CONTINUE THE GAME AS NORMAL." textAlignment="CENTER" textFill="#a466ca" wrapText="true">
+         <font>
+            <Font name="Bookman Old Style" size="17.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

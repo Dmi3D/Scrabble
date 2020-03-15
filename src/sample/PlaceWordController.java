@@ -71,7 +71,7 @@ public class PlaceWordController
     }
 
     // disabling the buttons when there is no text typed into the text field
-    // to avoid user making any mistakes
+    // to avoid user submitting empty field
     @FXML
     public void handleKeyReleased()
     {

@@ -18,10 +18,19 @@ public class MainController
     private BorderPane rightPanel;
 
     @FXML
+    public void handleChallengeButton( javafx.event.ActionEvent actionEvent ) throws IOException
+    {
+        System.out.println("Challenge Button Clicked"); // debug
+        FxmlLoader content = new FxmlLoader();
+        rightPanel.setBottom( content.getChallengeContent() );
+        BorderPane.setMargin( rightPanel.getBottom(), new Insets( 0, 10, 10, 10 )  );
+    }
+
+    @FXML
     public void handleExchangeButton( javafx.event.ActionEvent actionEvent ) throws IOException
     {
         System.out.println("Exchange Button Clicked"); // debug
-        ExchangeContent content = new ExchangeContent();
+        FxmlLoader content = new FxmlLoader();
         rightPanel.setBottom( content.getExchangeContent() );
         BorderPane.setMargin( rightPanel.getBottom(), new Insets( 0, 10, 10, 10 )  );
 
@@ -31,7 +40,7 @@ public class MainController
     public void handlePlaceWordButton( javafx.event.ActionEvent actionEvent ) throws IOException
     {
         System.out.println("Place Word Button Clicked"); // debug
-        PlaceWordContent content = new PlaceWordContent();
+        FxmlLoader content = new FxmlLoader();
         rightPanel.setBottom( content.getPlaceWordContent() );
         BorderPane.setMargin( rightPanel.getBottom(), new Insets( 0, 10, 10, 10 )  );
     }
