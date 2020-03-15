@@ -59,6 +59,10 @@ public class BoardTest
         canPlace = Board.placeWord( word.toString(), 'A', 8, 'F', PlayerOne );
         System.out.println( "Method call to placeWord() should return true. Actual: " + canPlace + "\n" );
         Board.displayBoard();
+
+        PlayerOne.increaseScore( Board.calculateScoreOfLastPlacedWord( Pool ) );
+        System.out.println( PlayerOne.getName() + "'s score now: " + PlayerOne.getScore());
+
         System.out.print( PlayerOne.getName() + "'s frame now: " );
         PlayerOne.getPlayerFrame().displayFrame();
         PlayerOne.getPlayerFrame().fillFrame( Pool );
