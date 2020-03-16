@@ -58,10 +58,16 @@ public class BoardTest
         System.out.println( "Placing the first word '" + word + "' across the board starting at position (8, F), which goes through centre." );
         canPlace = Board.placeWord( word.toString(), 'A', 8, 'F', PlayerOne );
         System.out.println( "Method call to placeWord() should return true. Actual: " + canPlace + "\n" );
+
         Board.displayBoard();
 
-        PlayerOne.increaseScore( Board.calculateScoreOfLastPlacedWord( Pool ) );
-        System.out.println( PlayerOne.getName() + "'s score now: " + PlayerOne.getScore());
+        PlayerOne.increaseScore( Board.getScoreFromLastMove(Pool) );
+        System.out.println( "Score of " + PlayerOne.getName() + ": " + PlayerOne.getScore());
+
+        for(int i = 0; i < Board.wordsCreatedLastMove.size(); i++)
+        {
+            System.out.println("Word " + i + ": " + Board.wordsCreatedLastMove.get( i ));
+        }
 
         System.out.print( PlayerOne.getName() + "'s frame now: " );
         PlayerOne.getPlayerFrame().displayFrame();
@@ -96,6 +102,15 @@ public class BoardTest
         System.out.println( "Method call to placeWord() should return true. Actual: " + canPlace + "\n" );
         System.out.println( "Board now contains the two words on the board:" );
         Board.displayBoard();
+
+        PlayerTwo.increaseScore( Board.getScoreFromLastMove(Pool) );
+        System.out.println( "Score of " + PlayerTwo.getName() + ": " + PlayerTwo.getScore());
+
+        for(int i = 0; i < Board.wordsCreatedLastMove.size(); i++)
+        {
+            System.out.println("Word " + i + ": " + Board.wordsCreatedLastMove.get( i ));
+        }
+
         System.out.print( PlayerTwo.getName() + "'s frame now: " );
         PlayerTwo.getPlayerFrame().displayFrame();
         PlayerTwo.getPlayerFrame().fillFrame( Pool );
@@ -129,6 +144,15 @@ public class BoardTest
         canPlace = Board.placeWord( word.toString(), 'A', 9, 'I', PlayerOne );
         System.out.println( "Method call to placeWord() should return true. Actual: " + canPlace + "\n" );
         System.out.println( "Board now contains three words:" );
+
+        PlayerOne.increaseScore( Board.getScoreFromLastMove(Pool) );
+        System.out.println( "Score of " + PlayerOne.getName() + ": " + PlayerOne.getScore());
+
+        for(int i = 0; i < Board.wordsCreatedLastMove.size(); i++)
+        {
+            System.out.println("Word " + i + ": " + Board.wordsCreatedLastMove.get( i ));
+        }
+
         Board.displayBoard();
         System.out.print( PlayerOne.getName() + "'s frame now: " );
         PlayerOne.getPlayerFrame().displayFrame();
@@ -203,6 +227,14 @@ public class BoardTest
         System.out.println( "Board now contains four words:" );
         Board.displayBoard();
 
+        PlayerTwo.increaseScore( Board.getScoreFromLastMove(Pool) );
+        System.out.println( "Score of " + PlayerTwo.getName() + ": " + PlayerTwo.getScore());
+
+        for(int i = 0; i < Board.wordsCreatedLastMove.size(); i++)
+        {
+            System.out.println("Word " + i + ": " + Board.wordsCreatedLastMove.get( i ));
+        }
+
         PlayerTwo.getPlayerFrame().displayFrame();
 
 
@@ -220,6 +252,9 @@ public class BoardTest
         PlayerTwo.getPlayerFrame().fillFrameWithWord( Board.getLastTilesPlaced() );
         System.out.print( PlayerTwo.getName() + "'s frame with letter's refiled: " );
         PlayerTwo.getPlayerFrame().displayFrame();
+
+        PlayerTwo.decreaseScore( Board.getScoreFromLastMove(Pool) );
+        System.out.println( "Score of " + PlayerTwo.getName() + ": " + PlayerTwo.getScore());
 
         System.out.println( "Board currently should have 3 words currently. Actually: " + Board.getNumOfWords() );
         Board.displayBoard();
