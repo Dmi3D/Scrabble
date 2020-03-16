@@ -30,7 +30,7 @@ public class Player
 
     public void decreaseScore( int score )
     {
-        this.score += score;
+        this.score -= score;
     }
 
     public int getScore()
