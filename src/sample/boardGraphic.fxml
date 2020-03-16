@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DialogPane?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -1419,7 +1420,7 @@
                         <Font name="Bookman Old Style" size="17.0" />
                      </font>
                   </Button>
-                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="263.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" text="PASS" textAlignment="CENTER" textFill="#a466ca" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="14.0">
+                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="263.0" mnemonicParsing="false" onAction="#handlePassButton" prefHeight="35.0" prefWidth="200.0" text="PASS" textAlignment="CENTER" textFill="#a466ca" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="14.0">
                      <font>
                         <Font name="Bookman Old Style" size="17.0" />
                      </font>
@@ -1444,7 +1445,36 @@
                         <Font name="Bookman Old Style" size="17.0" />
                      </font>
                   </Button>
-                  <DialogPane layoutX="3.0" prefHeight="200.0" prefWidth="455.0" />
+                  <TextArea fx:id="wordsPlacedDisplay" layoutX="239.0" prefHeight="194.0" prefWidth="200.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="10.0" />
+                  <DialogPane fx:id="playerInformationDisplayOnTurn" layoutX="2.0" layoutY="1.0" prefHeight="194.0" prefWidth="200.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+                     <header>
+                        <Label fx:id="playerTurnDisplayLabel" alignment="TOP_CENTER" prefHeight="59.0" prefWidth="200.0" textAlignment="CENTER" textFill="#a46caa" wrapText="true">
+                           <font>
+                              <Font name="Bookman Old Style" size="22.0" />
+                           </font>
+                        </Label>
+                     </header>
+                     <content>
+                        <Label alignment="CENTER">
+                           <graphic>
+                              <GridPane fx:id="playerTilesDisplayOnTurn" alignment="CENTER" prefHeight="30.0" prefWidth="200.0">
+                                <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="28.57" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="28.57" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="28.57" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="28.57" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="28.57" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="28.57" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="28.57" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                              </GridPane>
+                           </graphic>
+                        </Label>
+                     </content>
+                  </DialogPane>
                </children>
             </AnchorPane>
          </center>
