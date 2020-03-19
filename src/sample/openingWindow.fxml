@@ -9,7 +9,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="507.2" prefWidth="1028.0" style="-fx-background-color: #e8e5d5; -fx-border-color: #b38012; -fx-border-width: 10;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.OpeningWindowController">
+<!--fx:controller="sample.OpeningWindowController"-->
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="507.2" prefWidth="1028.0" style="-fx-background-color: #e8e5d5; -fx-border-color: #b38012; -fx-border-width: 10;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <HBox alignment="CENTER" prefHeight="120.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <padding>

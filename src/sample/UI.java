@@ -1,91 +1,39 @@
 package sample;
 
-import javafx.fxml.FXML;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.DialogPane;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.layout.*;
-import javafx.event.ActionEvent;
-import java.io.IOException;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
-public class UI
-{
-    @FXML
-    private BorderPane rightPanel;
+    public class UI extends Application {
 
-    @FXML
-    private TextArea wordsPlacedDisplay;
+        public static Player PlayerOne;
+        public static Player PlayerTwo;
 
-    @FXML
-    private DialogPane playerInformationDisplayOnTurn;
+        public UI ( Player PlayerOne, Player PlayerTwo)
+        {
+            UI.PlayerOne = PlayerOne;
+            UI.PlayerTwo = PlayerTwo;
+        }
 
-    @FXML
-    private Label playerTurnDisplayLabel;
+        @Override
+        public void start(Stage window) throws Exception{
+            FXMLLoader loader =  new FXMLLoader(getClass().getResource( "openingWindow.fxml" ));
 
-    @FXML
-    private GridPane playerTilesDisplayOnTurn;
+            // Creating an instance of the controller of openingWindow.fxml
+            OpeningWindowController OWController = new OpeningWindowController( PlayerOne, PlayerTwo );
+            loader.setController( OWController );
 
-    @FXML
-    public void handleChallengeButton( ActionEvent actionEvent ) throws IOException
-    {
-        System.out.println("Challenge Button Clicked"); // debug
-        FxmlLoader content = new FxmlLoader();
-        rightPanel.setBottom( content.getChallengeContent() );
-        BorderPane.setMargin( rightPanel.getBottom(), new Insets( 0, 10, 10, 10 )  );
+            Parent root = loader.load();
+            window.setTitle("Scrabble");
+            window.setScene(new Scene(root, 1028, 500));
+            window.setResizable(false);
+            window.show();
+        }
+
+
+    public static void main(String[] args) {
+        launch(args);
     }
-
-    @FXML
-    public void handleExchangeButton( ActionEvent actionEvent ) throws IOException
-    {
-        System.out.println("Exchange Button Clicked"); // debug
-        FxmlLoader content = new FxmlLoader();
-        rightPanel.setBottom( content.getExchangeContent() );
-        BorderPane.setMargin( rightPanel.getBottom(), new Insets( 0, 10, 10, 10 )  );
-
-    }
-
-    @FXML
-    public void handlePlaceWordButton( ActionEvent actionEvent ) throws IOException
-    {
-        System.out.println("Place Word Button Clicked"); // debug
-        FxmlLoader content = new FxmlLoader();
-        rightPanel.setBottom( content.getPlaceWordContent() );
-        BorderPane.setMargin( rightPanel.getBottom(), new Insets( 0, 10, 10, 10 )  );
-    }
-
-    @FXML
-    public void handleHelpButton( ActionEvent actionEvent ) throws IOException
-    {
-        System.out.println("Help Button Clicked"); // debug
-        FxmlLoader content = new FxmlLoader();
-        rightPanel.setBottom( content.getHelpContent() );
-        BorderPane.setMargin( rightPanel.getBottom(), new Insets( 0, 10, 10, 10 )  );
-    }
-
-    @FXML
-    public void handleQuitButton( ActionEvent actionEvent ) throws IOException
-    {
-        System.out.println("Quit Button Clicked"); // debug
-        FxmlLoader content = new FxmlLoader();
-        rightPanel.setBottom( content.getQuitContent() );
-        BorderPane.setMargin( rightPanel.getBottom(), new Insets( 0, 10, 10, 10 )  );
-    }
-
-    @FXML
-    public void handlePassButton( ActionEvent actionEvent ) throws IOException
-    {
-        System.out.println( "Pass Button Clicked" ); // debug
-        // keep a counter for number of times pass is selected
-        // if selected twice in succession, game is over
-        // also make this button trigger next turn
-    }
-
-
-
-
-
-
 }

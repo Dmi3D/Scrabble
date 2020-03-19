@@ -15,6 +15,17 @@ import java.io.IOException;
 
 public class OpeningWindowController
 {
+
+    public static Player PlayerOne;
+    public static Player PlayerTwo;
+
+    public OpeningWindowController( Player PlayerOne, Player PlayerTwo)
+    {
+        OpeningWindowController.PlayerOne = PlayerOne;
+        OpeningWindowController.PlayerTwo = PlayerTwo;
+    }
+
+
     @FXML
     private TextField player1NameField;
 
@@ -23,6 +34,8 @@ public class OpeningWindowController
 
     @FXML
     private Button startGameButton;
+
+
 
     public void initialize()
     {
@@ -47,6 +60,12 @@ public class OpeningWindowController
         if ( event.getSource().equals( startGameButton ) )
         {
             System.out.println( "Player 1 name: " + getPlayerOneName() + "\nPlayer 2 name: " + getPlayerTwoName() );
+
+            PlayerOne.setName( getPlayerOneName() );
+            PlayerTwo.setName( getPlayerTwoName() );
+
+            System.out.println("PlayerOne: " + PlayerOne.getName());
+            System.out.println("PlayerTwo: " + PlayerTwo.getName());
 
             Parent boardViewParent = FXMLLoader.load( getClass().getResource( "boardGraphic.fxml" ) );
             Scene boardViewScene = new Scene(boardViewParent);
