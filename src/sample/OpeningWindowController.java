@@ -2,7 +2,6 @@ package sample;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -16,15 +15,14 @@ import java.io.IOException;
 public class OpeningWindowController
 {
 
-    public static Player PlayerOne;
-    public static Player PlayerTwo;
+    public Player PlayerOne;
+    public Player PlayerTwo;
 
     public OpeningWindowController( Player PlayerOne, Player PlayerTwo)
     {
-        OpeningWindowController.PlayerOne = PlayerOne;
-        OpeningWindowController.PlayerTwo = PlayerTwo;
+        this.PlayerOne = PlayerOne;
+        this.PlayerTwo = PlayerTwo;
     }
-
 
     @FXML
     private TextField player1NameField;
@@ -64,10 +62,15 @@ public class OpeningWindowController
             PlayerOne.setName( getPlayerOneName() );
             PlayerTwo.setName( getPlayerTwoName() );
 
-            System.out.println("PlayerOne: " + PlayerOne.getName());
+           /* System.out.println("PlayerOne: " + PlayerOne.getName());
             System.out.println("PlayerTwo: " + PlayerTwo.getName());
+*/
+            FXMLLoader loader = new FXMLLoader( getClass().getResource( "boardGraphic.fxml" ) );
+            Parent boardViewParent = (Parent) loader.load();
 
-            Parent boardViewParent = FXMLLoader.load( getClass().getResource( "boardGraphic.fxml" ) );
+            MainController mController = loader.getController();
+            mController.setPlayers( PlayerOne, PlayerTwo );
+
             Scene boardViewScene = new Scene(boardViewParent);
 
             // Getting information about the stage i.e. window to access it
@@ -76,7 +79,6 @@ public class OpeningWindowController
             // changing the window's scene
             window.setScene( boardViewScene );
             window.show();
-
         }
     }
 

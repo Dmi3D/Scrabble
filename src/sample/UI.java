@@ -8,13 +8,13 @@ import javafx.stage.Stage;
 
     public class UI extends Application {
 
-        public static Player PlayerOne;
-        public static Player PlayerTwo;
+        public Player PlayerOne;
+        public Player PlayerTwo;
 
         public UI ( Player PlayerOne, Player PlayerTwo)
         {
-            UI.PlayerOne = PlayerOne;
-            UI.PlayerTwo = PlayerTwo;
+            this.PlayerOne = PlayerOne;
+            this.PlayerTwo = PlayerTwo;
         }
 
         @Override

@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DialogPane?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -1446,35 +1445,39 @@
                      </font>
                   </Button>
                   <TextArea fx:id="wordsPlacedDisplay" layoutX="239.0" prefHeight="194.0" prefWidth="200.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="10.0" />
-                  <DialogPane fx:id="playerInformationDisplayOnTurn" layoutX="2.0" layoutY="1.0" prefHeight="194.0" prefWidth="200.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
-                     <header>
-                        <Label fx:id="playerTurnDisplayLabel" alignment="TOP_CENTER" prefHeight="59.0" prefWidth="200.0" textAlignment="CENTER" textFill="#a46caa" wrapText="true">
+                  <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="193.0" prefWidth="203.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+                     <children>
+                        <Label fx:id="playerTurnDisplayLabel" alignment="CENTER" layoutY="14.0" prefHeight="40.0" prefWidth="203.0" />
+                        <GridPane fx:id="playerTilesDisplayOnTurn" alignment="CENTER" gridLinesVisible="true" layoutY="126.0" prefHeight="30.0" prefWidth="200.0">
+                          <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="28.57" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="28.57" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="28.57" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="28.57" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="28.57" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="28.57" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="28.57" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label fx:id="TileZero" />
+                              <Label fx:id="TileOne" GridPane.columnIndex="1" />
+                              <Label fx:id="TileTwo" GridPane.columnIndex="2" />
+                              <Label fx:id="TileThree" GridPane.columnIndex="3" />
+                              <Label fx:id="TileFour" GridPane.columnIndex="4" />
+                              <Label fx:id="TileFive" GridPane.columnIndex="5" />
+                              <Label fx:id="TileSix" prefHeight="37.0" prefWidth="203.0" GridPane.columnIndex="6" />
+                           </children>
+                        </GridPane>
+                        <Label alignment="CENTER" layoutY="78.0" prefHeight="37.0" prefWidth="203.0" text="Frame:" textAlignment="CENTER">
                            <font>
-                              <Font name="Bookman Old Style" size="22.0" />
+                              <Font size="22.0" />
                            </font>
                         </Label>
-                     </header>
-                     <content>
-                        <Label alignment="CENTER">
-                           <graphic>
-                              <GridPane fx:id="playerTilesDisplayOnTurn" alignment="CENTER" prefHeight="30.0" prefWidth="200.0">
-                                <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="28.57" />
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="28.57" />
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="28.57" />
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="28.57" />
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="28.57" />
-                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="28.57" />
-                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="28.57" />
-                                </columnConstraints>
-                                <rowConstraints>
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                </rowConstraints>
-                              </GridPane>
-                           </graphic>
-                        </Label>
-                     </content>
-                  </DialogPane>
+                     </children>
+                  </AnchorPane>
                </children>
             </AnchorPane>
          </center>

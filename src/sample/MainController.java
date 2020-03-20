@@ -1,27 +1,31 @@
 package sample;
 
-import javafx.application.Application;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.DialogPane;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.scene.layout.*;
-import javafx.event.ActionEvent;
-import java.io.IOException;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 
-public class MainController
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class MainController implements Initializable
 {
+    Player[] players;
+
+    int currentPlayer;
+
     @FXML
     private BorderPane rightPanel;
 
     @FXML
     private TextArea wordsPlacedDisplay;
-
-    @FXML
-    private DialogPane playerInformationDisplayOnTurn;
 
     @FXML
     private Label playerTurnDisplayLabel;
@@ -79,14 +83,65 @@ public class MainController
     public void handlePassButton( ActionEvent actionEvent ) throws IOException
     {
         System.out.println( "Pass Button Clicked" ); // debug
+        switchPlayer();
         // keep a counter for number of times pass is selected
         // if selected twice in succession, game is over
         // also make this button trigger next turn
     }
 
 
+    @Override
+    public void initialize( URL url, ResourceBundle resourceBundle )
+    {
 
+    }
 
+    public void switchPlayer()
+    {
+        if(currentPlayer == 0)
+        {
+            currentPlayer = 1;
+        }
 
+        else if(currentPlayer == 1)
+        {
+            currentPlayer = 0;
+        }
 
+        displayName();
+        displayFrame();
+    }
+
+    public void setPlayers(Player PlayerOne, Player PlayerTwo)
+    {
+        players = new Player[2];
+        players[0] = PlayerOne;
+        players[1] = PlayerTwo;
+        currentPlayer = 0;
+
+        displayName();
+        displayFrame();
+    }
+
+    private void displayName()
+    {
+        playerTurnDisplayLabel.setText( players[currentPlayer].getName() + "'s turn." );
+    }
+
+    private void displayFrame()
+    {
+        ObservableList<Node> children = playerTilesDisplayOnTurn.getChildren();
+
+        Player player = players[currentPlayer];
+
+        for ( int i = 0; i < children.size(); i++ )
+        {
+            Node node = children.get( i );
+
+            if(node instanceof Label)
+            {
+                ( (Label) node ).setText( String.valueOf( player.getPlayerFrame().getFrame()[i] ) );
+            }
+        }
+    }
 }
