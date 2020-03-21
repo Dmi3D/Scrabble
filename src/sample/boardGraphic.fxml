@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -13,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.TextFlow?>
 
-<BorderPane fx:id="mainPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainController">
+<BorderPane fx:id="mainPane" style="-fx-background-color: #37517e;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.BoardController">
    <center>
       <GridPane alignment="CENTER" gridLinesVisible="true" prefHeight="500.0" prefWidth="550.0">
         <columnConstraints>
@@ -58,213 +57,213 @@
          <children>
 
                   <!--CELLS CONTAINING POSITION LABELS-->
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="A" textAlignment="CENTER" textFill="#a466ca">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.columnIndex="1">
+               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="A" textAlignment="CENTER" textFill="WHITE">
                   <font>
-                     <Font name="Bookman Old Style" size="25.0" />
+                     <Font name="Bookman Old Style" size="18.0" />
                   </font>
                </Label>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="B" textAlignment="CENTER" textFill="#a466ca">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.columnIndex="2">
+               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="B" textAlignment="CENTER" textFill="WHITE">
                   <font>
-                     <Font name="Bookman Old Style" size="25.0" />
+                     <Font name="Bookman Old Style" size="18.0" />
                   </font>
                </Label>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="C" textAlignment="CENTER" textFill="#a466ca">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.columnIndex="3">
+               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="C" textAlignment="CENTER" textFill="WHITE">
                   <font>
-                     <Font name="Bookman Old Style" size="25.0" />
+                     <Font name="Bookman Old Style" size="18.0" />
                   </font>
                </Label>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="D" textAlignment="CENTER" textFill="#a466ca">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.columnIndex="4">
+               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="D" textAlignment="CENTER" textFill="WHITE">
                   <font>
-                     <Font name="Bookman Old Style" size="25.0" />
+                     <Font name="Bookman Old Style" size="18.0" />
                   </font>
                </Label>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="E" textAlignment="CENTER" textFill="#a466ca">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.columnIndex="5">
+               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="E" textAlignment="CENTER" textFill="WHITE">
                   <font>
-                     <Font name="Bookman Old Style" size="25.0" />
+                     <Font name="Bookman Old Style" size="18.0" />
                   </font>
                </Label>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="F" textAlignment="CENTER" textFill="#a466ca">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.columnIndex="6">
+               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="F" textAlignment="CENTER" textFill="WHITE">
                   <font>
-                     <Font name="Bookman Old Style" size="25.0" />
+                     <Font name="Bookman Old Style" size="18.0" />
                   </font>
                </Label>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="7">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="G" textAlignment="CENTER" textFill="#a466ca">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.columnIndex="7">
+               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="G" textAlignment="CENTER" textFill="WHITE">
                   <font>
-                     <Font name="Bookman Old Style" size="25.0" />
+                     <Font name="Bookman Old Style" size="18.0" />
                   </font>
                </Label>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="8">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="H" textAlignment="CENTER" textFill="#a466ca">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.columnIndex="8">
+               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="H" textAlignment="CENTER" textFill="WHITE">
                   <font>
-                     <Font name="Bookman Old Style" size="25.0" />
+                     <Font name="Bookman Old Style" size="18.0" />
                   </font>
                </Label>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="9">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="I" textAlignment="CENTER" textFill="#a466ca">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.columnIndex="9">
+               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="I" textAlignment="CENTER" textFill="WHITE">
                   <font>
-                     <Font name="Bookman Old Style" size="25.0" />
+                     <Font name="Bookman Old Style" size="18.0" />
                   </font>
                </Label>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="10">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="J" textAlignment="CENTER" textFill="#a466ca">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.columnIndex="10">
+               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="J" textAlignment="CENTER" textFill="WHITE">
                   <font>
-                     <Font name="Bookman Old Style" size="25.0" />
+                     <Font name="Bookman Old Style" size="18.0" />
                   </font>
                </Label>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="11">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="K" textAlignment="CENTER" textFill="#a466ca">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.columnIndex="11">
+               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="K" textAlignment="CENTER" textFill="WHITE">
                   <font>
-                     <Font name="Bookman Old Style" size="25.0" />
+                     <Font name="Bookman Old Style" size="18.0" />
                   </font>
                </Label>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="12">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="L" textAlignment="CENTER" textFill="#a466ca">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.columnIndex="12">
+               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="L" textAlignment="CENTER" textFill="WHITE">
                   <font>
-                     <Font name="Bookman Old Style" size="25.0" />
+                     <Font name="Bookman Old Style" size="18.0" />
                   </font>
                </Label>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="13">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="M" textAlignment="CENTER" textFill="#a466ca">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.columnIndex="13">
+               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="M" textAlignment="CENTER" textFill="WHITE">
                   <font>
-                     <Font name="Bookman Old Style" size="25.0" />
+                     <Font name="Bookman Old Style" size="18.0" />
                   </font>
                </Label>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="14">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="N" textAlignment="CENTER" textFill="#a466ca">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.columnIndex="14">
+               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="N" textAlignment="CENTER" textFill="WHITE">
                   <font>
-                     <Font name="Bookman Old Style" size="25.0" />
+                     <Font name="Bookman Old Style" size="18.0" />
                   </font>
                </Label>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="15">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="O" textAlignment="CENTER" textFill="#a466ca">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.columnIndex="15">
+               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="O" textAlignment="CENTER" textFill="WHITE">
                   <font>
-                     <Font name="Bookman Old Style" size="25.0" />
+                     <Font name="Bookman Old Style" size="18.0" />
                   </font>
                </Label>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="1" textAlignment="CENTER" textFill="#a466ca">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.rowIndex="1">
+               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="1" textAlignment="CENTER" textFill="WHITE">
                   <font>
-                     <Font name="Bookman Old Style" size="25.0" />
+                     <Font name="Bookman Old Style" size="18.0" />
                   </font>
                </Label>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="2" textAlignment="CENTER" textFill="#a466ca">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.rowIndex="2">
+               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="2" textAlignment="CENTER" textFill="WHITE">
                   <font>
-                     <Font name="Bookman Old Style" size="25.0" />
+                     <Font name="Bookman Old Style" size="18.0" />
                   </font>
                </Label>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="3" textAlignment="CENTER" textFill="#a466ca">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.rowIndex="3">
+               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="3" textAlignment="CENTER" textFill="WHITE">
                   <font>
-                     <Font name="Bookman Old Style" size="25.0" />
+                     <Font name="Bookman Old Style" size="18.0" />
                   </font>
                </Label>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="5">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="5" textAlignment="CENTER" textFill="#a466ca">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.rowIndex="5">
+               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="5" textAlignment="CENTER" textFill="WHITE">
                   <font>
-                     <Font name="Bookman Old Style" size="25.0" />
+                     <Font name="Bookman Old Style" size="18.0" />
                   </font>
                </Label>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="4" textAlignment="CENTER" textFill="#a466ca">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.rowIndex="4">
+               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="4" textAlignment="CENTER" textFill="WHITE">
                   <font>
-                     <Font name="Bookman Old Style" size="25.0" />
+                     <Font name="Bookman Old Style" size="18.0" />
                   </font>
                </Label>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="6">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="6" textAlignment="CENTER" textFill="#a466ca">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.rowIndex="6">
+               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="6" textAlignment="CENTER" textFill="WHITE">
                   <font>
-                     <Font name="Bookman Old Style" size="25.0" />
+                     <Font name="Bookman Old Style" size="18.0" />
                   </font>
                </Label>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="7">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="7" textAlignment="CENTER" textFill="#a466ca">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.rowIndex="7">
+               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="7" textAlignment="CENTER" textFill="WHITE">
                   <font>
-                     <Font name="Bookman Old Style" size="25.0" />
+                     <Font name="Bookman Old Style" size="18.0" />
                   </font>
                </Label>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="8">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="8" textAlignment="CENTER" textFill="#a466ca">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.rowIndex="8">
+               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="8" textAlignment="CENTER" textFill="WHITE">
                   <font>
-                     <Font name="Bookman Old Style" size="25.0" />
+                     <Font name="Bookman Old Style" size="18.0" />
                   </font>
                </Label>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="9">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="9" textAlignment="CENTER" textFill="#a466ca">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.rowIndex="9">
+               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="9" textAlignment="CENTER" textFill="WHITE">
                   <font>
-                     <Font name="Bookman Old Style" size="25.0" />
+                     <Font name="Bookman Old Style" size="18.0" />
                   </font>
                </Label>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="10">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="10" textAlignment="CENTER" textFill="#a466ca">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.rowIndex="10">
+               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="10" textAlignment="CENTER" textFill="WHITE">
                   <font>
-                     <Font name="Bookman Old Style" size="25.0" />
+                     <Font name="Bookman Old Style" size="18.0" />
                   </font>
                </Label>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="11">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="11" textAlignment="CENTER" textFill="#a466ca">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.rowIndex="11">
+               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="11" textAlignment="CENTER" textFill="WHITE">
                   <font>
-                     <Font name="Bookman Old Style" size="25.0" />
+                     <Font name="Bookman Old Style" size="18.0" />
                   </font>
                </Label>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="12">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="12" textAlignment="CENTER" textFill="#a466ca">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.rowIndex="12">
+               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="12" textAlignment="CENTER" textFill="WHITE">
                   <font>
-                     <Font name="Bookman Old Style" size="25.0" />
+                     <Font name="Bookman Old Style" size="18.0" />
                   </font>
                </Label>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="13">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="13" textAlignment="CENTER" textFill="#a466ca">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.rowIndex="13">
+               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="13" textAlignment="CENTER" textFill="WHITE">
                   <font>
-                     <Font name="Bookman Old Style" size="25.0" />
+                     <Font name="Bookman Old Style" size="18.0" />
                   </font>
                </Label>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="14">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="14" textAlignment="CENTER" textFill="#a466ca">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.rowIndex="14">
+               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="14" textAlignment="CENTER" textFill="WHITE">
                   <font>
-                     <Font name="Bookman Old Style" size="25.0" />
+                     <Font name="Bookman Old Style" size="18.0" />
                   </font>
                </Label>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="15">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="15" textAlignment="CENTER" textFill="#a466ca">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.rowIndex="15">
+               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="15" textAlignment="CENTER" textFill="WHITE">
                   <font>
-                     <Font name="Bookman Old Style" size="25.0" />
+                     <Font name="Bookman Old Style" size="18.0" />
                   </font>
                </Label>
             </Pane>
@@ -273,1129 +272,2029 @@
 
                   <Pane layoutX="424.0" layoutY="98.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5bcce3;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ff9ceb;" GridPane.columnIndex="13" GridPane.rowIndex="3">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="424.0" layoutY="98.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ff9ceb;" GridPane.columnIndex="12" GridPane.rowIndex="4">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="392.0" layoutY="128.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ff9ceb;" GridPane.columnIndex="11" GridPane.rowIndex="5">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="424.0" layoutY="98.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ff9ceb;" GridPane.columnIndex="14" GridPane.rowIndex="2">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="424.0" layoutY="98.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ff9ceb;" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="71.0" layoutY="68.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ff9ceb;" GridPane.columnIndex="3" GridPane.rowIndex="3">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="103.0" layoutY="98.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ff9ceb;" GridPane.columnIndex="4" GridPane.rowIndex="4">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="136.0" layoutY="128.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ff9ceb;" GridPane.columnIndex="5" GridPane.rowIndex="5">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="168.0" layoutY="157.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ff9ceb;" GridPane.columnIndex="8" GridPane.rowIndex="8">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="424.0" layoutY="98.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ff9ceb;" GridPane.columnIndex="5" GridPane.rowIndex="11">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="168.0" layoutY="332.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ff9ceb;" GridPane.columnIndex="4" GridPane.rowIndex="12">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="136.0" layoutY="362.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ff9ceb;" GridPane.columnIndex="3" GridPane.rowIndex="13">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="103.0" layoutY="393.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ff9ceb;" GridPane.columnIndex="2" GridPane.rowIndex="14">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="71.0" layoutY="420.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ff9ceb;" GridPane.columnIndex="11" GridPane.rowIndex="11">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="360.0" layoutY="332.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ff9ceb;" GridPane.columnIndex="12" GridPane.rowIndex="12">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="392.0" layoutY="362.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ff9ceb;" GridPane.columnIndex="13" GridPane.rowIndex="13">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="424.0" layoutY="393.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ff9ceb;" GridPane.columnIndex="14" GridPane.rowIndex="14">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="39.0" layoutY="40.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5bcce3;" GridPane.columnIndex="1" GridPane.rowIndex="15">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="39.0" layoutY="449.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5bcce3;" GridPane.columnIndex="15" GridPane.rowIndex="1">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="488.0" layoutY="40.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5bcce3;" GridPane.columnIndex="15" GridPane.rowIndex="15">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="488.0" layoutY="449.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5bcce3;" GridPane.columnIndex="1" GridPane.rowIndex="8">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="39.0" layoutY="243.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5bcce3;" GridPane.columnIndex="15" GridPane.rowIndex="8">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="488.0" layoutY="243.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5bcce3;" GridPane.columnIndex="8" GridPane.rowIndex="1">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="264.0" layoutY="40.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5bcce3;" GridPane.columnIndex="8" GridPane.rowIndex="15">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="39.0" layoutY="40.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5be38b;" GridPane.columnIndex="4" GridPane.rowIndex="1">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="136.0" layoutY="40.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5be38b;" GridPane.columnIndex="12" GridPane.rowIndex="1">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="392.0" layoutY="40.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5be38b;" GridPane.columnIndex="7" GridPane.rowIndex="7">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="232.0" layoutY="216.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5be38b;" GridPane.columnIndex="7" GridPane.rowIndex="9">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="232.0" layoutY="274.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5be38b;" GridPane.columnIndex="9" GridPane.rowIndex="7">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="296.0" layoutY="216.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5be38b;" GridPane.columnIndex="9" GridPane.rowIndex="9">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="296.0" layoutY="274.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5be38b;" GridPane.columnIndex="4" GridPane.rowIndex="15">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="136.0" layoutY="449.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5be38b;" GridPane.columnIndex="12" GridPane.rowIndex="15">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="392.0" layoutY="449.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5be38b;" GridPane.columnIndex="1" GridPane.rowIndex="12">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="39.0" layoutY="362.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5be38b;" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="39.0" layoutY="128.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5be38b;" GridPane.columnIndex="15" GridPane.rowIndex="4">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="488.0" layoutY="128.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5be38b;" GridPane.columnIndex="15" GridPane.rowIndex="12">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="488.0" layoutY="362.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5be38b;" GridPane.columnIndex="7" GridPane.rowIndex="3">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="232.0" layoutY="98.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5be38b;" GridPane.columnIndex="9" GridPane.rowIndex="3">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="296.0" layoutY="98.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5be38b;" GridPane.columnIndex="8" GridPane.rowIndex="4">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="264.0" layoutY="128.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5be38b;" GridPane.columnIndex="8" GridPane.rowIndex="12">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="264.0" layoutY="362.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5be38b;" GridPane.columnIndex="7" GridPane.rowIndex="13">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="232.0" layoutY="393.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5be38b;" GridPane.columnIndex="9" GridPane.rowIndex="13">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="296.0" layoutY="393.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5be38b;" GridPane.columnIndex="4" GridPane.rowIndex="8">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="136.0" layoutY="243.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5be38b;" GridPane.columnIndex="3" GridPane.rowIndex="7">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="103.0" layoutY="216.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5be38b;" GridPane.columnIndex="3" GridPane.rowIndex="9">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="103.0" layoutY="274.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5be38b;" GridPane.columnIndex="12" GridPane.rowIndex="8">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="392.0" layoutY="243.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5be38b;" GridPane.columnIndex="13" GridPane.rowIndex="7">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="424.0" layoutY="216.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5be38b;" GridPane.columnIndex="13" GridPane.rowIndex="9">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="424.0" layoutY="274.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffff99;" GridPane.columnIndex="6" GridPane.rowIndex="2">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="200.0" layoutY="68.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffff99;" GridPane.columnIndex="10" GridPane.rowIndex="2">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
              <Pane layoutX="328.0" layoutY="68.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffff99;" GridPane.columnIndex="6" GridPane.rowIndex="6">
                 <children>
-                   <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                      <font>
+                         <Font size="22.0" />
+                      </font>
+                   </Label>
                 </children>
             </Pane>
             <Pane layoutX="200.0" layoutY="186.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffff99;" GridPane.columnIndex="10" GridPane.rowIndex="6">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="328.0" layoutY="186.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffff99;" GridPane.columnIndex="6" GridPane.rowIndex="10">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="200.0" layoutY="303.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffff99;" GridPane.columnIndex="10" GridPane.rowIndex="10">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="328.0" layoutY="303.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffff99;" GridPane.columnIndex="6" GridPane.rowIndex="14">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="200.0" layoutY="420.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffff99;" GridPane.columnIndex="10" GridPane.rowIndex="14">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="328.0" layoutY="420.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffff99;" GridPane.columnIndex="2" GridPane.rowIndex="6">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="71.0" layoutY="186.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffff99;" GridPane.columnIndex="2" GridPane.rowIndex="10">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="71.0" layoutY="303.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffff99;" GridPane.columnIndex="14" GridPane.rowIndex="6">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="456.0" layoutY="186.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffff99;" GridPane.columnIndex="14" GridPane.rowIndex="10">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" />
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" />
 
                   <!--CELLS WITH NO CELL WEIGHTS, CONTAINING TEXT FIELDS-->
 
                   <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="1">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="1">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowIndex="1">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="9" GridPane.rowIndex="1">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="10" GridPane.rowIndex="1">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="11" GridPane.rowIndex="1">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="13" GridPane.rowIndex="1">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="14" GridPane.rowIndex="1">
-               <TextFlow prefHeight="30.0" prefWidth="34.0" />
+               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                  <font>
+                     <Font size="22.0" />
+                  </font>
+               </Label>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="2">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="2">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowIndex="2">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="8" GridPane.rowIndex="2">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="9" GridPane.rowIndex="2">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="11" GridPane.rowIndex="2">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="12" GridPane.rowIndex="2">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="13" GridPane.rowIndex="2">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="15" GridPane.rowIndex="2">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="3">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="3">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="3">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="8" GridPane.rowIndex="3">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="10" GridPane.rowIndex="3">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="11" GridPane.rowIndex="3">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="12" GridPane.rowIndex="3">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="14" GridPane.rowIndex="3">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="15" GridPane.rowIndex="3">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="4">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="4">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="4">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowIndex="4">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="9" GridPane.rowIndex="4">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="10" GridPane.rowIndex="4">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="11" GridPane.rowIndex="4">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="13" GridPane.rowIndex="4">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="14" GridPane.rowIndex="4">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="5">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="5">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="5">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="5">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowIndex="5">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="8" GridPane.rowIndex="5">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="9" GridPane.rowIndex="5">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="10" GridPane.rowIndex="5">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="12" GridPane.rowIndex="5">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="13" GridPane.rowIndex="5">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="14" GridPane.rowIndex="5">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="15" GridPane.rowIndex="5">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="6">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="6">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="6">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowIndex="6">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="8" GridPane.rowIndex="6">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="9" GridPane.rowIndex="6">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="11" GridPane.rowIndex="6">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="12" GridPane.rowIndex="6">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="13" GridPane.rowIndex="6">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="15" GridPane.rowIndex="6">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="7">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="7">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="7">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="7">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="8" GridPane.rowIndex="7">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="10" GridPane.rowIndex="7">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="11" GridPane.rowIndex="7">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="12" GridPane.rowIndex="7">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="14" GridPane.rowIndex="7">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="15" GridPane.rowIndex="7">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="8">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="8">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="8">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="8">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowIndex="8">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="9" GridPane.rowIndex="8">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="10" GridPane.rowIndex="8">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="11" GridPane.rowIndex="8">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="13" GridPane.rowIndex="8">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="14" GridPane.rowIndex="8">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="9">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="9">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="9">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="9">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="8" GridPane.rowIndex="9">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="10" GridPane.rowIndex="9">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="11" GridPane.rowIndex="9">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="12" GridPane.rowIndex="9">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="14" GridPane.rowIndex="9">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="15" GridPane.rowIndex="9">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="10">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="10">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="10">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="10">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowIndex="10">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="8" GridPane.rowIndex="10">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="9" GridPane.rowIndex="10">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="11" GridPane.rowIndex="10">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="12" GridPane.rowIndex="10">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="13" GridPane.rowIndex="10">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="15" GridPane.rowIndex="10">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="11">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="11">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="11">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="11">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="11">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowIndex="11">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="8" GridPane.rowIndex="11">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="9" GridPane.rowIndex="11">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="10" GridPane.rowIndex="11">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="12" GridPane.rowIndex="11">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="13" GridPane.rowIndex="11">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="14" GridPane.rowIndex="11">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="15" GridPane.rowIndex="11">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="12">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="12">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="12">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="12">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowIndex="12">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="9" GridPane.rowIndex="12">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="10" GridPane.rowIndex="12">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="11" GridPane.rowIndex="12">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="13" GridPane.rowIndex="12">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="14" GridPane.rowIndex="12">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="13">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="13">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="13">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
               <Pane prefHeight="35.0" prefWidth="32.0" GridPane.columnIndex="5" GridPane.rowIndex="13">
                  <children>
-                    <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                    <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                       <font>
+                          <Font size="22.0" />
+                       </font>
+                    </Label>
                  </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="13">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="8" GridPane.rowIndex="13">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="10" GridPane.rowIndex="13">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="11" GridPane.rowIndex="13">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="12" GridPane.rowIndex="13">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="14" GridPane.rowIndex="13">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="15" GridPane.rowIndex="13">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="14">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="15">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="14">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="14">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="15">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="14">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="15">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowIndex="14">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="15">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowIndex="15">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="8" GridPane.rowIndex="14">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="9" GridPane.rowIndex="14">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="9" GridPane.rowIndex="15">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="10" GridPane.rowIndex="15">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="11" GridPane.rowIndex="14">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="11" GridPane.rowIndex="15">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="12" GridPane.rowIndex="14">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="13" GridPane.rowIndex="14">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="13" GridPane.rowIndex="15">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="14" GridPane.rowIndex="15">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="15" GridPane.rowIndex="14">
                <children>
-                  <TextFlow prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
 
@@ -1414,40 +2313,42 @@
          <center>
             <AnchorPane prefHeight="383.0" prefWidth="449.0">
                <children>
-                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="214.0" mnemonicParsing="false" onAction="#handleChallengeButton" prefHeight="35.0" prefWidth="200.0" text="CHALLENGE" textAlignment="CENTER" textFill="#a466ca" AnchorPane.bottomAnchor="130.0" AnchorPane.leftAnchor="14.0">
+                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="214.0" mnemonicParsing="false" onAction="#handleChallengeButton" prefHeight="35.0" prefWidth="200.0" text="CHALLENGE" textAlignment="CENTER" textFill="#204878" AnchorPane.bottomAnchor="130.0" AnchorPane.leftAnchor="14.0">
                      <font>
                         <Font name="Bookman Old Style" size="17.0" />
                      </font>
                   </Button>
-                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="263.0" mnemonicParsing="false" onAction="#handlePassButton" prefHeight="35.0" prefWidth="200.0" text="PASS" textAlignment="CENTER" textFill="#a466ca" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="14.0">
+                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="263.0" mnemonicParsing="false" onAction="#handlePassButton" prefHeight="35.0" prefWidth="200.0" text="PASS" textAlignment="CENTER" textFill="#204878" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="14.0">
                      <font>
                         <Font name="Bookman Old Style" size="17.0" />
                      </font>
                   </Button>
-                  <Button alignment="CENTER" layoutX="239.0" layoutY="214.0" mnemonicParsing="false" onAction="#handleExchangeButton" prefHeight="35.0" prefWidth="200.0" text="EXCHANGE TILES" textFill="#a466ca" AnchorPane.bottomAnchor="130.0" AnchorPane.rightAnchor="22.600000000000023">
+                  <Button alignment="CENTER" layoutX="239.0" layoutY="214.0" mnemonicParsing="false" onAction="#handleExchangeButton" prefHeight="35.0" prefWidth="200.0" text="EXCHANGE TILES" textFill="#204878" AnchorPane.bottomAnchor="130.0" AnchorPane.rightAnchor="22.600000000000023">
                      <font>
                         <Font name="Bookman Old Style" size="17.0" />
                      </font>
                   </Button>
-                  <Button alignment="CENTER" layoutX="239.0" layoutY="263.0" mnemonicParsing="false" onAction="#handlePlaceWordButton" prefHeight="35.0" prefWidth="200.0" text="PLACE WORD" textFill="#a466ca" AnchorPane.bottomAnchor="80.0" AnchorPane.rightAnchor="22.600000000000023">
+                  <Button alignment="CENTER" layoutX="239.0" layoutY="263.0" mnemonicParsing="false" onAction="#handlePlaceWordButton" prefHeight="35.0" prefWidth="200.0" text="PLACE WORD" textFill="#204878" AnchorPane.bottomAnchor="80.0" AnchorPane.rightAnchor="22.600000000000023">
                      <font>
                         <Font name="Bookman Old Style" size="17.0" />
                      </font>
                   </Button>
-                  <Button alignment="CENTER" layoutX="14.0" layoutY="311.0" mnemonicParsing="false" onAction="#handleHelpButton" prefHeight="35.0" prefWidth="200.0" text="HELP" textFill="#a466ca" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="14.0">
+                  <Button alignment="CENTER" layoutX="14.0" layoutY="311.0" mnemonicParsing="false" onAction="#handleHelpButton" prefHeight="35.0" prefWidth="200.0" text="HELP" textFill="#204878" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="14.0">
                      <font>
                         <Font name="Bookman Old Style" size="17.0" />
                      </font>
                   </Button>
-                  <Button alignment="CENTER" layoutX="245.0" layoutY="311.0" mnemonicParsing="false" onAction="#handleQuitButton" prefHeight="35.0" prefWidth="200.0" text="QUIT" textFill="#a466ca" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="22.19999999999999">
+                  <Button alignment="CENTER" layoutX="245.0" layoutY="311.0" mnemonicParsing="false" onAction="#handleQuitButton" prefHeight="35.0" prefWidth="200.0" text="QUIT" textFill="#204878" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="22.19999999999999">
                      <font>
                         <Font name="Bookman Old Style" size="17.0" />
                      </font>
                   </Button>
-                  <TextArea fx:id="wordsPlacedDisplay" layoutX="239.0" prefHeight="194.0" prefWidth="200.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="10.0" />
                   <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="193.0" prefWidth="203.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
                      <children>
-                        <Label fx:id="playerTurnDisplayLabel" alignment="CENTER" layoutY="14.0" prefHeight="40.0" prefWidth="203.0" />
+                        <Label fx:id="playerTurnDisplayLabel" alignment="CENTER" layoutY="14.0" prefHeight="40.0" prefWidth="203.0" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font></Label>
                         <GridPane fx:id="playerTilesDisplayOnTurn" alignment="CENTER" gridLinesVisible="true" layoutY="126.0" prefHeight="30.0" prefWidth="200.0">
                           <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="28.57" />
@@ -1462,18 +2363,39 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Label fx:id="TileZero" />
-                              <Label fx:id="TileOne" GridPane.columnIndex="1" />
-                              <Label fx:id="TileTwo" GridPane.columnIndex="2" />
-                              <Label fx:id="TileThree" GridPane.columnIndex="3" />
-                              <Label fx:id="TileFour" GridPane.columnIndex="4" />
-                              <Label fx:id="TileFive" GridPane.columnIndex="5" />
-                              <Label fx:id="TileSix" prefHeight="37.0" prefWidth="203.0" GridPane.columnIndex="6" />
+                              <Label fx:id="TileZero" alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="28.57" style="-fx-background-color: #204878;" textAlignment="CENTER" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></Label>
+                              <Label fx:id="TileOne" alignment="CENTER" prefHeight="30.0" prefWidth="28.57" style="-fx-background-color: #204878;" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></Label>
+                              <Label fx:id="TileTwo" alignment="CENTER" prefHeight="30.0" prefWidth="28.57" style="-fx-background-color: #204878;" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></Label>
+                              <Label fx:id="TileThree" alignment="CENTER" prefHeight="30.0" prefWidth="28.57" style="-fx-background-color: #204878;" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></Label>
+                              <Label fx:id="TileFour" alignment="CENTER" prefHeight="30.0" prefWidth="28.57" style="-fx-background-color: #204878;" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></Label>
+                              <Label fx:id="TileFive" alignment="CENTER" prefHeight="30.0" prefWidth="28.57" style="-fx-background-color: #204878;" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></Label>
+                              <Label fx:id="TileSix" alignment="CENTER" prefHeight="30.0" prefWidth="28.57" style="-fx-background-color: #204878;" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="6">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></Label>
                            </children>
                         </GridPane>
-                        <Label alignment="CENTER" layoutY="78.0" prefHeight="37.0" prefWidth="203.0" text="Frame:" textAlignment="CENTER">
+                        <Label alignment="CENTER" layoutY="89.0" prefHeight="37.0" prefWidth="203.0" text="FRAME:" textAlignment="CENTER" textFill="WHITE">
                            <font>
-                              <Font size="22.0" />
+                              <Font size="19.0" />
                            </font>
                         </Label>
                      </children>

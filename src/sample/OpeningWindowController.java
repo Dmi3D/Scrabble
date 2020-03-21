@@ -14,12 +14,15 @@ import java.io.IOException;
 
 public class OpeningWindowController
 {
-
+    public Board Board;
+    public Pool Pool;
     public Player PlayerOne;
     public Player PlayerTwo;
 
-    public OpeningWindowController( Player PlayerOne, Player PlayerTwo)
+    public OpeningWindowController( Board Board, Pool Pool, Player PlayerOne, Player PlayerTwo)
     {
+        this.Board = Board;
+        this.Pool = Pool;
         this.PlayerOne = PlayerOne;
         this.PlayerTwo = PlayerTwo;
     }
@@ -68,8 +71,10 @@ public class OpeningWindowController
             FXMLLoader loader = new FXMLLoader( getClass().getResource( "boardGraphic.fxml" ) );
             Parent boardViewParent = (Parent) loader.load();
 
-            MainController mController = loader.getController();
+            BoardController mController = loader.getController();
             mController.setPlayers( PlayerOne, PlayerTwo );
+            mController.setBoard( Board );
+            mController.setPool( Pool );
 
             Scene boardViewScene = new Scene(boardViewParent);
 

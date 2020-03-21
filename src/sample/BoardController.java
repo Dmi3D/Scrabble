@@ -15,11 +15,14 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class MainController implements Initializable
+public class BoardController implements Initializable
 {
-    Player[] players;
+    private Board Board;
+    private Pool Pool;
+    private Player[] players;
 
-    int currentPlayer;
+    private int currentPlayer;
+    private int[] amountOfPass;
 
     @FXML
     private BorderPane rightPanel;
@@ -83,6 +86,12 @@ public class MainController implements Initializable
     public void handlePassButton( ActionEvent actionEvent ) throws IOException
     {
         System.out.println( "Pass Button Clicked" ); // debug
+       /* amountOfPass[currentPlayer]++;
+        if(amountOfPass[currentPlayer] >= 2)
+        {
+            System.out.println("This should stop game");
+        }*/
+
         switchPlayer();
         // keep a counter for number of times pass is selected
         // if selected twice in succession, game is over
@@ -115,12 +124,23 @@ public class MainController implements Initializable
     public void setPlayers(Player PlayerOne, Player PlayerTwo)
     {
         players = new Player[2];
+        amountOfPass = new int[2];
         players[0] = PlayerOne;
         players[1] = PlayerTwo;
         currentPlayer = 0;
 
         displayName();
         displayFrame();
+    }
+
+    public void setBoard(Board Board)
+    {
+        this.Board = Board;
+    }
+
+    public void setPool(Pool Pool)
+    {
+        this.Pool = Pool;
     }
 
     private void displayName()
