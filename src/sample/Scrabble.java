@@ -10,12 +10,12 @@ import javafx.stage.Stage;
 // Instantiating everything
 public class Scrabble extends Application
 {
-    public Board Board = new Board();
-    public Pool Pool = new Pool();
-    public Frame FrameOne = new Frame( Pool );
-    public Frame FrameTwo = new Frame( Pool );
-    public Player PlayerOne = new Player( FrameOne );
-    public Player PlayerTwo = new Player( FrameTwo );
+    private Board Board = new Board();
+    private Pool Pool = new Pool();
+    private Frame FrameOne = new Frame( Pool );
+    private Frame FrameTwo = new Frame( Pool );
+    private Player PlayerOne = new Player( FrameOne );
+    private Player PlayerTwo = new Player( FrameTwo );
 
     @Override
     public void start(Stage window) throws Exception

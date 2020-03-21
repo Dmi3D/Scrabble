@@ -2,9 +2,8 @@ package sample;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
@@ -37,7 +36,10 @@ public class PlaceWordController
     {
         if ( event.getSource().equals( placeWordButton ) )
         {
-            System.out.println("Word: " + getWordInput() + "\nRow: " + getRowInput() + "\nColumn: " + getColumnInput() + "\nDirection: " + getDirection() +".");
+            //System.out.println("Word: " + getWordInput() + "\nRow: " + getRowInput() + "\nColumn: " + getColumnInput() + "\nDirection: " + getDirection() +".");
+
+            boolean placed = BoardController.Board.placeWord( getWordInput(), getDirection(), getRowInput(), getColumnInput(), BoardController.players[BoardController.currentPlayer] );
+
             wordInputField.clear();
             handleKeyReleased();
         }

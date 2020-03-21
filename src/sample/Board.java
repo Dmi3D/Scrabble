@@ -895,7 +895,7 @@ public class Board
     }
 
     /* RETURNS SQUARE AT A CERTAIN POSITION ON THE BOARD */
-    private Square getSquareAt( int row, int column )
+    public Square getSquareAt( int row, int column )
     {
         if ( row < 0 || row > 14 || column < 0 || column > 14 )
             return null;

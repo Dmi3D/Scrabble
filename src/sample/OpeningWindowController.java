@@ -14,10 +14,10 @@ import java.io.IOException;
 
 public class OpeningWindowController
 {
-    public Board Board;
-    public Pool Pool;
-    public Player PlayerOne;
-    public Player PlayerTwo;
+    private Board Board;
+    private Pool Pool;
+    private Player PlayerOne;
+    private Player PlayerTwo;
 
     public OpeningWindowController( Board Board, Pool Pool, Player PlayerOne, Player PlayerTwo)
     {
