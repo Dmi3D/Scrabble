@@ -2319,34 +2319,34 @@
          <center>
             <AnchorPane prefHeight="383.0" prefWidth="449.0">
                <children>
-                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="214.0" mnemonicParsing="false" onAction="#handleChallengeButton" prefHeight="35.0" prefWidth="200.0" text="CHALLENGE" textAlignment="CENTER" textFill="#204878" AnchorPane.bottomAnchor="130.0" AnchorPane.leftAnchor="14.0">
+                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="214.0" mnemonicParsing="false" onAction="#handleChallengeButton" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #203152;" text="CHALLENGE" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="130.0" AnchorPane.leftAnchor="14.0">
                      <font>
-                        <Font name="Bookman Old Style" size="17.0" />
+                        <Font name="System Bold" size="17.0" />
                      </font>
                   </Button>
-                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="263.0" mnemonicParsing="false" onAction="#handlePassButton" prefHeight="35.0" prefWidth="200.0" text="PASS" textAlignment="CENTER" textFill="#204878" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="14.0">
+                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="263.0" mnemonicParsing="false" onAction="#handlePassButton" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #203152;" text="PASS" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="14.0">
                      <font>
-                        <Font name="Bookman Old Style" size="17.0" />
+                        <Font name="System Bold" size="17.0" />
                      </font>
                   </Button>
-                  <Button alignment="CENTER" layoutX="239.0" layoutY="214.0" mnemonicParsing="false" onAction="#handleExchangeButton" prefHeight="35.0" prefWidth="200.0" text="EXCHANGE TILES" textFill="#204878" AnchorPane.bottomAnchor="130.0" AnchorPane.rightAnchor="22.600000000000023">
+                  <Button alignment="CENTER" layoutX="239.0" layoutY="214.0" mnemonicParsing="false" onAction="#handleExchangeButton" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #203152;" text="EXCHANGE TILES" textFill="WHITE" AnchorPane.bottomAnchor="130.0" AnchorPane.rightAnchor="22.600000000000023">
                      <font>
-                        <Font name="Bookman Old Style" size="17.0" />
+                        <Font name="System Bold" size="17.0" />
                      </font>
                   </Button>
-                  <Button alignment="CENTER" layoutX="239.0" layoutY="263.0" mnemonicParsing="false" onAction="#handlePlaceWordButton" prefHeight="35.0" prefWidth="200.0" text="PLACE WORD" textFill="#204878" AnchorPane.bottomAnchor="80.0" AnchorPane.rightAnchor="22.600000000000023">
+                  <Button alignment="CENTER" layoutX="239.0" layoutY="263.0" mnemonicParsing="false" onAction="#handlePlaceWordButton" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #203152;" text="PLACE WORD" textFill="WHITE" AnchorPane.bottomAnchor="80.0" AnchorPane.rightAnchor="22.600000000000023">
                      <font>
-                        <Font name="Bookman Old Style" size="17.0" />
+                        <Font name="System Bold" size="17.0" />
                      </font>
                   </Button>
-                  <Button alignment="CENTER" layoutX="14.0" layoutY="311.0" mnemonicParsing="false" onAction="#handleHelpButton" prefHeight="35.0" prefWidth="200.0" text="HELP" textFill="#204878" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="14.0">
+                  <Button alignment="CENTER" layoutX="14.0" layoutY="311.0" mnemonicParsing="false" onAction="#handleHelpButton" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #203152;" text="HELP" textFill="WHITE" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="14.0">
                      <font>
-                        <Font name="Bookman Old Style" size="17.0" />
+                        <Font name="System Bold" size="17.0" />
                      </font>
                   </Button>
-                  <Button alignment="CENTER" layoutX="245.0" layoutY="311.0" mnemonicParsing="false" onAction="#handleQuitButton" prefHeight="35.0" prefWidth="200.0" text="QUIT" textFill="#204878" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="22.19999999999999">
+                  <Button alignment="CENTER" layoutX="245.0" layoutY="311.0" mnemonicParsing="false" onAction="#handleQuitButton" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #203152;" text="QUIT" textFill="WHITE" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="22.19999999999999">
                      <font>
-                        <Font name="Bookman Old Style" size="17.0" />
+                        <Font name="System Bold" size="17.0" />
                      </font>
                   </Button>
                   <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="193.0" prefWidth="203.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
@@ -2401,7 +2401,7 @@
                         </GridPane>
                         <Label alignment="CENTER" layoutY="89.0" prefHeight="37.0" prefWidth="203.0" text="FRAME:" textAlignment="CENTER" textFill="WHITE">
                            <font>
-                              <Font size="19.0" />
+                              <Font name="System Bold" size="17.0" />
                            </font>
                         </Label>
                      </children>

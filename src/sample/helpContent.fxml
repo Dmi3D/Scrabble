@@ -7,21 +7,21 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="124.0" prefWidth="442.0" xmlns="http://javafx.com/javafx/11.0.1">
+<AnchorPane prefHeight="124.0" prefWidth="442.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox prefHeight="124.0" prefWidth="442.0">
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="18.0" prefWidth="54.0" text="PASS" textAlignment="CENTER">
+                  <Label alignment="CENTER" prefHeight="18.0" prefWidth="54.0" text="PASS" textAlignment="CENTER" textFill="WHITE">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
                      <font>
-                        <Font name="Bookman Old Style Bold" size="12.0" />
+                        <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label alignment="TOP_LEFT" prefHeight="123.0" prefWidth="83.0" text="Passing means skipping your turn. You get a zero score for this." textAlignment="CENTER" wrapText="true">
+                  <Label alignment="TOP_LEFT" prefHeight="123.0" prefWidth="83.0" text="Passing means skipping your turn. You get a zero score for this." textAlignment="CENTER" textFill="WHITE" wrapText="true">
                      <VBox.margin>
                         <Insets bottom="2.0" left="2.0" right="2.0" />
                      </VBox.margin>
@@ -30,15 +30,15 @@
             </VBox>
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Label alignment="CENTER" text="CHALLENGE">
+                  <Label alignment="CENTER" text="CHALLENGE" textFill="WHITE">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
                      <font>
-                        <Font name="Bookman Old Style Bold" size="12.0" />
+                        <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label alignment="TOP_LEFT" prefHeight="98.0" prefWidth="96.0" text="Checking the validity of an opponent's play by a using the dictionary." textAlignment="CENTER" wrapText="true">
+                  <Label alignment="TOP_LEFT" prefHeight="98.0" prefWidth="96.0" text="Checking the validity of an opponent's play by a using the dictionary." textAlignment="CENTER" textFill="WHITE" wrapText="true">
                      <VBox.margin>
                         <Insets bottom="2.0" left="2.0" right="2.0" />
                      </VBox.margin>
@@ -47,15 +47,15 @@
             </VBox>
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Label alignment="CENTER" text="EXCHANGE">
+                  <Label alignment="CENTER" text="EXCHANGE" textFill="WHITE">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
                      <font>
-                        <Font name="Bookman Old Style Bold" size="12.0" />
+                        <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label alignment="TOP_LEFT" prefHeight="98.0" prefWidth="101.0" text="Can swap 1-7 tiles if bag has at least 7 tiles. Used instead of a word play." textAlignment="CENTER" wrapText="true">
+                  <Label alignment="TOP_LEFT" prefHeight="98.0" prefWidth="101.0" text="Can swap 1-7 tiles if bag has at least 7 tiles. Used instead of a word play." textAlignment="CENTER" textFill="WHITE" wrapText="true">
                      <VBox.margin>
                         <Insets bottom="2.0" left="2.0" right="2.0" />
                      </VBox.margin>
@@ -64,15 +64,15 @@
             </VBox>
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Label alignment="CENTER" text="PLACE WORD">
+                  <Label alignment="CENTER" text="PLACE WORD" textFill="WHITE">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
                      <font>
-                        <Font name="Bookman Old Style Bold" size="12.0" />
+                        <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label alignment="TOP_LEFT" prefHeight="98.0" prefWidth="112.0" text="Placing a word on the board. Must place at least 1 tile from your frame." textAlignment="CENTER" wrapText="true">
+                  <Label alignment="TOP_LEFT" prefHeight="98.0" prefWidth="112.0" text="Placing a word on the board. Must place at least 1 tile from your frame." textAlignment="CENTER" textFill="WHITE" wrapText="true">
                      <VBox.margin>
                         <Insets bottom="2.0" left="2.0" right="2.0" />
                      </VBox.margin>
@@ -81,15 +81,15 @@
             </VBox>
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Label alignment="CENTER" text="QUIT">
+                  <Label alignment="CENTER" text="QUIT" textFill="WHITE">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
                      <font>
-                        <Font name="Bookman Old Style Bold" size="12.0" />
+                        <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label alignment="TOP_LEFT" prefHeight="98.0" prefWidth="154.0" text="Ending the game. All progress gets lost." textAlignment="CENTER" wrapText="true" />
+                  <Label alignment="TOP_LEFT" prefHeight="98.0" prefWidth="154.0" text="Ending the game. All progress gets lost." textAlignment="CENTER" textFill="WHITE" wrapText="true" />
                </children>
             </VBox>
          </children>
