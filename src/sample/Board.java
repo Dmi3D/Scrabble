@@ -292,6 +292,7 @@ public class Board
         return true;
     }
 
+
     private char[] convertStringToArray( String string )
     {
         string = string.toUpperCase();
@@ -567,6 +568,7 @@ public class Board
 
         return score;
     }
+
 
     /* PLACES A WORD WITH A CERTAIN DIRECTION. PASS IN STARTING POINT */
     public boolean placeWord( String string, char direction, int row, char columnLetter, Player player )

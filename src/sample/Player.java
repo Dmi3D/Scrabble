@@ -23,12 +23,7 @@ public class Player
         return this.name;
     }
 
-    public void increaseScore( int score )
-    {
-        this.score += score;
-    }
-
-    public void decreaseScore( int score )
+    public void incrementScore( int score )
     {
         this.score -= score;
     }

@@ -61,6 +61,7 @@ public class BoardTest
 
         Board.displayBoard();
 
+
         PlayerOne.increaseScore( Board.getScoreFromLastMove(Pool) );
         System.out.println( "Score of " + PlayerOne.getName() + ": " + PlayerOne.getScore());
 
