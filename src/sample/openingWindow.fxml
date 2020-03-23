@@ -11,7 +11,7 @@
 
 <!--fx:controller="sample.OpeningWindowController"-->
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="507.2" prefWidth="1028.0" style="-fx-background-color: #e8e5d5; -fx-border-color: #b38012; -fx-border-width: 10;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="507.2" prefWidth="1028.0" style="-fx-background-color: #37517e;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <HBox alignment="CENTER" prefHeight="120.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <padding>
@@ -22,27 +22,23 @@
    <bottom>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="startGameButton" layoutX="428.0" layoutY="251.0" mnemonicParsing="false" onAction="#startGameButtonClicked" prefHeight="35.0" prefWidth="152.0" text="START GAME" AnchorPane.bottomAnchor="81.0" AnchorPane.leftAnchor="428.0" AnchorPane.rightAnchor="428.0" AnchorPane.topAnchor="251.0">
+            <Button fx:id="startGameButton" alignment="CENTER" layoutX="428.0" layoutY="251.0" mnemonicParsing="false" onAction="#startGameButtonClicked" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #203152;" text="START GAME" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="81.0" AnchorPane.leftAnchor="428.0" AnchorPane.rightAnchor="428.0" AnchorPane.topAnchor="250.0">
                <font>
-                  <Font name="Bookman Old Style Bold" size="17.0" />
+                  <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <Label layoutX="269.0" layoutY="113.0" text="PLAYER 1" AnchorPane.leftAnchor="269.0">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="261.0" layoutY="73.0" text="PLAYER 1" textFill="WHITE" AnchorPane.leftAnchor="261.0" AnchorPane.topAnchor="73.0">
                <font>
-                  <Font name="Bookman Old Style Bold" size="23.0" />
+                  <Font name="System Bold" size="35.0" />
                </font>
             </Label>
-            <Label layoutX="619.0" layoutY="113.0" text="PLAYER 2" AnchorPane.rightAnchor="268.20000000000005">
+            <Label layoutX="611.0" layoutY="73.0" text="PLAYER 2" textFill="WHITE" AnchorPane.rightAnchor="260.20000000000005" AnchorPane.topAnchor="73.0">
                <font>
-                  <Font name="Bookman Old Style Bold" size="23.0" />
+                  <Font name="System Bold" size="35.0" />
                </font>
             </Label>
-            <TextField fx:id="player2NameField" layoutX="614.0" layoutY="158.0" onKeyReleased="#handleKeyReleased" prefHeight="35.0" prefWidth="131.0" promptText="Enter your name" AnchorPane.leftAnchor="600.0" AnchorPane.rightAnchor="250.0">
-               <font>
-                  <Font name="Bookman Old Style" size="12.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="player1NameField" layoutX="265.0" layoutY="158.0" onKeyReleased="#handleKeyReleased" prefHeight="35.0" prefWidth="131.0" promptText="Enter your name" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="600.0">
+            <TextField fx:id="player2NameField" layoutX="614.0" layoutY="158.0" onKeyReleased="#handleKeyReleased" prefHeight="35.0" prefWidth="150.0" promptText="Enter your name" style="-fx-background-color: #203152;" AnchorPane.leftAnchor="600.0" AnchorPane.rightAnchor="250.0" AnchorPane.topAnchor="140.0" />
+            <TextField fx:id="player1NameField" layoutX="265.0" layoutY="158.0" onKeyReleased="#handleKeyReleased" prefHeight="35.0" prefWidth="150.0" promptText="Enter your name" style="-fx-background-color: #203152;" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="600.0" AnchorPane.topAnchor="140.0">
                <font>
                   <Font name="Bookman Old Style" size="12.0" />
                </font>

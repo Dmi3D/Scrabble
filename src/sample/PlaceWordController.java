@@ -10,6 +10,9 @@ import java.io.IOException;
 
 public class PlaceWordController
 {
+    private boolean placed;
+    private boolean clicked;
+
     @FXML
     private TextField wordInputField;
 
@@ -36,13 +39,31 @@ public class PlaceWordController
     {
         if ( event.getSource().equals( placeWordButton ) )
         {
-            //System.out.println("Word: " + getWordInput() + "\nRow: " + getRowInput() + "\nColumn: " + getColumnInput() + "\nDirection: " + getDirection() +".");
+            placed = BoardController.Board.placeWord( getWordInput(), getDirection(), getRowInput(), getColumnInput(), BoardController.players[BoardController.currentPlayer] );
 
-            boolean placed = BoardController.Board.placeWord( getWordInput(), getDirection(), getRowInput(), getColumnInput(), BoardController.players[BoardController.currentPlayer] );
+            if( placed )
+            {
+                BoardController.players[BoardController.currentPlayer].getPlayerFrame().fillFrame( BoardController.Pool );
+            }
 
             wordInputField.clear();
             handleKeyReleased();
+
+            clicked = true;
+            notifyAll();
         }
+
+        clicked = false;
+    }
+
+    public boolean isClicked()
+    {
+        return clicked;
+    }
+
+    public boolean isPlaced()
+    {
+        return placed;
     }
 
     @FXML

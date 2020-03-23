@@ -36,8 +36,6 @@ public class OpeningWindowController
     @FXML
     private Button startGameButton;
 
-
-
     public void initialize()
     {
         startGameButton.setDisable( true );

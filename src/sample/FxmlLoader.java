@@ -9,6 +9,7 @@ import java.io.IOException;
 public class FxmlLoader
 {
     private AnchorPane content;
+    private PlaceWordController pController;
 
     public AnchorPane getChallengeContent() throws IOException
     {
@@ -49,6 +50,8 @@ public class FxmlLoader
             FXMLLoader fxmlLoader = new FXMLLoader( getClass().getResource( "placeWordContent.fxml" ) );
 
             content = fxmlLoader.load();
+
+            pController = fxmlLoader.getController();
         }
         catch (IOException e)
         {
@@ -57,6 +60,11 @@ public class FxmlLoader
 
         return content;
     }
+    public PlaceWordController getpController()
+    {
+        return pController;
+    }
+
 
     public AnchorPane getHelpContent() throws IOException
     {
