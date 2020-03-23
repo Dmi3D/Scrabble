@@ -56,12 +56,22 @@ public class BoardController implements Initializable
     }
 
     @FXML
-    public void handlePlaceWordButton( ActionEvent actionEvent ) throws IOException
+    public void handlePlaceWordButton( ActionEvent actionEvent ) throws IOException, InterruptedException
     {
         System.out.println( "Place Word Button Clicked" ); // debug
         FxmlLoader content = new FxmlLoader();
         rightPanel.setBottom( content.getPlaceWordContent() );
         BorderPane.setMargin( rightPanel.getBottom(), new Insets( 0, 10, 10, 10 ) );
+
+        PlaceWordController pController = content.getpController();
+
+        pController.wait();
+
+        if ( pController.isPlaced() )
+        {
+            switchPlayer();
+            displayAll();
+        }
     }
 
     @FXML
@@ -86,16 +96,14 @@ public class BoardController implements Initializable
     public void handlePassButton( ActionEvent actionEvent ) throws IOException
     {
         System.out.println( "Pass Button Clicked" ); // debug
-       /* amountOfPass[currentPlayer]++;
-        if(amountOfPass[currentPlayer] >= 2)
+        amountOfPass[currentPlayer]++;
+
+        if ( passedTwice() )
         {
-            System.out.println("This should stop game");
-        }*/
+            //should open winner screen
+        }
 
         switchPlayer();
-        // keep a counter for number of times pass is selected
-        // if selected twice in succession, game is over
-        // also make this button trigger next turn
     }
 
 
@@ -119,7 +127,6 @@ public class BoardController implements Initializable
 
         displayName();
         displayFrame();
-        displayBoard();
     }
 
     public void setPlayers( Player PlayerOne, Player PlayerTwo )
@@ -181,12 +188,13 @@ public class BoardController implements Initializable
                 if ( Board.getSquareAt( row - 1, col - 1 ).getTile() != '\u0000' )
                 {
                     label.setText( String.valueOf( Board.getSquareAt( row - 1, col - 1 ).getTile() ) );
+                    System.out.println( "Should set label to: " + Board.getSquareAt( row - 1, col - 1 ).getTile() );
                 }
             }
         }
     }
 
-    public Node getNodeByRowColumnIndex( final int row, final int column, GridPane Board )
+    private Node getNodeByRowColumnIndex( final int row, final int column, GridPane Board )
     {
         Node result = null;
         ObservableList<Node> children = Board.getChildren();
@@ -225,5 +233,41 @@ public class BoardController implements Initializable
         }
 
         return result;
+    }
+
+    public void displayAll()
+    {
+        displayName();
+        displayFrame();
+        displayBoard();
+    }
+
+    private static boolean passedTwice()
+    {
+        if ( amountOfPass[currentPlayer] >= 2 )
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    public static Player getCurrentPlayer()
+    {
+        return players[currentPlayer];
+    }
+
+    public void didPlace( boolean placed )
+    {
+        if ( placed )
+        {
+            switchPlayer();
+            displayAll();
+        }
+
+        else
+        {
+
+        }
     }
 }
