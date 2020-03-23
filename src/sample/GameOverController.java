@@ -7,17 +7,33 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class GameOverController
 {
+    Player Winner;
+    Player Lose;
+
     @FXML
     Button restartGameButton;
 
     @FXML
     Button exitButton;
+
+    @FXML
+    Label winnerNameLabel;
+
+    @FXML
+    Label winnerScoreLabel;
+
+    @FXML
+    Label loserNameLabel;
+
+    @FXML
+    Label loserScoreLabel;
 
     @FXML
     public void onButtonClicked( ActionEvent event ) throws IOException

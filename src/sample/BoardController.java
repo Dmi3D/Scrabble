@@ -3,13 +3,17 @@ package sample;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -62,16 +66,6 @@ public class BoardController implements Initializable
         FxmlLoader content = new FxmlLoader();
         rightPanel.setBottom( content.getPlaceWordContent() );
         BorderPane.setMargin( rightPanel.getBottom(), new Insets( 0, 10, 10, 10 ) );
-
-        PlaceWordController pController = content.getpController();
-
-        pController.wait();
-
-        if ( pController.isPlaced() )
-        {
-            switchPlayer();
-            displayAll();
-        }
     }
 
     @FXML
@@ -100,7 +94,16 @@ public class BoardController implements Initializable
 
         if ( passedTwice() )
         {
-            //should open winner screen
+            FXMLLoader loader = new FXMLLoader( getClass().getResource( "gameOverWindow.fxml" ) );
+            Parent gameOverWindow = (Parent) loader.load();
+            Scene gameOverScene = new Scene(gameOverWindow);
+
+            // Getting information about the stage i.e. window to access it
+            Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+
+            // changing the window's scene
+            window.setScene( gameOverScene );
+            window.show();
         }
 
         switchPlayer();
@@ -125,8 +128,7 @@ public class BoardController implements Initializable
             currentPlayer = 0;
         }
 
-        displayName();
-        displayFrame();
+        displayAll();
     }
 
     public void setPlayers( Player PlayerOne, Player PlayerTwo )
@@ -255,19 +257,5 @@ public class BoardController implements Initializable
     public static Player getCurrentPlayer()
     {
         return players[currentPlayer];
-    }
-
-    public void didPlace( boolean placed )
-    {
-        if ( placed )
-        {
-            switchPlayer();
-            displayAll();
-        }
-
-        else
-        {
-
-        }
     }
 }

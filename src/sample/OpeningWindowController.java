@@ -18,6 +18,7 @@ public class OpeningWindowController
     private Pool Pool;
     private Player PlayerOne;
     private Player PlayerTwo;
+    public static BoardController bController;
 
     public OpeningWindowController( Board Board, Pool Pool, Player PlayerOne, Player PlayerTwo)
     {
@@ -70,6 +71,7 @@ public class OpeningWindowController
             Parent boardViewParent = (Parent) loader.load();
 
             BoardController mController = loader.getController();
+            bController = mController;
             mController.setPlayers( PlayerOne, PlayerTwo );
             mController.setBoard( Board );
             mController.setPool( Pool );

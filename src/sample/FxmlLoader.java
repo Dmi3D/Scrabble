@@ -45,26 +45,19 @@ public class FxmlLoader
 
     public AnchorPane getPlaceWordContent() throws IOException
     {
-        try
-        {
-            FXMLLoader fxmlLoader = new FXMLLoader( getClass().getResource( "placeWordContent.fxml" ) );
-
-            content = fxmlLoader.load();
-
-            pController = fxmlLoader.getController();
-        }
-        catch (IOException e)
-        {
-            System.out.println(" please check FxmlLoader.");
-        }
-
-        return content;
-    }
-    public PlaceWordController getpController()
+    try
     {
-        return pController;
+        FXMLLoader fxmlLoader = new FXMLLoader( getClass().getResource( "placeWordContent.fxml" ) );
+
+        content = fxmlLoader.load();
+    }
+    catch (IOException e)
+    {
+        System.out.println(" please check FxmlLoader.");
     }
 
+    return content;
+    }
 
     public AnchorPane getHelpContent() throws IOException
     {
