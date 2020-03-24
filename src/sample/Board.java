@@ -279,11 +279,13 @@ public class Board
         if ( !isOverlapValid( word, direction, row, column ) )
             return false;
 
+        System.out.println("so overlap works");
         // If the player has the remaining tiles needed
         if ( !playerHasTiles( word, player ) )
         {
             return false;
         }
+        System.out.println("so player has tiles");
 
         // If it is the first word, we can only place if it goes through the centre
         if ( isFirstWord() && !goesThroughCentre( word, direction, row, column ) )
@@ -789,6 +791,8 @@ public class Board
             }
         }
 
+        System.out.println("Overlapping tiles:" + overlappingLetters.toString());
+
         return overlappingLetters;
     }
 
@@ -804,11 +808,12 @@ public class Board
             {
                 if ( overlappingLetter == word[i] )
                     word[i] = ' ';
-
-                if ( !overlappingTiles.isEmpty() )
-                    overlappingTiles.pop();
             }
+
+            overlappingTiles.pop();
         }
+
+        System.out.println("Word without overlap: " + Arrays.toString( word ));
     }
 
     /* CHECKS IF OVERLAP IS VALID BY NOT ALLOWING CHARACTERS TO TRY OVERLAP */
@@ -818,21 +823,25 @@ public class Board
         {
             char letterToPlace = word[i];
 
-            if ( letterToPlace == ' ' )
-                continue;
+            if ( letterToPlace == ' ' );
 
-            if ( direction == 'A' )
+            else if ( direction == 'A' )
             {
                 //If we are trying to overlap a two characters over each other
                 if ( getSquareAt( row, column + i ).getTile() != '\u0000' )
+                {
                     return false;
+                }
+
             }
 
             else if ( direction == 'D' )
             {
                 //If we are trying to overlap a two characters over each other
                 if ( getSquareAt( row + i, column ).getTile() != '\u0000' )
+                {
                     return false;
+                }
             }
         }
 
@@ -855,11 +864,17 @@ public class Board
 
             for ( char matchingTile : word )
             {
+                if(matchingTile == ' ')
+                {
+                    continue;
+                }
+
                 if ( frameCopy.getIndexOfTile( matchingTile ) != -1 )
                 {
                     frameCopy.removeTile( matchingTile );   // removing each tile of the word from the frame copy
                     // when it is found to exist on both the frame and in the word
                 }
+
                 else
                 {
                     playerHasTiles = false;
