@@ -1,4 +1,3 @@
-/*
 package sample;
 
 import java.util.Arrays;
@@ -63,8 +62,8 @@ public class BoardTest
         Board.displayBoard();
 
 
-        PlayerOne.increaseScore( Board.getScoreFromLastMove(Pool) );
-        System.out.println( "Score of " + PlayerOne.getName() + ": " + PlayerOne.getScore());
+        /*PlayerOne.increaseScore( Board.getScoreFromLastMove(Pool) );
+        System.out.println( "Score of " + PlayerOne.getName() + ": " + PlayerOne.getScore());*/
 
         for(int i = 0; i < Board.wordsCreatedLastMove.size(); i++)
         {
@@ -105,8 +104,8 @@ public class BoardTest
         System.out.println( "Board now contains the two words on the board:" );
         Board.displayBoard();
 
-        PlayerTwo.increaseScore( Board.getScoreFromLastMove(Pool) );
-        System.out.println( "Score of " + PlayerTwo.getName() + ": " + PlayerTwo.getScore());
+        /*PlayerTwo.increaseScore( Board.getScoreFromLastMove(Pool) );
+        System.out.println( "Score of " + PlayerTwo.getName() + ": " + PlayerTwo.getScore());*/
 
         for(int i = 0; i < Board.wordsCreatedLastMove.size(); i++)
         {
@@ -147,9 +146,9 @@ public class BoardTest
         System.out.println( "Method call to placeWord() should return true. Actual: " + canPlace + "\n" );
         System.out.println( "Board now contains three words:" );
 
-        PlayerOne.increaseScore( Board.getScoreFromLastMove(Pool) );
+        /*PlayerOne.increaseScore( Board.getScoreFromLastMove(Pool) );
         System.out.println( "Score of " + PlayerOne.getName() + ": " + PlayerOne.getScore());
-
+*/
         for(int i = 0; i < Board.wordsCreatedLastMove.size(); i++)
         {
             System.out.println("Word " + i + ": " + Board.wordsCreatedLastMove.get( i ));
@@ -229,9 +228,9 @@ public class BoardTest
         System.out.println( "Board now contains four words:" );
         Board.displayBoard();
 
-        PlayerTwo.increaseScore( Board.getScoreFromLastMove(Pool) );
+        /*PlayerTwo.increaseScore( Board.getScoreFromLastMove(Pool) );
         System.out.println( "Score of " + PlayerTwo.getName() + ": " + PlayerTwo.getScore());
-
+*/
         for(int i = 0; i < Board.wordsCreatedLastMove.size(); i++)
         {
             System.out.println("Word " + i + ": " + Board.wordsCreatedLastMove.get( i ));
@@ -240,7 +239,7 @@ public class BoardTest
         PlayerTwo.getPlayerFrame().displayFrame();
 
 
-        System.out.println( "\n********************************* REMOVING WORD BECAUSE CHALLENGER WON ********************************\n" );
+        /*System.out.println( "\n********************************* REMOVING WORD BECAUSE CHALLENGER WON ********************************\n" );
         System.out.println( "Attempting to remove last placed word: " + Arrays.toString( Board.getLastTilesPlaced() ));
 
         System.out.print( PlayerTwo.getName() + "'s frame: " );
@@ -260,7 +259,7 @@ public class BoardTest
 
         System.out.println( "Board currently should have 3 words currently. Actually: " + Board.getNumOfWords() );
         Board.displayBoard();
-
+*/
 
         System.out.println( "\n**************************** ILLEGAL PLACEMENT OF WORD THAT OVERLAPS WITH TILES ALREADY ON BOARD ******************************\n" );
         System.out.println( "Attempting to place the fifth word across starting at position (10, D). The word will overlap with tile at position (10, F)." );
@@ -291,4 +290,3 @@ public class BoardTest
         Board.displayBoard();
     }
 }
-*/

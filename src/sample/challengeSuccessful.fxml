@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="124.0" prefWidth="442.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label alignment="TOP_CENTER" layoutX="15.0" layoutY="30.0" prefHeight="94.0" prefWidth="415.0" text="CHALLENGE WAS SUCCESSFULL. PLEASE MAKE ANOTHER MOVE." textAlignment="CENTER" textFill="#d4af37" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="30.0">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
