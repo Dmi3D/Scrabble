@@ -42,10 +42,17 @@ public class PlaceWordController
             {
                 BoardController.players[BoardController.currentPlayer].getPlayerFrame().fillFrame( BoardController.Pool );
                 OpeningWindowController.bController.switchPlayer();
+                wordInputField.clear();
+                handleKeyReleased();
             }
+            else
+            {
+                System.out.println("Error code is: " + BoardController.Board.getErrorCode());
+                int errorCode = BoardController.Board.getErrorCode();
+                // calling Board Controller to load the fxml file which displays error
+                OpeningWindowController.bController.loadErrorContent(errorCode);
 
-            wordInputField.clear();
-            handleKeyReleased();
+            }
         }
     }
 

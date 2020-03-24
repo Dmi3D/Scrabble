@@ -16,6 +16,11 @@ public class Board
 
     private int errorCode;
 
+    public int getErrorCode()
+    {
+        return errorCode;
+    }
+
     // BOARD 2D ARRAY DIMENSION
     private static final int BOUNDS = 15;
 

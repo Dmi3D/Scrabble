@@ -1,15 +1,19 @@
 package sample;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
-// class loading files and their content based on fxml file
+/**
+ * Class that loads contents of fxml files for fxml switching
+ * These files are being rendered within the boardGraphic.fxml
+ * On the BOTTOM of child of main BorderPane, in an AnchorPane
+ */
 public class FxmlLoader
 {
     private AnchorPane content;
-    private PlaceWordController pController;
 
     public AnchorPane getChallengeContent() throws IOException
     {
@@ -90,13 +94,4 @@ public class FxmlLoader
 
         return content;
     }
-
-
-
-
-
-
-
-
-
 }

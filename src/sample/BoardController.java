@@ -10,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -109,11 +110,48 @@ public class BoardController implements Initializable
         switchPlayer();
     }
 
+    public void loadErrorContent( int errorCode ) throws IOException
+    {
+        FXMLLoader fxmlLoader = new FXMLLoader( getClass().getResource( "placeError.fxml" ) );
+        AnchorPane content = fxmlLoader.load();
+        fxmlLoader.setController( this );
+        System.out.println("Error content loaded"); // debug
+        rightPanel.setBottom( content );
+        BorderPane.setMargin( rightPanel.getBottom(), new Insets( 0, 10, 10, 10 ) );
+        ObservableList<Node> children = content.getChildren();
+        Label errorLabel = (Label) children.get( 0 );
+        errorLabel.setText( getErrorCodeText( errorCode ) );
+    }
+
+    /**
+     * Getting the error code to determine the text returned during word placement. This is then set as a text into the
+     * label that calls it
+     * @param errorCode integer that holds value associated with specific error during word placement
+     * @return string representing error text
+     */
+    private String getErrorCodeText( int errorCode )
+    {
+        switch ( errorCode )
+        {
+            case 0:
+                return "INVALID PLACEMENT OF FIRST WORD. MAKE SURE WORD GOES THROUGH CENTRE OF THE BOARD!";
+            case 1:
+                return "INVALID WORD PLACEMENT OUTSIDE OF BOUNDS. MAKE SURE THE WORD DOESN'T GO OUT OF BOUNDS OF THE BOARD!";
+            case 2:
+                return "INVALID WORD. MAKE SURE YOU HAVE THE LETTERS IN YOUR FRAME, AND/OR THAT THEY ARE FOUND ON THE BOARD IF OVERLAPPING!";
+            case 3:
+                return "INVALID DUE TO LETTER CLASH. MAKE SURE THAT PLACEMENT IS SAFE AND THAT LETTERS DON'T CLASH!";
+            case 4:
+                return "INVALID WORD. MAKE SURE TO PLACE AT LEAST ONE TILE FROM YOUR FRAME!";
+            default:
+                return "INVALID WORD PLACEMENT. MAKE SURE WORD IS CONNECTED TO OTHER LETTERS ON THE BOARD!";
+        }
+    }
+
 
     @Override
     public void initialize( URL url, ResourceBundle resourceBundle )
     {
-
     }
 
     public void switchPlayer()
