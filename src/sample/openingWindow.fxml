@@ -37,8 +37,8 @@
                   <Font name="System Bold" size="35.0" />
                </font>
             </Label>
-            <TextField fx:id="player2NameField" layoutX="614.0" layoutY="158.0" onKeyReleased="#handleKeyReleased" prefHeight="35.0" prefWidth="150.0" promptText="Enter your name" style="-fx-background-color: #203152;" AnchorPane.leftAnchor="600.0" AnchorPane.rightAnchor="250.0" AnchorPane.topAnchor="140.0" />
-            <TextField fx:id="player1NameField" layoutX="265.0" layoutY="158.0" onKeyReleased="#handleKeyReleased" prefHeight="35.0" prefWidth="150.0" promptText="Enter your name" style="-fx-background-color: #203152;" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="600.0" AnchorPane.topAnchor="140.0">
+            <TextField fx:id="player2NameField" layoutX="614.0" layoutY="158.0" onKeyReleased="#handleKeyReleased" prefHeight="35.0" prefWidth="150.0" promptText="Enter your name" style="-fx-background-color: #203152; -fx-text-inner-color: white;" AnchorPane.leftAnchor="600.0" AnchorPane.rightAnchor="250.0" AnchorPane.topAnchor="140.0" />
+            <TextField fx:id="player1NameField" layoutX="265.0" layoutY="158.0" onKeyReleased="#handleKeyReleased" prefHeight="35.0" prefWidth="150.0" promptText="Enter your name" style="-fx-background-color: #203152; -fx-text-inner-color: white;" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="600.0" AnchorPane.topAnchor="140.0">
                <font>
                   <Font name="Bookman Old Style" size="12.0" />
                </font>

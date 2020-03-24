@@ -9,6 +9,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -29,7 +30,7 @@ public class BoardController implements Initializable
     public static int[] amountOfPass;
 
     @FXML
-    private BorderPane rightPanel;
+    public BorderPane rightPanel;
 
     @FXML
     private GridPane boardDisplay;
@@ -39,6 +40,10 @@ public class BoardController implements Initializable
 
     @FXML
     private GridPane playerTilesDisplayOnTurn;
+
+    @FXML
+    public Button challengeButton;
+
 
     @FXML
     public void handleChallengeButton( ActionEvent actionEvent ) throws IOException
@@ -90,6 +95,7 @@ public class BoardController implements Initializable
     public void handlePassButton( ActionEvent actionEvent ) throws IOException
     {
         System.out.println( "Pass Button Clicked" ); // debug
+        challengeButton.setDisable( true );
         amountOfPass[currentPlayer]++;
 
         if ( passedTwice() )

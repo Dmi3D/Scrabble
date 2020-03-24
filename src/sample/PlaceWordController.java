@@ -42,6 +42,7 @@ public class PlaceWordController
             {
                 BoardController.players[BoardController.currentPlayer].getPlayerFrame().fillFrame( BoardController.Pool );
                 OpeningWindowController.bController.switchPlayer();
+                OpeningWindowController.bController.rightPanel.getBottom().setVisible( false );
             }
 
             wordInputField.clear();

@@ -279,13 +279,11 @@ public class Board
         if ( !isOverlapValid( word, direction, row, column ) )
             return false;
 
-        System.out.println("so overlap works");
         // If the player has the remaining tiles needed
         if ( !playerHasTiles( word, player ) )
         {
             return false;
         }
-        System.out.println("so player has tiles");
 
         // If it is the first word, we can only place if it goes through the centre
         if ( isFirstWord() && !goesThroughCentre( word, direction, row, column ) )

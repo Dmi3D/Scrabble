@@ -2319,7 +2319,7 @@
          <center>
             <AnchorPane prefHeight="383.0" prefWidth="449.0">
                <children>
-                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="214.0" mnemonicParsing="false" onAction="#handleChallengeButton" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #203152;" text="CHALLENGE" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="130.0" AnchorPane.leftAnchor="14.0">
+                  <Button fx:id="challengeButton" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="214.0" mnemonicParsing="false" onAction="#handleChallengeButton" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #203152;" text="CHALLENGE" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="130.0" AnchorPane.leftAnchor="14.0">
                      <font>
                         <Font name="System Bold" size="17.0" />
                      </font>
@@ -2329,7 +2329,7 @@
                         <Font name="System Bold" size="17.0" />
                      </font>
                   </Button>
-                  <Button alignment="CENTER" layoutX="239.0" layoutY="214.0" mnemonicParsing="false" onAction="#handleExchangeButton" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #203152;" text="EXCHANGE TILES" textFill="WHITE" AnchorPane.bottomAnchor="130.0" AnchorPane.rightAnchor="22.600000000000023">
+                  <Button fx:id="exchangeButton" alignment="CENTER" layoutX="239.0" layoutY="214.0" mnemonicParsing="false" onAction="#handleExchangeButton" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #203152;" text="EXCHANGE TILES" textFill="WHITE" AnchorPane.bottomAnchor="130.0" AnchorPane.rightAnchor="22.600000000000023">
                      <font>
                         <Font name="System Bold" size="17.0" />
                      </font>
