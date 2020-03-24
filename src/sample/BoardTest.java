@@ -1,4 +1,3 @@
-/*
 package sample;
 
 import java.util.Arrays;
@@ -62,8 +61,6 @@ public class BoardTest
 
         Board.displayBoard();
 
-
-        PlayerOne.increaseScore( Board.getScoreFromLastMove(Pool) );
         System.out.println( "Score of " + PlayerOne.getName() + ": " + PlayerOne.getScore());
 
         for(int i = 0; i < Board.wordsCreatedLastMove.size(); i++)
@@ -105,7 +102,6 @@ public class BoardTest
         System.out.println( "Board now contains the two words on the board:" );
         Board.displayBoard();
 
-        PlayerTwo.increaseScore( Board.getScoreFromLastMove(Pool) );
         System.out.println( "Score of " + PlayerTwo.getName() + ": " + PlayerTwo.getScore());
 
         for(int i = 0; i < Board.wordsCreatedLastMove.size(); i++)
@@ -147,7 +143,6 @@ public class BoardTest
         System.out.println( "Method call to placeWord() should return true. Actual: " + canPlace + "\n" );
         System.out.println( "Board now contains three words:" );
 
-        PlayerOne.increaseScore( Board.getScoreFromLastMove(Pool) );
         System.out.println( "Score of " + PlayerOne.getName() + ": " + PlayerOne.getScore());
 
         for(int i = 0; i < Board.wordsCreatedLastMove.size(); i++)
@@ -229,7 +224,6 @@ public class BoardTest
         System.out.println( "Board now contains four words:" );
         Board.displayBoard();
 
-        PlayerTwo.increaseScore( Board.getScoreFromLastMove(Pool) );
         System.out.println( "Score of " + PlayerTwo.getName() + ": " + PlayerTwo.getScore());
 
         for(int i = 0; i < Board.wordsCreatedLastMove.size(); i++)
@@ -255,7 +249,6 @@ public class BoardTest
         System.out.print( PlayerTwo.getName() + "'s frame with letter's refiled: " );
         PlayerTwo.getPlayerFrame().displayFrame();
 
-        PlayerTwo.decreaseScore( Board.getScoreFromLastMove(Pool) );
         System.out.println( "Score of " + PlayerTwo.getName() + ": " + PlayerTwo.getScore());
 
         System.out.println( "Board currently should have 3 words currently. Actually: " + Board.getNumOfWords() );
@@ -291,4 +284,3 @@ public class BoardTest
         Board.displayBoard();
     }
 }
-*/
