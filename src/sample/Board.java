@@ -6,6 +6,16 @@ import java.util.Stack;
 
 public class Board
 {
+    // error codes
+    public static final int WORD_INCORRECT_FIRST_PLAY = 0;
+    public static final int WORD_OUT_OF_BOUNDS = 1;
+    public static final int WORD_LETTER_NOT_IN_FRAME = 2;
+    public static final int WORD_LETTER_CLASH = 3;
+    public static final int WORD_NO_LETTER_PLACED = 4;
+    public static final int WORD_NO_CONNECTION = 5;
+
+    private int errorCode;
+
     // BOARD 2D ARRAY DIMENSION
     private static final int BOUNDS = 15;
 
@@ -262,11 +272,15 @@ public class Board
     {
         // If word is not within bounds, it cannot be placed
         if ( !isWithinBounds( word, direction, row, column ) )
+        {
+            errorCode = WORD_OUT_OF_BOUNDS;
             return false;
+        }
 
         // If the word will not touch any other word on the board
         if ( !isTouching( word, direction, row, column ) && !isFirstWord() )
         {
+            errorCode = WORD_NO_CONNECTION;
             return false;
         }
 
@@ -277,7 +291,10 @@ public class Board
             removeOverlappingTiles( word, overLappingTiles );
 
         if ( !isOverlapValid( word, direction, row, column ) )
+        {
+            errorCode = WORD_LETTER_CLASH;
             return false;
+        }
 
         System.out.println("so overlap works");
         // If the player has the remaining tiles needed
@@ -289,7 +306,10 @@ public class Board
 
         // If it is the first word, we can only place if it goes through the centre
         if ( isFirstWord() && !goesThroughCentre( word, direction, row, column ) )
+        {
+            errorCode = WORD_INCORRECT_FIRST_PLAY;
             return false;
+        }
 
         return true;
     }
@@ -614,6 +634,7 @@ public class Board
 
             if ( placedTiles == 0 )
             {
+                errorCode = WORD_NO_LETTER_PLACED;
                 return false;
             }
 
@@ -878,6 +899,7 @@ public class Board
                 else
                 {
                     playerHasTiles = false;
+                    errorCode = WORD_LETTER_NOT_IN_FRAME;
                     break;
                 }
             }
