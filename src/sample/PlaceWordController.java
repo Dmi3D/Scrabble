@@ -44,6 +44,8 @@ public class PlaceWordController
                 OpeningWindowController.bController.switchPlayer();
                 wordInputField.clear();
                 handleKeyReleased();
+
+                OpeningWindowController.bController.rightPanel.getBottom().setVisible( false );
             }
             else
             {
@@ -51,7 +53,6 @@ public class PlaceWordController
                 int errorCode = BoardController.Board.getErrorCode();
                 // calling Board Controller to load the fxml file which displays error
                 OpeningWindowController.bController.loadErrorContent(errorCode);
-
             }
         }
     }
