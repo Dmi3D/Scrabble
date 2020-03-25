@@ -5,8 +5,20 @@ import javafx.fxml.FXML;
 
 import java.io.IOException;
 
+/**
+ * Class that controls the buttons 'Yes' and 'No' that load
+ * during fxml content switching when rendering 'challengeContent.fxml'
+ */
 public class ChallengeContentController
 {
+    /**
+     * 1) Calls method to remove the last word placed on the board.
+     * 2) Calls method to refill the frame of the opponent (player whose word was
+     *    removed when challenge is successful), with the letters of that word
+     *    from the Board.
+     * 3) Calls method to reset the opponent's score back to number prior
+     *    placing the new word.
+     */
     @FXML
     public void handleYesButton( ActionEvent actionEvent ) throws IOException
     {
@@ -36,6 +48,10 @@ public class ChallengeContentController
         otherPlayer.decreaseScore( BoardController.Board.getScoreFromLastMove( BoardController.Pool ) );
     }
 
+    /**
+     * Calls method to switch player as the challenge was unsuccessful.
+     * Sets the bottom right-hand-side of the window to empty upon switching to next player.
+     */
     @FXML
     public void handleNoButton( ActionEvent actionEvent ) throws IOException
     {

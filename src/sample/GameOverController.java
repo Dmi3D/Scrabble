@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/** Class that handles button presses in gameOverWindow.fxml */
 public class GameOverController implements Initializable
 {
     Player Winner;
@@ -38,6 +39,14 @@ public class GameOverController implements Initializable
     @FXML
     Label loserScoreLabel;
 
+    /**
+     * Press of button 'RESTART':
+     * 1) calls method that resets the game
+     * 2) triggers scene change in window to openingWindow.fxml
+     *
+     * Press of button 'EXIT':
+     * 1) closes the window i.e. terminates the game/program
+     */
     @FXML
     public void onButtonClicked( ActionEvent event ) throws IOException
     {

@@ -9,6 +9,8 @@ import javafx.scene.control.TextField;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**1) Parses input from placeWordContent.fxml.
+ * 2) Calls method to place word input by user on the board.*/
 public class PlaceWordController
 {
     @FXML
@@ -32,6 +34,15 @@ public class PlaceWordController
         placeWordButton.setDisable(true);
     }
 
+    /** Calls method from back-end to place the word on the board
+     *
+     *  Success: 1) Prompts the words created during that play.
+     *           2) Calls method to make word placed on board in back-end show in the front-end
+     *           3) Calls method to increase the player's score
+     *
+     *  Fail:    1) Calls method to retrieve the error code of the error associated with the invalid word placement
+     *           2) Calls method in BoardController to display the error in the window.
+     */
     @FXML
     public void onButtonClicked( ActionEvent event) throws IOException
     {
@@ -49,27 +60,34 @@ public class PlaceWordController
                 }
 
                 System.out.println("Score: " + BoardController.Board.getScoreFromLastMove( BoardController.Pool ));
+                // increasing the player's score based on word they places and position on board
                 BoardController.getCurrentPlayer().increaseScore( BoardController.Board.getScoreFromLastMove( BoardController.Pool ) );
 
+                // switching player
                 OpeningWindowController.bController.switchPlayer();
                 wordInputField.clear();
                 handleKeyReleased();
 
                 ArrayList<String> lastWordsList = BoardController.Board.wordsCreatedLastMove;
 
-                String lastWords = "";
+                StringBuilder lastWords = new StringBuilder();
 
-                for(int i = 0; i < lastWordsList.size(); i++)
+                // getting a string of the word/s placed
+                for ( String s : lastWordsList )
                 {
-                    lastWords += (lastWordsList.get( i ) + "\n");
+                    lastWords.append( s ).append( "\n" );
                 }
 
-                OpeningWindowController.bController.scrollLabel.setText( lastWords );
+                // displaying the word/s created during the last play in the window
+                OpeningWindowController.bController.scrollLabel.setText( lastWords.toString() );
+
+                // making the bottom right-hand-side of window invisible in preparation for next player's move
                 OpeningWindowController.bController.rightPanel.getBottom().setVisible( false );
             }
             else
             {
                 System.out.println("Error code is: " + BoardController.Board.getErrorCode());
+                // getting error code for invalid word placement
                 int errorCode = BoardController.Board.getErrorCode();
                 // calling Board Controller to load the fxml file which displays error
                 OpeningWindowController.bController.loadErrorContent(errorCode);
@@ -104,8 +122,8 @@ public class PlaceWordController
         return 'D';
     }
 
-    // disabling the buttons when there is no text typed into the text field
-    // to avoid user submitting empty field
+    /** Disabling the button 'PLACE' when there is no text typed into the text field
+     * to avoid user submitting empty field*/
     @FXML
     public void handleKeyReleased()
     {

@@ -12,6 +12,13 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Class that does the following:
+ * 1) Parses input of player's names
+ * 2) Stores references to objects of the game
+ * 3) Passes object references to BoardController
+ * 4) Triggers scene change in window to boardGraphic.fxml when 'START GAME' button is pressed
+ */
 public class OpeningWindowController
 {
     private Board Board;
@@ -53,29 +60,27 @@ public class OpeningWindowController
         return player2NameField.getText();
     }
 
-    /** Method that changes the Scene to the boardGraphic scene
-     * */
+    /** Changes the Scene in the window to boardGraphic.fxml */
     public void startGameButtonClicked( ActionEvent event) throws IOException
     {
         if ( event.getSource().equals( startGameButton ) )
         {
+            //debugging
             System.out.println( "Player 1 name: " + getPlayerOneName() + "\nPlayer 2 name: " + getPlayerTwoName() );
 
             PlayerOne.setName( getPlayerOneName() );
             PlayerTwo.setName( getPlayerTwoName() );
 
-           /* System.out.println("PlayerOne: " + PlayerOne.getName());
-            System.out.println("PlayerTwo: " + PlayerTwo.getName());
-*/
+            // loading fxml
             FXMLLoader loader = new FXMLLoader( getClass().getResource( "boardGraphic.fxml" ) );
-            Parent boardViewParent = (Parent) loader.load();
+            Parent boardViewParent = loader.load();
 
-            BoardController mController = loader.getController();
-            bController = mController;
-            mController.setPlayers( PlayerOne, PlayerTwo );
+            BoardController mController = loader.getController();       // getting controller of fxml loader
+            bController = mController;                                  // storing the controller for static reference in other controllers
+            mController.setPlayers( PlayerOne, PlayerTwo );             // passing players to the BoardController
             mController.setBoard( Board );
             mController.setPool( Pool );
-            mController.challengeButton.setDisable( true );
+            mController.challengeButton.setDisable( true );             // disabling challenge button for player before placing first word
 
             Scene boardViewScene = new Scene(boardViewParent);
 
@@ -88,9 +93,7 @@ public class OpeningWindowController
         }
     }
 
-    /**
-     * Disables the start game button if player's names are not typed into the text fields
-     * */
+    /** Disables the start game button if player's names are not typed into the text fields */
     @FXML
     private void handleKeyReleased()
     {

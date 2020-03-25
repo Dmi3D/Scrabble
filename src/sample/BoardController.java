@@ -20,6 +20,27 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Controller class that is responsible for the following:
+ *
+ * 1) Holds references to the objects responsible for game logic e.g. Pool
+ *
+ * 2) Prompts the player whose turn it is on display
+ *
+ * 3) Prompts the player's frame and score during their turn
+ *
+ * 4) Holds the options a player has during their play
+ *
+ * 5) Handles input from the user when making their play
+ *
+ * 6) Holds valuable methods linking display of letters placed on the board,
+ *    display of tiles in a frame in the window, set and reset of data
+ *    to the back-end logic of the game
+ *
+ * 7) Prompts error message in the window during an invalid word placement
+ *
+ * 8) Handles fxml content switching during specific button presses
+ */
 public class BoardController implements Initializable
 {
     public static Board Board;
@@ -53,6 +74,11 @@ public class BoardController implements Initializable
     @FXML
     private Label playerScoreDisplay;
 
+    /**
+     * Loads fxml content switching in the window when 'CHALLENGE' button is pressed.
+     * This changes the content on the bottom right-hand-side of the window to
+     * allow the player to challenge their opponent's last play.
+     */
     @FXML
     public void handleChallengeButton( ActionEvent actionEvent ) throws IOException
     {
@@ -62,6 +88,11 @@ public class BoardController implements Initializable
         BorderPane.setMargin( rightPanel.getBottom(), new Insets( 0, 10, 10, 10 ) );
     }
 
+    /**
+     * Loads fxml content switching in the window when 'EXCHANGE' button is pressed.
+     * This changes the content on the bottom right-hand-side of the window to
+     * allow the player to input the tiles they wish to change in their frame.
+     */
     @FXML
     public void handleExchangeButton( ActionEvent actionEvent ) throws IOException
     {
@@ -72,6 +103,12 @@ public class BoardController implements Initializable
 
     }
 
+    /**
+     * Loads fxml content switching in the window when 'PLACE WORD' button is pressed.
+     * This changes the content on the bottom right-hand-side of the window to allow
+     * the player to input the word that they wish to place starting at certain position
+     * on the board and going in a specific direction.
+     */
     @FXML
     public void handlePlaceWordButton( ActionEvent actionEvent ) throws IOException, InterruptedException
     {
@@ -81,6 +118,11 @@ public class BoardController implements Initializable
         BorderPane.setMargin( rightPanel.getBottom(), new Insets( 0, 10, 10, 10 ) );
     }
 
+    /**
+     * Loads fxml content switching in the window when 'HELP' button is pressed.
+     * This changes the content on the bottom right-hand-side of the window to
+     * display information about the different choices a player has during their turn.
+     */
     @FXML
     public void handleHelpButton( ActionEvent actionEvent ) throws IOException
     {
@@ -90,6 +132,11 @@ public class BoardController implements Initializable
         BorderPane.setMargin( rightPanel.getBottom(), new Insets( 0, 10, 10, 10 ) );
     }
 
+    /**
+     * Loads fxml content switching in the window when 'HELP' button is pressed.
+     * This changes the content on the bottom right-hand-side of the window and
+     * prompts the user to decide whether they truly want to quit the game at that stage.
+     */
     @FXML
     public void handleQuitButton( ActionEvent actionEvent ) throws IOException
     {
@@ -99,6 +146,12 @@ public class BoardController implements Initializable
         BorderPane.setMargin( rightPanel.getBottom(), new Insets( 0, 10, 10, 10 ) );
     }
 
+
+    /**
+     * Switches to next player when 'PASS' button is pressed.
+     * Ends the game when the button is pressed twice in succession by a player.
+     * When the game ends, it triggers switching of the scene to the gameOverWindow.fxml
+     */
     @FXML
     public void handlePassButton( ActionEvent actionEvent ) throws IOException
     {
@@ -124,6 +177,10 @@ public class BoardController implements Initializable
         challengeButton.setDisable( true );
     }
 
+    /**
+     * Loads fxml content switching which displays specific error regarding invalid
+     * word placement on the board.
+     */
     public void loadErrorContent( int errorCode ) throws IOException
     {
         FXMLLoader fxmlLoader = new FXMLLoader( getClass().getResource( "placeError.fxml" ) );
@@ -168,6 +225,11 @@ public class BoardController implements Initializable
     {
     }
 
+    /**
+     * Handles player switch when called.
+     * Enables Challenge button for the next player after switch
+     * Disables Exchange button when the Pool is empty
+     */
     public void switchPlayer()
     {
         if ( currentPlayer == 0 )
@@ -216,16 +278,20 @@ public class BoardController implements Initializable
         BoardController.Pool = Pool;
     }
 
+    /** Setting the score of player in the label associated with score display */
     public void displayScore()
     {
         playerScoreDisplay.setText( String.valueOf(getCurrentPlayer().getScore()) );
     }
 
+    /** Setting the name of the player in the label associated with name display */
     public void displayName()
     {
         playerTurnDisplayLabel.setText( players[currentPlayer].getName() + "'s turn." );
     }
 
+    /** Setting the letters from player's frame in the labels associated with
+     * GridPane display of frame in boardGraphic.fxml */
     public void displayFrame()
     {
         ObservableList<Node> children = playerTilesDisplayOnTurn.getChildren();
@@ -248,6 +314,8 @@ public class BoardController implements Initializable
         }
     }
 
+    /** Getting the letters in the back-end Board to display in the front-end board after
+     * placement.*/
     public void displayBoard()
     {
         for ( int row = 1; row <= 15; row++ )
@@ -274,6 +342,9 @@ public class BoardController implements Initializable
         }
     }
 
+    /** Getting the node at certain row and column index in the GridPane representing the
+     * board display in boardGraphic.fxml
+     * @return the node in the GridPane at position specified */
     private Node getNodeByRowColumnIndex( final int row, final int column, GridPane Board )
     {
         Node result = null;
@@ -284,12 +355,10 @@ public class BoardController implements Initializable
 
         for ( Node node : children )
         {
-
             if ( GridPane.getRowIndex( node ) != null )
             {
                 rowOfGridPane = GridPane.getRowIndex( node );
             }
-
             else
             {
                 rowOfGridPane = 0;
@@ -299,7 +368,6 @@ public class BoardController implements Initializable
             {
                 columnOfGridPane = GridPane.getColumnIndex( node );
             }
-
             else
             {
                 columnOfGridPane = 0;
@@ -311,7 +379,6 @@ public class BoardController implements Initializable
                 break;
             }
         }
-
         return result;
     }
 
@@ -323,13 +390,15 @@ public class BoardController implements Initializable
         displayScore();
     }
 
+    /**
+     * Determines whether a player has pressed the 'PASS' button twice in succession.
+     */
     private static boolean passedTwice()
     {
         if ( amountOfPass[currentPlayer] >= 2 )
         {
             return true;
         }
-
         return false;
     }
 
@@ -354,8 +423,6 @@ public class BoardController implements Initializable
         {
             return players[1];
         }
-
         return players[0];
-
     }
 }
