@@ -3,6 +3,7 @@ package sample;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -11,11 +12,13 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class GameOverController
+public class GameOverController implements Initializable
 {
     Player Winner;
-    Player Lose;
+    Player Loser;
 
     @FXML
     Button restartGameButton;
@@ -74,4 +77,37 @@ public class GameOverController
         // make animation of button color change when hover out
     }
 
+    @Override
+    public void initialize( URL url, ResourceBundle resourceBundle )
+    {
+        if(BoardController.players[0].getScore() == BoardController.players[1].getScore())
+        {
+            winnerNameLabel.setText( BoardController.players[0].getName() + "\n" + BoardController.players[1].getName());
+            winnerScoreLabel.setText( String.valueOf( BoardController.players[0].getScore() ) );
+        }
+        else if(BoardController.players[0].getScore() > BoardController.players[1].getScore())
+        {
+            Winner = BoardController.players[0];
+            Loser = BoardController.players[1];
+
+            winnerNameLabel.setText( Winner.getName() );
+            winnerScoreLabel.setText( String.valueOf( Winner.getScore() ) );
+
+            loserNameLabel.setText( Loser.getName() );
+            loserScoreLabel.setText( String.valueOf( Loser.getScore() ) );
+        }
+
+        else
+        {
+            Winner = BoardController.players[1];
+            Loser = BoardController.players[0];
+
+            winnerNameLabel.setText( Winner.getName() );
+            winnerScoreLabel.setText( String.valueOf( Winner.getScore() ) );
+
+            loserNameLabel.setText( Loser.getName() );
+            loserScoreLabel.setText( String.valueOf( Loser.getScore() ) );
+        }
+
+    }
 }

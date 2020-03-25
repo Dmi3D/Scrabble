@@ -51,6 +51,9 @@ public class BoardController implements Initializable
     public Label scrollLabel;
 
     @FXML
+    private Label playerScoreDisplay;
+
+    @FXML
     public void handleChallengeButton( ActionEvent actionEvent ) throws IOException
     {
         System.out.println( "Challenge Button Clicked" ); // debug
@@ -213,6 +216,11 @@ public class BoardController implements Initializable
         BoardController.Pool = Pool;
     }
 
+    public void displayScore()
+    {
+        playerScoreDisplay.setText( String.valueOf(getCurrentPlayer().getScore()) );
+    }
+
     public void displayName()
     {
         playerTurnDisplayLabel.setText( players[currentPlayer].getName() + "'s turn." );
@@ -312,6 +320,7 @@ public class BoardController implements Initializable
         displayName();
         displayFrame();
         displayBoard();
+        displayScore();
     }
 
     private static boolean passedTwice()
@@ -327,5 +336,15 @@ public class BoardController implements Initializable
     public static Player getCurrentPlayer()
     {
         return players[currentPlayer];
+    }
+
+    public static Player getOtherPlayer()
+    {
+        if ( currentPlayer == 0 )
+        {
+            return players[1];
+        }
+
+        return players[0];
     }
 }

@@ -594,7 +594,6 @@ public class Board
         return score;
     }
 
-
     /* PLACES A WORD WITH A CERTAIN DIRECTION. PASS IN STARTING POINT */
     public boolean placeWord( String string, char direction, int row, char columnLetter, Player player )
     {
@@ -647,6 +646,8 @@ public class Board
             setLastPlacedWord( string );
 
             wordsCreatedLastMove = getWordsCreated(tilesToPlace, direction, row, column);
+
+
             return true;
         }
 

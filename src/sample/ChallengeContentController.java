@@ -24,7 +24,6 @@ public class ChallengeContentController
             otherPlayerNumber = 0;
         }
 
-
         Player otherPlayer = BoardController.players[otherPlayerNumber];
 
         BoardController.Board.removeLastWordPlaced();
@@ -33,7 +32,8 @@ public class ChallengeContentController
         OpeningWindowController.bController.displayBoard();
         OpeningWindowController.bController.challengeButton.setDisable(true);
         OpeningWindowController.bController.rightPanel.getBottom().setVisible( false );
-
+        OpeningWindowController.bController.scrollLabel.setText( "" );
+        otherPlayer.decreaseScore( BoardController.Board.getScoreFromLastMove( BoardController.Pool ) );
     }
 
     @FXML

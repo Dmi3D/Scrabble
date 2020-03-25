@@ -49,6 +49,7 @@ public class PlaceWordController
                 }
 
                 System.out.println("Score: " + BoardController.Board.getScoreFromLastMove( BoardController.Pool ));
+                BoardController.getCurrentPlayer().increaseScore( BoardController.Board.getScoreFromLastMove( BoardController.Pool ) );
 
                 OpeningWindowController.bController.switchPlayer();
                 wordInputField.clear();
@@ -64,7 +65,6 @@ public class PlaceWordController
                 }
 
                 OpeningWindowController.bController.scrollLabel.setText( lastWords );
-
                 OpeningWindowController.bController.rightPanel.getBottom().setVisible( false );
             }
             else
