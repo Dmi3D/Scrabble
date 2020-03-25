@@ -390,16 +390,16 @@ public class BoardController implements Initializable
         displayScore();
     }
 
-    /**
-     * Determines whether a player has pressed the 'PASS' button twice in succession.
-     */
+    /** Determines whether a player has pressed the 'PASS' button twice in succession. */
     private static boolean passedTwice()
     {
-        if ( amountOfPass[currentPlayer] >= 2 )
-        {
-            return true;
-        }
-        return false;
+        return amountOfPass[currentPlayer] >= 2;
+    }
+
+    /** Resets the pass counter of back to 0 */
+    public void resetPass()
+    {
+        amountOfPass[currentPlayer] = 0;
     }
 
     public static Player getCurrentPlayer()

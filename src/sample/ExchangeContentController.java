@@ -26,7 +26,8 @@ public class ExchangeContentController
     /**Takes the String of letters player wishes to exchange and passes it to back-end
      * exchange method.
      * Fail: exchange doesn't work and text field informs player of their invalid input.
-     * Success: letters in player's frame are exchanged and player switch is triggered.*/
+     * Success: 1) letters in player's frame are exchanged and player switch is triggered.
+     *          2) Resets the pass counter back to 0 as they didn't successively pass twice*/
     @FXML
     public void onButtonClicked()
     {
@@ -47,6 +48,8 @@ public class ExchangeContentController
         }
         else
         {
+            // resets the pass back to 0 when they broke the succession of passes by making a valid exchange
+            OpeningWindowController.bController.resetPass();
             OpeningWindowController.bController.switchPlayer();
 
             OpeningWindowController.bController.rightPanel.getBottom().setVisible( false );

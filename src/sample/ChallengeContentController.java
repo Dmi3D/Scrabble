@@ -24,6 +24,10 @@ public class ChallengeContentController
     {
         System.out.println( "Yes button clicked" ); // debug
 
+        // resets the pass back to 0 when they broke the succession of passes by challenging during their move
+        OpeningWindowController.bController.resetPass();
+
+        // allowing the challenger to make a move after successfully challenging their opponent's play
         int otherPlayerNumber = BoardController.currentPlayer;
 
         if ( otherPlayerNumber == 0 )

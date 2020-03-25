@@ -52,6 +52,10 @@ public class PlaceWordController
 
             if( placed )
             {
+                // resets the pass back to 0 when they broke the succession of passes by making a valid word placement
+                OpeningWindowController.bController.resetPass();
+
+                // debug
                 System.out.println("Words created: ");
 
                 for(int i = 0; i < BoardController.Board.wordsCreatedLastMove.size(); i++)
