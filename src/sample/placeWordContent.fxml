@@ -45,7 +45,7 @@
                <Font name="System Bold" size="17.0" />
            </font>
        </Label>
-       <Button fx:id="placeWordButton" alignment="CENTER" contentDisplay="CENTER" layoutX="317.0" layoutY="61.0" mnemonicParsing="false" onAction="#onButtonClicked" prefHeight="35.0" prefWidth="70.0" style="-fx-background-color: #203152;" text="PLACE" textAlignment="CENTER" textFill="WHITE">
+       <Button fx:id="placeWordButton" alignment="CENTER" contentDisplay="CENTER" layoutX="317.0" layoutY="61.0" mnemonicParsing="false" onAction="#onButtonClicked" prefHeight="35.0" prefWidth="70.0" stylesheets="@../css/buttonStyle.css" text="PLACE" textAlignment="CENTER" textFill="WHITE">
            <font>
                <Font name="System Bold" size="14.0" />
            </font>

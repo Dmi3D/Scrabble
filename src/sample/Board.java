@@ -815,8 +815,6 @@ public class Board
             }
         }
 
-        System.out.println("Overlapping tiles:" + overlappingLetters.toString());
-
         return overlappingLetters;
     }
 
