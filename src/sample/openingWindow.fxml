@@ -6,18 +6,20 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
 <!--fx:controller="sample.OpeningWindowController"-->
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="507.2" prefWidth="1028.0" style="-fx-background-color: #37517e;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <top>
-      <HBox alignment="CENTER" prefHeight="120.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <padding>
-            <Insets top="40.0" />
-         </padding>
-      </HBox>
+      <Label alignment="CENTER" prefHeight="138.0" prefWidth="764.0" text="SCRABBLE" textAlignment="CENTER" textFill="WHITE" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="System Bold" size="102.0" />
+         </font>
+         <BorderPane.margin>
+            <Insets top="15.0" />
+         </BorderPane.margin>
+      </Label>
    </top>
    <bottom>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
