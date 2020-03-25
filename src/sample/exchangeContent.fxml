@@ -14,7 +14,7 @@
          </font>
       </Label>
       <TextField fx:id="lettersInputField" layoutX="73.0" layoutY="69.0" onKeyReleased="#handleKeyReleased" prefHeight="30.0" prefWidth="146.0" promptText="Letters" style="-fx-background-color: #203152; -fx-text-inner-color: white;" />
-      <Button fx:id="exchangeButton" alignment="CENTER" layoutX="250.0" layoutY="69.0" mnemonicParsing="false" onAction="#onButtonClicked" prefHeight="30.0" prefWidth="95.0" style="-fx-background-color: #203152;" text="EXCHANGE" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="exchangeButton" alignment="CENTER" layoutX="250.0" layoutY="69.0" mnemonicParsing="false" onAction="#onButtonClicked" prefHeight="30.0" prefWidth="95.0" style="-fx-background-color: #203152;" stylesheets="@../css/buttonStyle.css" text="EXCHANGE" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>

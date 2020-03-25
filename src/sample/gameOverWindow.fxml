@@ -17,12 +17,12 @@
             <Font name="System Bold" size="40.0" />
          </font>
       </Label>
-      <Button fx:id="restartGameButton" layoutX="333.0" layoutY="300.0" mnemonicParsing="false" onAction="#onButtonClicked" onMouseEntered="#onMouseHoverIn" onMouseExited="#onMouseHoverOut" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #203152;" text="RESTART" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="restartGameButton" layoutX="333.0" layoutY="300.0" mnemonicParsing="false" onAction="#onButtonClicked" onMouseEntered="#onMouseHoverIn" onMouseExited="#onMouseHoverOut" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #203152;" stylesheets="@../css/buttonStyle.css" text="RESTART" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Button>
-      <Button fx:id="exitButton" layoutX="580.0" layoutY="300.0" mnemonicParsing="false" onAction="#onButtonClicked" onMouseEntered="#onMouseHoverIn" onMouseExited="#onMouseHoverOut" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #203152;" text="EXIT" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="exitButton" layoutX="580.0" layoutY="300.0" mnemonicParsing="false" onAction="#onButtonClicked" onMouseEntered="#onMouseHoverIn" onMouseExited="#onMouseHoverOut" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #203152;" stylesheets="@../css/buttonStyle.css" text="EXIT" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>

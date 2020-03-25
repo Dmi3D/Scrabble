@@ -12,12 +12,12 @@
             <Font name="System Bold" size="17.0" />
          </font>
       </Label>
-      <Button fx:id="challengeYesButton" layoutX="152.0" layoutY="88.0" mnemonicParsing="false" onAction="#handleYesButton" prefHeight="19.0" prefWidth="46.0" style="-fx-background-color: #203152;" text="YES" textFill="WHITE" AnchorPane.leftAnchor="155.0">
+      <Button fx:id="challengeYesButton" layoutX="152.0" layoutY="88.0" mnemonicParsing="false" onAction="#handleYesButton" prefHeight="19.0" prefWidth="46.0" style="-fx-background-color: #203152;" stylesheets="@../css/buttonStyle.css" text="YES" textFill="WHITE" AnchorPane.leftAnchor="155.0">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="challengeNoButton" layoutX="242.0" layoutY="88.0" mnemonicParsing="false" onAction="#handleNoButton" prefHeight="19.0" prefWidth="46.0" style="-fx-background-color: #203152;" text="NO" textFill="WHITE" AnchorPane.rightAnchor="155.0">
+      <Button fx:id="challengeNoButton" layoutX="242.0" layoutY="88.0" mnemonicParsing="false" onAction="#handleNoButton" prefHeight="19.0" prefWidth="46.0" style="-fx-background-color: #203152;" stylesheets="@../css/buttonStyle.css" text="NO" textFill="WHITE" AnchorPane.rightAnchor="155.0">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

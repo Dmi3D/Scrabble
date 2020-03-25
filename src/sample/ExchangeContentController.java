@@ -50,21 +50,31 @@ public class ExchangeContentController
     public void onButtonClicked()
     {
         String lettrs = getLettersToExchangeAsString();
+
         char[] letters = new char[lettrs.length()];
+
         for ( int i = 0; i < letters.length; i++ )
         {
             letters[i] = lettrs.charAt( i );
         }
 
-        BoardController.players[BoardController.currentPlayer].getPlayerFrame().exchangeTiles( letters, BoardController.Pool );
+        boolean exchanged = BoardController.players[BoardController.currentPlayer].getPlayerFrame().exchangeTiles( letters, BoardController.Pool );
 
-        OpeningWindowController.bController.switchPlayer();
+        if(!exchanged)
+        {
+            lettersInputField.setText( "INVALID INPUT" );
+        }
 
-        OpeningWindowController.bController.rightPanel.getBottom().setVisible( false );
-        OpeningWindowController.bController.displayName();
-        OpeningWindowController.bController.displayFrame();
+        else
+        {
+            OpeningWindowController.bController.switchPlayer();
 
-        lettersInputField.clear();
+            OpeningWindowController.bController.rightPanel.getBottom().setVisible( false );
+            OpeningWindowController.bController.displayName();
+            OpeningWindowController.bController.displayFrame();
+
+            lettersInputField.clear();
+        }
     }
 
     @FXML
