@@ -503,60 +503,103 @@ public class Board
     /* RETURNS VALID SCORE OF ONE WORD*/ //check for bingo
     private int getScoreOfWord( char[] word, Pool pool )
     {
-        char[] tilesPlaced = getLastTilesPlaced();
+        char[] lastTilesPlacedOne = Arrays.copyOf( getLastTilesPlaced(), getLastTilesPlaced().length );
+        char[] wordWithTilesOnBoard = Arrays.copyOf( word, word.length );
+        char[] wordWithTilesPlaced = Arrays.copyOf( word, word.length );
 
-        //Removing actual placed tiles from word
-        for ( int i = 0; i < tilesPlaced.length; i++ )
+        System.out.println("ORIGINAL WORD:" + Arrays.toString( word ));
+
+        //Removing actual placed tiles from word to make word with tiles on board
+        for ( int i = 0; i < word.length; i++ )
         {
-            for ( int j = 0; j < word.length; j++ )
+            for ( int j = 0; j < lastTilesPlacedOne.length; j++ )
             {
-                if ( tilesPlaced[i] != ' ' )
+                if ( word[i] == lastTilesPlacedOne[j] )
                 {
-                    word[j] = ' ';
+                    wordWithTilesOnBoard[i] = ' ';
+                    lastTilesPlacedOne[j] = ' ';
+                    break;
                 }
             }
         }
+
+        System.out.println("Word with tiles on board: " + Arrays.toString( wordWithTilesOnBoard ));
 
         int scoreOfTilesOnBoard = 0;
 
         //CALCULATING SCORE OF TILES ALREADY ON BOARD
-        for ( int i = 0; i < word.length; i++ )
+        for ( int i = 0; i < wordWithTilesOnBoard.length; i++ )
         {
-            if ( word[i] != ' ' )
+            if ( wordWithTilesOnBoard[i] != ' ' )
             {
-                scoreOfTilesOnBoard += pool.getValue( word[i] );
+                scoreOfTilesOnBoard += pool.getValue( wordWithTilesOnBoard[i] );
             }
         }
 
+        //Removing tiles on board from word to make word with tiles placed
+        for ( int i = 0; i < wordWithTilesOnBoard.length; i++ )
+        {
+            if(wordWithTilesOnBoard[i] != ' ')
+            {
+                wordWithTilesPlaced[i] = ' ';
+            }
+        }
 
         //CALCULATING SCORE OF TILES WHICH WERE PLACED
-        int[] scoresOfPlacedTiles = new int[getLastTilesPlaced().length];
+        int[] scoresOfPlacedTiles = new int[word.length];
         ArrayList<Integer> wordScores = new ArrayList<>();
 
+        System.out.println("Word with tiles placed: " + Arrays.toString( wordWithTilesPlaced ));
+
+        char[] lastTilesPlacedTwo = Arrays.copyOf( getLastTilesPlaced(), getLastTilesPlaced().length );
+
+        System.out.println("Last tiles placed locations " + Arrays.deepToString( lastTilesPlacedLocations ));
         // For each letter in last word placed
-        for ( int i = 0; i < scoresOfPlacedTiles.length; i++ )
+        for ( int i = 0; i < wordWithTilesPlaced.length; i++ )
         {
-            int row = lastTilesPlacedLocations[0][i];
-            int column = lastTilesPlacedLocations[1][i];
+            if(wordWithTilesPlaced[i] == ' ' )
+            {
+                continue;
+            }
+
+            int row = 0;
+            int column = 0;
+
+            int indexOfPlacedTile;
+
+            for(indexOfPlacedTile = 0; indexOfPlacedTile < lastTilesPlacedTwo.length; indexOfPlacedTile++)
+            {
+                if(wordWithTilesPlaced[i] == lastTilesPlacedTwo[indexOfPlacedTile])
+                {
+                    row = lastTilesPlacedLocations[0][indexOfPlacedTile];
+                    column = lastTilesPlacedLocations[1][indexOfPlacedTile];
+                    lastTilesPlacedTwo[indexOfPlacedTile] = ' ';
+                    break;
+                }
+            }
+
+            System.out.println("word: " + Arrays.toString( wordWithTilesPlaced ) + ", char: " + wordWithTilesPlaced[i]);
+            System.out.println("row: " + row);
+            System.out.println("column: " + column);
+
+            char tile = wordWithTilesPlaced[i];
+
             Square square = getSquareAt( row, column );
 
-            if ( tilesPlaced[i] != ' ' )
+            scoresOfPlacedTiles[i] = pool.getValue( tile );
+
+            // If the tile is on a letter score
+            if ( square.getType().equals( "letr" ) )
             {
-                scoresOfPlacedTiles[i] = pool.getValue( tilesPlaced[i] );
+                // Multiply that specific letter score by the weight
+                scoresOfPlacedTiles[i] *= square.getWeight();
+            }
 
-                // If the tile is on a letter score
-                if ( square.getType().equals( "letr" ) )
-                {
-                    // Multiply that specific letter score by the weight
-                    scoresOfPlacedTiles[i] *= square.getWeight();
-                }
-
-                // If the tile is on a word score
-                else if ( square.getType().equals( "word" ) )
-                {
-                    // Add the weight of the word score to an array list
-                    wordScores.add( square.getWeight() );
-                }
+            // If the tile is on a word score
+            else if ( square.getType().equals( "word" ) )
+            {
+                // Add the weight of the word score to an array list
+                wordScores.add( square.getWeight() );
             }
         }
 

@@ -29,6 +29,7 @@ public class QuitContentController
         else if ( event.getSource().equals( noButton ) )
         {
             yesButton.setDisable( true );
+            OpeningWindowController.bController.rightPanel.getBottom().setVisible( false );
         }
     }
 }

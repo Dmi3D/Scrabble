@@ -139,7 +139,7 @@ public class Frame
 
         while (letterIndex < word.length && frameIndex < tiles.length)
         {
-            while(word[letterIndex] == ' ')
+            while(letterIndex < word.length && word[letterIndex] == ' ')
             {
                 letterIndex++;
             }
