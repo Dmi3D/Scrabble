@@ -46,6 +46,9 @@ public class BoardController implements Initializable
     public Button challengeButton;
 
     @FXML
+    public Button exchangeButton;
+
+    @FXML
     public void handleChallengeButton( ActionEvent actionEvent ) throws IOException
     {
         System.out.println( "Challenge Button Clicked" ); // debug
@@ -174,6 +177,16 @@ public class BoardController implements Initializable
 
         displayAll();
         challengeButton.setDisable( false );
+
+        if(players[currentPlayer].getPlayerFrame().hasEmpty())
+        {
+            exchangeButton.setDisable( true );
+        }
+
+        else
+        {
+            exchangeButton.setDisable( false );
+        }
     }
 
     public void setPlayers( Player PlayerOne, Player PlayerTwo )
@@ -198,12 +211,12 @@ public class BoardController implements Initializable
         BoardController.Pool = Pool;
     }
 
-    private void displayName()
+    public void displayName()
     {
         playerTurnDisplayLabel.setText( players[currentPlayer].getName() + "'s turn." );
     }
 
-    private void displayFrame()
+    public void displayFrame()
     {
         ObservableList<Node> children = playerTilesDisplayOnTurn.getChildren();
 

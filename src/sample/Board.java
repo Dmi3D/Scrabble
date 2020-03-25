@@ -333,7 +333,7 @@ public class Board
     }
 
     /* METHOD WHICH RETURNS AN ARRAY LIST OF ALL THE WORDS CREATED FROM THE LAST PLACED TILE */
-    private ArrayList<String> getWordsCreated( char[] tilesPlaced, char direction, int row, int column )
+    public ArrayList<String> getWordsCreated( char[] tilesPlaced, char direction, int row, int column )
     {
         ArrayList<String> wordsCreated = new ArrayList<>();
 

@@ -28,7 +28,6 @@ public class ChallengeContentController
         Player otherPlayer = BoardController.players[otherPlayerNumber];
 
         BoardController.Board.removeLastWordPlaced();
-        System.out.println("Should have empty: " + BoardController.players[otherPlayerNumber].getPlayerFrame().hasEmpty());
         BoardController.players[otherPlayerNumber].getPlayerFrame().fillFrameWithWord( BoardController.Board.getLastTilesPlaced() );
 
         OpeningWindowController.bController.displayBoard();

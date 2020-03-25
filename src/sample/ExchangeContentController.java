@@ -1,11 +1,8 @@
 package sample;
 
 import javafx.fxml.FXML;
-
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-
-import java.util.Arrays;
 
 public class ExchangeContentController
 {
@@ -58,9 +55,16 @@ public class ExchangeContentController
         {
             letters[i] = lettrs.charAt( i );
         }
-        System.out.println("Letters to be exchanged are " + Arrays.toString( letters ) );
+
+        BoardController.players[BoardController.currentPlayer].getPlayerFrame().exchangeTiles( letters, BoardController.Pool );
+
+        OpeningWindowController.bController.switchPlayer();
+
+        OpeningWindowController.bController.rightPanel.getBottom().setVisible( false );
+        OpeningWindowController.bController.displayName();
+        OpeningWindowController.bController.displayFrame();
+
         lettersInputField.clear();
-        exchangeButton.setDisable( true );
     }
 
     @FXML

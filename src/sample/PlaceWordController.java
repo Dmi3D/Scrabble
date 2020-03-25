@@ -40,6 +40,15 @@ public class PlaceWordController
 
             if( placed )
             {
+                System.out.println("Words created: ");
+
+                for(int i = 0; i < BoardController.Board.wordsCreatedLastMove.size(); i++)
+                {
+                    System.out.println("Word " + i + ": " + BoardController.Board.wordsCreatedLastMove.get( i ));
+                }
+
+                System.out.println("Score: " + BoardController.Board.getScoreFromLastMove( BoardController.Pool ));
+
                 OpeningWindowController.bController.switchPlayer();
                 wordInputField.clear();
                 handleKeyReleased();
