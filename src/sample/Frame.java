@@ -83,6 +83,19 @@ public class Frame
         return true;
     }
 
+    public boolean hasEmpty()
+    {
+        for ( char tile : tiles )
+        {
+            if ( tile == ' ' )
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public int getIndexOfTile( char tileToBeFound )
     {
         if ( isEmpty() )

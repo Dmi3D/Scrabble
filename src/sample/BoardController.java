@@ -45,7 +45,6 @@ public class BoardController implements Initializable
     @FXML
     public Button challengeButton;
 
-
     @FXML
     public void handleChallengeButton( ActionEvent actionEvent ) throws IOException
     {
@@ -96,7 +95,6 @@ public class BoardController implements Initializable
     public void handlePassButton( ActionEvent actionEvent ) throws IOException
     {
         System.out.println( "Pass Button Clicked" ); // debug
-        challengeButton.setDisable( true );
         amountOfPass[currentPlayer]++;
 
         if ( passedTwice() )
@@ -114,6 +112,8 @@ public class BoardController implements Initializable
         }
 
         switchPlayer();
+        rightPanel.getBottom().setVisible( false );
+        challengeButton.setDisable( true );
     }
 
     public void loadErrorContent( int errorCode ) throws IOException
@@ -173,6 +173,7 @@ public class BoardController implements Initializable
         }
 
         displayAll();
+        challengeButton.setDisable( false );
     }
 
     public void setPlayers( Player PlayerOne, Player PlayerTwo )
@@ -208,6 +209,11 @@ public class BoardController implements Initializable
 
         Player player = players[currentPlayer];
 
+        if (player.getPlayerFrame().hasEmpty())
+        {
+            players[currentPlayer].getPlayerFrame().fillFrame( Pool );
+        }
+
         for ( int i = 0; i < children.size(); i++ )
         {
             Node node = children.get( i );
@@ -235,6 +241,11 @@ public class BoardController implements Initializable
                 {
                     label.setText( String.valueOf( Board.getSquareAt( row - 1, col - 1 ).getTile() ) );
                     System.out.println( "Should set label to: " + Board.getSquareAt( row - 1, col - 1 ).getTile() );
+                }
+
+                else
+                {
+                    label.setText( "" );
                 }
             }
         }

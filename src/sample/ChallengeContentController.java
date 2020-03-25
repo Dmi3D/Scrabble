@@ -11,10 +11,30 @@ public class ChallengeContentController
     public void handleYesButton( ActionEvent actionEvent ) throws IOException
     {
         System.out.println( "Yes button clicked" ); // debug
+
+        int otherPlayerNumber = BoardController.currentPlayer;
+
+        if ( otherPlayerNumber == 0 )
+        {
+            otherPlayerNumber = 1;
+        }
+
+        else if ( otherPlayerNumber == 1 )
+        {
+            otherPlayerNumber = 0;
+        }
+
+
+        Player otherPlayer = BoardController.players[otherPlayerNumber];
+
         BoardController.Board.removeLastWordPlaced();
+        System.out.println("Should have empty: " + BoardController.players[otherPlayerNumber].getPlayerFrame().hasEmpty());
+        BoardController.players[otherPlayerNumber].getPlayerFrame().fillFrameWithWord( BoardController.Board.getLastTilesPlaced() );
+
         OpeningWindowController.bController.displayBoard();
         OpeningWindowController.bController.challengeButton.setDisable(true);
         OpeningWindowController.bController.rightPanel.getBottom().setVisible( false );
+
     }
 
     @FXML

@@ -40,7 +40,6 @@ public class PlaceWordController
 
             if( placed )
             {
-                BoardController.players[BoardController.currentPlayer].getPlayerFrame().fillFrame( BoardController.Pool );
                 OpeningWindowController.bController.switchPlayer();
                 wordInputField.clear();
                 handleKeyReleased();

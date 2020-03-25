@@ -995,7 +995,7 @@ public class Board
         {
             int row = lastTilesPlacedLocations[0][i];
             int column = lastTilesPlacedLocations[1][i];
-            board[row][column].setTile( ' ' );
+            board[row][column].setTile( '\u0000' );
         }
 
         numOfWords--;

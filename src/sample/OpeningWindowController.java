@@ -75,6 +75,7 @@ public class OpeningWindowController
             mController.setPlayers( PlayerOne, PlayerTwo );
             mController.setBoard( Board );
             mController.setPool( Pool );
+            mController.challengeButton.setDisable( true );
 
             Scene boardViewScene = new Scene(boardViewParent);
 
