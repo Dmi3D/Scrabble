@@ -2335,7 +2335,7 @@
                         <Font name="System Bold" size="17.0" />
                      </font>
                   </Button>
-                  <Button alignment="CENTER" layoutX="239.0" layoutY="263.0" mnemonicParsing="false" onAction="#handlePlaceWordButton" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #203152;" stylesheets="@../css/buttonStyle.css" text="PLACE WORD" textFill="WHITE" AnchorPane.bottomAnchor="80.0" AnchorPane.rightAnchor="22.600000000000023">
+                  <Button alignment="CENTER" layoutX="239.0" layoutY="263.0" mnemonicParsing="false" onAction="#handlePlaceWordButton" prefHeight="35.0" prefWidth="200.0" stylesheets="@../css/buttonStyle.css" text="PLACE WORD" textFill="WHITE" AnchorPane.bottomAnchor="80.0" AnchorPane.rightAnchor="22.600000000000023">
                      <font>
                         <Font name="System Bold" size="17.0" />
                      </font>
@@ -2418,15 +2418,15 @@
                         </Label>
                      </children>
                   </AnchorPane>
-                  <ScrollPane layoutX="241.0" layoutY="14.0" prefHeight="186.0" prefWidth="196.0" style="-fx-background-color: #203152;">
+                  <Label layoutX="268.0" layoutY="14.0" text="WORDS CREATED" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <ScrollPane fx:id="ScrollPane" layoutX="241.0" layoutY="40.0" prefHeight="154.0" prefWidth="196.0" styleClass="ScrollPane" stylesheets="@../css/scrollPane.css">
                     <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="338.0" prefWidth="180.0" style="-fx-background-color: #203152;">
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="336.0" prefWidth="180.0" style="-fx-background-color: #203152;">
                            <children>
-                              <Label layoutX="15.0" layoutY="1.0" text="WORDS CREATED" textFill="WHITE">
-                                 <font>
-                                    <Font name="System Bold" size="17.0" />
-                                 </font>
-                              </Label>
                               <Label fx:id="scrollLabel" alignment="TOP_LEFT" layoutX="8.0" layoutY="36.0" prefHeight="162.0" prefWidth="161.0" textFill="WHITE" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="36.0">
                                  <font>
                                     <Font name="System Bold" size="14.0" />

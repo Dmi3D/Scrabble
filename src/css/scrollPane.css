@@ -1,0 +1,28 @@
+.ScrollPane {
+    -fx-background-color:  #203152;
+}
+
+.ScrollPane .scroll-bar:vertical {
+    -fx-background-color: transparent;
+}
+
+.ScrollPane .increment-button , .ScrollPane .decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-color: derive(#203152, 80%);
+}
+
+.ScrollPane .scroll-bar:vertical .track{
+    -fx-background-color: transparent;
+    -fx-border-color:derive(#203152, 80%);
+    -fx-background-radius: 0em;
+}
+
+.ScrollPane .scroll-bar:vertical .thumb {
+    -fx-background-color: derive(black, 90%);
+    -fx-background-insets: 0, 0, 0;
+    -fx-background-radius: 0em;
+}
+
+.ScrollPane .scroll-bar .thumb:pressed{
+    -fx-background-color: derive(black,50%);
+}
