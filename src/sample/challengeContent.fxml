@@ -7,7 +7,7 @@
 
 <AnchorPane prefHeight="124.0" prefWidth="442.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ChallengeContentController">
    <children>
-      <Label layoutX="21.0" layoutY="9.0" prefHeight="78.0" prefWidth="400.0" text="Are there any word(s) created during your opponent's last move which are not in the english dictionary? Check online to make sure." textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.topAnchor="5.0">
+      <Label layoutX="21.0" layoutY="9.0" prefHeight="78.0" prefWidth="400.0" text="Are there any word(s) created during your opponent's last move which are not in the English dictionary? Check online to make sure." textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.topAnchor="5.0">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
