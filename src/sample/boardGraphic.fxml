@@ -2427,7 +2427,7 @@
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="242.0" prefWidth="178.0" style="-fx-background-color: #203152;">
                            <children>
-                              <Label fx:id="scrollLabel" alignment="TOP_LEFT" layoutX="8.0" layoutY="1.0" prefHeight="232.0" prefWidth="165.0" textFill="WHITE" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="1.0">
+                              <Label fx:id="scrollLabel" alignment="TOP_LEFT" layoutX="14.0" layoutY="5.0" prefHeight="232.0" prefWidth="165.0" textFill="WHITE" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="5.0">
                                  <font>
                                     <Font name="System Bold" size="20.0" />
                                  </font>

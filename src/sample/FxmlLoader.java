@@ -20,14 +20,12 @@ public class FxmlLoader
         try
         {
             FXMLLoader fxmlLoader = new FXMLLoader( getClass().getResource( "challengeContent.fxml" ) );
-
             content = fxmlLoader.load();
         }
         catch (IOException e)
         {
             System.out.println(" please check FxmlLoader.");
         }
-
         return content;
     }
 
@@ -36,14 +34,12 @@ public class FxmlLoader
         try
         {
             FXMLLoader fxmlLoader = new FXMLLoader( getClass().getResource( "exchangeContent.fxml" ) );
-
             content = fxmlLoader.load();
         }
         catch (IOException e)
         {
             System.out.println(" please check FxmlLoader.");
         }
-
         return content;
     }
 
@@ -52,14 +48,12 @@ public class FxmlLoader
     try
     {
         FXMLLoader fxmlLoader = new FXMLLoader( getClass().getResource( "placeWordContent.fxml" ) );
-
         content = fxmlLoader.load();
     }
     catch (IOException e)
     {
         System.out.println(" please check FxmlLoader.");
     }
-
     return content;
     }
 
@@ -68,14 +62,12 @@ public class FxmlLoader
         try
         {
             FXMLLoader fxmlLoader = new FXMLLoader( getClass().getResource( "helpContent.fxml" ) );
-
             content = fxmlLoader.load();
         }
         catch (IOException e)
         {
             System.out.println(" please check FxmlLoader.");
         }
-
         return content;
     }
 
@@ -84,14 +76,12 @@ public class FxmlLoader
         try
         {
             FXMLLoader fxmlLoader = new FXMLLoader( getClass().getResource( "quitContent.fxml" ) );
-
             content = fxmlLoader.load();
         }
         catch (IOException e)
         {
             System.out.println(" please check FxmlLoader.");
         }
-
         return content;
     }
 }

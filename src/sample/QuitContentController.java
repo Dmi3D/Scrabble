@@ -8,15 +8,17 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/** Class that handles pressing of buttons 'Yes' and 'No' in quitContent.fxml*/
 public class QuitContentController
 {
-
     @FXML
     private Button yesButton;
 
     @FXML
     private Button noButton;
 
+    /** 'YES' button pressed: closing the window i.e terminating game/program
+     *  'NO' button pressed: disabling 'YES' button to prevent closing the window by mistake */
     @FXML
     public void onButtonClicked( ActionEvent event ) throws IOException
     {

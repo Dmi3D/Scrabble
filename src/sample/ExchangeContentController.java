@@ -20,32 +20,14 @@ public class ExchangeContentController
 
     public String getLettersToExchangeAsString()
     {
-        String letters = lettersInputField.getText();
-        if ( validateLetterInput( letters ) )
-            return letters;
-        return " ";
+       return lettersInputField.getText().toUpperCase();
     }
 
-    private boolean validateLetterInput(String letters)
-    {
-        boolean isValid = true;
-
-        for ( int i = 0; i < letters.length(); i++ )
-        {
-            if ( Character.isDigit( letters.charAt( i ) ) ||
-                !(Character.isLetter( letters.charAt( i ) ) &&
-                    ((letters.charAt( i ) >= 'a' && letters.charAt( i ) <= 'z' )
-                                    || (letters.charAt( i ) >= 'A' && letters.charAt( i ) <= 'Z') || letters.charAt( i ) == '*')))
-            {
-                isValid = false;
-                break;
-            }
-        }
-        return isValid;
-    }
-
-
-    // debugging
+    /**Takes the String of letters player wishes to exchange and passes it to back-end
+     * exchange method.
+     * Fail: exchange doesn't work and text field informs player of their invalid input.
+     * Success: 1) letters in player's frame are exchanged and player switch is triggered.
+     *          2) Resets the pass counter back to 0 as they didn't successively pass twice*/
     @FXML
     public void onButtonClicked()
     {
@@ -64,9 +46,10 @@ public class ExchangeContentController
         {
             lettersInputField.setText( "INVALID INPUT" );
         }
-
         else
         {
+            // resets the pass back to 0 when they broke the succession of passes by making a valid exchange
+            OpeningWindowController.bController.resetPass();
             OpeningWindowController.bController.switchPlayer();
 
             OpeningWindowController.bController.rightPanel.getBottom().setVisible( false );
@@ -77,6 +60,7 @@ public class ExchangeContentController
         }
     }
 
+    /** Disables exchange button when no letter is input into the text field */
     @FXML
     private void handleKeyReleased()
     {
