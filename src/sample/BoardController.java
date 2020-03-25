@@ -245,15 +245,10 @@ public class BoardController implements Initializable
         displayAll();
         challengeButton.setDisable( false );
 
-        if(players[currentPlayer].getPlayerFrame().hasEmpty())
-        {
-            exchangeButton.setDisable( true );
-        }
+        // disable the exchange button when there are less than 7 tiles in the pool
+        exchangeButton.setDisable( Pool.getTilesInPool() < 7 );
 
-        else
-        {
-            exchangeButton.setDisable( false );
-        }
+
     }
 
     public void setPlayers( Player PlayerOne, Player PlayerTwo )
