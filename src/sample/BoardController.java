@@ -328,4 +328,13 @@ public class BoardController implements Initializable
     {
         return players[currentPlayer];
     }
+
+    /*** Method that resets the information in the board, pool, and players upon calling*/
+    public void resetGame()
+    {
+        Board.reset();
+        Pool.reset();
+        players[0].reset( Pool );
+        players[1].reset( Pool );
+    }
 }

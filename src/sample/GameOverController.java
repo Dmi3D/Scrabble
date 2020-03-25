@@ -41,7 +41,10 @@ public class GameOverController
         if ( event.getSource().equals( restartGameButton ) )
         {
             // switch to opening window
-            Parent openingViewParent = FXMLLoader.load( getClass().getResource( "openingWindow.fxml" ) );
+            FXMLLoader loader =  new FXMLLoader(getClass().getResource( "openingWindow.fxml" ));
+            OpeningWindowController openingWindowController = new OpeningWindowController( BoardController.Board, BoardController.Pool, BoardController.players[0], BoardController.players[1] );
+            loader.setController( openingWindowController );
+            Parent openingViewParent = loader.load();
             Scene openingViewScene = new Scene(openingViewParent);
 
             // Getting information about the stage i.e. window to access it
