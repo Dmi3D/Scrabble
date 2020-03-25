@@ -7,6 +7,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class PlaceWordController
 {
@@ -52,6 +53,17 @@ public class PlaceWordController
                 OpeningWindowController.bController.switchPlayer();
                 wordInputField.clear();
                 handleKeyReleased();
+
+                ArrayList<String> lastWordsList = BoardController.Board.wordsCreatedLastMove;
+
+                String lastWords = "";
+
+                for(int i = 0; i < lastWordsList.size(); i++)
+                {
+                    lastWords += (lastWordsList.get( i ) + "\n");
+                }
+
+                OpeningWindowController.bController.scrollLabel.setText( lastWords );
 
                 OpeningWindowController.bController.rightPanel.getBottom().setVisible( false );
             }

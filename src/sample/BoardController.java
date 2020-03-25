@@ -48,6 +48,9 @@ public class BoardController implements Initializable
     public Button exchangeButton;
 
     @FXML
+    public Label scrollLabel;
+
+    @FXML
     public void handleChallengeButton( ActionEvent actionEvent ) throws IOException
     {
         System.out.println( "Challenge Button Clicked" ); // debug
