@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -269,7 +270,7 @@
 
                   <!--CELLS CONTAINING COLOURS REPRESENTING CELL WEIGHT AND TEXT FIELDS-->
 
-                  <Pane layoutX="424.0" layoutY="98.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5bcce3;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Pane layoutX="424.0" layoutY="98.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5b74d9;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -278,7 +279,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ff9ceb;" GridPane.columnIndex="13" GridPane.rowIndex="3">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8765ad;" GridPane.columnIndex="13" GridPane.rowIndex="3">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -287,7 +288,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="424.0" layoutY="98.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ff9ceb;" GridPane.columnIndex="12" GridPane.rowIndex="4">
+            <Pane layoutX="424.0" layoutY="98.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8765ad;" GridPane.columnIndex="12" GridPane.rowIndex="4">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -296,7 +297,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="392.0" layoutY="128.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ff9ceb;" GridPane.columnIndex="11" GridPane.rowIndex="5">
+            <Pane layoutX="392.0" layoutY="128.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8765ad;" GridPane.columnIndex="11" GridPane.rowIndex="5">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -305,7 +306,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="424.0" layoutY="98.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ff9ceb;" GridPane.columnIndex="14" GridPane.rowIndex="2">
+            <Pane layoutX="424.0" layoutY="98.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8765ad;" GridPane.columnIndex="14" GridPane.rowIndex="2">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -314,7 +315,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="424.0" layoutY="98.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ff9ceb;" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <Pane layoutX="424.0" layoutY="98.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8765ad;" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -323,7 +324,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="71.0" layoutY="68.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ff9ceb;" GridPane.columnIndex="3" GridPane.rowIndex="3">
+            <Pane layoutX="71.0" layoutY="68.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8765ad;" GridPane.columnIndex="3" GridPane.rowIndex="3">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -332,7 +333,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="103.0" layoutY="98.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ff9ceb;" GridPane.columnIndex="4" GridPane.rowIndex="4">
+            <Pane layoutX="103.0" layoutY="98.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8765ad;" GridPane.columnIndex="4" GridPane.rowIndex="4">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -341,7 +342,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="136.0" layoutY="128.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ff9ceb;" GridPane.columnIndex="5" GridPane.rowIndex="5">
+            <Pane layoutX="136.0" layoutY="128.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8765ad;" GridPane.columnIndex="5" GridPane.rowIndex="5">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -350,7 +351,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="168.0" layoutY="157.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ff9ceb;" GridPane.columnIndex="8" GridPane.rowIndex="8">
+            <Pane layoutX="168.0" layoutY="157.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8765ad;" GridPane.columnIndex="8" GridPane.rowIndex="8">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -359,7 +360,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="424.0" layoutY="98.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ff9ceb;" GridPane.columnIndex="5" GridPane.rowIndex="11">
+            <Pane layoutX="424.0" layoutY="98.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8765ad;" GridPane.columnIndex="5" GridPane.rowIndex="11">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -368,7 +369,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="168.0" layoutY="332.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ff9ceb;" GridPane.columnIndex="4" GridPane.rowIndex="12">
+            <Pane layoutX="168.0" layoutY="332.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8765ad;" GridPane.columnIndex="4" GridPane.rowIndex="12">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -377,7 +378,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="136.0" layoutY="362.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ff9ceb;" GridPane.columnIndex="3" GridPane.rowIndex="13">
+            <Pane layoutX="136.0" layoutY="362.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8765ad;" GridPane.columnIndex="3" GridPane.rowIndex="13">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -386,7 +387,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="103.0" layoutY="393.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ff9ceb;" GridPane.columnIndex="2" GridPane.rowIndex="14">
+            <Pane layoutX="103.0" layoutY="393.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8765ad;" GridPane.columnIndex="2" GridPane.rowIndex="14">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -395,7 +396,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="71.0" layoutY="420.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ff9ceb;" GridPane.columnIndex="11" GridPane.rowIndex="11">
+            <Pane layoutX="71.0" layoutY="420.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8765ad;" GridPane.columnIndex="11" GridPane.rowIndex="11">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -404,7 +405,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="360.0" layoutY="332.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ff9ceb;" GridPane.columnIndex="12" GridPane.rowIndex="12">
+            <Pane layoutX="360.0" layoutY="332.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8765ad;" GridPane.columnIndex="12" GridPane.rowIndex="12">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -413,7 +414,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="392.0" layoutY="362.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ff9ceb;" GridPane.columnIndex="13" GridPane.rowIndex="13">
+            <Pane layoutX="392.0" layoutY="362.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8765ad;" GridPane.columnIndex="13" GridPane.rowIndex="13">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -422,7 +423,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="424.0" layoutY="393.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ff9ceb;" GridPane.columnIndex="14" GridPane.rowIndex="14">
+            <Pane layoutX="424.0" layoutY="393.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8765ad;" GridPane.columnIndex="14" GridPane.rowIndex="14">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -431,7 +432,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="39.0" layoutY="40.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5bcce3;" GridPane.columnIndex="1" GridPane.rowIndex="15">
+            <Pane layoutX="39.0" layoutY="40.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5b74d9;" GridPane.columnIndex="1" GridPane.rowIndex="15">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -440,7 +441,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="39.0" layoutY="449.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5bcce3;" GridPane.columnIndex="15" GridPane.rowIndex="1">
+            <Pane layoutX="39.0" layoutY="449.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5b74d9;" GridPane.columnIndex="15" GridPane.rowIndex="1">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -449,7 +450,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="488.0" layoutY="40.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5bcce3;" GridPane.columnIndex="15" GridPane.rowIndex="15">
+            <Pane layoutX="488.0" layoutY="40.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5b74d9;" GridPane.columnIndex="15" GridPane.rowIndex="15">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -458,7 +459,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="488.0" layoutY="449.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5bcce3;" GridPane.columnIndex="1" GridPane.rowIndex="8">
+            <Pane layoutX="488.0" layoutY="449.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5b74d9;" GridPane.columnIndex="1" GridPane.rowIndex="8">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -467,7 +468,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="39.0" layoutY="243.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5bcce3;" GridPane.columnIndex="15" GridPane.rowIndex="8">
+            <Pane layoutX="39.0" layoutY="243.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5b74d9;" GridPane.columnIndex="15" GridPane.rowIndex="8">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -476,7 +477,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="488.0" layoutY="243.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5bcce3;" GridPane.columnIndex="8" GridPane.rowIndex="1">
+            <Pane layoutX="488.0" layoutY="243.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5b74d9;" GridPane.columnIndex="8" GridPane.rowIndex="1">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -485,7 +486,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="264.0" layoutY="40.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5bcce3;" GridPane.columnIndex="8" GridPane.rowIndex="15">
+            <Pane layoutX="264.0" layoutY="40.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5b74d9;" GridPane.columnIndex="8" GridPane.rowIndex="15">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -494,7 +495,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="39.0" layoutY="40.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5be38b;" GridPane.columnIndex="4" GridPane.rowIndex="1">
+            <Pane layoutX="39.0" layoutY="40.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8f4666;" GridPane.columnIndex="4" GridPane.rowIndex="1">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -503,7 +504,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="136.0" layoutY="40.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5be38b;" GridPane.columnIndex="12" GridPane.rowIndex="1">
+            <Pane layoutX="136.0" layoutY="40.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8f4666;" GridPane.columnIndex="12" GridPane.rowIndex="1">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -512,7 +513,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="392.0" layoutY="40.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5be38b;" GridPane.columnIndex="7" GridPane.rowIndex="7">
+            <Pane layoutX="392.0" layoutY="40.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8f4666;" GridPane.columnIndex="7" GridPane.rowIndex="7">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -521,7 +522,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="232.0" layoutY="216.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5be38b;" GridPane.columnIndex="7" GridPane.rowIndex="9">
+            <Pane layoutX="232.0" layoutY="216.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8f4666;" GridPane.columnIndex="7" GridPane.rowIndex="9">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -530,7 +531,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="232.0" layoutY="274.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5be38b;" GridPane.columnIndex="9" GridPane.rowIndex="7">
+            <Pane layoutX="232.0" layoutY="274.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8f4666;" GridPane.columnIndex="9" GridPane.rowIndex="7">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -539,7 +540,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="296.0" layoutY="216.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5be38b;" GridPane.columnIndex="9" GridPane.rowIndex="9">
+            <Pane layoutX="296.0" layoutY="216.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8f4666;" GridPane.columnIndex="9" GridPane.rowIndex="9">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -548,7 +549,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="296.0" layoutY="274.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5be38b;" GridPane.columnIndex="4" GridPane.rowIndex="15">
+            <Pane layoutX="296.0" layoutY="274.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8f4666;" GridPane.columnIndex="4" GridPane.rowIndex="15">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -557,7 +558,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="136.0" layoutY="449.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5be38b;" GridPane.columnIndex="12" GridPane.rowIndex="15">
+            <Pane layoutX="136.0" layoutY="449.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8f4666;" GridPane.columnIndex="12" GridPane.rowIndex="15">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -566,7 +567,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="392.0" layoutY="449.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5be38b;" GridPane.columnIndex="1" GridPane.rowIndex="12">
+            <Pane layoutX="392.0" layoutY="449.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8f4666;" GridPane.columnIndex="1" GridPane.rowIndex="12">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -575,7 +576,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="39.0" layoutY="362.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5be38b;" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <Pane layoutX="39.0" layoutY="362.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8f4666;" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -584,7 +585,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="39.0" layoutY="128.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5be38b;" GridPane.columnIndex="15" GridPane.rowIndex="4">
+            <Pane layoutX="39.0" layoutY="128.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8f4666;" GridPane.columnIndex="15" GridPane.rowIndex="4">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -593,7 +594,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="488.0" layoutY="128.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5be38b;" GridPane.columnIndex="15" GridPane.rowIndex="12">
+            <Pane layoutX="488.0" layoutY="128.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8f4666;" GridPane.columnIndex="15" GridPane.rowIndex="12">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -602,7 +603,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="488.0" layoutY="362.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5be38b;" GridPane.columnIndex="7" GridPane.rowIndex="3">
+            <Pane layoutX="488.0" layoutY="362.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8f4666;" GridPane.columnIndex="7" GridPane.rowIndex="3">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -611,7 +612,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="232.0" layoutY="98.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5be38b;" GridPane.columnIndex="9" GridPane.rowIndex="3">
+            <Pane layoutX="232.0" layoutY="98.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8f4666;" GridPane.columnIndex="9" GridPane.rowIndex="3">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -620,7 +621,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="296.0" layoutY="98.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5be38b;" GridPane.columnIndex="8" GridPane.rowIndex="4">
+            <Pane layoutX="296.0" layoutY="98.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8f4666;" GridPane.columnIndex="8" GridPane.rowIndex="4">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -629,7 +630,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="264.0" layoutY="128.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5be38b;" GridPane.columnIndex="8" GridPane.rowIndex="12">
+            <Pane layoutX="264.0" layoutY="128.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8f4666;" GridPane.columnIndex="8" GridPane.rowIndex="12">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -638,7 +639,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="264.0" layoutY="362.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5be38b;" GridPane.columnIndex="7" GridPane.rowIndex="13">
+            <Pane layoutX="264.0" layoutY="362.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8f4666;" GridPane.columnIndex="7" GridPane.rowIndex="13">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -647,7 +648,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="232.0" layoutY="393.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5be38b;" GridPane.columnIndex="9" GridPane.rowIndex="13">
+            <Pane layoutX="232.0" layoutY="393.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8f4666;" GridPane.columnIndex="9" GridPane.rowIndex="13">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -656,7 +657,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="296.0" layoutY="393.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5be38b;" GridPane.columnIndex="4" GridPane.rowIndex="8">
+            <Pane layoutX="296.0" layoutY="393.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8f4666;" GridPane.columnIndex="4" GridPane.rowIndex="8">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -665,7 +666,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="136.0" layoutY="243.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5be38b;" GridPane.columnIndex="3" GridPane.rowIndex="7">
+            <Pane layoutX="136.0" layoutY="243.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8f4666;" GridPane.columnIndex="3" GridPane.rowIndex="7">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -674,7 +675,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="103.0" layoutY="216.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5be38b;" GridPane.columnIndex="3" GridPane.rowIndex="9">
+            <Pane layoutX="103.0" layoutY="216.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8f4666;" GridPane.columnIndex="3" GridPane.rowIndex="9">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -683,7 +684,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="103.0" layoutY="274.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5be38b;" GridPane.columnIndex="12" GridPane.rowIndex="8">
+            <Pane layoutX="103.0" layoutY="274.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8f4666;" GridPane.columnIndex="12" GridPane.rowIndex="8">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -692,7 +693,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="392.0" layoutY="243.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5be38b;" GridPane.columnIndex="13" GridPane.rowIndex="7">
+            <Pane layoutX="392.0" layoutY="243.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8f4666;" GridPane.columnIndex="13" GridPane.rowIndex="7">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -701,7 +702,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="424.0" layoutY="216.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5be38b;" GridPane.columnIndex="13" GridPane.rowIndex="9">
+            <Pane layoutX="424.0" layoutY="216.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8f4666;" GridPane.columnIndex="13" GridPane.rowIndex="9">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -710,7 +711,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="424.0" layoutY="274.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffff99;" GridPane.columnIndex="6" GridPane.rowIndex="2">
+            <Pane layoutX="424.0" layoutY="274.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #438a82;" GridPane.columnIndex="6" GridPane.rowIndex="2">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -719,7 +720,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="200.0" layoutY="68.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffff99;" GridPane.columnIndex="10" GridPane.rowIndex="2">
+            <Pane layoutX="200.0" layoutY="68.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #438a82;" GridPane.columnIndex="10" GridPane.rowIndex="2">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -728,7 +729,7 @@
                   </Label>
                </children>
             </Pane>
-             <Pane layoutX="328.0" layoutY="68.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffff99;" GridPane.columnIndex="6" GridPane.rowIndex="6">
+             <Pane layoutX="328.0" layoutY="68.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #438a82;" GridPane.columnIndex="6" GridPane.rowIndex="6">
                 <children>
                    <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                       <font>
@@ -737,7 +738,7 @@
                    </Label>
                 </children>
             </Pane>
-            <Pane layoutX="200.0" layoutY="186.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffff99;" GridPane.columnIndex="10" GridPane.rowIndex="6">
+            <Pane layoutX="200.0" layoutY="186.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #438a82;" GridPane.columnIndex="10" GridPane.rowIndex="6">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -746,7 +747,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="328.0" layoutY="186.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffff99;" GridPane.columnIndex="6" GridPane.rowIndex="10">
+            <Pane layoutX="328.0" layoutY="186.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #438a82;" GridPane.columnIndex="6" GridPane.rowIndex="10">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -755,7 +756,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="200.0" layoutY="303.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffff99;" GridPane.columnIndex="10" GridPane.rowIndex="10">
+            <Pane layoutX="200.0" layoutY="303.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #438a82;" GridPane.columnIndex="10" GridPane.rowIndex="10">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -764,7 +765,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="328.0" layoutY="303.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffff99;" GridPane.columnIndex="6" GridPane.rowIndex="14">
+            <Pane layoutX="328.0" layoutY="303.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #438a82;" GridPane.columnIndex="6" GridPane.rowIndex="14">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -773,7 +774,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="200.0" layoutY="420.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffff99;" GridPane.columnIndex="10" GridPane.rowIndex="14">
+            <Pane layoutX="200.0" layoutY="420.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #438a82;" GridPane.columnIndex="10" GridPane.rowIndex="14">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -782,7 +783,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="328.0" layoutY="420.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffff99;" GridPane.columnIndex="2" GridPane.rowIndex="6">
+            <Pane layoutX="328.0" layoutY="420.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #438a82;" GridPane.columnIndex="2" GridPane.rowIndex="6">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -791,7 +792,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="71.0" layoutY="186.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffff99;" GridPane.columnIndex="2" GridPane.rowIndex="10">
+            <Pane layoutX="71.0" layoutY="186.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #438a82;" GridPane.columnIndex="2" GridPane.rowIndex="10">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -800,7 +801,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="71.0" layoutY="303.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffff99;" GridPane.columnIndex="14" GridPane.rowIndex="6">
+            <Pane layoutX="71.0" layoutY="303.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #438a82;" GridPane.columnIndex="14" GridPane.rowIndex="6">
                <children>
                   <Label alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -809,7 +810,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="456.0" layoutY="186.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffff99;" GridPane.columnIndex="14" GridPane.rowIndex="10">
+            <Pane layoutX="456.0" layoutY="186.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #438a82;" GridPane.columnIndex="14" GridPane.rowIndex="10">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -2354,7 +2355,18 @@
                         <Label fx:id="playerTurnDisplayLabel" alignment="CENTER" layoutY="14.0" prefHeight="40.0" prefWidth="203.0" textFill="WHITE">
                            <font>
                               <Font size="24.0" />
-                           </font></Label>
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" layoutX="60.0" layoutY="58.0" prefHeight="30.0" prefWidth="42.0" text="SCORE:" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="playerScoreDisplay" alignment="CENTER" layoutX="101.0" layoutY="58.0" prefHeight="30.0" prefWidth="44.0" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
                         <GridPane fx:id="playerTilesDisplayOnTurn" alignment="CENTER" gridLinesVisible="true" layoutY="126.0" prefHeight="30.0" prefWidth="200.0">
                           <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="28.57" />
@@ -2406,6 +2418,24 @@
                         </Label>
                      </children>
                   </AnchorPane>
+                  <ScrollPane layoutX="241.0" layoutY="14.0" prefHeight="186.0" prefWidth="196.0" style="-fx-background-color: #203152;">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="338.0" prefWidth="180.0" style="-fx-background-color: #203152;">
+                           <children>
+                              <Label layoutX="15.0" layoutY="1.0" text="WORDS CREATED" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="17.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="scrollLabel" alignment="TOP_LEFT" layoutX="8.0" layoutY="36.0" prefHeight="162.0" prefWidth="161.0" textFill="WHITE" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="36.0">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </ScrollPane>
                </children>
             </AnchorPane>
          </center>
