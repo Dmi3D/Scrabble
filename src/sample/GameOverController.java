@@ -18,8 +18,8 @@ import java.util.ResourceBundle;
 /** Class that handles button presses in gameOverWindow.fxml */
 public class GameOverController implements Initializable
 {
-    Player Winner;
-    Player Loser;
+    private Player Winner;
+    private Player Loser;
 
     @FXML
     Button restartGameButton;
