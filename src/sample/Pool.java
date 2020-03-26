@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class Pool
 {
-    private Map<Character, Integer> tileValues;
+    private HashMap<Character, Integer> tileValues;
 
     private HashMap<Character, Integer> tileFrequencies;
 
@@ -15,17 +15,23 @@ public class Pool
 
     public Pool()
     {
-        // Initialising an immutable HashMap as the tile values never change
-        tileValues = Map.ofEntries(
-                Map.entry( 'A', 1 ), Map.entry( 'B', 3 ), Map.entry( 'C', 3 ),
-                Map.entry( 'D', 2 ), Map.entry( 'E', 1 ), Map.entry( 'F', 4 ),
-                Map.entry( 'G', 3 ), Map.entry( 'H', 4 ), Map.entry( 'I', 1 ),
-                Map.entry( 'J', 8 ), Map.entry( 'K', 5 ), Map.entry( 'L', 1 ),
-                Map.entry( 'M', 3 ), Map.entry( 'N', 1 ), Map.entry( 'O', 1 ),
-                Map.entry( 'P', 3 ), Map.entry( 'Q', 10 ), Map.entry( 'R', 1 ),
-                Map.entry( 'S', 1 ), Map.entry( 'T', 1 ), Map.entry( 'U', 1 ),
-                Map.entry( 'V', 4 ), Map.entry( 'W', 4 ), Map.entry( 'X', 8 ),
-                Map.entry( 'Y', 4 ), Map.entry( 'Z', 10 ), Map.entry( '*', 0 ) );
+        // Initialising a mutable HashMap with the tile values of the different tiles
+        tileValues = new HashMap<Character, Integer>()
+        {
+            {
+                put( 'A', 1 ); put( 'B', 3 ); put( 'C', 3 );
+                put( 'D', 2 ); put( 'E', 1 ); put( 'F', 4 );
+                put( 'G', 3 ); put( 'H', 4 ); put( 'I', 1 );
+                put( 'J', 8 ); put( 'K', 5 ); put( 'L', 1 );
+                put( 'M', 3 ); put( 'N', 1 ); put( 'O', 1 );
+                put( 'P', 3 ); put( 'Q', 10 ); put( 'R', 1 );
+                put( 'S', 1 ); put( 'T', 1 ); put( 'U', 1 );
+                put( 'V', 4 ); put( 'W', 4 ); put( 'X', 8 );
+                put( 'Y', 4 ); put( 'Z', 10 ); put( '*', 0 );
+            }
+        };
+
+
 
         setTileFrequencies();
         tilesInPool = 100;
@@ -68,36 +74,18 @@ public class Pool
     private void setTileFrequencies()
     {
         // Initialising a mutable HashMap as tiles get removed from and added to pool during the game
-        tileFrequencies = new HashMap<>()
+        tileFrequencies = new HashMap<Character, Integer>()
         {
             {
-                put( 'E', 12 );
-                put( 'A', 9 );
-                put( 'I', 9 );
-                put( 'O', 8 );
-                put( 'N', 6 );
-                put( 'R', 6 );
-                put( 'T', 6 );
-                put( 'L', 4 );
-                put( 'S', 4 );
-                put( 'U', 4 );
-                put( 'D', 4 );
-                put( 'G', 3 );
-                put( 'B', 2 );
-                put( 'C', 2 );
-                put( 'M', 2 );
-                put( 'P', 2 );
-                put( 'F', 2 );
-                put( 'H', 2 );
-                put( 'V', 2 );
-                put( 'W', 2 );
-                put( 'Y', 2 );
-                put( 'K', 1 );
-                put( 'J', 1 );
-                put( 'X', 1 );
-                put( 'Q', 1 );
-                put( 'Z', 1 );
-                put( '*', 2 );
+                put( 'E', 12 ); put( 'A', 9 ); put( 'I', 9 );
+                put( 'O', 8 );  put( 'N', 6 ); put( 'R', 6 );
+                put( 'T', 6 );  put( 'L', 4 ); put( 'S', 4 );
+                put( 'U', 4 );  put( 'D', 4 ); put( 'G', 3 );
+                put( 'B', 2 );  put( 'C', 2 ); put( 'M', 2 );
+                put( 'P', 2 );  put( 'F', 2 ); put( 'H', 2 );
+                put( 'V', 2 );  put( 'W', 2 ); put( 'Y', 2 );
+                put( 'K', 1 );  put( 'J', 1 ); put( 'X', 1 );
+                put( 'Q', 1 );  put( 'Z', 1 ); put( '*', 2 );
             }
         };
     }
