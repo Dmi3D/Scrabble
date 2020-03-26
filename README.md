@@ -3,6 +3,11 @@
 
 Points to note: 
 
+-> To run the game, simply run the main of 'Scrabble', or the .jar file.
+
+-> Initially we had this written in Java SDK 11, and JavaFX 11, but had to migrate to SDK 8. The .jar works on our computers.
+If the .jar file doesn't run on yours and triggers exceptions, please check you have the correct SDK installed.
+
 -> Our interface look is based on fxml content switching as well as scene switching in the window. The fxml files 
 can be found in the fxml folder.
 
@@ -17,11 +22,6 @@ to introduce their names and press a button to start the game.
 -> BoardController is the main controller, which controls most of the game playing. It contains information used by the other
 controllers to ensure the game rolls as it should. It contains references to the objects needed i.e. Board, Pool, Players, Frames,
 and methods for display of tiles on board and frames, display of scores, and handling of choice buttons.
-
--> To run the game, simply run the main of 'Scrabble', or the .jar file.
-
--> Initially we had this written in Java SDK 11, and JavaFX 11, but had to migrate to SDK 8. If the .jar file doesn't run
-and triggers exceptions, please check you have the correct SDK installed.
 
 -> OpeningWindowController (the controller of openingWindow.fxml) upon press of 'START GAME' button loads the boardGraphic.fxml
 which contains the interface allowing the playing of the game.
