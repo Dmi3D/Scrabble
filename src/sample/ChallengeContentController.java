@@ -43,6 +43,7 @@ public class ChallengeContentController
         Player otherPlayer = BoardController.players[otherPlayerNumber];
 
         BoardController.Board.removeLastWordPlaced();
+        System.out.println("Filling " + BoardController.getOtherPlayer() + "'s frame from last tiles placed");
         BoardController.players[otherPlayerNumber].getPlayerFrame().fillFrameWithWord( BoardController.Board.getLastTilesPlaced() );
 
         OpeningWindowController.bController.displayBoard();

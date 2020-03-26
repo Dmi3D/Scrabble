@@ -302,6 +302,7 @@ public class BoardController implements Initializable
 
         if ( player.getPlayerFrame().hasEmpty() )
         {
+            System.out.println("Filling " + players[currentPlayer] + "'s frame from pool");
             players[currentPlayer].getPlayerFrame().fillFrame( Pool );
         }
 

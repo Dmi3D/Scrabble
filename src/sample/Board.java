@@ -507,8 +507,6 @@ public class Board
         char[] wordWithTilesOnBoard = Arrays.copyOf( word, word.length );
         char[] wordWithTilesPlaced = Arrays.copyOf( word, word.length );
 
-        System.out.println("ORIGINAL WORD:" + Arrays.toString( word ));
-
         //Removing actual placed tiles from word to make word with tiles on board
         for ( int i = 0; i < word.length; i++ )
         {
@@ -522,8 +520,6 @@ public class Board
                 }
             }
         }
-
-        System.out.println("Word with tiles on board: " + Arrays.toString( wordWithTilesOnBoard ));
 
         int scoreOfTilesOnBoard = 0;
 
@@ -549,11 +545,8 @@ public class Board
         int[] scoresOfPlacedTiles = new int[word.length];
         ArrayList<Integer> wordScores = new ArrayList<>();
 
-        System.out.println("Word with tiles placed: " + Arrays.toString( wordWithTilesPlaced ));
-
         char[] lastTilesPlacedTwo = Arrays.copyOf( getLastTilesPlaced(), getLastTilesPlaced().length );
 
-        System.out.println("Last tiles placed locations " + Arrays.deepToString( lastTilesPlacedLocations ));
         // For each letter in last word placed
         for ( int i = 0; i < wordWithTilesPlaced.length; i++ )
         {
@@ -569,7 +562,7 @@ public class Board
 
             for(indexOfPlacedTile = 0; indexOfPlacedTile < lastTilesPlacedTwo.length; indexOfPlacedTile++)
             {
-                if(wordWithTilesPlaced[i] == lastTilesPlacedTwo[indexOfPlacedTile])
+                if ( wordWithTilesPlaced[i] == lastTilesPlacedTwo[indexOfPlacedTile] )
                 {
                     row = lastTilesPlacedLocations[0][indexOfPlacedTile];
                     column = lastTilesPlacedLocations[1][indexOfPlacedTile];
@@ -577,10 +570,6 @@ public class Board
                     break;
                 }
             }
-
-            System.out.println("word: " + Arrays.toString( wordWithTilesPlaced ) + ", char: " + wordWithTilesPlaced[i]);
-            System.out.println("row: " + row);
-            System.out.println("column: " + column);
 
             char tile = wordWithTilesPlaced[i];
 
