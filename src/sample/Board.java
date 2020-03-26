@@ -663,7 +663,7 @@ public class Board
                     placedTiles++;
                 }
 
-                player.getPlayerFrame().removeTile( string.charAt( i ) );
+                player.getPlayerFrame().removeTile( letterToPlace );
             }
 
             if ( placedTiles == 0 )

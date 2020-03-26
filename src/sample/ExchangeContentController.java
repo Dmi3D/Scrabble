@@ -52,6 +52,7 @@ public class ExchangeContentController
             OpeningWindowController.bController.resetPass();
             OpeningWindowController.bController.switchPlayer();
 
+
             OpeningWindowController.bController.rightPanel.getBottom().setVisible( false );
             OpeningWindowController.bController.displayName();
             OpeningWindowController.bController.displayFrame();

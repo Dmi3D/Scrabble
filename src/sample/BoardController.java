@@ -76,8 +76,6 @@ public class BoardController implements Initializable
     @FXML
     private Label playerScoreDisplay;
 
-    @FXML
-    private Label tilesInPoolLabel;
 
     /**
      * Loads fxml content switching in the window when 'CHALLENGE' button is pressed.
@@ -165,13 +163,15 @@ public class BoardController implements Initializable
         System.out.println( "Pass Button Clicked" ); // debug
         amountOfPass[currentPlayer]++;
 
-        // Game end situation 2: When Pool is empty and Board is full, only move possible is Pass
-        if ( passedTwice() && Pool.isEmpty())
+        if ( passedTwice())
         {
-            // Decreasing player's scores
-            getCurrentPlayer().decreaseScore( getCurrentPlayer().getPlayerFrame().getScoreOnFrame( Pool ) );
-            getOtherPlayer().decreaseScore( getOtherPlayer().getPlayerFrame().getScoreOnFrame( Pool ) );
-
+            // Game end situation 2: When Pool is empty and Board is full, only move possible is Pass
+            if ( Pool.isEmpty() )
+            {
+                // Decreasing player's scores
+                getCurrentPlayer().decreaseScore( getCurrentPlayer().getPlayerFrame().getScoreOnFrame( Pool ) );
+                getOtherPlayer().decreaseScore( getOtherPlayer().getPlayerFrame().getScoreOnFrame( Pool ) );
+            }
 
             FXMLLoader loader = new FXMLLoader( getClass().getResource( "../fxml/gameOverWindow.fxml" ) );
             Parent gameOverWindow = loader.load();
@@ -284,18 +284,12 @@ public class BoardController implements Initializable
 
     public void displayAll()
     {
-        displayNoOfTilesInPool();
         displayName();
         displayFrame();
         displayBoard();
         displayScore();
     }
 
-    /** Setting the number of tiles in the pool in the label associated with its display in boardGraphic.fxml */
-    public void displayNoOfTilesInPool()
-    {
-        tilesInPoolLabel.setText( String.valueOf( Pool.getTilesInPool() ) );
-    }
 
     /**
      * Setting the score of player in the label associated with score display
