@@ -80,6 +80,7 @@ public class OpeningWindowController
             mController.setPlayers( PlayerOne, PlayerTwo );             // passing players to the BoardController
             mController.setBoard( Board );
             mController.setPool( Pool );
+            mController.displayNoOfTilesInPool();
             mController.challengeButton.setDisable( true );             // disabling challenge button for player before placing first word
 
             Scene boardViewScene = new Scene(boardViewParent);

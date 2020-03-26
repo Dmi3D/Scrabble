@@ -180,8 +180,9 @@ public class Frame
             int frequency = pool.getTileFrequencies().get( tileToRemove );  // getting how many letters like the one removed are currently in the pool
             pool.getTileFrequencies().put( tileToRemove, frequency + 1 );   // putting the removed letter back into the pool, incrementing its number
         }
-
         fillFrame( pool );  // filling frame with random letters from the pool
+        pool.increaseTilesInPool( lettersToExchange.length );       // re-incrementing the number of tiles in pool to actual number
+
 
         return true;
     }

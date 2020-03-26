@@ -77,7 +77,7 @@ public class BoardController implements Initializable
     private Label playerScoreDisplay;
 
     @FXML
-    private ScrollPane ScrollPane;
+    private Label tilesInPoolLabel;
 
     /**
      * Loads fxml content switching in the window when 'CHALLENGE' button is pressed.
@@ -155,7 +155,9 @@ public class BoardController implements Initializable
     /**
      * Switches to next player when 'PASS' button is pressed.
      * Ends the game when the button is pressed twice in succession by a player.
-     * When the game ends, it triggers switching of the scene to the gameOverWindow.fxml
+     * When the game ends: 1) it decreases the player's scores by the sum of the scores of the
+     *                        tiles int their correspondent frame
+     *                     2) it triggers switching of the scene to the gameOverWindow.fxml
      */
     @FXML
     public void handlePassButton( ActionEvent actionEvent ) throws IOException
@@ -163,17 +165,19 @@ public class BoardController implements Initializable
         System.out.println( "Pass Button Clicked" ); // debug
         amountOfPass[currentPlayer]++;
 
-        if ( passedTwice() )
+        // Game end situation 2: When Pool is empty and Board is full, only move possible is Pass
+        if ( passedTwice() && Pool.isEmpty())
         {
+            // Decreasing player's scores
+            getCurrentPlayer().decreaseScore( getCurrentPlayer().getPlayerFrame().getScoreOnFrame( Pool ) );
+            getOtherPlayer().decreaseScore( getOtherPlayer().getPlayerFrame().getScoreOnFrame( Pool ) );
+
+
             FXMLLoader loader = new FXMLLoader( getClass().getResource( "../fxml/gameOverWindow.fxml" ) );
-            Parent gameOverWindow = (Parent) loader.load();
+            Parent gameOverWindow = loader.load();
             Scene gameOverScene = new Scene( gameOverWindow );
-
-            // Getting information about the stage i.e. window to access it
-            Stage window = (Stage) ( (Node) actionEvent.getSource() ).getScene().getWindow();
-
-            window.setScene( gameOverScene );
-            // changing the window's scene
+            Stage window = (Stage) ( (Node) actionEvent.getSource() ).getScene().getWindow();   // Accessing stage
+            window.setScene( gameOverScene );   // changing the window's scene
             window.show();
         }
 
@@ -276,6 +280,21 @@ public class BoardController implements Initializable
     public void setPool( Pool Pool )
     {
         BoardController.Pool = Pool;
+    }
+
+    public void displayAll()
+    {
+        displayNoOfTilesInPool();
+        displayName();
+        displayFrame();
+        displayBoard();
+        displayScore();
+    }
+
+    /** Setting the number of tiles in the pool in the label associated with its display in boardGraphic.fxml */
+    public void displayNoOfTilesInPool()
+    {
+        tilesInPoolLabel.setText( String.valueOf( Pool.getTilesInPool() ) );
     }
 
     /**
@@ -394,14 +413,6 @@ public class BoardController implements Initializable
         return result;
     }
 
-    public void displayAll()
-    {
-        displayName();
-        displayFrame();
-        displayBoard();
-        displayScore();
-    }
-
     /**
      * Determines whether both players pressed the 'PASS' button twice in succession.
      */
@@ -410,27 +421,9 @@ public class BoardController implements Initializable
         return amountOfPass[currentPlayer] >= 2 && amountOfPass[getOtherPlayer(currentPlayer)] >= 2;
     }
 
-    /**
-     * Resets the pass counter of back to 0
-     */
-    public void resetPass()
-    {
-        amountOfPass[currentPlayer] = 0;
-    }
-
     public static Player getCurrentPlayer()
     {
         return players[currentPlayer];
-    }
-
-
-    /*** Method that resets the information in the board, pool, and players upon calling*/
-    public void resetGame()
-    {
-        Board.reset();
-        Pool.reset();
-        players[0].reset( Pool );
-        players[1].reset( Pool );
     }
 
     public static Player getOtherPlayer()
@@ -450,5 +443,24 @@ public class BoardController implements Initializable
         }
         return 0;
     }
+
+    /**
+     * Resets the pass counter of back to 0
+     */
+    public void resetPass()
+    {
+        amountOfPass[currentPlayer] = 0;
+    }
+
+    /*** Method that resets the information in the board, pool, and players upon calling*/
+    public void resetGame()
+    {
+        Board.reset();
+        Pool.reset();
+        players[0].reset( Pool );
+        players[1].reset( Pool );
+    }
+
+
 
 }

@@ -11,6 +11,7 @@ public class Pool
 
     private HashMap<Character, Integer> tileFrequencies;
 
+    // Stores the number of tiles in the pool
     private static int tilesInPool;
 
     public Pool()
@@ -30,9 +31,6 @@ public class Pool
                 put( 'Y', 4 ); put( 'Z', 10 ); put( '*', 0 );
             }
         };
-
-
-
         setTileFrequencies();
         tilesInPool = 100;
     }
@@ -69,6 +67,11 @@ public class Pool
         // Return value is -1 for any characters provided at method call
         // that do not satisfy the conditions above
         return -1;
+    }
+
+    public void increaseTilesInPool( int num )
+    {
+        tilesInPool += num;
     }
 
     private void setTileFrequencies()
