@@ -72,7 +72,7 @@ public class OpeningWindowController
             PlayerTwo.setName( getPlayerTwoName() );
 
             // loading fxml
-            FXMLLoader loader = new FXMLLoader( getClass().getResource( "boardGraphic.fxml" ) );
+            FXMLLoader loader = new FXMLLoader( getClass().getResource( "../fxml/boardGraphic.fxml" ) );
             Parent boardViewParent = loader.load();
 
             BoardController mController = loader.getController();       // getting controller of fxml loader

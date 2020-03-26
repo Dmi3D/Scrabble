@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -74,6 +75,9 @@ public class BoardController implements Initializable
 
     @FXML
     private Label playerScoreDisplay;
+
+    @FXML
+    private ScrollPane ScrollPane;
 
     /**
      * Loads fxml content switching in the window when 'CHALLENGE' button is pressed.
@@ -161,7 +165,7 @@ public class BoardController implements Initializable
 
         if ( passedTwice() )
         {
-            FXMLLoader loader = new FXMLLoader( getClass().getResource( "gameOverWindow.fxml" ) );
+            FXMLLoader loader = new FXMLLoader( getClass().getResource( "../fxml/gameOverWindow.fxml" ) );
             Parent gameOverWindow = (Parent) loader.load();
             Scene gameOverScene = new Scene( gameOverWindow );
 
@@ -184,7 +188,7 @@ public class BoardController implements Initializable
      */
     public void loadErrorContent( int errorCode ) throws IOException
     {
-        FXMLLoader fxmlLoader = new FXMLLoader( getClass().getResource( "placeError.fxml" ) );
+        FXMLLoader fxmlLoader = new FXMLLoader( getClass().getResource( "../fxml/placeError.fxml" ) );
         AnchorPane content = fxmlLoader.load();
         fxmlLoader.setController( this );
         System.out.println( "Error content loaded" ); // debug
@@ -226,6 +230,7 @@ public class BoardController implements Initializable
     public void initialize( URL url, ResourceBundle resourceBundle )
     {
         playerScoreDisplay.setText( "0" );
+        ScrollPane.setFitToWidth(true);
     }
 
     /**

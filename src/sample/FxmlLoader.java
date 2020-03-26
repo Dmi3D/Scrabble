@@ -1,7 +1,6 @@
 package sample;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
@@ -19,7 +18,7 @@ public class FxmlLoader
     {
         try
         {
-            FXMLLoader fxmlLoader = new FXMLLoader( getClass().getResource( "challengeContent.fxml" ) );
+            FXMLLoader fxmlLoader = new FXMLLoader( getClass().getResource( "../fxml/challengeContent.fxml" ) );
             content = fxmlLoader.load();
         }
         catch (IOException e)
@@ -33,7 +32,7 @@ public class FxmlLoader
     {
         try
         {
-            FXMLLoader fxmlLoader = new FXMLLoader( getClass().getResource( "exchangeContent.fxml" ) );
+            FXMLLoader fxmlLoader = new FXMLLoader( getClass().getResource( "../fxml/exchangeContent.fxml" ) );
             content = fxmlLoader.load();
         }
         catch (IOException e)
@@ -47,7 +46,7 @@ public class FxmlLoader
     {
     try
     {
-        FXMLLoader fxmlLoader = new FXMLLoader( getClass().getResource( "placeWordContent.fxml" ) );
+        FXMLLoader fxmlLoader = new FXMLLoader( getClass().getResource( "../fxml/placeWordContent.fxml" ) );
         content = fxmlLoader.load();
     }
     catch (IOException e)
@@ -61,7 +60,7 @@ public class FxmlLoader
     {
         try
         {
-            FXMLLoader fxmlLoader = new FXMLLoader( getClass().getResource( "helpContent.fxml" ) );
+            FXMLLoader fxmlLoader = new FXMLLoader( getClass().getResource( "../fxml/helpContent.fxml" ) );
             content = fxmlLoader.load();
         }
         catch (IOException e)
@@ -75,7 +74,7 @@ public class FxmlLoader
     {
         try
         {
-            FXMLLoader fxmlLoader = new FXMLLoader( getClass().getResource( "quitContent.fxml" ) );
+            FXMLLoader fxmlLoader = new FXMLLoader( getClass().getResource( "../fxml/quitContent.fxml" ) );
             content = fxmlLoader.load();
         }
         catch (IOException e)

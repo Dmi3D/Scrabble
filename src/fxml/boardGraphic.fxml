@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -12,7 +17,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="mainPane" style="-fx-background-color: #37517e;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.BoardController">
+<BorderPane fx:id="mainPane" style="-fx-background-color: #37517e;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.BoardController">
    <center>
       <GridPane fx:id="boardDisplay" alignment="CENTER" gridLinesVisible="true" prefHeight="500.0" prefWidth="550.0">
         <columnConstraints>
@@ -58,214 +63,274 @@
 
                   <!--CELLS CONTAINING POSITION LABELS-->
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.columnIndex="1">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="A" textAlignment="CENTER" textFill="WHITE">
-                  <font>
-                     <Font name="Bookman Old Style" size="18.0" />
-                  </font>
-               </Label>
+   <children>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="A" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Bookman Old Style" size="18.0" />
+                     </font>
+                  </Label>
+   </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.columnIndex="2">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="B" textAlignment="CENTER" textFill="WHITE">
-                  <font>
-                     <Font name="Bookman Old Style" size="18.0" />
-                  </font>
-               </Label>
+               <children>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="B" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Bookman Old Style" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.columnIndex="3">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="C" textAlignment="CENTER" textFill="WHITE">
-                  <font>
-                     <Font name="Bookman Old Style" size="18.0" />
-                  </font>
-               </Label>
+               <children>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="C" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Bookman Old Style" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.columnIndex="4">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="D" textAlignment="CENTER" textFill="WHITE">
-                  <font>
-                     <Font name="Bookman Old Style" size="18.0" />
-                  </font>
-               </Label>
+               <children>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="D" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Bookman Old Style" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.columnIndex="5">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="E" textAlignment="CENTER" textFill="WHITE">
-                  <font>
-                     <Font name="Bookman Old Style" size="18.0" />
-                  </font>
-               </Label>
+               <children>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="E" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Bookman Old Style" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.columnIndex="6">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="F" textAlignment="CENTER" textFill="WHITE">
-                  <font>
-                     <Font name="Bookman Old Style" size="18.0" />
-                  </font>
-               </Label>
+               <children>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="F" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Bookman Old Style" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.columnIndex="7">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="G" textAlignment="CENTER" textFill="WHITE">
-                  <font>
-                     <Font name="Bookman Old Style" size="18.0" />
-                  </font>
-               </Label>
+               <children>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="G" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Bookman Old Style" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.columnIndex="8">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="H" textAlignment="CENTER" textFill="WHITE">
-                  <font>
-                     <Font name="Bookman Old Style" size="18.0" />
-                  </font>
-               </Label>
+               <children>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="H" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Bookman Old Style" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.columnIndex="9">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="I" textAlignment="CENTER" textFill="WHITE">
-                  <font>
-                     <Font name="Bookman Old Style" size="18.0" />
-                  </font>
-               </Label>
+               <children>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="I" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Bookman Old Style" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.columnIndex="10">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="J" textAlignment="CENTER" textFill="WHITE">
-                  <font>
-                     <Font name="Bookman Old Style" size="18.0" />
-                  </font>
-               </Label>
+               <children>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="J" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Bookman Old Style" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.columnIndex="11">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="K" textAlignment="CENTER" textFill="WHITE">
-                  <font>
-                     <Font name="Bookman Old Style" size="18.0" />
-                  </font>
-               </Label>
+               <children>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="K" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Bookman Old Style" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.columnIndex="12">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="L" textAlignment="CENTER" textFill="WHITE">
-                  <font>
-                     <Font name="Bookman Old Style" size="18.0" />
-                  </font>
-               </Label>
+               <children>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="L" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Bookman Old Style" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.columnIndex="13">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="M" textAlignment="CENTER" textFill="WHITE">
-                  <font>
-                     <Font name="Bookman Old Style" size="18.0" />
-                  </font>
-               </Label>
+               <children>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="M" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Bookman Old Style" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.columnIndex="14">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="N" textAlignment="CENTER" textFill="WHITE">
-                  <font>
-                     <Font name="Bookman Old Style" size="18.0" />
-                  </font>
-               </Label>
+               <children>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="N" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Bookman Old Style" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.columnIndex="15">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="O" textAlignment="CENTER" textFill="WHITE">
-                  <font>
-                     <Font name="Bookman Old Style" size="18.0" />
-                  </font>
-               </Label>
+               <children>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="O" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Bookman Old Style" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.rowIndex="1">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="1" textAlignment="CENTER" textFill="WHITE">
-                  <font>
-                     <Font name="Bookman Old Style" size="18.0" />
-                  </font>
-               </Label>
+               <children>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="1" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Bookman Old Style" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.rowIndex="2">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="2" textAlignment="CENTER" textFill="WHITE">
-                  <font>
-                     <Font name="Bookman Old Style" size="18.0" />
-                  </font>
-               </Label>
+               <children>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="2" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Bookman Old Style" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.rowIndex="3">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="3" textAlignment="CENTER" textFill="WHITE">
-                  <font>
-                     <Font name="Bookman Old Style" size="18.0" />
-                  </font>
-               </Label>
+               <children>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="3" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Bookman Old Style" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.rowIndex="5">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="5" textAlignment="CENTER" textFill="WHITE">
-                  <font>
-                     <Font name="Bookman Old Style" size="18.0" />
-                  </font>
-               </Label>
+               <children>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="5" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Bookman Old Style" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.rowIndex="4">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="4" textAlignment="CENTER" textFill="WHITE">
-                  <font>
-                     <Font name="Bookman Old Style" size="18.0" />
-                  </font>
-               </Label>
+               <children>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="4" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Bookman Old Style" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.rowIndex="6">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="6" textAlignment="CENTER" textFill="WHITE">
-                  <font>
-                     <Font name="Bookman Old Style" size="18.0" />
-                  </font>
-               </Label>
+               <children>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="6" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Bookman Old Style" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.rowIndex="7">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="7" textAlignment="CENTER" textFill="WHITE">
-                  <font>
-                     <Font name="Bookman Old Style" size="18.0" />
-                  </font>
-               </Label>
+               <children>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="7" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Bookman Old Style" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.rowIndex="8">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="8" textAlignment="CENTER" textFill="WHITE">
-                  <font>
-                     <Font name="Bookman Old Style" size="18.0" />
-                  </font>
-               </Label>
+               <children>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="8" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Bookman Old Style" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.rowIndex="9">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="9" textAlignment="CENTER" textFill="WHITE">
-                  <font>
-                     <Font name="Bookman Old Style" size="18.0" />
-                  </font>
-               </Label>
+               <children>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="9" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Bookman Old Style" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.rowIndex="10">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="10" textAlignment="CENTER" textFill="WHITE">
-                  <font>
-                     <Font name="Bookman Old Style" size="18.0" />
-                  </font>
-               </Label>
+               <children>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="10" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Bookman Old Style" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.rowIndex="11">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="11" textAlignment="CENTER" textFill="WHITE">
-                  <font>
-                     <Font name="Bookman Old Style" size="18.0" />
-                  </font>
-               </Label>
+               <children>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="11" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Bookman Old Style" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.rowIndex="12">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="12" textAlignment="CENTER" textFill="WHITE">
-                  <font>
-                     <Font name="Bookman Old Style" size="18.0" />
-                  </font>
-               </Label>
+               <children>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="12" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Bookman Old Style" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.rowIndex="13">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="13" textAlignment="CENTER" textFill="WHITE">
-                  <font>
-                     <Font name="Bookman Old Style" size="18.0" />
-                  </font>
-               </Label>
+               <children>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="13" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Bookman Old Style" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.rowIndex="14">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="14" textAlignment="CENTER" textFill="WHITE">
-                  <font>
-                     <Font name="Bookman Old Style" size="18.0" />
-                  </font>
-               </Label>
+               <children>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="14" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Bookman Old Style" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #253655;" GridPane.rowIndex="15">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="15" textAlignment="CENTER" textFill="WHITE">
-                  <font>
-                     <Font name="Bookman Old Style" size="18.0" />
-                  </font>
-               </Label>
+               <children>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" text="15" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Bookman Old Style" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
             </Pane>
 
                   <!--CELLS CONTAINING COLOURS REPRESENTING CELL WEIGHT AND TEXT FIELDS-->
@@ -912,11 +977,13 @@
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="14" GridPane.rowIndex="1">
-               <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
-                  <font>
-                     <Font size="22.0" />
-                  </font>
-               </Label>
+               <children>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
+               </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
@@ -2320,7 +2387,7 @@
          <center>
             <AnchorPane prefHeight="383.0" prefWidth="449.0">
                <children>
-                  <Button fx:id="challengeButton" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="214.0" mnemonicParsing="false" onAction="#handleChallengeButton" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #203152;" stylesheets="@../css/buttonStyle.css" text="CHALLENGE" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="130.0" AnchorPane.leftAnchor="14.0">
+                  <Button fx:id="challengeButton" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="214.0" mnemonicParsing="false" onAction="#handleChallengeButton" prefHeight="35.0" prefWidth="200.0" stylesheets="@../css/buttonStyle.css" text="CHALLENGE" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="130.0" AnchorPane.leftAnchor="14.0">
                      <font>
                         <Font name="System Bold" size="17.0" />
                      </font>
@@ -2330,7 +2397,7 @@
                         <Font name="System Bold" size="17.0" />
                      </font>
                   </Button>
-                  <Button fx:id="exchangeButton" alignment="CENTER" layoutX="239.0" layoutY="214.0" mnemonicParsing="false" onAction="#handleExchangeButton" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #203152;" stylesheets="@../css/buttonStyle.css" text="EXCHANGE TILES" textFill="WHITE" AnchorPane.bottomAnchor="130.0" AnchorPane.rightAnchor="22.600000000000023">
+                  <Button fx:id="exchangeButton" alignment="CENTER" layoutX="239.0" layoutY="214.0" mnemonicParsing="false" onAction="#handleExchangeButton" prefHeight="35.0" prefWidth="200.0" stylesheets="@../css/buttonStyle.css" text="EXCHANGE TILES" textFill="WHITE" AnchorPane.bottomAnchor="130.0" AnchorPane.rightAnchor="22.600000000000023">
                      <font>
                         <Font name="System Bold" size="17.0" />
                      </font>
@@ -2340,12 +2407,12 @@
                         <Font name="System Bold" size="17.0" />
                      </font>
                   </Button>
-                  <Button alignment="CENTER" layoutX="14.0" layoutY="311.0" mnemonicParsing="false" onAction="#handleHelpButton" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #203152;" stylesheets="@../css/buttonStyle.css" text="HELP" textFill="WHITE" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="14.0">
+                  <Button alignment="CENTER" layoutX="14.0" layoutY="311.0" mnemonicParsing="false" onAction="#handleHelpButton" prefHeight="35.0" prefWidth="200.0" style="-: #203152;" stylesheets="@../css/buttonStyle.css" text="HELP" textFill="WHITE" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="14.0">
                      <font>
                         <Font name="System Bold" size="17.0" />
                      </font>
                   </Button>
-                  <Button alignment="CENTER" layoutX="245.0" layoutY="311.0" mnemonicParsing="false" onAction="#handleQuitButton" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #203152;" stylesheets="@../css/buttonStyle.css" text="QUIT" textFill="WHITE" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="22.19999999999999">
+                  <Button alignment="CENTER" layoutX="245.0" layoutY="311.0" mnemonicParsing="false" onAction="#handleQuitButton" prefHeight="35.0" prefWidth="200.0" style="-: #203152;" stylesheets="@../css/buttonStyle.css" text="QUIT" textFill="WHITE" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="22.19999999999999">
                      <font>
                         <Font name="System Bold" size="17.0" />
                      </font>

@@ -56,7 +56,7 @@ public class GameOverController implements Initializable
             OpeningWindowController.bController.resetGame();
 
             // switch to opening window
-            FXMLLoader loader =  new FXMLLoader(getClass().getResource( "openingWindow.fxml" ));
+            FXMLLoader loader =  new FXMLLoader(getClass().getResource( "../fxml/openingWindow.fxml" ));
             OpeningWindowController openingWindowController = new OpeningWindowController( BoardController.Board, BoardController.Pool, BoardController.players[0], BoardController.players[1] );
             loader.setController( openingWindowController );
             Parent openingViewParent = loader.load();

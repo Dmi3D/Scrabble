@@ -22,7 +22,7 @@ public class Scrabble extends Application
     @Override
     public void start(Stage window) throws Exception
     {
-        FXMLLoader loader =  new FXMLLoader(getClass().getResource( "openingWindow.fxml" ));
+        FXMLLoader loader =  new FXMLLoader(getClass().getResource( "../fxml/openingWindow.fxml" ));
 
         // Creating an instance of the controller of openingWindow.fxml to pass the object references
         OpeningWindowController OWController = new OpeningWindowController( Board, Pool, PlayerOne, PlayerTwo );
