@@ -1,5 +1,6 @@
 .ScrollPane {
     -fx-background-color: transparent;
+    -fx-fit-to-width: true;
 }
 
 .ScrollPane .scroll-bar:vertical

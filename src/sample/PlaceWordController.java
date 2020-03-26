@@ -2,9 +2,14 @@ package sample;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -55,8 +60,30 @@ public class PlaceWordController
 
             if ( placed )
             {
-                // resets the pass back to 0 when they broke the succession of passes by making a valid word placement
+                // Resets the pass back to 0 when they broke the succession of passes by making a valid word placement
                 OpeningWindowController.bController.resetPass();
+
+                // Situation 1 when game ends: Pool is empty and the player has used all of their tiles from the frame
+                if ( BoardController.Pool.isEmpty() && BoardController.getCurrentPlayer().getPlayerFrame().isEmpty() )
+                {
+                    // Adding to player's score the sum of scores of the tiles on their opponent's frame
+                    int scoreFromFrame = BoardController.getCurrentPlayer().getPlayerFrame().getScoreOnFrame( BoardController.Pool );
+                    BoardController.getCurrentPlayer().increaseScore( scoreFromFrame );
+                    // Subtracting opponent's score the sum of scores of the tiles on their frame
+                    BoardController.getOtherPlayer().decreaseScore( scoreFromFrame );
+
+                    // Switching to gameOverWindow.fxml
+                    FXMLLoader loader = new FXMLLoader( getClass().getResource( "../fxml/gameOverWindow.fxml" ) );
+                    Parent gameOverWindow = (Parent) loader.load();
+                    Scene gameOverScene = new Scene( gameOverWindow );
+
+                    // Getting information about the stage i.e. window to access it
+                    Stage window = (Stage) ( (Node) event.getSource() ).getScene().getWindow();
+
+                    window.setScene( gameOverScene );
+                    // changing the window's scene
+                    window.show();
+                }
 
                 // debug
                 System.out.println( "Words created: " );
@@ -136,7 +163,9 @@ public class PlaceWordController
     @FXML
     public void handleKeyReleased()
     {
-        boolean disableButtons = getWordInput().isEmpty() || getWordInput().trim().isEmpty();
+        boolean disableButtons = directionChoiceBox.getValue() == null ||
+                                 columnChoiceBox.getValue() == null || rowChoiceBox.getValue() == null
+                                || getWordInput().isEmpty() || getWordInput().trim().isEmpty();
         placeWordButton.setDisable( disableButtons );
     }
 

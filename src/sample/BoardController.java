@@ -172,8 +172,8 @@ public class BoardController implements Initializable
             // Getting information about the stage i.e. window to access it
             Stage window = (Stage) ( (Node) actionEvent.getSource() ).getScene().getWindow();
 
-            // changing the window's scene
             window.setScene( gameOverScene );
+            // changing the window's scene
             window.show();
         }
 
@@ -230,7 +230,6 @@ public class BoardController implements Initializable
     public void initialize( URL url, ResourceBundle resourceBundle )
     {
         playerScoreDisplay.setText( "0" );
-        ScrollPane.setFitToWidth(true);
     }
 
     /**
@@ -404,11 +403,11 @@ public class BoardController implements Initializable
     }
 
     /**
-     * Determines whether a player has pressed the 'PASS' button twice in succession.
+     * Determines whether both players pressed the 'PASS' button twice in succession.
      */
     private static boolean passedTwice()
     {
-        return amountOfPass[currentPlayer] >= 2;
+        return amountOfPass[currentPlayer] >= 2 && amountOfPass[getOtherPlayer(currentPlayer)] >= 2;
     }
 
     /**
@@ -442,4 +441,14 @@ public class BoardController implements Initializable
         }
         return players[0];
     }
+
+    private static int getOtherPlayer(int currentPlayer)
+    {
+        if ( currentPlayer == 0 )
+        {
+            return 1;
+        }
+        return 0;
+    }
+
 }

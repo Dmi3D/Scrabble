@@ -186,6 +186,16 @@ public class Frame
         return true;
     }
 
+    public int getScoreOnFrame(Pool pool)
+    {
+        int scoreOfTilesOnFrame = 0;
+        for ( char tile : tiles )
+        {
+            scoreOfTilesOnFrame += pool.getValue( tile );
+        }
+        return scoreOfTilesOnFrame;
+    }
+
 
     public void reset( Pool pool )
     {
