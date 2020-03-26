@@ -9,8 +9,10 @@ import javafx.scene.control.TextField;
 import java.io.IOException;
 import java.util.ArrayList;
 
-/**1) Parses input from placeWordContent.fxml.
- * 2) Calls method to place word input by user on the board.*/
+/**
+ * 1) Parses input from placeWordContent.fxml.
+ * 2) Calls method to place word input by user on the board.
+ */
 public class PlaceWordController
 {
     @FXML
@@ -31,39 +33,40 @@ public class PlaceWordController
     @FXML
     public void initialize()
     {
-        placeWordButton.setDisable(true);
+        placeWordButton.setDisable( true );
     }
 
-    /** Calls method from back-end to place the word on the board
-     *
-     *  Success: 1) Prompts the words created during that play.
-     *           2) Calls method to make word placed on board in back-end show in the front-end
-     *           3) Calls method to increase the player's score
-     *
-     *  Fail:    1) Calls method to retrieve the error code of the error associated with the invalid word placement
-     *           2) Calls method in BoardController to display the error in the window.
+    /**
+     * Calls method from back-end to place the word on the board
+     * <p>
+     * Success: 1) Prompts the words created during that play.
+     * 2) Calls method to make word placed on board in back-end show in the front-end
+     * 3) Calls method to increase the player's score
+     * <p>
+     * Fail:    1) Calls method to retrieve the error code of the error associated with the invalid word placement
+     * 2) Calls method in BoardController to display the error in the window.
      */
     @FXML
-    public void onButtonClicked( ActionEvent event) throws IOException
+    public void onButtonClicked( ActionEvent event ) throws IOException
     {
         if ( event.getSource().equals( placeWordButton ) )
         {
             boolean placed = BoardController.Board.placeWord( getWordInput(), getDirection(), getRowInput(), getColumnInput(), BoardController.players[BoardController.currentPlayer] );
 
-            if( placed )
+            if ( placed )
             {
                 // resets the pass back to 0 when they broke the succession of passes by making a valid word placement
                 OpeningWindowController.bController.resetPass();
 
                 // debug
-                System.out.println("Words created: ");
+                System.out.println( "Words created: " );
 
-                for(int i = 0; i < BoardController.Board.wordsCreatedLastMove.size(); i++)
+                for ( int i = 0; i < BoardController.Board.wordsCreatedLastMove.size(); i++ )
                 {
-                    System.out.println("Word " + i + ": " + BoardController.Board.wordsCreatedLastMove.get( i ));
+                    System.out.println( "Word " + i + ": " + BoardController.Board.wordsCreatedLastMove.get( i ) );
                 }
 
-                System.out.println("Score: " + BoardController.Board.getScoreFromLastMove( BoardController.Pool ));
+                System.out.println( "Score: " + BoardController.Board.getScoreFromLastMove( BoardController.Pool ) );
                 // increasing the player's score based on word they places and position on board
                 BoardController.getCurrentPlayer().increaseScore( BoardController.Board.getScoreFromLastMove( BoardController.Pool ) );
 
@@ -90,11 +93,11 @@ public class PlaceWordController
             }
             else
             {
-                System.out.println("Error code is: " + BoardController.Board.getErrorCode());
+                System.out.println( "Error code is: " + BoardController.Board.getErrorCode() );
                 // getting error code for invalid word placement
                 int errorCode = BoardController.Board.getErrorCode();
                 // calling Board Controller to load the fxml file which displays error
-                OpeningWindowController.bController.loadErrorContent(errorCode);
+                OpeningWindowController.bController.loadErrorContent( errorCode );
             }
         }
     }
@@ -114,7 +117,7 @@ public class PlaceWordController
     @FXML
     private int getRowInput()
     {
-        return Integer.parseInt(rowChoiceBox.getValue());
+        return Integer.parseInt( rowChoiceBox.getValue() );
     }
 
     @FXML
@@ -126,8 +129,10 @@ public class PlaceWordController
         return 'D';
     }
 
-    /** Disabling the button 'PLACE' when there is no text typed into the text field
-     * to avoid user submitting empty field*/
+    /**
+     * Disabling the button 'PLACE' when there is no text typed into the text field
+     * to avoid user submitting empty field
+     */
     @FXML
     public void handleKeyReleased()
     {

@@ -16,29 +16,30 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
  * Controller class that is responsible for the following:
- *
+ * <p>
  * 1) Holds references to the objects responsible for game logic e.g. Pool
- *
+ * <p>
  * 2) Prompts the player whose turn it is on display
- *
+ * <p>
  * 3) Prompts the player's frame and score during their turn
- *
+ * <p>
  * 4) Holds the options a player has during their play
- *
+ * <p>
  * 5) Handles input from the user when making their play
- *
+ * <p>
  * 6) Holds valuable methods linking display of letters placed on the board,
- *    display of tiles in a frame in the window, set and reset of data
- *    to the back-end logic of the game
- *
+ * display of tiles in a frame in the window, set and reset of data
+ * to the back-end logic of the game
+ * <p>
  * 7) Prompts error message in the window during an invalid word placement
- *
+ * <p>
  * 8) Handles fxml content switching during specific button presses
  */
 public class BoardController implements Initializable
@@ -162,10 +163,10 @@ public class BoardController implements Initializable
         {
             FXMLLoader loader = new FXMLLoader( getClass().getResource( "gameOverWindow.fxml" ) );
             Parent gameOverWindow = (Parent) loader.load();
-            Scene gameOverScene = new Scene(gameOverWindow);
+            Scene gameOverScene = new Scene( gameOverWindow );
 
             // Getting information about the stage i.e. window to access it
-            Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Stage window = (Stage) ( (Node) actionEvent.getSource() ).getScene().getWindow();
 
             // changing the window's scene
             window.setScene( gameOverScene );
@@ -186,7 +187,7 @@ public class BoardController implements Initializable
         FXMLLoader fxmlLoader = new FXMLLoader( getClass().getResource( "placeError.fxml" ) );
         AnchorPane content = fxmlLoader.load();
         fxmlLoader.setController( this );
-        System.out.println("Error content loaded"); // debug
+        System.out.println( "Error content loaded" ); // debug
         rightPanel.setBottom( content );
         BorderPane.setMargin( rightPanel.getBottom(), new Insets( 0, 10, 10, 10 ) );
         ObservableList<Node> children = content.getChildren();
@@ -197,6 +198,7 @@ public class BoardController implements Initializable
     /**
      * Getting the error code to determine the text returned during word placement. This is then set as a text into the
      * label that calls it
+     *
      * @param errorCode integer that holds value associated with specific error during word placement
      * @return string representing error text
      */
@@ -248,8 +250,6 @@ public class BoardController implements Initializable
 
         // disable the exchange button when there are less than 7 tiles in the pool
         exchangeButton.setDisable( Pool.getTilesInPool() < 7 );
-
-
     }
 
     public void setPlayers( Player PlayerOne, Player PlayerTwo )
@@ -274,27 +274,33 @@ public class BoardController implements Initializable
         BoardController.Pool = Pool;
     }
 
-    /** Setting the score of player in the label associated with score display */
+    /**
+     * Setting the score of player in the label associated with score display
+     */
     public void displayScore()
     {
-        playerScoreDisplay.setText( String.valueOf(getCurrentPlayer().getScore()) );
+        playerScoreDisplay.setText( String.valueOf( getCurrentPlayer().getScore() ) );
     }
 
-    /** Setting the name of the player in the label associated with name display */
+    /**
+     * Setting the name of the player in the label associated with name display
+     */
     public void displayName()
     {
         playerTurnDisplayLabel.setText( players[currentPlayer].getName() + "'s turn." );
     }
 
-    /** Setting the letters from player's frame in the labels associated with
-     * GridPane display of frame in boardGraphic.fxml */
+    /**
+     * Setting the letters from player's frame in the labels associated with
+     * GridPane display of frame in boardGraphic.fxml
+     */
     public void displayFrame()
     {
         ObservableList<Node> children = playerTilesDisplayOnTurn.getChildren();
 
         Player player = players[currentPlayer];
 
-        if (player.getPlayerFrame().hasEmpty())
+        if ( player.getPlayerFrame().hasEmpty() )
         {
             players[currentPlayer].getPlayerFrame().fillFrame( Pool );
         }
@@ -310,8 +316,10 @@ public class BoardController implements Initializable
         }
     }
 
-    /** Getting the letters in the back-end Board to display in the front-end board after
-     * placement.*/
+    /**
+     * Getting the letters in the back-end Board to display in the front-end board after
+     * placement.
+     */
     public void displayBoard()
     {
         for ( int row = 1; row <= 15; row++ )
@@ -338,9 +346,12 @@ public class BoardController implements Initializable
         }
     }
 
-    /** Getting the node at certain row and column index in the GridPane representing the
+    /**
+     * Getting the node at certain row and column index in the GridPane representing the
      * board display in boardGraphic.fxml
-     * @return the node in the GridPane at position specified */
+     *
+     * @return the node in the GridPane at position specified
+     */
     private Node getNodeByRowColumnIndex( final int row, final int column, GridPane Board )
     {
         Node result = null;
@@ -386,13 +397,17 @@ public class BoardController implements Initializable
         displayScore();
     }
 
-    /** Determines whether a player has pressed the 'PASS' button twice in succession. */
+    /**
+     * Determines whether a player has pressed the 'PASS' button twice in succession.
+     */
     private static boolean passedTwice()
     {
         return amountOfPass[currentPlayer] >= 2;
     }
 
-    /** Resets the pass counter of back to 0 */
+    /**
+     * Resets the pass counter of back to 0
+     */
     public void resetPass()
     {
         amountOfPass[currentPlayer] = 0;
