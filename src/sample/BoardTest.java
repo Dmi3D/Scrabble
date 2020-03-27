@@ -62,11 +62,11 @@ public class BoardTest
         Board.displayBoard();
 
         PlayerOne.increaseScore( Board.getScoreFromLastMove( Pool ) );
-        System.out.println( "Score of " + PlayerOne.getName() + ": " + PlayerOne.getScore());
+        System.out.println( "Score of " + PlayerOne.getName() + ": " + PlayerOne.getScore() );
 
-        for(int i = 0; i < Board.wordsCreatedLastMove.size(); i++)
+        for ( int i = 0; i < Board.wordsCreatedLastMove.size(); i++ )
         {
-            System.out.println("Word " + i + ": " + Board.wordsCreatedLastMove.get( i ));
+            System.out.println( "Word " + i + ": " + Board.wordsCreatedLastMove.get( i ) );
         }
 
         System.out.print( PlayerOne.getName() + "'s frame now: " );
@@ -104,12 +104,12 @@ public class BoardTest
         Board.displayBoard();
 
         PlayerTwo.increaseScore( Board.getScoreFromLastMove( Pool ) );
-        System.out.println( "Score of " + PlayerTwo.getName() + ": " + PlayerTwo.getScore());
+        System.out.println( "Score of " + PlayerTwo.getName() + ": " + PlayerTwo.getScore() );
 
 
-        for(int i = 0; i < Board.wordsCreatedLastMove.size(); i++)
+        for ( int i = 0; i < Board.wordsCreatedLastMove.size(); i++ )
         {
-            System.out.println("Word " + i + ": " + Board.wordsCreatedLastMove.get( i ));
+            System.out.println( "Word " + i + ": " + Board.wordsCreatedLastMove.get( i ) );
         }
 
         System.out.print( PlayerTwo.getName() + "'s frame now: " );
@@ -147,11 +147,11 @@ public class BoardTest
         System.out.println( "Board now contains three words:" );
 
         PlayerOne.increaseScore( Board.getScoreFromLastMove( Pool ) );
-        System.out.println( "Score of " + PlayerOne.getName() + ": " + PlayerOne.getScore());
+        System.out.println( "Score of " + PlayerOne.getName() + ": " + PlayerOne.getScore() );
 
-        for(int i = 0; i < Board.wordsCreatedLastMove.size(); i++)
+        for ( int i = 0; i < Board.wordsCreatedLastMove.size(); i++ )
         {
-            System.out.println("Word " + i + ": " + Board.wordsCreatedLastMove.get( i ));
+            System.out.println( "Word " + i + ": " + Board.wordsCreatedLastMove.get( i ) );
         }
 
         Board.displayBoard();
@@ -229,18 +229,16 @@ public class BoardTest
         Board.displayBoard();
 
 
-
-
-        for(int i = 0; i < Board.wordsCreatedLastMove.size(); i++)
+        for ( int i = 0; i < Board.wordsCreatedLastMove.size(); i++ )
         {
-            System.out.println("Word " + i + ": " + Board.wordsCreatedLastMove.get( i ));
+            System.out.println( "Word " + i + ": " + Board.wordsCreatedLastMove.get( i ) );
         }
 
         PlayerTwo.getPlayerFrame().displayFrame();
 
 
-System.out.println( "\n********************************* REMOVING WORD BECAUSE CHALLENGER WON ********************************\n" );
-        System.out.println( "Attempting to remove last placed word: " + Arrays.toString( Board.getLastTilesPlaced() ));
+        System.out.println( "\n********************************* REMOVING WORD BECAUSE CHALLENGER WON ********************************\n" );
+        System.out.println( "Attempting to remove last placed word: " + Arrays.toString( Board.getLastTilesPlaced() ) );
 
         System.out.print( PlayerTwo.getName() + "'s frame: " );
         PlayerTwo.getPlayerFrame().displayFrame();
@@ -254,14 +252,13 @@ System.out.println( "\n********************************* REMOVING WORD BECAUSE C
         System.out.print( PlayerTwo.getName() + "'s frame with letter's refiled: " );
         PlayerTwo.getPlayerFrame().displayFrame();
 
-        System.out.println("Player two score: " + PlayerTwo.getScore());
+        System.out.println( "Player two score: " + PlayerTwo.getScore() );
 
         PlayerTwo.decreaseScore( Board.getScoreFromLastMove( Pool ) );
-        System.out.println( "Score of " + PlayerTwo.getName() + ": " + PlayerTwo.getScore());
+        System.out.println( "Score of " + PlayerTwo.getName() + ": " + PlayerTwo.getScore() );
 
         System.out.println( "Board currently should have 3 words currently. Actually: " + Board.getNumOfWords() );
         Board.displayBoard();
-
 
 
         System.out.println( "\n**************************** ILLEGAL PLACEMENT OF WORD THAT OVERLAPS WITH TILES ALREADY ON BOARD ******************************\n" );

@@ -15,19 +15,21 @@ public class ExchangeContentController
 
     public void initialize()
     {
-        exchangeButton.setDisable(true);
+        exchangeButton.setDisable( true );
     }
 
     public String getLettersToExchangeAsString()
     {
-       return lettersInputField.getText().toUpperCase();
+        return lettersInputField.getText().toUpperCase();
     }
 
-    /**Takes the String of letters player wishes to exchange and passes it to back-end
+    /**
+     * Takes the String of letters player wishes to exchange and passes it to back-end
      * exchange method.
      * Fail: exchange doesn't work and text field informs player of their invalid input.
      * Success: 1) letters in player's frame are exchanged and player switch is triggered.
-     *          2) Resets the pass counter back to 0 as they didn't successively pass twice*/
+     * 2) Resets the pass counter back to 0 as they didn't successively pass twice
+     */
     @FXML
     public void onButtonClicked()
     {
@@ -42,7 +44,7 @@ public class ExchangeContentController
 
         boolean exchanged = BoardController.players[BoardController.currentPlayer].getPlayerFrame().exchangeTiles( letters, BoardController.Pool );
 
-        if(!exchanged)
+        if ( !exchanged )
         {
             lettersInputField.setText( "INVALID INPUT" );
         }
@@ -61,7 +63,9 @@ public class ExchangeContentController
         }
     }
 
-    /** Disables exchange button when no letter is input into the text field */
+    /**
+     * Disables exchange button when no letter is input into the text field
+     */
     @FXML
     private void handleKeyReleased()
     {

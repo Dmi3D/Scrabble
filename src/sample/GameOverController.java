@@ -15,7 +15,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-/** Class that handles button presses in gameOverWindow.fxml */
+/**
+ * Class that handles button presses in gameOverWindow.fxml
+ */
 public class GameOverController implements Initializable
 {
     private Player Winner;
@@ -43,7 +45,7 @@ public class GameOverController implements Initializable
      * Press of button 'RESTART':
      * 1) calls method that resets the game
      * 2) triggers scene change in window to openingWindow.fxml
-     *
+     * <p>
      * Press of button 'EXIT':
      * 1) closes the window i.e. terminates the game/program
      */
@@ -56,14 +58,14 @@ public class GameOverController implements Initializable
             OpeningWindowController.bController.resetGame();
 
             // switch to opening window
-            FXMLLoader loader =  new FXMLLoader(getClass().getResource( "../fxml/openingWindow.fxml" ));
+            FXMLLoader loader = new FXMLLoader( GameOverController.class.getResource( "/openingWindow.fxml" ) );
             OpeningWindowController openingWindowController = new OpeningWindowController( BoardController.Board, BoardController.Pool, BoardController.players[0], BoardController.players[1] );
             loader.setController( openingWindowController );
             Parent openingViewParent = loader.load();
-            Scene openingViewScene = new Scene(openingViewParent);
+            Scene openingViewScene = new Scene( openingViewParent );
 
             // Getting information about the stage i.e. window to access it
-            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Stage window = (Stage) ( (Node) event.getSource() ).getScene().getWindow();
 
             // changing the window's scene
             window.setScene( openingViewScene );
@@ -80,12 +82,12 @@ public class GameOverController implements Initializable
     @Override
     public void initialize( URL url, ResourceBundle resourceBundle )
     {
-        if(BoardController.players[0].getScore() == BoardController.players[1].getScore())
+        if ( BoardController.players[0].getScore() == BoardController.players[1].getScore() )
         {
-            winnerNameLabel.setText( BoardController.players[0].getName() + "\n" + BoardController.players[1].getName());
+            winnerNameLabel.setText( BoardController.players[0].getName() + "\n" + BoardController.players[1].getName() );
             winnerScoreLabel.setText( String.valueOf( BoardController.players[0].getScore() ) );
         }
-        else if(BoardController.players[0].getScore() > BoardController.players[1].getScore())
+        else if ( BoardController.players[0].getScore() > BoardController.players[1].getScore() )
         {
             Winner = BoardController.players[0];
             Loser = BoardController.players[1];

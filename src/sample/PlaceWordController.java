@@ -73,7 +73,7 @@ public class PlaceWordController
                     BoardController.getOtherPlayer().decreaseScore( scoreFromFrame );
 
                     // Switching to gameOverWindow.fxml
-                    FXMLLoader loader = new FXMLLoader( getClass().getResource( "../fxml/gameOverWindow.fxml" ) );
+                    FXMLLoader loader = new FXMLLoader( PlaceWordController.class.getResource( "/gameOverWindow.fxml" ) );
                     Parent gameOverWindow = (Parent) loader.load();
                     Scene gameOverScene = new Scene( gameOverWindow );
 
@@ -85,15 +85,6 @@ public class PlaceWordController
                     window.show();
                 }
 
-                // debug
-                System.out.println( "Words created: " );
-
-                for ( int i = 0; i < BoardController.Board.wordsCreatedLastMove.size(); i++ )
-                {
-                    System.out.println( "Word " + i + ": " + BoardController.Board.wordsCreatedLastMove.get( i ) );
-                }
-
-                System.out.println( "Score: " + BoardController.Board.getScoreFromLastMove( BoardController.Pool ) );
                 // increasing the player's score based on word they places and position on board
                 BoardController.getCurrentPlayer().increaseScore( BoardController.Board.getScoreFromLastMove( BoardController.Pool ) );
 
@@ -120,7 +111,6 @@ public class PlaceWordController
             }
             else
             {
-                System.out.println( "Error code is: " + BoardController.Board.getErrorCode() );
                 // getting error code for invalid word placement
                 int errorCode = BoardController.Board.getErrorCode();
                 // calling Board Controller to load the fxml file which displays error
@@ -163,9 +153,7 @@ public class PlaceWordController
     @FXML
     public void handleKeyReleased()
     {
-        boolean disableButtons = directionChoiceBox.getValue() == null ||
-                                 columnChoiceBox.getValue() == null || rowChoiceBox.getValue() == null
-                                || getWordInput().isEmpty() || getWordInput().trim().isEmpty();
+        boolean disableButtons = getWordInput().isEmpty() || getWordInput().trim().isEmpty();
         placeWordButton.setDisable( disableButtons );
     }
 

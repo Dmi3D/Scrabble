@@ -22,7 +22,7 @@
            </font>
        </Label>
        <!--row choicebox-->
-      <ChoiceBox fx:id="rowChoiceBox" layoutX="79.0" layoutY="23.0" prefHeight="15.0" prefWidth="30.0" onMouseReleased="#handleKeyReleased" stylesheets="@../css/choiceBoxStyle.css">
+      <ChoiceBox fx:id="rowChoiceBox" layoutX="79.0" layoutY="23.0" prefHeight="15.0" prefWidth="30.0" value="1" stylesheets="@../css/choiceBoxStyle.css">
            <!--row choices-->
 
           <items>
@@ -56,13 +56,13 @@
            </font>
        </Button>
        <!--word input textfield-->
-      <TextField fx:id="wordInputField" layoutX="277.0" layoutY="18.0" onKeyReleased="#handleKeyReleased" prefHeight="15.0" prefWidth="150.0" promptText="Word" style="-fx-background-color: #203152; -fx-text-inner-color: white;" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="18.0">
+      <TextField fx:id="wordInputField" layoutX="277.0" layoutY="18.0" onKeyReleased="#handleKeyReleased"  prefHeight="15.0" prefWidth="150.0" promptText="Word" style="-fx-background-color: #203152; -fx-text-inner-color: white;" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="18.0">
          <font>
             <Font size="15.0" />
          </font>
       </TextField>
        <!--column choicebox-->
-      <ChoiceBox fx:id="columnChoiceBox" layoutX="218.0" layoutY="23.0" prefHeight="15.0" prefWidth="30.0" onMouseReleased="#handleKeyReleased" stylesheets="@../css/choiceBoxStyle.css">
+      <ChoiceBox fx:id="columnChoiceBox" layoutX="218.0" layoutY="23.0" prefHeight="15.0" prefWidth="30.0" value="A" stylesheets="@../css/choiceBoxStyle.css">
            <!--column choices-->
           <items>
               <FXCollections fx:factory="observableArrayList">
@@ -84,7 +84,7 @@
               </FXCollections>
           </items>
       </ChoiceBox>
-      <ChoiceBox fx:id="directionChoiceBox" layoutX="134.0" layoutY="64.0" prefHeight="30.0" prefWidth="100.0" onMouseReleased="#handleKeyReleased" stylesheets="@../css/choiceBoxStyle.css">
+      <ChoiceBox fx:id="directionChoiceBox" layoutX="134.0" layoutY="64.0" prefHeight="30.0" prefWidth="100.0" value="Across" stylesheets="@../css/choiceBoxStyle.css">
               <items>
                   <FXCollections fx:factory="observableArrayList">
                   <String fx:value="Across" />

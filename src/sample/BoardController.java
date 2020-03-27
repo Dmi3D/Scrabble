@@ -85,7 +85,6 @@ public class BoardController implements Initializable
     @FXML
     public void handleChallengeButton( ActionEvent actionEvent ) throws IOException
     {
-        System.out.println( "Challenge Button Clicked" ); // debug
         FxmlLoader content = new FxmlLoader();
         rightPanel.setBottom( content.getChallengeContent() );
         BorderPane.setMargin( rightPanel.getBottom(), new Insets( 0, 10, 10, 10 ) );
@@ -99,7 +98,6 @@ public class BoardController implements Initializable
     @FXML
     public void handleExchangeButton( ActionEvent actionEvent ) throws IOException
     {
-        System.out.println( "Exchange Button Clicked" ); // debug
         FxmlLoader content = new FxmlLoader();
         rightPanel.setBottom( content.getExchangeContent() );
         BorderPane.setMargin( rightPanel.getBottom(), new Insets( 0, 10, 10, 10 ) );
@@ -115,7 +113,6 @@ public class BoardController implements Initializable
     @FXML
     public void handlePlaceWordButton( ActionEvent actionEvent ) throws IOException, InterruptedException
     {
-        System.out.println( "Place Word Button Clicked" ); // debug
         FxmlLoader content = new FxmlLoader();
         rightPanel.setBottom( content.getPlaceWordContent() );
         BorderPane.setMargin( rightPanel.getBottom(), new Insets( 0, 10, 10, 10 ) );
@@ -129,7 +126,6 @@ public class BoardController implements Initializable
     @FXML
     public void handleHelpButton( ActionEvent actionEvent ) throws IOException
     {
-        System.out.println( "Help Button Clicked" ); // debug
         FxmlLoader content = new FxmlLoader();
         rightPanel.setBottom( content.getHelpContent() );
         BorderPane.setMargin( rightPanel.getBottom(), new Insets( 0, 10, 10, 10 ) );
@@ -143,7 +139,6 @@ public class BoardController implements Initializable
     @FXML
     public void handleQuitButton( ActionEvent actionEvent ) throws IOException
     {
-        System.out.println( "Quit Button Clicked" ); // debug
         FxmlLoader content = new FxmlLoader();
         rightPanel.setBottom( content.getQuitContent() );
         BorderPane.setMargin( rightPanel.getBottom(), new Insets( 0, 10, 10, 10 ) );
@@ -154,16 +149,16 @@ public class BoardController implements Initializable
      * Switches to next player when 'PASS' button is pressed.
      * Ends the game when the button is pressed twice in succession by a player.
      * When the game ends: 1) it decreases the player's scores by the sum of the scores of the
-     *                        tiles int their correspondent frame
-     *                     2) it triggers switching of the scene to the gameOverWindow.fxml
+     * tiles int their correspondent frame
+     * 2) it triggers switching of the scene to the gameOverWindow.fxml
      */
     @FXML
     public void handlePassButton( ActionEvent actionEvent ) throws IOException
     {
-        System.out.println( "Pass Button Clicked" ); // debug
+        scrollLabel.setText( "" );
         amountOfPass[currentPlayer]++;
 
-        if ( passedTwice())
+        if ( passedTwice() )
         {
             // Game end situation 2: When Pool is empty and Board is full, only move possible is Pass
             if ( Pool.isEmpty() )
@@ -173,7 +168,7 @@ public class BoardController implements Initializable
                 getOtherPlayer().decreaseScore( getOtherPlayer().getPlayerFrame().getScoreOnFrame( Pool ) );
             }
 
-            FXMLLoader loader = new FXMLLoader( getClass().getResource( "../fxml/gameOverWindow.fxml" ) );
+            FXMLLoader loader = new FXMLLoader( BoardController.class.getResource( "/gameOverWindow.fxml" ) );
             Parent gameOverWindow = loader.load();
             Scene gameOverScene = new Scene( gameOverWindow );
             Stage window = (Stage) ( (Node) actionEvent.getSource() ).getScene().getWindow();   // Accessing stage
@@ -192,10 +187,9 @@ public class BoardController implements Initializable
      */
     public void loadErrorContent( int errorCode ) throws IOException
     {
-        FXMLLoader fxmlLoader = new FXMLLoader( getClass().getResource( "../fxml/placeError.fxml" ) );
+        FXMLLoader fxmlLoader = new FXMLLoader( BoardController.class.getResource( "/placeError.fxml" ) );
         AnchorPane content = fxmlLoader.load();
         fxmlLoader.setController( this );
-        System.out.println( "Error content loaded" ); // debug
         rightPanel.setBottom( content );
         BorderPane.setMargin( rightPanel.getBottom(), new Insets( 0, 10, 10, 10 ) );
         ObservableList<Node> children = content.getChildren();
@@ -319,7 +313,6 @@ public class BoardController implements Initializable
 
         if ( player.getPlayerFrame().hasEmpty() )
         {
-            System.out.println("Filling " + players[currentPlayer] + "'s frame from pool");
             players[currentPlayer].getPlayerFrame().fillFrame( Pool );
         }
 
@@ -353,7 +346,6 @@ public class BoardController implements Initializable
                 if ( Board.getSquareAt( row - 1, col - 1 ).getTile() != '\u0000' )
                 {
                     label.setText( String.valueOf( Board.getSquareAt( row - 1, col - 1 ).getTile() ) );
-                    System.out.println( "Should set label to: " + Board.getSquareAt( row - 1, col - 1 ).getTile() );
                 }
 
                 else
@@ -412,7 +404,7 @@ public class BoardController implements Initializable
      */
     private static boolean passedTwice()
     {
-        return amountOfPass[currentPlayer] >= 2 && amountOfPass[getOtherPlayer(currentPlayer)] >= 2;
+        return amountOfPass[currentPlayer] >= 2 && amountOfPass[getOtherPlayer( currentPlayer )] >= 2;
     }
 
     public static Player getCurrentPlayer()
@@ -429,7 +421,7 @@ public class BoardController implements Initializable
         return players[0];
     }
 
-    private static int getOtherPlayer(int currentPlayer)
+    private static int getOtherPlayer( int currentPlayer )
     {
         if ( currentPlayer == 0 )
         {
@@ -454,7 +446,6 @@ public class BoardController implements Initializable
         players[0].reset( Pool );
         players[1].reset( Pool );
     }
-
 
 
 }

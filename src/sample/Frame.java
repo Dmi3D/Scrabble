@@ -139,7 +139,7 @@ public class Frame
 
         while (letterIndex < word.length && frameIndex < tiles.length)
         {
-            while(letterIndex < word.length && word[letterIndex] == ' ')
+            while (letterIndex < word.length && word[letterIndex] == ' ')
             {
                 letterIndex++;
             }
@@ -161,7 +161,7 @@ public class Frame
     /* EXCHANGES THE LETTERS PASSED IN WITH OTHER RANDOM LETTERS FROM THE POOL */
     public boolean exchangeTiles( char[] lettersToExchange, Pool pool )
     {
-        if(hasEmpty())
+        if ( hasEmpty() )
         {
             return false;
         }
@@ -187,7 +187,7 @@ public class Frame
         return true;
     }
 
-    public int getScoreOnFrame(Pool pool)
+    public int getScoreOnFrame( Pool pool )
     {
         int scoreOfTilesOnFrame = 0;
         for ( char tile : tiles )

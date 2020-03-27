@@ -40,7 +40,7 @@ public class Board
     {
         lastPlacedWord = new char[string.length()];
 
-        for(int i = 0; i < string.length(); i++)
+        for ( int i = 0; i < string.length(); i++ )
         {
             lastPlacedWord[i] = string.charAt( i );
         }
@@ -317,7 +317,6 @@ public class Board
         return true;
     }
 
-
     private char[] convertStringToArray( String string )
     {
         string = string.toUpperCase();
@@ -358,7 +357,7 @@ public class Board
                 endIndex++;
             }
 
-            int lengthOfWord = endIndex+1 - startIndex;
+            int lengthOfWord = endIndex + 1 - startIndex;
 
             String word = "";
 
@@ -390,7 +389,7 @@ public class Board
                 endIndex++;
             }
 
-            int lengthOfWord = endIndex+1 - startIndex;
+            int lengthOfWord = endIndex + 1 - startIndex;
 
             String word = "";
 
@@ -406,10 +405,10 @@ public class Board
 
         int indexOfTilePlaced = 0;
 
-        if(direction == 'A')
+        if ( direction == 'A' )
             indexOfTilePlaced = column;
 
-        if(direction == 'D')
+        if ( direction == 'D' )
             indexOfTilePlaced = row;
 
         for ( int i = 0; i < tilesPlaced.length; i++ )
@@ -423,7 +422,7 @@ public class Board
                 if ( tilesPlaced[i] != ' ' )
                 {
                     //If there is something above or below the placed tile
-                    if ( row != 0 && getSquareAt( row - 1, indexOfTilePlaced ).getTile() != '\u0000' || row != BOUNDS-1 && getSquareAt( row + 1, indexOfTilePlaced ).getTile() != '\u0000')
+                    if ( row != 0 && getSquareAt( row - 1, indexOfTilePlaced ).getTile() != '\u0000' || row != BOUNDS - 1 && getSquareAt( row + 1, indexOfTilePlaced ).getTile() != '\u0000' )
                     {
                         //Keep going up to find the start of the word
                         while (startIndex - 1 >= 0 && getSquareAt( startIndex - 1, indexOfTilePlaced ).getTile() != '\u0000')
@@ -437,7 +436,7 @@ public class Board
                             endIndex++;
                         }
 
-                        int lengthOfWord = endIndex+1 - startIndex;
+                        int lengthOfWord = endIndex + 1 - startIndex;
 
                         String word = "";
 
@@ -464,7 +463,7 @@ public class Board
                 if ( tilesPlaced[i] != ' ' )
                 {
                     //If there is something left or right the placed tile
-                    if ( column != 0 && getSquareAt( indexOfTilePlaced, column - 1 ).getTile() != '\u0000' || column != BOUNDS-1 && getSquareAt( indexOfTilePlaced, column + 1 ).getTile() != '\u0000')
+                    if ( column != 0 && getSquareAt( indexOfTilePlaced, column - 1 ).getTile() != '\u0000' || column != BOUNDS - 1 && getSquareAt( indexOfTilePlaced, column + 1 ).getTile() != '\u0000' )
                     {
                         //Keep going left to find the start of the word
                         while (startIndex - 1 >= 0 && getSquareAt( indexOfTilePlaced, startIndex - 1 ).getTile() != '\u0000')
@@ -478,7 +477,7 @@ public class Board
                             endIndex++;
                         }
 
-                        int lengthOfWord = endIndex+1 - startIndex;
+                        int lengthOfWord = endIndex + 1 - startIndex;
 
                         String word = "";
 
@@ -500,7 +499,7 @@ public class Board
         return wordsCreated;
     }
 
-    /* RETURNS VALID SCORE OF ONE WORD*/ //check for bingo
+    /* RETURNS VALID SCORE OF ONE WORD*/
     private int getScoreOfWord( char[] word, Pool pool )
     {
         char[] lastTilesPlacedOne = Arrays.copyOf( getLastTilesPlaced(), getLastTilesPlaced().length );
@@ -535,7 +534,7 @@ public class Board
         //Removing tiles on board from word to make word with tiles placed
         for ( int i = 0; i < wordWithTilesOnBoard.length; i++ )
         {
-            if(wordWithTilesOnBoard[i] != ' ')
+            if ( wordWithTilesOnBoard[i] != ' ' )
             {
                 wordWithTilesPlaced[i] = ' ';
             }
@@ -550,7 +549,7 @@ public class Board
         // For each letter in last word placed
         for ( int i = 0; i < wordWithTilesPlaced.length; i++ )
         {
-            if(wordWithTilesPlaced[i] == ' ' )
+            if ( wordWithTilesPlaced[i] == ' ' )
             {
                 continue;
             }
@@ -560,7 +559,7 @@ public class Board
 
             int indexOfPlacedTile;
 
-            for(indexOfPlacedTile = 0; indexOfPlacedTile < lastTilesPlacedTwo.length; indexOfPlacedTile++)
+            for ( indexOfPlacedTile = 0; indexOfPlacedTile < lastTilesPlacedTwo.length; indexOfPlacedTile++ )
             {
                 if ( wordWithTilesPlaced[i] == lastTilesPlacedTwo[indexOfPlacedTile] )
                 {
@@ -594,7 +593,6 @@ public class Board
 
         int scoresOfTilesPlaced = Arrays.stream( scoresOfPlacedTiles ).sum();
 
-
         //ADDING SCORES OF TILES WHICH WERE ALREADY ON BOARD AND THE TILES WHICH WERE PLACED
         int totalScoreOfWord = scoreOfTilesOnBoard + scoresOfTilesPlaced;
 
@@ -612,15 +610,21 @@ public class Board
     }
 
     /* RETURNS SCORE OF ALL THE CREATED WORDS */
-    public int getScoreFromLastMove(Pool pool)
+    public int getScoreFromLastMove( Pool pool )
     {
         int score = 0;
 
-        for(int i = 0; i < wordsCreatedLastMove.size(); i++)
+        for ( int i = 0; i < wordsCreatedLastMove.size(); i++ )
         {
             char[] wordCreated = convertStringToArray( wordsCreatedLastMove.get( i ) );
 
-            score += getScoreOfWord(wordCreated, pool);
+            score += getScoreOfWord( wordCreated, pool );
+        }
+
+        // Bingo condition
+        if ( getLastTilesPlaced().length == 7 )
+        {
+            score += 50;
         }
 
         return score;
@@ -677,7 +681,7 @@ public class Board
             setLastTilesPlaced( tilesToPlace );
             setLastPlacedWord( string );
 
-            wordsCreatedLastMove = getWordsCreated(tilesToPlace, direction, row, column);
+            wordsCreatedLastMove = getWordsCreated( tilesToPlace, direction, row, column );
 
 
             return true;
@@ -868,7 +872,7 @@ public class Board
             overlappingTiles.pop();
         }
 
-        System.out.println("Word without overlap: " + Arrays.toString( word ));
+        System.out.println( "Word without overlap: " + Arrays.toString( word ) );
     }
 
     /* CHECKS IF OVERLAP IS VALID BY NOT ALLOWING CHARACTERS TO TRY OVERLAP */
@@ -878,7 +882,7 @@ public class Board
         {
             char letterToPlace = word[i];
 
-            if ( letterToPlace == ' ' );
+            if ( letterToPlace == ' ' ) ;
 
             else if ( direction == 'A' )
             {
@@ -919,7 +923,7 @@ public class Board
 
             for ( char matchingTile : word )
             {
-                if(matchingTile == ' ')
+                if ( matchingTile == ' ' )
                 {
                     continue;
                 }

@@ -20,15 +20,33 @@ public class Pool
         tileValues = new HashMap<Character, Integer>()
         {
             {
-                put( 'A', 1 ); put( 'B', 3 ); put( 'C', 3 );
-                put( 'D', 2 ); put( 'E', 1 ); put( 'F', 4 );
-                put( 'G', 3 ); put( 'H', 4 ); put( 'I', 1 );
-                put( 'J', 8 ); put( 'K', 5 ); put( 'L', 1 );
-                put( 'M', 3 ); put( 'N', 1 ); put( 'O', 1 );
-                put( 'P', 3 ); put( 'Q', 10 ); put( 'R', 1 );
-                put( 'S', 1 ); put( 'T', 1 ); put( 'U', 1 );
-                put( 'V', 4 ); put( 'W', 4 ); put( 'X', 8 );
-                put( 'Y', 4 ); put( 'Z', 10 ); put( '*', 0 );
+                put( 'A', 1 );
+                put( 'B', 3 );
+                put( 'C', 3 );
+                put( 'D', 2 );
+                put( 'E', 1 );
+                put( 'F', 4 );
+                put( 'G', 3 );
+                put( 'H', 4 );
+                put( 'I', 1 );
+                put( 'J', 8 );
+                put( 'K', 5 );
+                put( 'L', 1 );
+                put( 'M', 3 );
+                put( 'N', 1 );
+                put( 'O', 1 );
+                put( 'P', 3 );
+                put( 'Q', 10 );
+                put( 'R', 1 );
+                put( 'S', 1 );
+                put( 'T', 1 );
+                put( 'U', 1 );
+                put( 'V', 4 );
+                put( 'W', 4 );
+                put( 'X', 8 );
+                put( 'Y', 4 );
+                put( 'Z', 10 );
+                put( '*', 0 );
             }
         };
         setTileFrequencies();
@@ -80,15 +98,33 @@ public class Pool
         tileFrequencies = new HashMap<Character, Integer>()
         {
             {
-                put( 'E', 12 ); put( 'A', 9 ); put( 'I', 9 );
-                put( 'O', 8 );  put( 'N', 6 ); put( 'R', 6 );
-                put( 'T', 6 );  put( 'L', 4 ); put( 'S', 4 );
-                put( 'U', 4 );  put( 'D', 4 ); put( 'G', 3 );
-                put( 'B', 2 );  put( 'C', 2 ); put( 'M', 2 );
-                put( 'P', 2 );  put( 'F', 2 ); put( 'H', 2 );
-                put( 'V', 2 );  put( 'W', 2 ); put( 'Y', 2 );
-                put( 'K', 1 );  put( 'J', 1 ); put( 'X', 1 );
-                put( 'Q', 1 );  put( 'Z', 1 ); put( '*', 2 );
+                put( 'E', 12 );
+                put( 'A', 9 );
+                put( 'I', 9 );
+                put( 'O', 8 );
+                put( 'N', 6 );
+                put( 'R', 6 );
+                put( 'T', 6 );
+                put( 'L', 4 );
+                put( 'S', 4 );
+                put( 'U', 4 );
+                put( 'D', 4 );
+                put( 'G', 3 );
+                put( 'B', 2 );
+                put( 'C', 2 );
+                put( 'M', 2 );
+                put( 'P', 2 );
+                put( 'F', 2 );
+                put( 'H', 2 );
+                put( 'V', 2 );
+                put( 'W', 2 );
+                put( 'Y', 2 );
+                put( 'K', 1 );
+                put( 'J', 1 );
+                put( 'X', 1 );
+                put( 'Q', 1 );
+                put( 'Z', 1 );
+                put( '*', 2 );
             }
         };
     }

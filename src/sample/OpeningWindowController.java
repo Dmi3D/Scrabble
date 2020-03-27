@@ -27,7 +27,7 @@ public class OpeningWindowController
     private Player PlayerTwo;
     public static BoardController bController;
 
-    public OpeningWindowController( Board Board, Pool Pool, Player PlayerOne, Player PlayerTwo)
+    public OpeningWindowController( Board Board, Pool Pool, Player PlayerOne, Player PlayerTwo )
     {
         this.Board = Board;
         this.Pool = Pool;
@@ -60,19 +60,18 @@ public class OpeningWindowController
         return player2NameField.getText();
     }
 
-    /** Changes the Scene in the window to boardGraphic.fxml */
-    public void startGameButtonClicked( ActionEvent event) throws IOException
+    /**
+     * Changes the Scene in the window to boardGraphic.fxml
+     */
+    public void startGameButtonClicked( ActionEvent event ) throws IOException
     {
         if ( event.getSource().equals( startGameButton ) )
         {
-            //debugging
-            System.out.println( "Player 1 name: " + getPlayerOneName() + "\nPlayer 2 name: " + getPlayerTwoName() );
-
             PlayerOne.setName( getPlayerOneName() );
             PlayerTwo.setName( getPlayerTwoName() );
 
             // loading fxml
-            FXMLLoader loader = new FXMLLoader( getClass().getResource( "../fxml/boardGraphic.fxml" ) );
+            FXMLLoader loader = new FXMLLoader( OpeningWindowController.class.getResource( "/boardGraphic.fxml" ) );
             Parent boardViewParent = loader.load();
 
             BoardController mController = loader.getController();       // getting controller of fxml loader
@@ -82,10 +81,10 @@ public class OpeningWindowController
             mController.setPool( Pool );
             mController.challengeButton.setDisable( true );             // disabling challenge button for player before placing first word
 
-            Scene boardViewScene = new Scene(boardViewParent);
+            Scene boardViewScene = new Scene( boardViewParent );
 
             // Getting information about the stage i.e. window to access it
-            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Stage window = (Stage) ( (Node) event.getSource() ).getScene().getWindow();
 
             // changing the window's scene
             window.setScene( boardViewScene );
@@ -93,12 +92,14 @@ public class OpeningWindowController
         }
     }
 
-    /** Disables the start game button if player's names are not typed into the text fields */
+    /**
+     * Disables the start game button if player's names are not typed into the text fields
+     */
     @FXML
     private void handleKeyReleased()
     {
         boolean disableButton = player1NameField.getText().isEmpty() || player1NameField.getText().trim().isEmpty()
-                            ||  player2NameField.getText().isEmpty() || player2NameField.getText().trim().isEmpty();
+                || player2NameField.getText().isEmpty() || player2NameField.getText().trim().isEmpty();
         startGameButton.setDisable( disableButton );
     }
 }

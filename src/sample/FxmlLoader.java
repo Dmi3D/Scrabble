@@ -18,12 +18,11 @@ public class FxmlLoader
     {
         try
         {
-            FXMLLoader fxmlLoader = new FXMLLoader( getClass().getResource( "../fxml/challengeContent.fxml" ) );
+            FXMLLoader fxmlLoader = new FXMLLoader( FxmlLoader.class.getResource( "/challengeContent.fxml" ) );
             content = fxmlLoader.load();
-        }
-        catch (IOException e)
+        } catch (IOException e)
         {
-            System.out.println(" please check FxmlLoader.");
+            System.out.println( " please check FxmlLoader." );
         }
         return content;
     }
@@ -32,40 +31,37 @@ public class FxmlLoader
     {
         try
         {
-            FXMLLoader fxmlLoader = new FXMLLoader( getClass().getResource( "../fxml/exchangeContent.fxml" ) );
+            FXMLLoader fxmlLoader = new FXMLLoader( FxmlLoader.class.getResource( "/exchangeContent.fxml" ) );
             content = fxmlLoader.load();
-        }
-        catch (IOException e)
+        } catch (IOException e)
         {
-            System.out.println(" please check FxmlLoader.");
+            System.out.println( " please check FxmlLoader." );
         }
         return content;
     }
 
     public AnchorPane getPlaceWordContent() throws IOException
     {
-    try
-    {
-        FXMLLoader fxmlLoader = new FXMLLoader( getClass().getResource( "../fxml/placeWordContent.fxml" ) );
-        content = fxmlLoader.load();
-    }
-    catch (IOException e)
-    {
-        System.out.println(" please check FxmlLoader.");
-    }
-    return content;
+        try
+        {
+            FXMLLoader fxmlLoader = new FXMLLoader( FxmlLoader.class.getResource( "/placeWordContent.fxml" ) );
+            content = fxmlLoader.load();
+        } catch (IOException e)
+        {
+            System.out.println( " please check FxmlLoader." );
+        }
+        return content;
     }
 
     public AnchorPane getHelpContent() throws IOException
     {
         try
         {
-            FXMLLoader fxmlLoader = new FXMLLoader( getClass().getResource( "../fxml/helpContent.fxml" ) );
+            FXMLLoader fxmlLoader = new FXMLLoader( FxmlLoader.class.getResource( "/helpContent.fxml" ) );
             content = fxmlLoader.load();
-        }
-        catch (IOException e)
+        } catch (IOException e)
         {
-            System.out.println(" please check FxmlLoader.");
+            System.out.println( " please check FxmlLoader." );
         }
         return content;
     }
@@ -74,12 +70,11 @@ public class FxmlLoader
     {
         try
         {
-            FXMLLoader fxmlLoader = new FXMLLoader( getClass().getResource( "../fxml/quitContent.fxml" ) );
+            FXMLLoader fxmlLoader = new FXMLLoader( FxmlLoader.class.getResource( "/quitContent.fxml" ) );
             content = fxmlLoader.load();
-        }
-        catch (IOException e)
+        } catch (IOException e)
         {
-            System.out.println(" please check FxmlLoader.");
+            System.out.println( " please check FxmlLoader." );
         }
         return content;
     }
