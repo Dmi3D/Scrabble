@@ -40,7 +40,7 @@ public class ChallengeContentController
 
         Player otherPlayer = BoardController.players[otherPlayerNumber];
 
-        BoardController.Board.removeLastWordPlaced();
+        BoardController.Board.removeLastTilesPlaced();
         BoardController.players[otherPlayerNumber].getPlayerFrame().fillFrameWithWord( BoardController.Board.getLastTilesPlaced() );
 
         OpeningWindowController.bController.displayBoard();

@@ -244,7 +244,7 @@ public class BoardTest
         PlayerTwo.getPlayerFrame().displayFrame();
 
         System.out.println( "Removing last placed word from board." );
-        Board.removeLastWordPlaced();
+        Board.removeLastTilesPlaced();
 
         System.out.println( "Putting back the word into the frame." );
 

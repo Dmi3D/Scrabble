@@ -31,6 +31,49 @@ public class Board
     private char[] lastPlacedWord;
     public ArrayList<String> wordsCreatedLastMove;
 
+    public void changeBlankOnBoard( char blankReplacement )
+    {
+        int indexOfBlank = -1;
+
+        for ( int i = 0; i < lastTilesPlaced.length; i++ )
+        {
+            if ( lastPlacedWord[i] == '*' )
+            {
+                indexOfBlank = i;
+                break;
+            }
+        }
+
+        if(indexOfBlank != -1)
+        {
+            int row = lastTilesPlacedLocations[0][indexOfBlank];
+            int column = lastTilesPlacedLocations[1][indexOfBlank];
+
+            getSquareAt( row, column ).setTile( blankReplacement );
+        }
+    }
+
+    public void changeBlankInWordsCreated( char blankReplacement )
+    {
+        for(int i = 0; i < wordsCreatedLastMove.size(); i++)
+        {
+            char[] wordCreated = wordsCreatedLastMove.get( i ).toCharArray();
+
+            for(int j = 0; j < wordCreated.length; j++)
+            {
+                if(wordCreated[j] == '*')
+                {
+                    wordCreated[j] = blankReplacement;
+
+                    String wordWithBlankRemoved = String.valueOf( wordCreated );
+                    wordsCreatedLastMove.remove(i);
+                    wordsCreatedLastMove.add( i, wordWithBlankRemoved );
+                    break;
+                }
+            }
+        }
+    }
+
     private char[] getLastPlacedWord()
     {
         return lastPlacedWord;
@@ -683,7 +726,6 @@ public class Board
 
             wordsCreatedLastMove = getWordsCreated( tilesToPlace, direction, row, column );
 
-
             return true;
         }
 
@@ -1017,14 +1059,14 @@ public class Board
     }
 
     /* SETS THE LOCATIONS OF THE LETTERS PLACED IN THE LSAT MOVE */
-    private void setLastLettersPlacedLocations( int row, int column, int letterCount )
+    private void setLastLettersPlacedLocations( int row, int column, int letterIndex )
     {
-        lastTilesPlacedLocations[0][letterCount] = row;
-        lastTilesPlacedLocations[1][letterCount] = column;
+        lastTilesPlacedLocations[0][letterIndex] = row;
+        lastTilesPlacedLocations[1][letterIndex] = column;
     }
 
-    /* REMOVES THE LAST PLACED WORD FROM THE BOARD */
-    public void removeLastWordPlaced()
+    /* REMOVES THE LAST PLACED TILES FROM THE BOARD */
+    public void removeLastTilesPlaced()
     {
         for ( int i = 0; i < lastTilesPlacedLocations[0].length; i++ )
         {
