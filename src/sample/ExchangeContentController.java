@@ -53,6 +53,8 @@ public class ExchangeContentController
             // resets the pass back to 0 when they broke the succession of passes by making a valid exchange
             OpeningWindowController.bController.resetPass();
             OpeningWindowController.bController.switchPlayer();
+            OpeningWindowController.bController.challengeButton.setDisable( true );
+            OpeningWindowController.bController.scrollLabel.setText( "" );
 
 
             OpeningWindowController.bController.rightPanel.getBottom().setVisible( false );
