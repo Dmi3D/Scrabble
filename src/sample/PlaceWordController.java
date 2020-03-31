@@ -60,11 +60,13 @@ public class PlaceWordController
         if ( event.getSource().equals( placeWordButton ) )
         {
             int numberOfBlanks = getNumberOfBlanks( getWordInput() );
+
             if ( numberOfBlanks >= 2 )
             {
                 // Calling Board Controller to load the fxml file which displays error
                 OpeningWindowController.bController.loadErrorContent( 6 );
             }
+
             else // Avoiding word passing to back-end when it contains more than one '*'
             {
                 boolean placed = BoardController.Board.placeWord( getWordInput(), getDirection(), getRowInput(), getColumnInput(), BoardController.players[BoardController.currentPlayer] );
@@ -96,48 +98,40 @@ public class PlaceWordController
                         window.show();
                     }
 
-                    // Increasing the player's score based on word they places and position on board
+                    // Increasing the player's score based on word they placed and position on board
                     BoardController.getCurrentPlayer().increaseScore( BoardController.Board.getScoreFromLastMove( BoardController.Pool ) );
 
                     if ( numberOfBlanks == 1 )
                     {
-                        FXMLLoader loader = new FXMLLoader( PlaceWordController.class.getResource( "/blankContent.fxml" ) );
-
-                        BlankContentController blankContentController = new BlankContentController();
-                        loader.setController( blankContentController );
-
-                        AnchorPane content = loader.load();
-
-                        OpeningWindowController.bController.rightPanel.setBottom( content );
-                        BorderPane.setMargin( OpeningWindowController.bController.rightPanel.getBottom(), new Insets( 0, 10, 10, 10 ) );
-
-                        char blankReplacement = blankContentController.getBlankLetterReplacement();
-
-                        System.out.println("Blank Replacement: " + blankReplacement);
-                        BoardController.Board.changeBlankOnBoard( blankReplacement );
-                        BoardController.Board.changeBlankInWordsCreated( blankReplacement );
+                        System.out.println("Number of blanks is one");
+                        OpeningWindowController.bController.loadBlankContent();
                     }
 
-                    // Switching player
-                    OpeningWindowController.bController.switchPlayer();
+                    else
+                    {
+                        System.out.println("Entered else");
+
+                        ArrayList<String> lastWordsList = BoardController.Board.wordsCreatedLastMove;
+
+                        StringBuilder lastWords = new StringBuilder();
+
+                        // Getting a string of the word/s placed
+                        for ( String s : lastWordsList )
+                        {
+                            lastWords.append( s ).append( "\n" );
+                        }
+
+                        // Displaying the word/s created during the last play in the window
+                        OpeningWindowController.bController.scrollLabel.setText( lastWords.toString() );
+
+                        // Switching player
+                        OpeningWindowController.bController.switchPlayer();
+                        // Making the bottom right-hand-side of window invisible in preparation for next player's move
+                        OpeningWindowController.bController.rightPanel.getBottom().setVisible( false );
+                    }
+
                     wordInputField.clear();
                     handleKeyReleased();
-
-                    ArrayList<String> lastWordsList = BoardController.Board.wordsCreatedLastMove;
-
-                    StringBuilder lastWords = new StringBuilder();
-
-                    // Getting a string of the word/s placed
-                    for ( String s : lastWordsList )
-                    {
-                        lastWords.append( s ).append( "\n" );
-                    }
-
-                    // Displaying the word/s created during the last play in the window
-                    OpeningWindowController.bController.scrollLabel.setText( lastWords.toString() );
-
-                    // Making the bottom right-hand-side of window invisible in preparation for next player's move
-                    OpeningWindowController.bController.rightPanel.getBottom().setVisible( false );
                 }
                 else
                 {

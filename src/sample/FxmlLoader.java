@@ -78,4 +78,17 @@ public class FxmlLoader
         }
         return content;
     }
+
+    public AnchorPane getBlankContent() throws IOException
+    {
+        try
+        {
+            FXMLLoader fxmlLoader = new FXMLLoader( FxmlLoader.class.getResource( "/blankContent.fxml" ) );
+            content = fxmlLoader.load();
+        } catch (IOException e)
+        {
+            System.out.println( " please check FxmlLoader." );
+        }
+        return content;
+    }
 }

@@ -246,6 +246,19 @@ public class BoardController implements Initializable
     }
 
     /**
+     * Loads fxml content switching which prompts player to specify letter
+     * that blank stands for in their word
+     */
+    public void loadBlankContent() throws IOException
+    {
+        // Loading the blank letter replacement functionality
+        FxmlLoader content = new FxmlLoader();
+        rightPanel.setBottom( content.getBlankContent() );
+        BorderPane.setMargin( rightPanel.getBottom(), new Insets( 0, 10, 10, 10 ) );
+        System.out.println("Should load blankcontent.fxml dude ");
+    }
+
+    /**
      * Handles player switch when called.
      * Enables Challenge button for the next player after switch
      * Disables Exchange button when the Pool is empty

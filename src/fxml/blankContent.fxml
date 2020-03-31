@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="124.0" prefWidth="442.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="124.0" prefWidth="442.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.BlankContentController">
    <children>
       <Label layoutX="52.0" layoutY="13.0" prefHeight="59.0" prefWidth="336.0" text="PLEASE INDICATE WHAT LETTER '*' IS REPLACING IN THE WORD YOU PLACED:" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
