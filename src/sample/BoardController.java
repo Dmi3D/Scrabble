@@ -11,15 +11,17 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashSet;
 import java.util.ResourceBundle;
 
 /**
@@ -51,6 +53,7 @@ public class BoardController implements Initializable
 
     public static int currentPlayer;
     public static int[] amountOfPass;
+    public static HashSet<String> dictionary;
 
     @FXML
     public BorderPane rightPanel;
@@ -223,11 +226,19 @@ public class BoardController implements Initializable
         }
     }
 
-
     @Override
     public void initialize( URL url, ResourceBundle resourceBundle )
     {
         playerScoreDisplay.setText( "0" );
+        dictionary = new HashSet<>();
+
+        try
+        {
+            fillDictionary();
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -283,7 +294,6 @@ public class BoardController implements Initializable
         displayBoard();
         displayScore();
     }
-
 
     /**
      * Setting the score of player in the label associated with score display
@@ -447,5 +457,16 @@ public class BoardController implements Initializable
         players[1].reset( Pool );
     }
 
+    public void fillDictionary() throws IOException
+    {
+        try (BufferedReader reader = new BufferedReader( new FileReader( "src/textfile/sowpods.txt" ) ))
+        {
+            String line;
 
+            while (( line = reader.readLine() ) != null)
+            {
+                dictionary.add( line );
+            }
+        }
+    }
 }
