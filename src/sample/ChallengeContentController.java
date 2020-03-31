@@ -74,7 +74,7 @@ public class ChallengeContentController implements Initializable
             }
 
             // Success state message display on the screen
-            challengeLabel.setText( "CHALLENGE SUCCESSFUL!\n THE FOLLOWING ARE INVALID WORDS:\n" + invalidWordString.toString() );
+            challengeLabel.setText( "CHALLENGE SUCCESSFUL!\n THE FOLLOWING WERE INVALID WORDS:\n" + invalidWordString.toString() );
 
             Player otherPlayer = BoardController.getOtherPlayer();
 
