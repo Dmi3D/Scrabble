@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="124.0" prefWidth="442.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.PlaceWordController">
+   <children>
+       <Label alignment="CENTER" layoutX="25.0" layoutY="22.0" prefHeight="25.0" prefWidth="53.0" text="ROW" textAlignment="CENTER" textFill="WHITE">
+           <font>
+               <Font name="System Bold" size="17.0" />
+           </font>
+       </Label>
+       <!--row choicebox-->
+      <ChoiceBox fx:id="rowChoiceBox" layoutX="79.0" layoutY="23.0" prefHeight="15.0" prefWidth="30.0" value="1" stylesheets="@../css/choiceBoxStyle.css">
+           <!--row choices-->
+
+          <items>
+              <FXCollections fx:factory="observableArrayList">
+                  <String fx:value="1" />
+                  <String fx:value="2" />
+                  <String fx:value="3" />
+                  <String fx:value="4" />
+                  <String fx:value="5" />
+                  <String fx:value="6" />
+                  <String fx:value="7" />
+                  <String fx:value="8" />
+                  <String fx:value="9" />
+                  <String fx:value="10" />
+                  <String fx:value="11" />
+                  <String fx:value="12" />
+                  <String fx:value="13" />
+                  <String fx:value="14" />
+                  <String fx:value="15" />
+              </FXCollections>
+          </items>
+      </ChoiceBox>
+       <Label alignment="CENTER" layoutX="130.0" layoutY="22.0" prefHeight="26.0" prefWidth="79.0" text="COLUMN" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="130.0">
+           <font>
+               <Font name="System Bold" size="17.0" />
+           </font>
+       </Label>
+       <Button fx:id="placeWordButton" alignment="CENTER" contentDisplay="CENTER" layoutX="317.0" layoutY="61.0" mnemonicParsing="false" onAction="#onButtonClicked" prefHeight="35.0" prefWidth="70.0" stylesheets="@../css/buttonStyle.css" text="PLACE" textAlignment="CENTER" textFill="WHITE">
+           <font>
+               <Font name="System Bold" size="14.0" />
+           </font>
+       </Button>
+       <!--word input textfield-->
+      <TextField fx:id="wordInputField" layoutX="277.0" layoutY="18.0" onKeyReleased="#handleKeyReleased"  prefHeight="15.0" prefWidth="150.0" promptText="Word" style="-fx-background-color: #203152; -fx-text-inner-color: white;" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="18.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextField>
+       <!--column choicebox-->
+      <ChoiceBox fx:id="columnChoiceBox" layoutX="218.0" layoutY="23.0" prefHeight="15.0" prefWidth="30.0" value="A" stylesheets="@../css/choiceBoxStyle.css">
+           <!--column choices-->
+          <items>
+              <FXCollections fx:factory="observableArrayList">
+                  <String fx:value="A" />
+                  <String fx:value="B" />
+                  <String fx:value="C" />
+                  <String fx:value="D" />
+                  <String fx:value="E" />
+                  <String fx:value="F" />
+                  <String fx:value="G" />
+                  <String fx:value="H" />
+                  <String fx:value="I" />
+                  <String fx:value="J" />
+                  <String fx:value="K" />
+                  <String fx:value="L" />
+                  <String fx:value="M" />
+                  <String fx:value="N" />
+                  <String fx:value="O" />
+              </FXCollections>
+          </items>
+      </ChoiceBox>
+      <ChoiceBox fx:id="directionChoiceBox" layoutX="134.0" layoutY="64.0" prefHeight="30.0" prefWidth="100.0" value="Across" stylesheets="@../css/choiceBoxStyle.css">
+              <items>
+                  <FXCollections fx:factory="observableArrayList">
+                  <String fx:value="Across" />
+                  <String fx:value="Down" />
+                  </FXCollections>
+              </items>
+      </ChoiceBox>
+      <Label alignment="CENTER" layoutY="64.0" prefHeight="30.0" prefWidth="129.0" text="DIRECTION" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="123.0" prefWidth="442.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ScrollPane fx:id="ScrollPane" prefHeight="124.0" prefWidth="442.0" styleClass="ScrollPane" stylesheets="@../css/scrollPane.css">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="450.0" prefWidth="424.0" style="-fx-background-color: #203152;">
+               <children>
+                  <Label layoutX="18.0" layoutY="47.0" text="TRIPLE WORD " textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5b74d9" height="38.0" layoutX="37.0" layoutY="71.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.2" width="39.0" />
+                  <Label layoutX="22.0" layoutY="117.0" prefHeight="82.0" prefWidth="76.0" text="Placed word score x 3" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+                  <Label layoutX="119.0" layoutY="47.0" text="DOUBLE WORD" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8765ad" height="38.0" layoutX="142.0" layoutY="71.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.2" width="39.0" />
+                  <Label layoutX="125.0" layoutY="117.0" prefHeight="81.0" prefWidth="76.0" text="Placed word score x 2" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+                  <Label layoutX="231.0" layoutY="47.0" text="TRIPLE LETTER" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#438a82" height="38.0" layoutX="250.0" layoutY="71.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.2" width="39.0" />
+                  <Label layoutX="231.0" layoutY="118.0" prefHeight="81.0" prefWidth="76.0" text="Placed letter score x 3" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+                  <Label layoutX="326.0" layoutY="47.0" text="DOUBLE LETTER" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8f4666" height="38.0" layoutX="349.0" layoutY="71.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.2" width="39.0" />
+                  <Label layoutX="331.0" layoutY="118.0" prefHeight="81.0" prefWidth="76.0" text="Placed letter score x 2" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+                  <Label alignment="CENTER" layoutX="86.0" layoutY="14.0" prefHeight="20.0" prefWidth="253.0" text="SQUARE COLORS AND THEIR SCORES" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="187.0" layoutY="215.0" prefHeight="20.0" prefWidth="51.0" text="MOVES" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="1.0" layoutY="242.0" prefHeight="41.0" prefWidth="423.0" text="QUIT: Ending the game. All progress gets lost." textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutY="276.0" prefHeight="41.0" prefWidth="426.0" text="PLACE WORD: Placing a word on the board. Must place at least 1 tile from your frame." textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="1.0" layoutY="352.0" prefHeight="41.0" prefWidth="424.0" text="EXCHANGE: Can swap 1-7 tiles if bag has at least 7 tiles. Used instead of a word play." textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="-1.0" layoutY="394.0" prefHeight="41.0" prefWidth="423.0" text="PASS: Passing means skipping your turn. You get a zero score for this." textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="2.0" layoutY="310.0" prefHeight="41.0" prefWidth="422.0" text="CHALLENGE: Checking the validity of an opponent's play by a using the dictionary." textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

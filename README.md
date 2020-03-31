@@ -1,27 +1,53 @@
-# Assignment Two
-This is our implementation of the board. 
+# Assignment Three
+###This is our implementation of the game interface and its link to the back-end 
 
 Points to note: 
 
-1. We represented a square on a board as an object which contains information about the values i.e. the score / weights
-associated with each (e.g Double Letter), as well as the character tiles i.e. the letters they contain when a tile has been placed on such square (otherwise null).
+-> To run the game, simply run the main of 'Scrabble', or the .jar file.
 
-2. We represented the board as a 15x15 2D Array of type Square.
+-> Initially we had this written in Java SDK 11, and JavaFX 11, but had to migrate to SDK 8. The .jar works on our computers.
+If the .jar file doesn't run on yours and triggers exceptions, please check you have the correct SDK installed.
 
-3. For the purpose of testing, there is a method which displays the board with its weights&types i.e. an ASCII representation 
-of the board where each square shows the information regarding its score e.g. Triple Word score, Double letter score etc.
-This method is called displayBoardWithWeights().
+-> Our interface look is based on fxml content switching as well as scene switching in the window. The fxml files 
+can be found in the fxml folder.
 
-4. There is also a method that displays the board's tiles only. This method is called displayBoard().
+-> We don't have a class 'UI' because we separated styling into separate fxml files. Therefore, the UI interface is composed of 
+all the fxml files, and their controllers.
 
-5. The method which calls all method checks that ensure the proper placement of a word on the board is called placeWord().
-Following a valid positioning and word input, placeWord() will place the word on the board and remove the corresponding tiles
-from the player's frame.
+-> The fxml files are being controlled by their own specific controllers (classes can be found on matching names).
 
-6. The logic behind placing a word on the board that will overlap with another word is as follows:
-The player will input the full word they are willing to place on the board. If there are letters already on the board in the word's path, then the player does NOT need to have the overlapped letter (if the overlap is valid).
+-> The class 'Scrabble' is the entry point to the entire game. It loads 'openingWindow.fxml' which prompts the players
+to introduce their names and press a button to start the game.
 
-    e.g. Player One wants to place the word 'CAT' on the frame, starting at a position that will interlock this word with another
-    word on the board, e.g. 'FLAME'. The two words will interlock at the letter 'A'. Player One doesn't have letter A, but because
-    the trajectory of the placement of 'CAT' is through the letter 'A' of the word 'FLAME', the word will be placed and the player's
-    corresponding tiles will be removed from the frame.
+-> BoardController is the main controller, which controls most of the game playing. It contains information used by the other
+controllers to ensure the game rolls as it should. It contains references to the objects needed i.e. Board, Pool, Players, Frames,
+and methods for display of tiles on board and frames, display of scores, and handling of choice buttons.
+
+-> OpeningWindowController (the controller of openingWindow.fxml) upon press of 'START GAME' button loads the boardGraphic.fxml
+which contains the interface allowing the playing of the game.
+
+-> boardGraphic.fxml contains a representation of the board, choice buttons for the players based on the move they wish
+to take i.e. 'CHALLENGE', 'PASS', 'PLACE WORD', 'EXCHANGE', 'HELP', and 'QUIT', information about the words placed, and 
+the player's turn and score.
+
+-> All of these buttons except for 'PASS' trigger fxml content switching within boardGraphic.fxml to allow the player to:
+ - Learn about the game when pressing 'HELP'
+ - Input the tiles they wish to exchange when pressing 'EXCHANGE'
+ - Input the word they wish to place on the board together with position and direction when pressing 'PLACE WORD'
+ - Choose whether they truly wish to quit the game when pressing 'QUIT'
+   
+-> 'PASS' strictly triggers the switching of players, without any effect on the board, tiles, or scoring.
+
+-> The game ends when one of two situations occur :
+-  #####The pool is empty and a player used all of their tiles in the frame to place a word
+            In this player's case, their score increases by the sum of values of tiles in their opponent's frame.
+            The opponent's score decreases by the sum of values of tiles in their own frame.
+- #####The board is full, and the players could only pass twice in succession each due to empty Pool, triggering the end of the game.
+            In this case, both players subtract from their scores the sum of values of tiles in their corresponding frames if 
+            the pool is empty. 
+            If the pool is not empty, players are penalised for passing twice in succession each with termination of the game,
+            and no effect on their scoring.
+            When this happens, gameOverWindow.fxml is loaded and the winner and loser are displayed together with their scores.
+
+
+ 
