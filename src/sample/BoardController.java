@@ -79,6 +79,21 @@ public class BoardController implements Initializable
     @FXML
     private Label playerScoreDisplay;
 
+    @Override
+    public void initialize( URL url, ResourceBundle resourceBundle )
+    {
+        playerScoreDisplay.setText( "0" );
+        dictionary = new HashSet<>();
+
+        try
+        {
+            fillDictionary();
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
 
     /**
      * Loads fxml content switching in the window when 'CHALLENGE' button is pressed.
@@ -223,21 +238,6 @@ public class BoardController implements Initializable
                 return "INVALID WORD. MAKE SURE TO PLACE AT LEAST ONE TILE FROM YOUR FRAME!";
             default:
                 return "INVALID WORD PLACEMENT. MAKE SURE WORD IS CONNECTED TO OTHER LETTERS ON THE BOARD!";
-        }
-    }
-
-    @Override
-    public void initialize( URL url, ResourceBundle resourceBundle )
-    {
-        playerScoreDisplay.setText( "0" );
-        dictionary = new HashSet<>();
-
-        try
-        {
-            fillDictionary();
-        } catch (IOException e)
-        {
-            e.printStackTrace();
         }
     }
 
