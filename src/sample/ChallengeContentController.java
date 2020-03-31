@@ -70,7 +70,9 @@ public class ChallengeContentController implements Initializable
             {
                 invalidWordString.append( invalidWords.get( i ) );
                 if ( invalidWords.size() > 1 && i != invalidWords.size() - 1 )
+                {
                     invalidWordString.append( ", " );
+                }
             }
 
             // Success state message display on the screen
