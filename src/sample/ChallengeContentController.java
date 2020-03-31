@@ -1,11 +1,9 @@
 package sample;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -87,7 +85,7 @@ public class ChallengeContentController implements Initializable
             OpeningWindowController.bController.challengeButton.setDisable( true );
             OpeningWindowController.bController.rightPanel.getBottom().setVisible( false );
             OpeningWindowController.bController.scrollLabel.setText( "" );
-            otherPlayer.decreaseScore( BoardController.Board.getScoreFromLastMove( BoardController.Pool ) );
+            otherPlayer.decreaseScore( BoardController.Board.getScoreFromLastMove() );
         }
         // CHALLENGE UNSUCCESSFUL
         else

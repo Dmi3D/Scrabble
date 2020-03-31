@@ -39,6 +39,9 @@ public class BlankContentController
 
             // Displaying the word/s created during the last play in the window
             OpeningWindowController.bController.scrollLabel.setText( lastWords.toString() );
+
+            // Making the bottom right-hand-side of window invisible in preparation for next player's move
+            OpeningWindowController.bController.rightPanel.getBottom().setVisible( false );
         }
     }
 }
