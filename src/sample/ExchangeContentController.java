@@ -33,14 +33,7 @@ public class ExchangeContentController
     @FXML
     public void onButtonClicked()
     {
-        String lettrs = getLettersToExchangeAsString();
-
-        char[] letters = new char[lettrs.length()];
-
-        for ( int i = 0; i < letters.length; i++ )
-        {
-            letters[i] = lettrs.charAt( i );
-        }
+        char[] letters = getLettersToExchangeAsString().toCharArray();
 
         boolean exchanged = BoardController.players[BoardController.currentPlayer].getPlayerFrame().exchangeTiles( letters, BoardController.Pool );
 

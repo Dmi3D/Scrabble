@@ -161,7 +161,7 @@ public class Frame
     /* EXCHANGES THE LETTERS PASSED IN WITH OTHER RANDOM LETTERS FROM THE POOL */
     public boolean exchangeTiles( char[] lettersToExchange, Pool pool )
     {
-        if ( hasEmpty() )
+        if ( hasEmpty() || lettersToExchange.length > 7 )
         {
             return false;
         }
