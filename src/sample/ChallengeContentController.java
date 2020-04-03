@@ -1,11 +1,9 @@
 package sample;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -76,7 +74,7 @@ public class ChallengeContentController implements Initializable
             }
 
             // Success state message display on the screen
-            challengeLabel.setText( "CHALLENGE SUCCESSFUL!\n THE FOLLOWING ARE INVALID WORDS:\n" + invalidWordString.toString() );
+            challengeLabel.setText( "CHALLENGE SUCCESSFUL!\n THE FOLLOWING WERE INVALID WORDS:\n" + invalidWordString.toString() );
 
             Player otherPlayer = BoardController.getOtherPlayer();
 
@@ -87,7 +85,7 @@ public class ChallengeContentController implements Initializable
             OpeningWindowController.bController.challengeButton.setDisable( true );
             OpeningWindowController.bController.rightPanel.getBottom().setVisible( false );
             OpeningWindowController.bController.scrollLabel.setText( "" );
-            otherPlayer.decreaseScore( BoardController.Board.getScoreFromLastMove( BoardController.Pool ) );
+            otherPlayer.decreaseScore( BoardController.Board.getScoreFromLastMove() );
         }
         // CHALLENGE UNSUCCESSFUL
         else

@@ -256,7 +256,6 @@ public class BoardController implements Initializable
         FxmlLoader content = new FxmlLoader();
         rightPanel.setBottom( content.getBlankContent() );
         BorderPane.setMargin( rightPanel.getBottom(), new Insets( 0, 10, 10, 10 ) );
-        System.out.println("Should load blankcontent.fxml dude ");
     }
 
     /**

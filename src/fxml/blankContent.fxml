@@ -13,7 +13,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="letterReplaceTextField" layoutX="146.0" layoutY="72.0" prefHeight="35.0" prefWidth="50.0" promptText="Letter" style="-fx-background-color: #203152; -fx-text-inner-color: white;" />
+      <TextField fx:id="letterReplaceTextField" alignment="CENTER" layoutX="146.0" layoutY="72.0" prefHeight="35.0" prefWidth="54.0" promptText="Letter" style="-fx-background-color: #203152; -fx-text-inner-color: white;" />
       <Button fx:id="replaceButton" layoutX="229.0" layoutY="72.0" mnemonicParsing="false" onAction="#handleButtonClicked" prefHeight="35.0" prefWidth="68.0" stylesheets="@../css/buttonStyle.css" text="REPLACE" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />

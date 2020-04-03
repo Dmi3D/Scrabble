@@ -3,15 +3,12 @@ package sample;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -99,7 +96,7 @@ public class PlaceWordController
                     }
 
                     // Increasing the player's score based on word they placed and position on board
-                    BoardController.getCurrentPlayer().increaseScore( BoardController.Board.getScoreFromLastMove( BoardController.Pool ) );
+                    BoardController.getCurrentPlayer().increaseScore( BoardController.Board.calculateScoreFromLastMove( BoardController.Pool ) );
 
                     if ( numberOfBlanks == 1 )
                     {
@@ -111,6 +108,7 @@ public class PlaceWordController
 
                         // Switching player
                         OpeningWindowController.bController.switchPlayer();
+
                         // Making the bottom right-hand-side of window invisible in preparation for next player's move
                         OpeningWindowController.bController.rightPanel.getBottom().setVisible( false );
                     }

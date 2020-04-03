@@ -30,6 +30,12 @@ public class Board
     private int[][] lastTilesPlacedLocations; //Stores locations of the letters of the last placed word
     private char[] lastPlacedWord;
     public ArrayList<String> wordsCreatedLastMove;
+    private int scoreFromLastMove;
+
+    public int getScoreFromLastMove()
+    {
+        return scoreFromLastMove;
+    }
 
     public void changeBlankOnBoard( char blankReplacement )
     {
@@ -95,6 +101,7 @@ public class Board
         initScores();
         numOfWords = 0;
         lastTilesPlaced = null;
+        scoreFromLastMove = 0;
     }
 
     /* DISPLAYS THE TILES ON THE BOARD */
@@ -653,24 +660,26 @@ public class Board
     }
 
     /* RETURNS SCORE OF ALL THE CREATED WORDS */
-    public int getScoreFromLastMove( Pool pool )
-    {
-        int score = 0;
-
-        for ( int i = 0; i < wordsCreatedLastMove.size(); i++ )
+    public int calculateScoreFromLastMove( Pool pool )
         {
-            char[] wordCreated = convertStringToArray( wordsCreatedLastMove.get( i ) );
+            int score = 0;
 
-            score += getScoreOfWord( wordCreated, pool );
-        }
+            for ( int i = 0; i < wordsCreatedLastMove.size(); i++ )
+            {
+                char[] wordCreated = convertStringToArray( wordsCreatedLastMove.get( i ) );
 
-        // Bingo condition
-        if ( getLastTilesPlaced().length == 7 )
-        {
-            score += 50;
-        }
+                score += getScoreOfWord( wordCreated, pool );
+            }
 
-        return score;
+            // Bingo condition
+            if ( getLastTilesPlaced().length == 7 )
+            {
+                score += 50;
+            }
+
+            scoreFromLastMove = score;
+
+            return score;
     }
 
     /* PLACES A WORD WITH A CERTAIN DIRECTION. PASS IN STARTING POINT */
