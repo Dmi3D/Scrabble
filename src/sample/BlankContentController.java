@@ -22,23 +22,17 @@ public class BlankContentController
         {
             // Getting the letter input by player and returning to method call in PlaceWordController
             char blankLetterReplacement = letterReplaceTextField.getText().toUpperCase().charAt( 0 );
-            BoardController.Board.changeBlankOnBoard( blankLetterReplacement );
-            BoardController.Board.changeBlankInWordsCreated( blankLetterReplacement );
+            BoardController.Board.changeBlankOnBoard( blankLetterReplacement );     // displaying blank tile as the letter specified by player
+
+            BoardController.Board.changeBlankInWordsCreated( blankLetterReplacement );  // changing the stored value of blank tile in
+                                                                                        // array of words created to facilitate challenge functionality
 
             OpeningWindowController.bController.switchPlayer();
 
-            ArrayList<String> lastWordsList = BoardController.Board.wordsCreatedLastMove;
+            OpeningWindowController.bController.displayWordsCreatedLastMove();
 
-            StringBuilder lastWords = new StringBuilder();
-
-            // Getting a string of the word/s placed
-            for ( String s : lastWordsList )
-            {
-                lastWords.append( s ).append( "\n" );
-            }
-
-            // Displaying the word/s created during the last play in the window
-            OpeningWindowController.bController.scrollLabel.setText( lastWords.toString() );
+            // Making the bottom right-hand-side of window invisible in preparation for next player's move
+            OpeningWindowController.bController.rightPanel.getBottom().setVisible( false );
         }
     }
 }

@@ -103,26 +103,11 @@ public class PlaceWordController
 
                     if ( numberOfBlanks == 1 )
                     {
-                        System.out.println("Number of blanks is one");
                         OpeningWindowController.bController.loadBlankContent();
                     }
-
                     else
                     {
-                        System.out.println("Entered else");
-
-                        ArrayList<String> lastWordsList = BoardController.Board.wordsCreatedLastMove;
-
-                        StringBuilder lastWords = new StringBuilder();
-
-                        // Getting a string of the word/s placed
-                        for ( String s : lastWordsList )
-                        {
-                            lastWords.append( s ).append( "\n" );
-                        }
-
-                        // Displaying the word/s created during the last play in the window
-                        OpeningWindowController.bController.scrollLabel.setText( lastWords.toString() );
+                        OpeningWindowController.bController.displayWordsCreatedLastMove();
 
                         // Switching player
                         OpeningWindowController.bController.switchPlayer();

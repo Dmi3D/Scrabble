@@ -21,6 +21,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.ResourceBundle;
 
@@ -424,6 +425,22 @@ public class BoardController implements Initializable
             }
         }
         return result;
+    }
+
+    public void displayWordsCreatedLastMove()
+    {
+        ArrayList<String> lastWordsList = Board.wordsCreatedLastMove;
+
+        StringBuilder lastWords = new StringBuilder();
+
+        // Getting a string of the word/s placed
+        for ( String s : lastWordsList )
+        {
+            lastWords.append( s ).append( "\n" );
+        }
+
+        // Displaying the word/s created during the last play in the window
+        scrollLabel.setText( lastWords.toString() );
     }
 
     /**
