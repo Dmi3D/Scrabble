@@ -1,53 +1,57 @@
-# Assignment Three
-###This is our implementation of the game interface and its link to the back-end 
+# Assignment Four
+### This branch oversees the implementation of the challenge functionality and blank tile handling in the game of Scrabble.
+
+#### Prerequisites
+    Running the jar requires the installation of Java SDK 8, due to IntelliJ issues regarding the building of JavaFX 
+    applications for newer versions of Java and JavaFX. Please ensure you have the right sdk installed before attempting
+    to run Scrabble.jar.
 
 Points to note: 
 
--> To run the game, simply run the main of 'Scrabble', or the .jar file.
+1. To run the game, simply run the main of 'Scrabble', or the .jar file.
 
--> Initially we had this written in Java SDK 11, and JavaFX 11, but had to migrate to SDK 8. The .jar works on our computers.
-If the .jar file doesn't run on yours and triggers exceptions, please check you have the correct SDK installed.
+2. The Challenge Functionality can be accessed during a Player's turn by clicking the button 'CHALLENGE' on the interface
+display.
 
--> Our interface look is based on fxml content switching as well as scene switching in the window. The fxml files 
-can be found in the fxml folder.
+3. The Challenge Functionality is implemented as follows:
+    1. The challenger simply clicks the 'CHALLENGE' button during their move when they think their opponent's play is invalid.
+    2. Our implementation has the SOWPODS dictionary file loaded into the software when the game is started. i.e. 'START GAME'
+    button is pressed.
+    3. The file contains each valid word on a new line. When 'START GAME' button is pressed and the boardGraphic.fxml file
+    is loaded, the file is being read into HashSet dictionary declared in BoardController.java
+    4. Reading the file has a O(n) running time complexity, but it is only loaded once during the game. A BufferedReader
+    is used to read the file instead of Scanner due to increased efficiency when reading files composed of large number
+    of new lines.
+    5. The dictionary is only ever accessed when the 'CHALLENGE' button is pressed by a Player.
+    6. This triggers the checking of not just the main word placed on the board, but also any additional words that may have
+    been created in the process. 
+    7. The validity checking is O(m) running time complexity, where m is the number of words created. This is due to O(1)
+    constant running time complexity of method contains() of the HashSet data structure.
+    8. When a word has been found to be invalid i.e. not found in dictionary (dictionary.contains(word) returns false),
+    then a message is displayed in the bottom right corner, announcing the failed challenge. The challenger will then lose
+    their turn.
+    9. When all words (if more than one) are valid i.e. found in dictionary, then a message is displayed in bottom right
+    corner, announcing the successful challenge. The challenger gets to make another move, while the word is removed from
+    the board and the opponent's score is returned to the one prior to word placement. 
+    10. The tiles of the word are also returned to the rightful owner.
 
--> We don't have a class 'UI' because we separated styling into separate fxml files. Therefore, the UI interface is composed of 
-all the fxml files, and their controllers.
 
--> The fxml files are being controlled by their own specific controllers (classes can be found on matching names).
+4. The 'CHALLENGE' button is enabled during the game <b>EXCEPT</b> when: 
+    1. No first play has been made yet.
+    2. A Player placed a word on the board, and their opponent passed their turn, exchanged tiles, or challenged the
+     Player's word unsuccessfully. This ensures a player cannot challenge their own play.
+    3. When a Player placed a word on the board and their opponent successfully challenged it. This ensures the opponent
+    whose turn it is cannot challenge twice in a row.
 
--> The class 'Scrabble' is the entry point to the entire game. It loads 'openingWindow.fxml' which prompts the players
-to introduce their names and press a button to start the game.
-
--> BoardController is the main controller, which controls most of the game playing. It contains information used by the other
-controllers to ensure the game rolls as it should. It contains references to the objects needed i.e. Board, Pool, Players, Frames,
-and methods for display of tiles on board and frames, display of scores, and handling of choice buttons.
-
--> OpeningWindowController (the controller of openingWindow.fxml) upon press of 'START GAME' button loads the boardGraphic.fxml
-which contains the interface allowing the playing of the game.
-
--> boardGraphic.fxml contains a representation of the board, choice buttons for the players based on the move they wish
-to take i.e. 'CHALLENGE', 'PASS', 'PLACE WORD', 'EXCHANGE', 'HELP', and 'QUIT', information about the words placed, and 
-the player's turn and score.
-
--> All of these buttons except for 'PASS' trigger fxml content switching within boardGraphic.fxml to allow the player to:
- - Learn about the game when pressing 'HELP'
- - Input the tiles they wish to exchange when pressing 'EXCHANGE'
- - Input the word they wish to place on the board together with position and direction when pressing 'PLACE WORD'
- - Choose whether they truly wish to quit the game when pressing 'QUIT'
-   
--> 'PASS' strictly triggers the switching of players, without any effect on the board, tiles, or scoring.
-
--> The game ends when one of two situations occur :
--  #####The pool is empty and a player used all of their tiles in the frame to place a word
-            In this player's case, their score increases by the sum of values of tiles in their opponent's frame.
-            The opponent's score decreases by the sum of values of tiles in their own frame.
-- #####The board is full, and the players could only pass twice in succession each due to empty Pool, triggering the end of the game.
-            In this case, both players subtract from their scores the sum of values of tiles in their corresponding frames if 
-            the pool is empty. 
-            If the pool is not empty, players are penalised for passing twice in succession each with termination of the game,
-            and no effect on their scoring.
-            When this happens, gameOverWindow.fxml is loaded and the winner and loser are displayed together with their scores.
-
+5. Blank tile handling is done as follows:
+    1. When a Player places a word containing a blank tile, blankContent.fxml is loaded.
+    2. This file is controlled by BlankContentController.java
+    3. The Controller parses the input from the Player passed into the .fxml file. The input is the letter the Player 
+    wishes the blank tile to replace.
+    4. The letter is then passed to methods which replace the word that was already stored in the back-end and override 
+    it with a word containing the replacement letter instead of blank tile.
+        ######This is done to facilitate challenge functionality, which is based on word checking against a dictionary.
+    5. The word containing the replacement letter is displayed on the board and on the top right corner in the 'Words Created'
+    panel.
 
  

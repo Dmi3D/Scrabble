@@ -5,8 +5,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-import java.util.ArrayList;
-
 public class BlankContentController
 {
     @FXML
@@ -15,6 +13,15 @@ public class BlankContentController
     @FXML
     private Button replaceButton;
 
+    /**
+     * Responsible for getting the replacement letter for the blank tile in player's word.
+     * 1) The word input is overridden with the replacement tile in the array storing the
+     * last words placed on the board.
+     * Reasoning:  to facilitate the challenge functionality (which requires checking of words
+     * against a dictionary)
+     * 2) The player is switched and the last placed word/s are displayed in the top right corner.
+     * 3) The bottom right panel is hidden upon switching to next player
+     */
     @FXML
     public void handleButtonClicked( ActionEvent event )
     {

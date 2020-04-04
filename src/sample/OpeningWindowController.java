@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /**
- * Class that does the following:
+ * Controller class responsible for:
  * 1) Parses input of player's names
  * 2) Stores references to objects of the game
  * 3) Passes object references to BoardController

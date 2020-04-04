@@ -4,6 +4,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
+/**
+ * Controller class responsible for parsing the input from the
+ * exchangeContent.fxml when loaded.
+ * This allows player to input the tiles in their frame they
+ * wish to exchange.
+ */
 public class ExchangeContentController
 {
 
@@ -48,8 +54,6 @@ public class ExchangeContentController
             OpeningWindowController.bController.switchPlayer();
             OpeningWindowController.bController.challengeButton.setDisable( true );
             OpeningWindowController.bController.scrollLabel.setText( "" );
-
-
             OpeningWindowController.bController.rightPanel.getBottom().setVisible( false );
             OpeningWindowController.bController.displayName();
             OpeningWindowController.bController.displayFrame();

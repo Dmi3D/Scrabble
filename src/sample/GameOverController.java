@@ -82,33 +82,35 @@ public class GameOverController implements Initializable
     @Override
     public void initialize( URL url, ResourceBundle resourceBundle )
     {
+        // When there is a tie/draw in the game i.e. players have the same score
         if ( BoardController.players[0].getScore() == BoardController.players[1].getScore() )
         {
             winnerNameLabel.setText( BoardController.players[0].getName() + "\n" + BoardController.players[1].getName() );
             winnerScoreLabel.setText( String.valueOf( BoardController.players[0].getScore() ) );
         }
+        // When Player 1 is the winner
         else if ( BoardController.players[0].getScore() > BoardController.players[1].getScore() )
         {
             Winner = BoardController.players[0];
             Loser = BoardController.players[1];
 
-            winnerNameLabel.setText( Winner.getName() );
-            winnerScoreLabel.setText( String.valueOf( Winner.getScore() ) );
+            winnerNameLabel.setText( Winner.getName() );                        // Displaying name of winner i.e. Player 1
+            winnerScoreLabel.setText( String.valueOf( Winner.getScore() ) );    // Displaying score of winner i.e. Player 1
 
-            loserNameLabel.setText( Loser.getName() );
-            loserScoreLabel.setText( String.valueOf( Loser.getScore() ) );
+            loserNameLabel.setText( Loser.getName() );                          // Displaying name of loser i.e. Player 2
+            loserScoreLabel.setText( String.valueOf( Loser.getScore() ) );      // Displaying score of loser i.e. Player 2
         }
-
+        // When Player 2 is the winner
         else
         {
             Winner = BoardController.players[1];
             Loser = BoardController.players[0];
 
-            winnerNameLabel.setText( Winner.getName() );
-            winnerScoreLabel.setText( String.valueOf( Winner.getScore() ) );
+            winnerNameLabel.setText( Winner.getName() );                        // Displaying name of winner i.e. Player 2
+            winnerScoreLabel.setText( String.valueOf( Winner.getScore() ) );    // Displaying score of winner i.e. Player 2
 
-            loserNameLabel.setText( Loser.getName() );
-            loserScoreLabel.setText( String.valueOf( Loser.getScore() ) );
+            loserNameLabel.setText( Loser.getName() );                          // Displaying name of loser i.e. Player 1
+            loserScoreLabel.setText( String.valueOf( Loser.getScore() ) );      // Displaying score of loser i.e. Player 1
         }
 
     }

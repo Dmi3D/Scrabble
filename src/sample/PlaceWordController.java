@@ -44,11 +44,19 @@ public class PlaceWordController
     /**
      * Calls method from back-end to place the word on the board
      * <p>
-     * Success: 1) Prompts the words created during that play.
+     * Success:
+     * 1) Prompts the words created during that play.
      * 2) Calls method to make word placed on board in back-end show in the front-end
      * 3) Calls method to increase the player's score
      * <p>
-     * Fail:    1) Calls method to retrieve the error code of the error associated with the invalid word placement
+     * Special case - Player places a word containing a blank tile
+     * 1) Player is prompted to input the letter replacement for the blank tile in the word
+     * 2) The last words placed array is overridden with with word consisting of replacement letter
+     * instead of blank
+     * 3) The word is placed on the board with its new replacement letter instead of blank
+     * <p>
+     * Fail:
+     * 1) Calls method to retrieve the error code of the error associated with the invalid word placement
      * 2) Calls method in BoardController to display the error in the window.
      */
     @FXML

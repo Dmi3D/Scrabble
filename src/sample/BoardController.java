@@ -163,7 +163,6 @@ public class BoardController implements Initializable
         BorderPane.setMargin( rightPanel.getBottom(), new Insets( 0, 10, 10, 10 ) );
     }
 
-
     /**
      * Switches to next player when 'PASS' button is pressed.
      * Ends the game when the button is pressed twice in succession by a player.
@@ -426,6 +425,7 @@ public class BoardController implements Initializable
         return result;
     }
 
+    /** Gets an ArrayList of the words created during last play and displays them in the top right corner */
     public void displayWordsCreatedLastMove()
     {
         ArrayList<String> lastWordsList = Board.wordsCreatedLastMove;
@@ -490,6 +490,7 @@ public class BoardController implements Initializable
         players[1].reset( Pool );
     }
 
+    /** Reads the contents of the sowpods.txt dictionary file into the HashSet dictionary */
     public void fillDictionary() throws IOException
     {
         try (BufferedReader reader = new BufferedReader( new FileReader( "src/textfile/sowpods.txt" ) ))
