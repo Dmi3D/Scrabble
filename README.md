@@ -1,17 +1,18 @@
 # Assignment Four
 ### This branch oversees the implementation of the challenge functionality and blank tile handling in the game of Scrabble.
 
-#### Prerequisites
+### Prerequisites
     Running the jar requires the installation of Java SDK 8, due to IntelliJ issues regarding the building of JavaFX 
     applications for newer versions of Java and JavaFX. Please ensure you have the right sdk installed before attempting
     to run Scrabble.jar.
 
-#### Points to note: 
+### Points to note: 
 
 #### 1. To run the game, simply run the main of 'Scrabble', or the .jar file.
 
-#### 2. The Challenge Functionality can be accessed during a Player's turn by clicking the button 'CHALLENGE' on the interface
-display.
+
+#### 2. The Challenge Functionality can be accessed during a Player's turn by clicking the button 'CHALLENGE' on the interface display.
+
 
 #### 3. The Challenge Functionality is implemented as follows:
     1. The challenger simply clicks the 'CHALLENGE' button during their move when they think their opponent's play is invalid.
@@ -43,14 +44,14 @@ display.
     3. When a Player placed a word on the board and their opponent successfully challenged it. This ensures the opponent
     whose turn it is cannot challenge twice in a row.
 
-#### 5. Blank tile handling is done as follows:
+#### 5. Blank tile handling is done as follows: 
     1. When a Player places a word containing a blank tile, blankContent.fxml is loaded.
     2. This file is controlled by BlankContentController.java
     3. The Controller parses the input from the Player passed into the .fxml file. The input is the letter the Player 
     wishes the blank tile to replace.
     4. The letter is then passed to methods which replace the word that was already stored in the back-end and override 
     it with a word containing the replacement letter instead of blank tile.
-        ######This is done to facilitate challenge functionality, which is based on word checking against a dictionary.
+    > This is done to facilitate challenge functionality, which is based on word checking against a dictionary. <
     5. The word containing the replacement letter is displayed on the board and on the top right corner in the 'Words Created'
     panel.
 
