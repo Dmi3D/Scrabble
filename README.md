@@ -6,14 +6,14 @@
     applications for newer versions of Java and JavaFX. Please ensure you have the right sdk installed before attempting
     to run Scrabble.jar.
 
-Points to note: 
+#### Points to note: 
 
-1. To run the game, simply run the main of 'Scrabble', or the .jar file.
+#### 1. To run the game, simply run the main of 'Scrabble', or the .jar file.
 
-2. The Challenge Functionality can be accessed during a Player's turn by clicking the button 'CHALLENGE' on the interface
+#### 2. The Challenge Functionality can be accessed during a Player's turn by clicking the button 'CHALLENGE' on the interface
 display.
 
-3. The Challenge Functionality is implemented as follows:
+#### 3. The Challenge Functionality is implemented as follows:
     1. The challenger simply clicks the 'CHALLENGE' button during their move when they think their opponent's play is invalid.
     2. Our implementation has the SOWPODS dictionary file loaded into the software when the game is started. i.e. 'START GAME'
     button is pressed.
@@ -36,14 +36,14 @@ display.
     10. The tiles of the word are also returned to the rightful owner.
 
 
-4. The 'CHALLENGE' button is enabled during the game <b>EXCEPT</b> when: 
+#### 4. The 'CHALLENGE' button is enabled during the game <b>EXCEPT</b> when: 
     1. No first play has been made yet.
     2. A Player placed a word on the board, and their opponent passed their turn, exchanged tiles, or challenged the
      Player's word unsuccessfully. This ensures a player cannot challenge their own play.
     3. When a Player placed a word on the board and their opponent successfully challenged it. This ensures the opponent
     whose turn it is cannot challenge twice in a row.
 
-5. Blank tile handling is done as follows:
+#### 5. Blank tile handling is done as follows:
     1. When a Player places a word containing a blank tile, blankContent.fxml is loaded.
     2. This file is controlled by BlankContentController.java
     3. The Controller parses the input from the Player passed into the .fxml file. The input is the letter the Player 
