@@ -113,7 +113,7 @@ public class Board
         {
             System.out.print( "   " );
 
-            System.out.print( (char) ( 'A' + i ) );
+            System.out.print( (char) ('A' + i) );
 
             System.out.print( "   |" );
         }
@@ -135,9 +135,9 @@ public class Board
 
             //Prints number cords
             if ( i < 9 )
-                System.out.print( "   " + ( i + 1 ) + " |" );
+                System.out.print( "   " + (i + 1) + " |" );
             else
-                System.out.print( "  " + ( i + 1 ) + " |" );
+                System.out.print( "  " + (i + 1) + " |" );
 
             //Prints the insides of the board
             for ( int j = 0; j < board[0].length; j++ )
@@ -181,7 +181,7 @@ public class Board
                 board[i][j] = new Square();
 
                 // INITIALISING SQUARES ON THE DIAGONALS
-                if ( j == i || ( BOUNDS - 1 ) - j == i )
+                if ( j == i || (BOUNDS - 1) - j == i )
                 {
                     if ( i == 0 || i == BOUNDS - 1 )
                         board[i][j] = new Square( 3, true );
@@ -197,9 +197,9 @@ public class Board
                 }
 
                 // INITIALISING SQUARES ON TOP AND BOTTOM WALL
-                if ( i == 0 || i == ( BOUNDS - 1 ) )
+                if ( i == 0 || i == (BOUNDS - 1) )
                 {
-                    if ( j == 3 || j == ( BOUNDS - 1 ) - 3 )
+                    if ( j == 3 || j == (BOUNDS - 1) - 3 )
                         board[i][j] = new Square( 2, false );
 
                     else if ( j == 7 )
@@ -207,9 +207,9 @@ public class Board
                 }
 
                 // INITIALISING SQUARES ON LEFT AND RIGHT WALL
-                if ( j == 0 || j == ( BOUNDS - 1 ) )
+                if ( j == 0 || j == (BOUNDS - 1) )
                 {
-                    if ( i == 3 || i == ( BOUNDS - 1 ) - 3 )
+                    if ( i == 3 || i == (BOUNDS - 1) - 3 )
                         board[i][j] = new Square( 2, false );
 
                     else if ( i == 7 )
@@ -217,17 +217,17 @@ public class Board
                 }
 
                 // INITIALISING TRIANGLE SQUARES TOP AND BOTTOM
-                if ( ( i >= 1 && i <= 3 ) || ( i <= ( BOUNDS - 1 ) - 1 && i >= ( BOUNDS - 1 ) - 3 ) )
+                if ( (i >= 1 && i <= 3) || (i <= (BOUNDS - 1) - 1 && i >= (BOUNDS - 1) - 3) )
                 {
-                    if ( i == 1 || i == ( BOUNDS - 1 ) - 1 )
+                    if ( i == 1 || i == (BOUNDS - 1) - 1 )
                     {
-                        if ( j == 5 || j == ( BOUNDS - 1 ) - 5 )
+                        if ( j == 5 || j == (BOUNDS - 1) - 5 )
                             board[i][j] = new Square( 3, false );
                     }
 
-                    else if ( i == 2 || i == ( BOUNDS - 1 ) - 2 )
+                    else if ( i == 2 || i == (BOUNDS - 1) - 2 )
                     {
-                        if ( j == 6 || j == ( BOUNDS - 1 ) - 6 )
+                        if ( j == 6 || j == (BOUNDS - 1) - 6 )
                             board[i][j] = new Square( 2, false );
                     }
 
@@ -236,17 +236,17 @@ public class Board
                 }
 
                 // INITIALISING TRIANGLE SQUARES LEFT AND RIGHT
-                if ( ( j >= 1 && j <= 3 ) || ( j <= ( BOUNDS - 1 ) - 1 && j >= ( BOUNDS - 1 ) - 3 ) )
+                if ( (j >= 1 && j <= 3) || (j <= (BOUNDS - 1) - 1 && j >= (BOUNDS - 1) - 3) )
                 {
-                    if ( j == 1 || j == ( BOUNDS - 1 ) - 1 )
+                    if ( j == 1 || j == (BOUNDS - 1) - 1 )
                     {
-                        if ( i == 5 || i == ( BOUNDS - 1 ) - 5 )
+                        if ( i == 5 || i == (BOUNDS - 1) - 5 )
                             board[i][j] = new Square( 3, false );
                     }
 
-                    else if ( j == 2 || j == ( BOUNDS - 1 ) - 2 )
+                    else if ( j == 2 || j == (BOUNDS - 1) - 2 )
                     {
-                        if ( i == 6 || i == ( BOUNDS - 1 ) - 6 )
+                        if ( i == 6 || i == (BOUNDS - 1) - 6 )
                             board[i][j] = new Square( 2, false );
                     }
 
@@ -268,7 +268,7 @@ public class Board
         {
             System.out.print( "     " );
 
-            System.out.print( (char) ( 'A' + i ) );
+            System.out.print( (char) ('A' + i) );
 
             System.out.print( "      |" );
         }
@@ -290,16 +290,16 @@ public class Board
 
             //Prints number cords
             if ( i < 9 )
-                System.out.print( "   " + ( i + 1 ) + " |" );
+                System.out.print( "   " + (i + 1) + " |" );
             else
-                System.out.print( "  " + ( i + 1 ) + " |" );
+                System.out.print( "  " + (i + 1) + " |" );
 
             //Prints the insides of the scores
             for ( int j = 0; j < board[0].length; j++ )
             {
                 System.out.print( "   " );
 
-                char col = (char) ( j + 'A' );
+                char col = (char) (j + 'A');
 
                 System.out.print( getSquareAt( i + 1, col ).getWeight() + "," + getSquareAt( i + 1, col ).getType() );
 
@@ -389,13 +389,13 @@ public class Board
             endIndex = column;
 
             //If there is a letter at the left of the placed tile, keep going left
-            while (startIndex - 1 >= 0 && getSquareAt( row, startIndex - 1 ).getTile() != '\u0000')
+            while ( startIndex - 1 >= 0 && getSquareAt( row, startIndex - 1 ).getTile() != '\u0000' )
             {
                 startIndex--;
             }
 
             //If there is a letter at the right of the placed tile, keep going right
-            while (endIndex + 1 < BOUNDS && getSquareAt( row, endIndex + 1 ).getTile() != '\u0000')
+            while ( endIndex + 1 < BOUNDS && getSquareAt( row, endIndex + 1 ).getTile() != '\u0000' )
             {
                 endIndex++;
             }
@@ -421,13 +421,13 @@ public class Board
             endIndex = row;
 
             //If there is a letter at the left of the placed tile, keep going left
-            while (startIndex - 1 >= 0 && getSquareAt( startIndex - 1, column ).getTile() != '\u0000')
+            while ( startIndex - 1 >= 0 && getSquareAt( startIndex - 1, column ).getTile() != '\u0000' )
             {
                 startIndex--;
             }
 
             //If there is a letter at the right of the placed tile, keep going right
-            while (endIndex + 1 < BOUNDS && getSquareAt( endIndex + 1, column ).getTile() != '\u0000')
+            while ( endIndex + 1 < BOUNDS && getSquareAt( endIndex + 1, column ).getTile() != '\u0000' )
             {
                 endIndex++;
             }
@@ -468,13 +468,13 @@ public class Board
                     if ( row != 0 && getSquareAt( row - 1, indexOfTilePlaced ).getTile() != '\u0000' || row != BOUNDS - 1 && getSquareAt( row + 1, indexOfTilePlaced ).getTile() != '\u0000' )
                     {
                         //Keep going up to find the start of the word
-                        while (startIndex - 1 >= 0 && getSquareAt( startIndex - 1, indexOfTilePlaced ).getTile() != '\u0000')
+                        while ( startIndex - 1 >= 0 && getSquareAt( startIndex - 1, indexOfTilePlaced ).getTile() != '\u0000' )
                         {
                             startIndex--;
                         }
 
                         //Keep going down to find the end of the word
-                        while (endIndex + 1 < BOUNDS && getSquareAt( endIndex + 1, indexOfTilePlaced ).getTile() != '\u0000')
+                        while ( endIndex + 1 < BOUNDS && getSquareAt( endIndex + 1, indexOfTilePlaced ).getTile() != '\u0000' )
                         {
                             endIndex++;
                         }
@@ -509,13 +509,13 @@ public class Board
                     if ( column != 0 && getSquareAt( indexOfTilePlaced, column - 1 ).getTile() != '\u0000' || column != BOUNDS - 1 && getSquareAt( indexOfTilePlaced, column + 1 ).getTile() != '\u0000' )
                     {
                         //Keep going left to find the start of the word
-                        while (startIndex - 1 >= 0 && getSquareAt( indexOfTilePlaced, startIndex - 1 ).getTile() != '\u0000')
+                        while ( startIndex - 1 >= 0 && getSquareAt( indexOfTilePlaced, startIndex - 1 ).getTile() != '\u0000' )
                         {
                             startIndex--;
                         }
 
                         //Keep going right to find the end of the word
-                        while (endIndex + 1 < BOUNDS && getSquareAt( indexOfTilePlaced, endIndex + 1 ).getTile() != '\u0000')
+                        while ( endIndex + 1 < BOUNDS && getSquareAt( indexOfTilePlaced, endIndex + 1 ).getTile() != '\u0000' )
                         {
                             endIndex++;
                         }

@@ -32,7 +32,7 @@ public class BlankContentController
             BoardController.Board.changeBlankOnBoard( blankLetterReplacement );     // displaying blank tile as the letter specified by player
 
             BoardController.Board.changeBlankInWordsCreated( blankLetterReplacement );  // changing the stored value of blank tile in
-                                                                                        // array of words created to facilitate challenge functionality
+            // array of words created to facilitate challenge functionality
 
             OpeningWindowController.bController.switchPlayer();
 
