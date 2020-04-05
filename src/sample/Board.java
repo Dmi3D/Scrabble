@@ -338,6 +338,7 @@ public class Board
             return false;
         }
 
+        // If the word does not properly overlap with tiles on the board
         if ( !manageOverlappingTiles( word, direction, row, column ) )
         {
             errorCode = WORD_LETTER_CLASH;
@@ -860,7 +861,7 @@ public class Board
         return centreIndex >= startIndex && centreIndex <= endIndex;
     }
 
-    /* CREATES A STACK OF OVERLAPPED LETTERS ON A WORD'S PATH */
+    /* MANAGES OVERLAPPING TILES. RETURNS FALSE IF OVERLAP IS INVALID */
     private boolean manageOverlappingTiles( char[] word, char direction, int row, int column )
     {
         int startIndex = -1;
