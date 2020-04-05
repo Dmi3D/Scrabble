@@ -20,7 +20,7 @@ public class FxmlLoader
         {
             FXMLLoader fxmlLoader = new FXMLLoader( FxmlLoader.class.getResource( "/challengeContent.fxml" ) );
             content = fxmlLoader.load();
-        } catch (IOException e)
+        } catch ( IOException e )
         {
             System.out.println( " please check FxmlLoader." );
         }
@@ -33,7 +33,7 @@ public class FxmlLoader
         {
             FXMLLoader fxmlLoader = new FXMLLoader( FxmlLoader.class.getResource( "/exchangeContent.fxml" ) );
             content = fxmlLoader.load();
-        } catch (IOException e)
+        } catch ( IOException e )
         {
             System.out.println( " please check FxmlLoader." );
         }
@@ -46,7 +46,7 @@ public class FxmlLoader
         {
             FXMLLoader fxmlLoader = new FXMLLoader( FxmlLoader.class.getResource( "/placeWordContent.fxml" ) );
             content = fxmlLoader.load();
-        } catch (IOException e)
+        } catch ( IOException e )
         {
             System.out.println( " please check FxmlLoader." );
         }
@@ -59,7 +59,7 @@ public class FxmlLoader
         {
             FXMLLoader fxmlLoader = new FXMLLoader( FxmlLoader.class.getResource( "/helpContent.fxml" ) );
             content = fxmlLoader.load();
-        } catch (IOException e)
+        } catch ( IOException e )
         {
             System.out.println( " please check FxmlLoader." );
         }
@@ -72,7 +72,7 @@ public class FxmlLoader
         {
             FXMLLoader fxmlLoader = new FXMLLoader( FxmlLoader.class.getResource( "/quitContent.fxml" ) );
             content = fxmlLoader.load();
-        } catch (IOException e)
+        } catch ( IOException e )
         {
             System.out.println( " please check FxmlLoader." );
         }
@@ -85,7 +85,7 @@ public class FxmlLoader
         {
             FXMLLoader fxmlLoader = new FXMLLoader( FxmlLoader.class.getResource( "/blankContent.fxml" ) );
             content = fxmlLoader.load();
-        } catch (IOException e)
+        } catch ( IOException e )
         {
             System.out.println( " please check FxmlLoader." );
         }

@@ -89,7 +89,7 @@ public class BoardController implements Initializable
         try
         {
             fillDictionary();
-        } catch (IOException e)
+        } catch ( IOException e )
         {
             e.printStackTrace();
         }
@@ -189,7 +189,7 @@ public class BoardController implements Initializable
             FXMLLoader loader = new FXMLLoader( BoardController.class.getResource( "/gameOverWindow.fxml" ) );
             Parent gameOverWindow = loader.load();
             Scene gameOverScene = new Scene( gameOverWindow );
-            Stage window = (Stage) ( (Node) actionEvent.getSource() ).getScene().getWindow();   // Accessing stage
+            Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();   // Accessing stage
             window.setScene( gameOverScene );   // changing the window's scene
             window.show();
         }
@@ -224,7 +224,7 @@ public class BoardController implements Initializable
      */
     private String getErrorCodeText( int errorCode )
     {
-        switch ( errorCode )
+        switch (errorCode)
         {
             case 0:
                 return "INVALID PLACEMENT OF FIRST WORD. MAKE SURE WORD GOES THROUGH CENTRE OF THE BOARD!";
@@ -348,7 +348,7 @@ public class BoardController implements Initializable
 
             if ( node instanceof Label )
             {
-                ( (Label) node ).setText( String.valueOf( player.getPlayerFrame().getFrame()[i] ) );
+                ((Label) node).setText( String.valueOf( player.getPlayerFrame().getFrame()[i] ) );
             }
         }
     }
@@ -425,7 +425,9 @@ public class BoardController implements Initializable
         return result;
     }
 
-    /** Gets an ArrayList of the words created during last play and displays them in the top right corner */
+    /**
+     * Gets an ArrayList of the words created during last play and displays them in the top right corner
+     */
     public void displayWordsCreatedLastMove()
     {
         ArrayList<String> lastWordsList = Board.wordsCreatedLastMove;
@@ -490,14 +492,16 @@ public class BoardController implements Initializable
         players[1].reset( Pool );
     }
 
-    /** Reads the contents of the sowpods.txt dictionary file into the HashSet dictionary */
+    /**
+     * Reads the contents of the sowpods.txt dictionary file into the HashSet dictionary
+     */
     public void fillDictionary() throws IOException
     {
-        try (BufferedReader reader = new BufferedReader( new FileReader( "src/textfile/sowpods.txt" ) ))
+        try ( BufferedReader reader = new BufferedReader( new FileReader( "src/textfile/sowpods.txt" ) ) )
         {
             String line;
 
-            while (( line = reader.readLine() ) != null)
+            while ( (line = reader.readLine()) != null )
             {
                 dictionary.add( line );
             }

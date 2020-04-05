@@ -96,7 +96,7 @@ public class PlaceWordController
                         Scene gameOverScene = new Scene( gameOverWindow );
 
                         // Getting information about the stage i.e. window to access it
-                        Stage window = (Stage) ( (Node) event.getSource() ).getScene().getWindow();
+                        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
                         window.setScene( gameOverScene );
                         // Changing the window's scene

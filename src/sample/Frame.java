@@ -137,9 +137,9 @@ public class Frame
         int letterIndex = 0;
         int frameIndex = 0;
 
-        while (letterIndex < word.length && frameIndex < tiles.length)
+        while ( letterIndex < word.length && frameIndex < tiles.length )
         {
-            while (letterIndex < word.length && word[letterIndex] == ' ')
+            while ( letterIndex < word.length && word[letterIndex] == ' ' )
             {
                 letterIndex++;
             }

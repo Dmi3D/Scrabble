@@ -84,7 +84,7 @@ public class OpeningWindowController
             Scene boardViewScene = new Scene( boardViewParent );
 
             // Getting information about the stage i.e. window to access it
-            Stage window = (Stage) ( (Node) event.getSource() ).getScene().getWindow();
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
             // changing the window's scene
             window.setScene( boardViewScene );

@@ -28,7 +28,7 @@ public class QuitContentController
     {
         if ( event.getSource().equals( yesButton ) )
         {
-            Stage window = (Stage) ( (Node) event.getSource() ).getScene().getWindow();
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
             window.close();
         }

@@ -157,8 +157,8 @@ public class Pool
         // Avoiding errors of suspicious calls due to object drawnTile being a Character
         assert drawnTile instanceof Character;
 
-        int tileFrequency = tileFrequencies.get( ( drawnTile ) );
-        while (tileFrequency < 1)
+        int tileFrequency = tileFrequencies.get( (drawnTile) );
+        while ( tileFrequency < 1 )
         {
             // DRAWING A NEW TILE AGAIN
             drawnTile = tiles[random.nextInt( tiles.length )];

@@ -58,7 +58,7 @@ public class Square
 
     public boolean hasTile()
     {
-        return !( getTile() == '\u0000' );
+        return !(getTile() == '\u0000');
     }
 
 }

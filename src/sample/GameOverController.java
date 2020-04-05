@@ -65,7 +65,7 @@ public class GameOverController implements Initializable
             Scene openingViewScene = new Scene( openingViewParent );
 
             // Getting information about the stage i.e. window to access it
-            Stage window = (Stage) ( (Node) event.getSource() ).getScene().getWindow();
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
             // changing the window's scene
             window.setScene( openingViewScene );
