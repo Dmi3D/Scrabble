@@ -2,7 +2,6 @@ package sample;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Stack;
 
 public class Board
 {
@@ -50,7 +49,7 @@ public class Board
             }
         }
 
-        if(indexOfBlank != -1)
+        if ( indexOfBlank != -1 )
         {
             int row = lastTilesPlacedLocations[0][indexOfBlank];
             int column = lastTilesPlacedLocations[1][indexOfBlank];
@@ -61,18 +60,18 @@ public class Board
 
     public void changeBlankInWordsCreated( char blankReplacement )
     {
-        for(int i = 0; i < wordsCreatedLastMove.size(); i++)
+        for ( int i = 0; i < wordsCreatedLastMove.size(); i++ )
         {
             char[] wordCreated = wordsCreatedLastMove.get( i ).toCharArray();
 
-            for(int j = 0; j < wordCreated.length; j++)
+            for ( int j = 0; j < wordCreated.length; j++ )
             {
-                if(wordCreated[j] == '*')
+                if ( wordCreated[j] == '*' )
                 {
                     wordCreated[j] = blankReplacement;
 
                     String wordWithBlankRemoved = String.valueOf( wordCreated );
-                    wordsCreatedLastMove.remove(i);
+                    wordsCreatedLastMove.remove( i );
                     wordsCreatedLastMove.add( i, wordWithBlankRemoved );
                     break;
                 }
@@ -339,13 +338,7 @@ public class Board
             return false;
         }
 
-        // Store overlapping tiles (if any)
-        Stack overLappingTiles = getOverlappingTiles( word, direction, row, column );
-
-        if ( !overLappingTiles.empty() )
-            removeOverlappingTiles( word, overLappingTiles );
-
-        if ( !isOverlapValid( word, direction, row, column ) )
+        if ( !manageOverlappingTiles( word, direction, row, column ) )
         {
             errorCode = WORD_LETTER_CLASH;
             return false;
@@ -661,25 +654,25 @@ public class Board
 
     /* RETURNS SCORE OF ALL THE CREATED WORDS */
     public int calculateScoreFromLastMove( Pool pool )
+    {
+        int score = 0;
+
+        for ( int i = 0; i < wordsCreatedLastMove.size(); i++ )
         {
-            int score = 0;
+            char[] wordCreated = convertStringToArray( wordsCreatedLastMove.get( i ) );
 
-            for ( int i = 0; i < wordsCreatedLastMove.size(); i++ )
-            {
-                char[] wordCreated = convertStringToArray( wordsCreatedLastMove.get( i ) );
+            score += getScoreOfWord( wordCreated, pool );
+        }
 
-                score += getScoreOfWord( wordCreated, pool );
-            }
+        // Bingo condition
+        if ( getLastTilesPlaced().length == 7 )
+        {
+            score += 50;
+        }
 
-            // Bingo condition
-            if ( getLastTilesPlaced().length == 7 )
-            {
-                score += 50;
-            }
+        scoreFromLastMove = score;
 
-            scoreFromLastMove = score;
-
-            return score;
+        return score;
     }
 
     /* PLACES A WORD WITH A CERTAIN DIRECTION. PASS IN STARTING POINT */
@@ -868,10 +861,8 @@ public class Board
     }
 
     /* CREATES A STACK OF OVERLAPPED LETTERS ON A WORD'S PATH */
-    private Stack getOverlappingTiles( char[] word, char direction, int row, int column )
+    private boolean manageOverlappingTiles( char[] word, char direction, int row, int column )
     {
-        Stack<Character> overlappingLetters = new Stack<>();
-
         int startIndex = -1;
         int endIndex = -1;
 
@@ -887,72 +878,44 @@ public class Board
             endIndex = getEndIndex( word, row );
         }
 
+        int indexOfWord = 0;
+
         //If there is any letter between the start index and the end index of a word
         for ( int i = startIndex; i <= endIndex; i++ )
         {
             if ( direction == 'A' )
             {
                 if ( getSquareAt( row, i ).getTile() != '\u0000' )
-                    overlappingLetters.push( getSquareAt( row, i ).getTile() );
+                {
+                    if ( word[indexOfWord] == getSquareAt( row, i ).getTile() )
+                    {
+                        word[indexOfWord] = ' ';
+                    }
+
+                    else
+                    {
+                        return false;
+                    }
+                }
             }
 
             else if ( direction == 'D' )
             {
                 if ( getSquareAt( i, column ).getTile() != '\u0000' )
-                    overlappingLetters.push( getSquareAt( i, column ).getTile() );
-            }
-        }
-
-        return overlappingLetters;
-    }
-
-    /* REMOVES LETTERS FROM WORD WHICH OVERLAP WITH PATH OF WORD */
-    private void removeOverlappingTiles( char[] word, Stack overlappingTiles )
-    {
-        // While there are still overlapping letters to check for
-        while (!overlappingTiles.isEmpty())
-        {
-            char overlappingLetter = (char) overlappingTiles.peek();
-
-            for ( int i = 0; i < word.length; i++ )
-            {
-                if ( overlappingLetter == word[i] )
-                    word[i] = ' ';
-            }
-
-            overlappingTiles.pop();
-        }
-
-        System.out.println( "Word without overlap: " + Arrays.toString( word ) );
-    }
-
-    /* CHECKS IF OVERLAP IS VALID BY NOT ALLOWING CHARACTERS TO TRY OVERLAP */
-    private boolean isOverlapValid( char[] word, char direction, int row, int column )
-    {
-        for ( int i = 0; i < word.length; i++ )
-        {
-            char letterToPlace = word[i];
-
-            if ( letterToPlace == ' ' ) ;
-
-            else if ( direction == 'A' )
-            {
-                //If we are trying to overlap a two characters over each other
-                if ( getSquareAt( row, column + i ).getTile() != '\u0000' )
                 {
-                    return false;
-                }
+                    if ( word[indexOfWord] == getSquareAt( i, column ).getTile() )
+                    {
+                        word[indexOfWord] = ' ';
+                    }
 
-            }
-
-            else if ( direction == 'D' )
-            {
-                //If we are trying to overlap a two characters over each other
-                if ( getSquareAt( row + i, column ).getTile() != '\u0000' )
-                {
-                    return false;
+                    else
+                    {
+                        return false;
+                    }
                 }
             }
+
+            indexOfWord++;
         }
 
         return true;
