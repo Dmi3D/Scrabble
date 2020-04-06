@@ -17,9 +17,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -89,7 +87,7 @@ public class BoardController implements Initializable
         try
         {
             fillDictionary();
-        } catch ( IOException e )
+        } catch (IOException e)
         {
             e.printStackTrace();
         }
@@ -189,7 +187,7 @@ public class BoardController implements Initializable
             FXMLLoader loader = new FXMLLoader( BoardController.class.getResource( "/gameOverWindow.fxml" ) );
             Parent gameOverWindow = loader.load();
             Scene gameOverScene = new Scene( gameOverWindow );
-            Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();   // Accessing stage
+            Stage window = (Stage) ( (Node) actionEvent.getSource() ).getScene().getWindow();   // Accessing stage
             window.setScene( gameOverScene );   // changing the window's scene
             window.show();
         }
@@ -224,7 +222,7 @@ public class BoardController implements Initializable
      */
     private String getErrorCodeText( int errorCode )
     {
-        switch (errorCode)
+        switch ( errorCode )
         {
             case 0:
                 return "INVALID PLACEMENT OF FIRST WORD. MAKE SURE WORD GOES THROUGH CENTRE OF THE BOARD!";
@@ -348,7 +346,7 @@ public class BoardController implements Initializable
 
             if ( node instanceof Label )
             {
-                ((Label) node).setText( String.valueOf( player.getPlayerFrame().getFrame()[i] ) );
+                ( (Label) node ).setText( String.valueOf( player.getPlayerFrame().getFrame()[i] ) );
             }
         }
     }
@@ -497,14 +495,20 @@ public class BoardController implements Initializable
      */
     public void fillDictionary() throws IOException
     {
-        try ( BufferedReader reader = new BufferedReader( new FileReader( "src/textfile/sowpods.txt" ) ) )
-        {
-            String line;
+        InputStream input = getClass().getResourceAsStream( "/textfile/sowpods.txt" );
+        System.out.println("Is input empty? Should be false: " + (input == null));
+        InputStreamReader inputReader = new InputStreamReader( input );
+        BufferedReader reader = new BufferedReader( inputReader );
 
-            while ( (line = reader.readLine()) != null )
-            {
-                dictionary.add( line );
-            }
+        String line;
+
+        while (( line = reader.readLine() ) != null)
+        {
+            dictionary.add( line );
         }
+
+        reader.close();
+        inputReader.close();
+        input.close();
     }
 }
