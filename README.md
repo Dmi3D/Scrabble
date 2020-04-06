@@ -20,9 +20,9 @@
     button is pressed.
     3. The file contains each valid word on a new line. When 'START GAME' button is pressed and the boardGraphic.fxml file
     is loaded, the file is being read into HashSet dictionary declared in BoardController.java
-    4. Reading the file has a O(n) running time complexity, but it is only loaded once during the game. A BufferedReader
+    4. Reading the file has a O(n) running time complexity, but it is only loaded once during the game. An InputStream
     is used to read the file instead of Scanner due to increased efficiency when reading files composed of large number
-    of new lines.
+    of new lines, and to ensure the file is compiled into the jar file.
     5. The dictionary is only ever accessed when the 'CHALLENGE' button is pressed by a Player.
     6. This triggers the checking of not just the main word placed on the board, but also any additional words that may have
     been created in the process. 
