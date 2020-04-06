@@ -496,7 +496,6 @@ public class BoardController implements Initializable
     public void fillDictionary() throws IOException
     {
         InputStream input = getClass().getResourceAsStream( "/textfile/sowpods.txt" );
-        System.out.println("Is input empty? Should be false: " + (input == null));
         InputStreamReader inputReader = new InputStreamReader( input );
         BufferedReader reader = new BufferedReader( inputReader );
 
