@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Dictionary implements DictionaryAPI
 {
 
-    private static String inputFileName = "csw.txt";
+    private static String inputFileName = "src/textfile/sowpods.txt";
     private Node root;
 
     Dictionary() throws FileNotFoundException
