@@ -1,8 +1,0 @@
-.choice-box{
-	-fx-background-color:  #203152;
-	-fx-control-inner-background: #203152;
-}
-
-.choice-box .label{
-     -fx-text-fill: white; 
-}
