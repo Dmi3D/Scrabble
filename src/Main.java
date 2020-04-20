@@ -23,5 +23,4 @@ public class Main extends Application
         ui.setBots( bots );
         ui.displayStage( primaryStage );
     }
-
 }

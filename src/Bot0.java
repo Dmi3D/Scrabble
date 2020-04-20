@@ -1,4 +1,4 @@
-
+//LEAP-CARD BOT
 public class Bot0 implements BotAPI
 {
 
@@ -54,5 +54,4 @@ public class Bot0 implements BotAPI
         turnCount++;
         return command;
     }
-
 }

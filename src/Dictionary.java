@@ -21,6 +21,8 @@ public class Dictionary implements DictionaryAPI
             for ( int i = 0; i < word.length(); i++ )
             {
                 char currentLetter = word.charAt( i );
+                currentLetter = Character.toUpperCase( currentLetter );
+
                 if ( currentNode.isChild( currentLetter ) )
                 {
                     currentNode = currentNode.getChild( currentLetter );
