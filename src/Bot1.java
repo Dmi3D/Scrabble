@@ -13,7 +13,7 @@ public class Bot1 implements BotAPI
     private BoardAPI board;
     private UserInterfaceAPI info;
     private DictionaryAPI dictionary;
-    private int turnCount = 0;
+    private int turnCount;
 
     Bot1( PlayerAPI me, OpponentAPI opponent, BoardAPI board, UserInterfaceAPI ui, DictionaryAPI dictionary )
     {
@@ -22,35 +22,26 @@ public class Bot1 implements BotAPI
         this.board = board;
         this.info = ui;
         this.dictionary = dictionary;
+        turnCount = 0;
     }
 
     public String getCommand()
     {
         // Add your code here to input your commands
+
+        // Your code must give the command NAME <botname> at the start of the game
         String command = "";
+
         switch ( turnCount )
         {
             case 0:
-                command = "NAME Bot1";
-                break;
-            case 1:
-                command = "PASS";
-                break;
-            case 2:
-                command = "HELP";
-                break;
-            case 3:
-                command = "SCORE";
-                break;
-            case 4:
-                command = "POOL";
+                command = "NAME Bot0";
                 break;
             default:
-                command = "H8 A AN";
+                command = "PASS";
                 break;
         }
         turnCount++;
         return command;
     }
-
 }

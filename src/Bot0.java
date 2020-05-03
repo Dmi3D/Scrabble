@@ -28,27 +28,33 @@ public class Bot0 implements BotAPI
     public String getCommand()
     {
         // Add your code here to input your commands
+
         // Your code must give the command NAME <botname> at the start of the game
         String command = "";
+
         switch ( turnCount )
         {
             case 0:
                 command = "NAME Bot0";
                 break;
             case 1:
-                command = "PASS";
-                break;
-            case 2:
-                command = "HELP";
-                break;
-            case 3:
-                command = "SCORE";
-                break;
-            case 4:
-                command = "POOL";
+                String frameAsString;
+                StringBuilder wordToPlace = new StringBuilder();
+
+                frameAsString = me.getFrameAsString();
+
+                for(int i = 1; i < frameAsString.length()-1; i++)
+                {
+                    if(frameAsString.charAt( i ) != ',' && frameAsString.charAt( i ) != ' ')
+                    {
+                        wordToPlace.append( frameAsString.charAt( i ) );
+                    }
+                }
+
+                command = "H8 A " + wordToPlace.toString();
                 break;
             default:
-                command = "H8 A AN";
+                command = "PASS";
                 break;
         }
         turnCount++;

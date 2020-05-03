@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Dictionary implements DictionaryAPI
 {
 
-    private static String inputFileName = "src/textfile/sowpods.txt";
+    private static String inputFileName = "csw.txt";
     private Node root;
 
     Dictionary() throws FileNotFoundException
@@ -14,15 +14,13 @@ public class Dictionary implements DictionaryAPI
         root = new Node();
         File inputFile = new File( inputFileName );
         Scanner in = new Scanner( inputFile );
-        while (in.hasNextLine())
+        while ( in.hasNextLine() )
         {
             String word = in.nextLine();
             Node currentNode = root;
             for ( int i = 0; i < word.length(); i++ )
             {
                 char currentLetter = word.charAt( i );
-                currentLetter = Character.toUpperCase( currentLetter );
-
                 if ( currentNode.isChild( currentLetter ) )
                 {
                     currentNode = currentNode.getChild( currentLetter );
