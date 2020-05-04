@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.PriorityQueue;
 
 import static java.lang.Integer.compare;
@@ -111,7 +112,7 @@ public class Bot0 implements BotAPI
 
     private void generateCombinations( String combination, String lettersToCombine, ArrayList<String> combinations )
     {
-        if ( combination.length() >= 2 )
+        if ( combination.length() >= 1 )
         {
             int score = -1 * getScoreOfWord( combination );
 
@@ -130,7 +131,7 @@ public class Bot0 implements BotAPI
         generateCombinations( "", lettersToCombine, combinations );
     }
 
-    private String getWordWithHighestScore( String word )
+    private String getFirstWord( String word )
     {
         ArrayList<String> combinations = new ArrayList<>();
         generateCombinations( word, combinations );
@@ -176,24 +177,90 @@ public class Bot0 implements BotAPI
         }
     }
 
-    private String placeFirstWord()
+    private String getCommandPlaceFirstWord()
     {
-        String word = getFrameAsWord();
-
-        word = getWordWithHighestScore( word );
-
-        if ( word == null )
+        if ( board.isFirstPlay() )
         {
-            return null;
+            String word = getFirstWord( getFrameAsWord() );
+
+            if ( word == null )
+            {
+                return null;
+            }
+
+            //TODO
+            // If frameLetters length more than 4, check first and last letters
+            // Put towards left or right
+
+            char column = (char) ( 73 - word.length() );
+
+            return column + "8 A " + word;
         }
 
+        return null;
+    }
+
+    private PriorityQueue<WordEntry<Integer, String>> getLettersOnBoard()
+    {
+        PriorityQueue<WordEntry<Integer, String>> lettersOnBoard = new PriorityQueue<>();
+
+        for(int i = 0; i < 15; i++)
+        {
+            for(int j = 0; j < 15; j++)
+            {
+                Square square = board.getSquareCopy( i, j );
+
+                if(square.isOccupied())
+                {
+                    Tile tile = square.getTile();
+                    WordEntry<Integer, String> entry = new WordEntry<>( (-1 * tile.getValue()), String.valueOf( tile.getLetter() ) );
+                    lettersOnBoard.add( entry );
+                }
+            }
+        }
+
+        return lettersOnBoard;
+    }
+
+    private String getCommandPlaceWord( )
+    {
         //TODO
-        // If word length more than 4, check first and last letters
-        // Put towards left or right
+        // 1) Get all combinations of letters in frame (DONE)
+        // 2) Append letter from board to copy of the array list, and to each combination
+        // 3) Get permutation of each combination
+        // 4) Check each permutation to see if it is a word and store in max pq
+        // 5) Repeat this for each letter found on the board
+        // 6) Extract the largest possible word
 
-        char column = (char) (73 - word.length());
+        ArrayList<String> combinations = new ArrayList<>();
+        generateCombinations( getFrameAsWord(), combinations );
 
-        return column + "8 A " + word;
+        ArrayList<String> copyOfCombinations = new ArrayList<>( );
+        Collections.copy(copyOfCombinations, combinations);
+
+        PriorityQueue<WordEntry<Integer, String>> lettersOnBoard = getLettersOnBoard();
+
+        for(int i = 0; i < copyOfCombinations.size(); i++)
+        {
+            String combination = copyOfCombinations.get( i );
+            combination += lettersOnBoard.peek();
+
+            copyOfCombinations.set( i, combination );
+        }
+
+
+
+        return null;
+    }
+
+    private String getPlaceCommand()
+    {
+        if ( board.isFirstPlay() )
+        {
+            return getCommandPlaceFirstWord();
+        }
+
+        return getCommandPlaceWord();
     }
 
     public String getCommand()
@@ -209,13 +276,16 @@ public class Bot0 implements BotAPI
                 command = "NAME DmitriyAngel";
                 break;
             case 1:
-                command = placeFirstWord();
+                command = getPlaceCommand();
 
                 if ( command == null )
                 {
                     return "PASS";
                 }
 
+                break;
+            case 2:
+                command = getPlaceCommand();
                 break;
             default:
                 command = "PASS";
