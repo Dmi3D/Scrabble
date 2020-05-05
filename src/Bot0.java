@@ -117,8 +117,6 @@ public class Bot0 implements BotAPI
     {
         if ( combination.length() >= 1 )
         {
-            int score = -1 * getScoreOfWord( combination );
-
             //System.out.println( "Combo: " + combination );
             combinations.add( combination );
         }
@@ -204,9 +202,9 @@ public class Bot0 implements BotAPI
     {
         PriorityQueue<WordEntry<Integer, String>> lettersOnBoard = new PriorityQueue<>();
 
-        for ( int i = 0; i < 15; i++ )
+        for ( int i = 0; i < Board.BOARD_SIZE; i++ )
         {
-            for ( int j = 0; j < 15; j++ )
+            for ( int j = 0; j < Board.BOARD_SIZE; j++ )
             {
                 Square square = board.getSquareCopy( i, j );
 
@@ -245,36 +243,11 @@ public class Bot0 implements BotAPI
         return combinationsWithLetterOnBoard;
     }
 
-    private String getCommandPlaceWord()
+    private PriorityQueue<WordEntry<Integer, String>> getValidWords( PriorityQueue<WordEntry<Integer, String>> permutations )
     {
-        //TODO
-        // 1) Get all combinations of letters in frame (DONE)
-        // 2) Append letter from board to copy of the array list, and to each combination (DONE)
-        // 3) Get permutation of each combination (DONE)
-        // 4) Check each permutation to see if it is a word and store in max pq
-        // 5) Repeat this for each letter found on the board
-        // 6) Extract the largest possible word
-
-        // 1) Get all combinations of letters in frame
-        ArrayList<String> combinations = new ArrayList<>();
-        generateCombinations( getFrameAsWord(), combinations );
-
-        // 2) Append first letter from board to copy of the array list, and to each combination
-        PriorityQueue<WordEntry<Integer, String>> lettersOnBoard = getLettersOnBoard();
-
-        //TODO
-        // Setup someway of appending the next letter on board if need be
-        ArrayList<String> appendedCombinations = appendLetter( lettersOnBoard.poll().getLetters(), combinations );
-
-        // 3) Get permutation of each combination
-        PriorityQueue<WordEntry<Integer, String>> permutations = new PriorityQueue<>();
-        generatePermutations( appendedCombinations, permutations );
-
-        // 4) Check each permutation to see if it is a word and store in max pq
         PriorityQueue<WordEntry<Integer, String>> validWords = new PriorityQueue<>();
 
         // While there are still permutations to check if valid words
-        // Check if permutation is word, if not, poll last entry again.
         while ( !permutations.isEmpty() )
         {
             String permutation = permutations.poll().getLetters();
@@ -298,6 +271,64 @@ public class Bot0 implements BotAPI
                 validWords.add( validWordEntry );
             }
         }
+
+        return validWords;
+    }
+
+    private ArrayList<int[]> getLocationsOfLetterOnBoard( String letterOnBoard )
+    {
+        ArrayList<int[]> locationsOfLetterOnBoard = new ArrayList<>();
+
+        for ( int i = 0; i < Board.BOARD_SIZE; i++ )
+        {
+            for ( int j = 0; j < Board.BOARD_SIZE; j++ )
+            {
+                Square square = board.getSquareCopy( i, j );
+
+                if ( square.isOccupied() )
+                {
+                    String matchingLetter = String.valueOf( square.getTile().getLetter() );
+
+                    // If letter we looking for matches letter on board, save its location
+                    if ( letterOnBoard.equals( matchingLetter ) )
+                    {
+                        int[] location = {i, j};
+                        locationsOfLetterOnBoard.add( location );
+                    }
+                }
+            }
+        }
+
+        return locationsOfLetterOnBoard;
+    }
+
+    private String getCommandPlaceWord()
+    {
+        // Get all combinations of letters in frame
+        ArrayList<String> combinations = new ArrayList<>();
+        generateCombinations( getFrameAsWord(), combinations );
+
+        // Append first letter from board to copy of the array list, and to each combination
+        PriorityQueue<WordEntry<Integer, String>> lettersOnBoard = getLettersOnBoard();
+
+        // The letter on the board we are currently considering
+        String letterOnBoard = lettersOnBoard.poll().getLetters();
+
+        // Get the list of combinations with the letter on the board appended
+        ArrayList<String> appendedCombinations = appendLetter( letterOnBoard, combinations );
+
+        // Get permutation of each combination
+        PriorityQueue<WordEntry<Integer, String>> permutations = new PriorityQueue<>();
+        generatePermutations( appendedCombinations, permutations );
+
+        // Check each permutation to see if it is a word and store in max pq
+        PriorityQueue<WordEntry<Integer, String>> validWords = getValidWords( permutations );
+
+        // Get co-ordinates of letter on board
+        ArrayList<int[]> locationsOfLetterOnBoard = getLocationsOfLetterOnBoard( letterOnBoard );
+
+        // Get direction for each letter on board
+        // Get starting co-ord, get direction, get word (creating a word to see if isLegalPlay)
 
 
         return null;
@@ -323,7 +354,7 @@ public class Bot0 implements BotAPI
         switch ( turnCount )
         {
             case 0:
-                command = "NAME DmitriyAngel";
+                command = "NAME Leap-Card";
                 break;
             case 1:
                 command = getPlaceCommand();
