@@ -344,6 +344,48 @@ public class Bot0 implements BotAPI
         return directionsOfLettersOnBoard;
     }
 
+    private int[] getStartingLocation(String wordToTryPlace, String letterOnBoard, int[] locationOfLetter, int directionOfLetter)
+    {
+        // 1 = horizontal
+        // 2 = vertical
+
+        int offset = 0;
+
+        for(int i = 0; i < wordToTryPlace.length(); i++)
+        {
+            String letterInWord = String.valueOf( wordToTryPlace.charAt( i ));
+
+            if( letterInWord.equals( letterOnBoard ) )
+            {
+                break;
+            }
+
+            offset++;
+        }
+
+        int[] startingLocation = new int[2];
+
+        int row = locationOfLetter[0];
+        int column = locationOfLetter[1];
+
+        // If direction to place word is horizontal
+        if(directionOfLetter == 1)
+        {
+            startingLocation[0] = row;
+            startingLocation[1] = column - offset;
+            return startingLocation;
+        }
+
+        else if(directionOfLetter == 2)
+        {
+            startingLocation[0] = row - offset;
+            startingLocation[1] = column;
+            return startingLocation;
+        }
+
+        return null;
+    }
+
     private String getCommandPlaceWord()
     {
         // Get all combinations of letters in frame
@@ -372,8 +414,30 @@ public class Bot0 implements BotAPI
         // Get direction for each letter on board
         ArrayList<Integer> directionsOfLettersOnBoard = getDirectionsOfLettersOnBoard( locationsOfLetterOnBoard );
 
-        // Get starting co-ord, get direction, get word (creating a word to see if isLegalPlay)
+        //TODO
+        // Based on the word and direction, determine where the starting co-ordinate will be
+        // Get a word from valid words
+        // Pass in the location
 
+        // While there are still valid words to check at the locations
+        while ( !validWords.isEmpty() )
+        {
+            String wordToTryPlace = validWords.poll().getLetters();
+
+            // For each location on the board
+            for(int i = 0; i < locationsOfLetterOnBoard.size(); i++)
+            {
+                int[] locationOfLetter = locationsOfLetterOnBoard.get( i );
+                int directionOfLetter = directionsOfLettersOnBoard.get( i );
+
+                // If location is not occupied on all sides
+                if(directionOfLetter > 0)
+                {
+                    int[] startingLocation = getStartingLocation(wordToTryPlace, letterOnBoard, locationOfLetter, directionOfLetter);
+                }
+
+            }
+        }
 
         return null;
     }
