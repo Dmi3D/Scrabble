@@ -426,6 +426,27 @@ public class Bot0 implements BotAPI
         else return '\u0000';
     }
 
+    private Frame createFrame( String lettersInFrame )
+    {
+        ArrayList<Tile> tiles = new ArrayList<>();
+
+        for ( int i = 1; i < lettersInFrame.length() - 1; i++ )
+        {
+            if ( lettersInFrame.charAt( i ) != ',' && lettersInFrame.charAt( i ) != ' ' )
+            {
+                Tile tile = new Tile( lettersInFrame.charAt( i ) );
+
+                tiles.add( tile );
+            }
+        }
+
+        Frame frame = new Frame();
+
+        frame.addTiles( tiles );
+
+        return frame;
+    }
+
     private String getCommandPlaceWord()
     {
         System.out.println( "LETTERS IN FRAME: " + me.getFrameAsString() );
@@ -501,14 +522,16 @@ public class Bot0 implements BotAPI
                         int column = startingLocation[1];
                         boolean isHorizontal = directionOfLetter == 1;
 
-                        if ( row != -1 && column != 1 )
+                        if ( row >= 0 && column >= 0 && row < Board.BOARD_SIZE && column < Board.BOARD_SIZE )
                         {
                             Word wordToPlace = new Word( row, column, isHorizontal, validWord );
 
-                            System.out.println( "Should be true: " + board.isLegalPlay( me.getFrame(), wordToPlace ) );
+                            Frame copyOfFrame = createFrame( me.getFrameAsString() );
 
-                            if ( board.isLegalPlay( me.getFrame(), wordToPlace ) )
+                            if ( board.isLegalPlay( copyOfFrame, wordToPlace ) )
                             {
+                                //ArrayList<Word> wordsCreated = board.getAllWords( wordToPlace );
+
                                 char columnAsLetter = convertToLetterCord( column );
                                 System.out.println( "Column as letter: " + columnAsLetter );
                                 char direction = convertToDirection( directionOfLetter );

@@ -11,6 +11,4 @@ public interface PlayerAPI
 
     String toString();
 
-    Frame getFrame();
-
 }

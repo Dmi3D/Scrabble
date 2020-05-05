@@ -6,6 +6,4 @@ public interface BoardAPI
     Square getSquareCopy( int row, int col );
 
     boolean isFirstPlay();
-
-
 }
