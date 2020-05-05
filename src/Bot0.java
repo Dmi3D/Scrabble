@@ -302,6 +302,48 @@ public class Bot0 implements BotAPI
         return locationsOfLetterOnBoard;
     }
 
+    private ArrayList<Integer> getDirectionsOfLettersOnBoard( ArrayList<int[]> locationsOfLetterOnBoard )
+    {
+        ArrayList<Integer> directionsOfLettersOnBoard = new ArrayList<>( locationsOfLetterOnBoard.size() );
+
+        // 0 is neither
+        // 1 is horizontal
+        // 2 is vertical
+
+        // For each co-ordinate of letter on board
+        for ( int i = 0; i < locationsOfLetterOnBoard.size(); i++ )
+        {
+            int[] location = locationsOfLetterOnBoard.get( i );
+            int row = location[0];
+            int column = location[1];
+
+            // If not on the side edge
+            if ( row > 0 && row < Board.BOARD_SIZE - 1 )
+            {
+                if ( !board.getSquareCopy( row - 1, column ).isOccupied() && !board.getSquareCopy( row + 1, column ).isOccupied() )
+                {
+                    directionsOfLettersOnBoard.add( 1 );
+                    continue;
+                }
+            }
+
+            // If not on the top and bottom edge
+            if ( column > 0 && column < Board.BOARD_SIZE - 1 )
+            {
+                if ( !board.getSquareCopy( row, column - 1 ).isOccupied() && !board.getSquareCopy( row, column + 1 ).isOccupied() )
+                {
+                    directionsOfLettersOnBoard.add( 2 );
+                    continue;
+                }
+            }
+
+            // If letter is occupied on all sides, it cant be placed at that letter
+            directionsOfLettersOnBoard.add( 0 );
+        }
+
+        return directionsOfLettersOnBoard;
+    }
+
     private String getCommandPlaceWord()
     {
         // Get all combinations of letters in frame
@@ -328,6 +370,8 @@ public class Bot0 implements BotAPI
         ArrayList<int[]> locationsOfLetterOnBoard = getLocationsOfLetterOnBoard( letterOnBoard );
 
         // Get direction for each letter on board
+        ArrayList<Integer> directionsOfLettersOnBoard = getDirectionsOfLettersOnBoard( locationsOfLetterOnBoard );
+
         // Get starting co-ord, get direction, get word (creating a word to see if isLegalPlay)
 
 
