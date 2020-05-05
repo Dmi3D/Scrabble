@@ -76,11 +76,127 @@ public class Bot1 implements BotAPI
         {
             if ( lettersInFrame.charAt( i ) != ',' && lettersInFrame.charAt( i ) != ' ' )
             {
-                permutation.append( lettersInFrame.charAt( i ) );
+                if(lettersInFrame.charAt( i ) == '_')
+                {
+                    permutation.append( "E" );
+                }
+                else
+                {
+                    permutation.append( lettersInFrame.charAt( i ) );
+                }
             }
         }
 
         return permutation.toString();
+    }
+
+    private ArrayList<Coordinates> getWordCords( Word mainWord )
+    {
+        int row = mainWord.getRow();
+        int column = mainWord.getColumn();
+        boolean isHorizontal = mainWord.isHorizontal();
+
+        ArrayList<Coordinates> cordList = new ArrayList<>();
+
+        for ( int i = 0; i < mainWord.getLetters().length(); i++ )
+        {
+            Coordinates cord = new Coordinates( row, column );
+            cordList.add( cord );
+
+            if ( isHorizontal )
+                column++;
+
+            else
+                row++;
+        }
+
+        return cordList;
+    }
+
+    private boolean isAdditionalWord( int r, int c, boolean isHorizontal )
+    {
+        if ( ( isHorizontal &&
+                ( ( r > 0 && board.getSquareCopy( r - 1, c ).isOccupied() ) || ( r < Board.BOARD_SIZE - 1 && board.getSquareCopy( r + 1, c ).isOccupied() ) ) ) ||
+                ( !isHorizontal &&
+                        ( ( c > 0 && board.getSquareCopy( r, c - 1 ).isOccupied() ) || ( c < Board.BOARD_SIZE - 1 && board.getSquareCopy( r, c + 1 ).isOccupied() ) ) ) )
+        {
+            return true;
+        }
+        return false;
+    }
+
+    private Word getAdditionalWord( int mainWordRow, int mainWordCol, boolean mainWordIsHorizontal )
+    {
+        int firstRow = mainWordRow;
+        int firstCol = mainWordCol;
+        // search up or left for the first letter
+        while ( firstRow >= 0 && firstCol >= 0 && board.getSquareCopy( firstRow, firstCol ).isOccupied() )
+        {
+            if ( mainWordIsHorizontal )
+            {
+                firstRow--;
+            }
+            else
+            {
+                firstCol--;
+            }
+        }
+        // went too far
+        if ( mainWordIsHorizontal )
+        {
+            firstRow++;
+        }
+        else
+        {
+            firstCol++;
+        }
+        // collect the letters by moving down or right
+        String letters = "";
+        int r = firstRow;
+        int c = firstCol;
+        while ( r < Board.BOARD_SIZE && c < Board.BOARD_SIZE && board.getSquareCopy( r, c ).isOccupied() )
+        {
+            letters = letters + board.getSquareCopy( r, c ).getTile().getLetter();
+            if ( mainWordIsHorizontal )
+            {
+                r++;
+            }
+            else
+            {
+                c++;
+            }
+        }
+        return new Word( firstRow, firstCol, !mainWordIsHorizontal, letters );
+    }
+
+    private ArrayList<Word> getAllWords( Word mainWord )
+    {
+        ArrayList<Coordinates> newLetterCords = getWordCords( mainWord );
+
+        ArrayList<Word> words = new ArrayList<>();
+
+        words.add( mainWord );
+        int r = mainWord.getFirstRow();
+        int c = mainWord.getFirstColumn();
+        for ( int i = 0; i < mainWord.length(); i++ )
+        {
+            if ( newLetterCords.contains( new Coordinates( r, c ) ) )
+            {
+                if ( isAdditionalWord( r, c, mainWord.isHorizontal() ) )
+                {
+                    words.add( getAdditionalWord( r, c, mainWord.isHorizontal() ) );
+                }
+            }
+            if ( mainWord.isHorizontal() )
+            {
+                c++;
+            }
+            else
+            {
+                r++;
+            }
+        }
+        return words;
     }
 
     private int getScoreOfWord( String word )
@@ -153,7 +269,7 @@ public class Bot1 implements BotAPI
 
         String permutation = permutations.poll().getLetters();
 
-        Word permutationAsWord = new Word( 8, 8, true, permutation );
+        Word permutationAsWord = new Word( 8, 8, true, permutation, "E" );
 
         ArrayList<Word> permutationList = new ArrayList<>();
 
@@ -166,7 +282,7 @@ public class Bot1 implements BotAPI
 
             permutation = permutations.poll().getLetters();
 
-            permutationAsWord = new Word( 8, 8, true, permutation );
+            permutationAsWord = new Word( 8, 8, true, permutation, "E" );
 
             permutationList.add( permutationAsWord );
         }
@@ -263,7 +379,7 @@ public class Bot1 implements BotAPI
         {
             String permutation = permutations.poll().getLetters();
 
-            Word permutationToCheckInDictionary = new Word( 8, 8, true, permutation );
+            Word permutationToCheckInDictionary = new Word( 8, 8, true, permutation, "E" );
 
             ArrayList<Word> permutationAsList = new ArrayList<>();
 
@@ -464,10 +580,8 @@ public class Bot1 implements BotAPI
             // The letter on the board we are currently considering
             String letterOnBoard = lettersOnBoard.poll().getLetters();
 
-            System.out.println( "Combination at 10: " + combinations.get( 10 ) );
             // Get the list of combinations with the letter on the board appended
             ArrayList<String> appendedCombinations = appendLetter( letterOnBoard, combinations );
-            System.out.println( "Combination with Append at 10: " + appendedCombinations.get( 10 ) );
 
             // Get permutation of each combination
             PriorityQueue<WordEntry<Integer, String>> permutations = new PriorityQueue<>();
@@ -524,12 +638,22 @@ public class Bot1 implements BotAPI
 
                         if ( row >= 0 && column >= 0 && row < Board.BOARD_SIZE && column < Board.BOARD_SIZE )
                         {
-                            Word wordToPlace = new Word( row, column, isHorizontal, validWord );
+                            Word wordToPlace = new Word( row, column, isHorizontal, validWord, "E" );
 
-                            Frame copyOfFrame = createFrame(me.getFrameAsString());
+                            Frame copyOfFrame = createFrame( me.getFrameAsString() );
 
                             if ( board.isLegalPlay( copyOfFrame, wordToPlace ) )
                             {
+                                ArrayList<Word> newWords = getAllWords( wordToPlace );
+
+                                System.out.println("New words: " + newWords);
+
+                                if ( !dictionary.areWords( newWords ) )
+                                {
+                                    System.out.println("Not a valid new word");
+                                    continue;
+                                }
+
                                 //ArrayList<Word> wordsCreated = board.getAllWords( wordToPlace );
 
                                 char columnAsLetter = convertToLetterCord( column );
@@ -579,7 +703,7 @@ public class Bot1 implements BotAPI
         switch ( turnCount )
         {
             case 0:
-                command = "NAME Opposition";
+                command = "NAME Opponent";
                 break;
             default:
                 command = getPlaceCommand();
