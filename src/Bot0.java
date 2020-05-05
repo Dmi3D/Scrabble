@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.PriorityQueue;
 
 import static java.lang.Integer.compare;
@@ -32,6 +32,14 @@ public class Bot0 implements BotAPI
         public int compareTo( WordEntry<Integer, String> other )
         {
             return compare( this.getScore(), other.getScore() );
+        }
+
+        @Override
+        public java.lang.String toString()
+        {
+            int scoreToPrint = getScore() * ( -1 );
+
+            return letters + " (" + scoreToPrint + ")";
         }
     }
 
@@ -230,7 +238,10 @@ public class Bot0 implements BotAPI
     {
         ArrayList<String> combinationsWithLetterOnBoard = new ArrayList<>();
 
-        Collections.copy( combinationsWithLetterOnBoard, combinations );
+        for ( int i = 0; i < combinations.size(); i++ )
+        {
+            combinationsWithLetterOnBoard.add( combinations.get( i ) );
+        }
 
         for ( int i = 0; i < combinationsWithLetterOnBoard.size(); i++ )
         {
@@ -264,7 +275,7 @@ public class Bot0 implements BotAPI
                 Word validWord = permutationAsList.remove( 0 );
 
                 String validString = validWord.getLetters();
-                int validStringScore = getScoreOfWord( validString );
+                int validStringScore = getScoreOfWord( validString ) * ( -1 );
 
                 WordEntry<Integer, String> validWordEntry = new WordEntry<>( validStringScore, validString );
 
@@ -322,7 +333,7 @@ public class Bot0 implements BotAPI
             {
                 if ( !board.getSquareCopy( row - 1, column ).isOccupied() && !board.getSquareCopy( row + 1, column ).isOccupied() )
                 {
-                    directionsOfLettersOnBoard.add( 1 );
+                    directionsOfLettersOnBoard.add( 2 );
                     continue;
                 }
             }
@@ -332,7 +343,7 @@ public class Bot0 implements BotAPI
             {
                 if ( !board.getSquareCopy( row, column - 1 ).isOccupied() && !board.getSquareCopy( row, column + 1 ).isOccupied() )
                 {
-                    directionsOfLettersOnBoard.add( 2 );
+                    directionsOfLettersOnBoard.add( 1 );
                     continue;
                 }
             }
@@ -344,8 +355,80 @@ public class Bot0 implements BotAPI
         return directionsOfLettersOnBoard;
     }
 
+    private int[] getStartingLocation( String wordToTryPlace, String letterOnBoard, int[] locationOfLetter, int directionOfLetter )
+    {
+        // 1 = horizontal
+        // 2 = vertical
+
+        int offset = 0;
+
+        for ( int i = 0; i < wordToTryPlace.length(); i++ )
+        {
+            String letterInWord = String.valueOf( wordToTryPlace.charAt( i ) );
+
+            if ( letterInWord.equals( letterOnBoard ) )
+            {
+                break;
+            }
+
+            offset++;
+        }
+
+        int[] startingLocation = new int[2];
+
+        int row = locationOfLetter[0];
+        int column = locationOfLetter[1];
+
+        // If direction to place word is horizontal
+        if ( directionOfLetter == 1 )
+        {
+            startingLocation[0] = row;
+            startingLocation[1] = column - offset;
+            return startingLocation;
+        }
+
+        else if ( directionOfLetter == 2 )
+        {
+            startingLocation[0] = row - offset;
+            startingLocation[1] = column;
+            return startingLocation;
+        }
+
+        startingLocation[0] = -1;
+        startingLocation[1] = -1;
+
+        return startingLocation;
+    }
+
+    private char convertToLetterCord( int column )
+    {
+        int a = 'A';
+
+        int locationAsASCII = a + column;
+
+        char cord = (char) locationAsASCII;
+
+        return cord;
+    }
+
+    private char convertToDirection( int direction )
+    {
+        if ( direction == 1 )
+        {
+            return 'A';
+        }
+
+        else if ( direction == 2 )
+        {
+            return 'D';
+        }
+
+        else return '\u0000';
+    }
+
     private String getCommandPlaceWord()
     {
+        System.out.println( "LETTERS IN FRAME: " + me.getFrameAsString() );
         // Get all combinations of letters in frame
         ArrayList<String> combinations = new ArrayList<>();
         generateCombinations( getFrameAsWord(), combinations );
@@ -353,28 +436,103 @@ public class Bot0 implements BotAPI
         // Append first letter from board to copy of the array list, and to each combination
         PriorityQueue<WordEntry<Integer, String>> lettersOnBoard = getLettersOnBoard();
 
-        // The letter on the board we are currently considering
-        String letterOnBoard = lettersOnBoard.poll().getLetters();
+        System.out.println( "Letters on board: " + lettersOnBoard );
 
-        // Get the list of combinations with the letter on the board appended
-        ArrayList<String> appendedCombinations = appendLetter( letterOnBoard, combinations );
+        while ( !lettersOnBoard.isEmpty() )
+        {
+            // The letter on the board we are currently considering
+            String letterOnBoard = lettersOnBoard.poll().getLetters();
 
-        // Get permutation of each combination
-        PriorityQueue<WordEntry<Integer, String>> permutations = new PriorityQueue<>();
-        generatePermutations( appendedCombinations, permutations );
+            System.out.println( "Combination at 10: " + combinations.get( 10 ) );
+            // Get the list of combinations with the letter on the board appended
+            ArrayList<String> appendedCombinations = appendLetter( letterOnBoard, combinations );
+            System.out.println( "Combination with Append at 10: " + appendedCombinations.get( 10 ) );
 
-        // Check each permutation to see if it is a word and store in max pq
-        PriorityQueue<WordEntry<Integer, String>> validWords = getValidWords( permutations );
+            // Get permutation of each combination
+            PriorityQueue<WordEntry<Integer, String>> permutations = new PriorityQueue<>();
+            generatePermutations( appendedCombinations, permutations );
 
-        // Get co-ordinates of letter on board
-        ArrayList<int[]> locationsOfLetterOnBoard = getLocationsOfLetterOnBoard( letterOnBoard );
+            System.out.println( "Number of permutations: " + permutations.size() );
 
-        // Get direction for each letter on board
-        ArrayList<Integer> directionsOfLettersOnBoard = getDirectionsOfLettersOnBoard( locationsOfLetterOnBoard );
+            // Check each permutation to see if it is a word and store in max pq
+            PriorityQueue<WordEntry<Integer, String>> validWords = getValidWords( permutations );
+            System.out.println( "Number of valid words from permutations: " + validWords.size() );
+            System.out.println( "Valid words: " + validWords );
 
-        // Get starting co-ord, get direction, get word (creating a word to see if isLegalPlay)
+            // Get co-ordinates of letter on board
+            ArrayList<int[]> locationsOfLetterOnBoard = getLocationsOfLetterOnBoard( letterOnBoard );
+            System.out.println( "Location of " + letterOnBoard + ": " + Arrays.toString( locationsOfLetterOnBoard.get( 0 ) ) );
 
+            // Get direction for each letter on board
+            ArrayList<Integer> directionsOfLettersOnBoard = getDirectionsOfLettersOnBoard( locationsOfLetterOnBoard );
 
+            String dir = "no direction";
+
+            if ( directionsOfLettersOnBoard.get( 0 ) == 2 )
+            {
+                dir = "vertical";
+            }
+            else if ( directionsOfLettersOnBoard.get( 0 ) == 1 )
+            {
+                dir = "horizontal";
+            }
+
+            System.out.println( "Should place in direction " + dir );
+
+            // While there are still valid words to check at the locations
+            while ( !validWords.isEmpty() )
+            {
+                String validWord = validWords.poll().getLetters();
+
+                // For each location on the board
+                for ( int i = 0; i < locationsOfLetterOnBoard.size(); i++ )
+                {
+                    int[] locationOfLetter = locationsOfLetterOnBoard.get( i );
+                    int directionOfLetter = directionsOfLettersOnBoard.get( i );
+
+                    // If location is not occupied on all sides
+                    if ( directionOfLetter > 0 )
+                    {
+                        int[] startingLocation;
+
+                        startingLocation = getStartingLocation( validWord, letterOnBoard, locationOfLetter, directionOfLetter );
+
+                        int row = startingLocation[0];
+                        int column = startingLocation[1];
+                        boolean isHorizontal = directionOfLetter == 1;
+
+                        if ( ( row >= 0 && column >= 0 ) && ( ( row < Board.BOARD_SIZE ) && ( column < Board.BOARD_SIZE ) ) )
+                        {
+                            Word wordToPlace = new Word( row, column, isHorizontal, validWord );
+
+                            System.out.println( "Should be true: " + board.isLegalPlay( me.getFrame(), wordToPlace ) );
+
+                            if ( board.isLegalPlay( me.getFrame(), wordToPlace ) )
+                            {
+                                char columnAsLetter = convertToLetterCord( column );
+                                System.out.println( "Column as letter: " + columnAsLetter );
+                                char direction = convertToDirection( directionOfLetter );
+                                row++;
+
+                                String command = "";
+
+                                command += columnAsLetter;
+                                command += row;
+                                command += " ";
+                                command += direction;
+                                command += " ";
+                                command += wordToPlace.getLetters();
+
+                                System.out.println( command );
+                                return command;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        System.out.println( "Returned null" );
         return null;
     }
 
@@ -398,9 +556,9 @@ public class Bot0 implements BotAPI
         switch ( turnCount )
         {
             case 0:
-                command = "NAME Leap-Card";
+                command = "NAME Opposition";
                 break;
-            case 1:
+            default:
                 command = getPlaceCommand();
 
                 if ( command == null )
@@ -408,12 +566,6 @@ public class Bot0 implements BotAPI
                     return "PASS";
                 }
 
-                break;
-            case 2:
-                command = getPlaceCommand();
-                break;
-            default:
-                command = "PASS";
                 break;
         }
         turnCount++;
