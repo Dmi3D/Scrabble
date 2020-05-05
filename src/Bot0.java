@@ -501,7 +501,7 @@ public class Bot0 implements BotAPI
                         int column = startingLocation[1];
                         boolean isHorizontal = directionOfLetter == 1;
 
-                        if ( ( row >= 0 && column >= 0 ) && ( ( row < Board.BOARD_SIZE ) && ( column < Board.BOARD_SIZE ) ) )
+                        if ( row != -1 && column != 1 )
                         {
                             Word wordToPlace = new Word( row, column, isHorizontal, validWord );
 
@@ -556,7 +556,7 @@ public class Bot0 implements BotAPI
         switch ( turnCount )
         {
             case 0:
-                command = "NAME Opposition";
+                command = "NAME LeapCard";
                 break;
             default:
                 command = getPlaceCommand();
