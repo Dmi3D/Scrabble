@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.PriorityQueue;
 
 import static java.lang.Integer.compare;
@@ -6,12 +7,12 @@ import static java.lang.Integer.compare;
 //LEAP-CARD BOT
 public class Bot0 implements BotAPI
 {
-    private class PermutationEntry<Integer, String> implements Comparable<PermutationEntry<Integer, String>>
+    private class WordEntry<Integer, String> implements Comparable<WordEntry<Integer, String>>
     {
         private int score;
         private String letters;
 
-        public PermutationEntry( int key, String value )
+        public WordEntry( int key, String value )
         {
             this.score = key;
             this.letters = value;
@@ -28,7 +29,7 @@ public class Bot0 implements BotAPI
         }
 
         @Override
-        public int compareTo( PermutationEntry<Integer, String> other )
+        public int compareTo( WordEntry<Integer, String> other )
         {
             return compare( this.getScore(), other.getScore() );
         }
@@ -87,50 +88,62 @@ public class Bot0 implements BotAPI
         return score;
     }
 
-    private String swap( String wordToPermute, int positionOne, int positionTwo )
+    private void generatePermutations( String permutation, String lettersToPermute, PriorityQueue<WordEntry<Integer, String>> permutations )
     {
-        char temp;
-        char[] charArray = wordToPermute.toCharArray();
-
-        temp = charArray[positionOne];
-        charArray[positionOne] = charArray[positionTwo];
-        charArray[positionTwo] = temp;
-
-        return String.valueOf( charArray );
-    }
-
-    private void generatePermutations( String word, PriorityQueue<PermutationEntry<Integer, String>> permutations, int startIndex, int endIndex )
-    {
-        if ( startIndex == endIndex )
+        if ( lettersToPermute.length() == 0 )
         {
-            int score = -1 * getScoreOfWord( word );
-            PermutationEntry<Integer, String> entry = new PermutationEntry<>( score, word );
+            int score = -1 * getScoreOfWord( permutation );
 
+            WordEntry<Integer, String> entry = new WordEntry<>( score, permutation );
+            //System.out.println( "Perm: " + entry.getLetters() );
             permutations.add( entry );
         }
 
-        else
+        for ( int i = 0; i < lettersToPermute.length(); i++ )
         {
-            for ( int i = startIndex; i <= endIndex; i++ )
-            {
-                word = swap( word, startIndex, i );
-                generatePermutations( word, permutations, startIndex + 1, endIndex );
-                word = swap( word, startIndex, i );
-            }
+            generatePermutations( permutation + lettersToPermute.charAt( i ), lettersToPermute.substring( 0, i ) + lettersToPermute.substring( i + 1 ), permutations );
         }
     }
 
-    private void generatePermutations( String lettersToPermute, PriorityQueue<PermutationEntry<Integer, String>> permutations )
+    private void generatePermutations( ArrayList<String> combinations, PriorityQueue<WordEntry<Integer, String>> permutations )
     {
-        generatePermutations( lettersToPermute, permutations, 0, lettersToPermute.length() - 1 );
+        for ( int i = 0; i < combinations.size(); i++ )
+        {
+            generatePermutations( "", combinations.get( i ), permutations );
+        }
     }
 
-    private String getWordWithHighestScore( String word )
+    private void generateCombinations( String combination, String lettersToCombine, ArrayList<String> combinations )
     {
-        PriorityQueue<PermutationEntry<Integer, String>> permutations = new PriorityQueue<>();
+        if ( combination.length() >= 1 )
+        {
+            int score = -1 * getScoreOfWord( combination );
 
-        generatePermutations( word, permutations );
-        System.out.println( "TreeMap size: " + permutations.size() );
+            //System.out.println( "Combo: " + combination );
+            combinations.add( combination );
+        }
+
+        for ( int i = 0; i < lettersToCombine.length(); i++ )
+        {
+            generateCombinations( combination + lettersToCombine.charAt( i ), lettersToCombine.substring( i + 1 ), combinations );
+        }
+    }
+
+    private void generateCombinations( String lettersToCombine, ArrayList<String> combinations )
+    {
+        generateCombinations( "", lettersToCombine, combinations );
+    }
+
+    private String getFirstWord( String word )
+    {
+        ArrayList<String> combinations = new ArrayList<>();
+        generateCombinations( word, combinations );
+
+        PriorityQueue<WordEntry<Integer, String>> permutations = new PriorityQueue<>();
+
+        generatePermutations( combinations, permutations );
+
+        //System.out.println( "PQ size: " + permutations.size() );
 
         String permutation = permutations.poll().getLetters();
 
@@ -143,7 +156,7 @@ public class Bot0 implements BotAPI
         // Check if permutation is word, if not, poll last entry again.
         while ( !permutations.isEmpty() && !dictionary.areWords( permutationList ) )
         {
-            permutationList.remove(0);
+            permutationList.remove( 0 );
 
             permutation = permutations.poll().getLetters();
 
@@ -164,18 +177,140 @@ public class Bot0 implements BotAPI
         }
     }
 
-    private String placeFirstWord()
+    private String getCommandPlaceFirstWord()
     {
-        String word = getFrameAsWord();
-
-        word = getWordWithHighestScore( word );
-
-        if ( word == null )
+        if ( board.isFirstPlay() )
         {
-            return null;
+            String word = getFirstWord( getFrameAsWord() );
+
+            if ( word == null )
+            {
+                return null;
+            }
+
+            //TODO
+            // If frameLetters length more than 4, check first and last letters
+            // Put towards left or right
+
+            char column = (char) ( 73 - word.length() );
+
+            return column + "8 A " + word;
         }
 
-        return "H8 A " + word;
+        return null;
+    }
+
+    private PriorityQueue<WordEntry<Integer, String>> getLettersOnBoard()
+    {
+        PriorityQueue<WordEntry<Integer, String>> lettersOnBoard = new PriorityQueue<>();
+
+        for ( int i = 0; i < 15; i++ )
+        {
+            for ( int j = 0; j < 15; j++ )
+            {
+                Square square = board.getSquareCopy( i, j );
+
+                if ( square.isOccupied() )
+                {
+                    Tile tile = square.getTile();
+
+                    WordEntry<Integer, String> entry = new WordEntry<>( ( -1 * tile.getValue() ), String.valueOf( tile.getLetter() ) );
+
+                    // Avoiding repeating letters
+                    if ( !lettersOnBoard.contains( entry ) )
+                    {
+                        lettersOnBoard.add( entry );
+                    }
+                }
+            }
+        }
+
+        return lettersOnBoard;
+    }
+
+    private ArrayList<String> appendLetter( String letterToAppend, ArrayList<String> combinations )
+    {
+        ArrayList<String> combinationsWithLetterOnBoard = new ArrayList<>();
+
+        Collections.copy( combinationsWithLetterOnBoard, combinations );
+
+        for ( int i = 0; i < combinationsWithLetterOnBoard.size(); i++ )
+        {
+            String combination = combinationsWithLetterOnBoard.get( i );
+            combination += letterToAppend;
+
+            combinationsWithLetterOnBoard.set( i, combination );
+        }
+
+        return combinationsWithLetterOnBoard;
+    }
+
+    private String getCommandPlaceWord()
+    {
+        //TODO
+        // 1) Get all combinations of letters in frame (DONE)
+        // 2) Append letter from board to copy of the array list, and to each combination (DONE)
+        // 3) Get permutation of each combination (DONE)
+        // 4) Check each permutation to see if it is a word and store in max pq
+        // 5) Repeat this for each letter found on the board
+        // 6) Extract the largest possible word
+
+        // 1) Get all combinations of letters in frame
+        ArrayList<String> combinations = new ArrayList<>();
+        generateCombinations( getFrameAsWord(), combinations );
+
+        // 2) Append first letter from board to copy of the array list, and to each combination
+        PriorityQueue<WordEntry<Integer, String>> lettersOnBoard = getLettersOnBoard();
+
+        //TODO
+        // Setup someway of appending the next letter on board if need be
+        ArrayList<String> appendedCombinations = appendLetter( lettersOnBoard.poll().getLetters(), combinations );
+
+        // 3) Get permutation of each combination
+        PriorityQueue<WordEntry<Integer, String>> permutations = new PriorityQueue<>();
+        generatePermutations( appendedCombinations, permutations );
+
+        // 4) Check each permutation to see if it is a word and store in max pq
+        PriorityQueue<WordEntry<Integer, String>> validWords = new PriorityQueue<>();
+
+        // While there are still permutations to check if valid words
+        // Check if permutation is word, if not, poll last entry again.
+        while ( !permutations.isEmpty() )
+        {
+            String permutation = permutations.poll().getLetters();
+
+            Word permutationToCheckInDictionary = new Word( 8, 8, true, permutation );
+
+            ArrayList<Word> permutationAsList = new ArrayList<>();
+
+            permutationAsList.add( permutationToCheckInDictionary );
+
+            // If word is valid word in dictionary, add to validWords PQ
+            if ( dictionary.areWords( permutationAsList ) )
+            {
+                Word validWord = permutationAsList.remove( 0 );
+
+                String validString = validWord.getLetters();
+                int validStringScore = getScoreOfWord( validString );
+
+                WordEntry<Integer, String> validWordEntry = new WordEntry<>( validStringScore, validString );
+
+                validWords.add( validWordEntry );
+            }
+        }
+
+
+        return null;
+    }
+
+    private String getPlaceCommand()
+    {
+        if ( board.isFirstPlay() )
+        {
+            return getCommandPlaceFirstWord();
+        }
+
+        return getCommandPlaceWord();
     }
 
     public String getCommand()
@@ -191,13 +326,16 @@ public class Bot0 implements BotAPI
                 command = "NAME DmitriyAngel";
                 break;
             case 1:
-                command = placeFirstWord();
+                command = getPlaceCommand();
 
                 if ( command == null )
                 {
                     return "PASS";
                 }
 
+                break;
+            case 2:
+                command = getPlaceCommand();
                 break;
             default:
                 command = "PASS";
