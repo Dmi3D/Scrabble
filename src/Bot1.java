@@ -68,19 +68,149 @@ public class Bot1 implements BotAPI
         copyOfBoard = new Board();
     }
 
+    // place precondition: isLegal is true
+    public void placeInCopy( Word word )
+    {
+        int r = word.getFirstRow();
+        int c = word.getFirstColumn();
+        for ( int i = 0; i < word.length(); i++ )
+        {
+            if ( !copyOfBoard.getSquareCopy( r, c ).isOccupied() )
+            {
+                char letter = word.getLetter( i );
+
+                Tile tile = new Tile(word.getLetter( i ));
+
+                if ( tile.isBlank() )
+                {
+                    tile.designate( word.getDesignatedLetter( i ) );
+                }
+
+                copyOfBoard.getSquare( r, c ).add( tile );
+            }
+            if ( word.isHorizontal() )
+            {
+                c++;
+            }
+            else
+            {
+                r++;
+            }
+        }
+    }
+
+    public boolean isLegalPlayInCopy( Word word )
+    {
+        boolean isLegal = true;
+        // check for word out of bounds
+        if ( isLegal &&
+                ( ( word.getRow() >= Board.BOARD_SIZE ) ||
+                        ( word.getFirstColumn() >= Board.BOARD_SIZE ) ||
+                        ( word.getLastRow() >= Board.BOARD_SIZE ) ||
+                        ( word.getLastColumn() >= Board.BOARD_SIZE ) ) )
+        {
+            isLegal = false;
+        }
+        // check that letters in the word do not clash with those on the board
+        String lettersPlaced = "";
+        if ( isLegal )
+        {
+            int r = word.getFirstRow();
+            int c = word.getFirstColumn();
+            for ( int i = 0; i < word.length() && isLegal; i++ )
+            {
+                if ( copyOfBoard.getSquareCopy( r, c ).isOccupied() && copyOfBoard.getSquareCopy( r, c ).getTile().getLetter() != word.getLetter( i ) )
+                {
+                    isLegal = false;
+                }
+                else if ( !copyOfBoard.getSquareCopy( r, c ).isOccupied() )
+                {
+                    lettersPlaced = lettersPlaced + word.getLetter( i );
+                }
+                if ( word.isHorizontal() )
+                {
+                    c++;
+                }
+                else
+                {
+                    r++;
+                }
+            }
+        }
+        // check that more than one letter is placed
+        if ( isLegal && lettersPlaced.length() == 0 )
+        {
+            isLegal = false;
+        }
+        // check that the letters placed are in the frame
+
+        // check that the letters placed connect with the letters on the board
+        if ( isLegal )
+        {
+            int boxTop, boxBottom, boxLeft, boxRight;
+            if ( word.isHorizontal() )
+            {
+                boxTop = Math.max( word.getRow() - 1, 0 );
+                boxBottom = Math.min( word.getRow() + 1, Board.BOARD_SIZE - 1 );
+                boxLeft = word.getFirstColumn();
+                boxRight = word.getLastColumn();
+            }
+            else
+            {
+                boxTop = word.getFirstRow();
+                boxBottom = word.getLastRow();
+                boxLeft = Math.max( word.getColumn() - 1, 0 );
+                boxRight = Math.min( word.getColumn() + 1, Board.BOARD_SIZE - 1 );
+            }
+            boolean foundConnection = false;
+            for ( int r = boxTop; r <= boxBottom && !foundConnection; r++ )
+            {
+                for ( int c = boxLeft; c <= boxRight && !foundConnection; c++ )
+                {
+                    if ( copyOfBoard.getSquareCopy( r, c ).isOccupied() )
+                    {
+                        foundConnection = true;
+                    }
+                }
+            }
+            if ( !foundConnection )
+            {
+                isLegal = false;
+            }
+        }
+        // check there are no tiles before the word
+        if ( isLegal &&
+                ( word.isHorizontal() && word.getFirstColumn() > 0 &&
+                        copyOfBoard.getSquareCopy( word.getRow(), word.getFirstColumn() - 1 ).isOccupied() ) ||
+                ( word.isHorizontal() && word.getLastColumn() < Board.BOARD_SIZE - 1 &&
+                        copyOfBoard.getSquareCopy( word.getRow(), word.getLastColumn() + 1 ).isOccupied() ) ||
+                ( word.isVertical() && word.getFirstRow() > 0 &&
+                        copyOfBoard.getSquareCopy( word.getFirstRow() - 1, word.getColumn() ).isOccupied() ) ||
+                ( word.isVertical() && word.getLastRow() < Board.BOARD_SIZE - 1 &&
+                        copyOfBoard.getSquareCopy( word.getLastRow() + 1, word.getColumn() ).isOccupied() ) )
+        {
+            isLegal = false;
+        }
+        // check more than one letter
+        if ( isLegal && word.length() == 1 )
+        {
+            isLegal = false;
+        }
+        return isLegal;
+    }
+
     private void updateCopyOfBoard()
     {
-        for(int i = 0; i < Board.BOARD_SIZE; i++)
+        for ( int i = 0; i < Board.BOARD_SIZE; i++ )
         {
-            for(int j = 0; j < Board.BOARD_SIZE; j++)
+            for ( int j = 0; j < Board.BOARD_SIZE; j++ )
             {
                 Square square = copyOfBoard.getSquare( i, j );
                 Square squareFromOriginal = board.getSquareCopy( i, j );
 
-                if(squareFromOriginal.isOccupied())
+                if ( squareFromOriginal.isOccupied() )
                 {
                     square.add( squareFromOriginal.getTile() );
-                    System.out.println("Updating '" + square.getTile().getLetter() + "' to copy of board.");
                 }
             }
         }
@@ -343,9 +473,9 @@ public class Bot1 implements BotAPI
             String word = "";
             word = getFirstWord( getFrameAsWordWithBlank() );
 
-            for(int i = 0; i < word.length(); i++)
+            for ( int i = 0; i < word.length(); i++ )
             {
-                if(word.charAt( i ) == '_')
+                if ( word.charAt( i ) == '_' )
                 {
                     return null;
                 }
@@ -355,10 +485,6 @@ public class Bot1 implements BotAPI
             {
                 return null;
             }
-
-            //TODO
-            // If frameLetters length more than 4, check first and last letters
-            // Put towards left or right
 
             char column = (char) ( 73 - word.length() );
 
@@ -609,6 +735,37 @@ public class Bot1 implements BotAPI
         return frame;
     }
 
+    private boolean isBlankInFrame( String frameAsWord )
+    {
+        for ( int i = 0; i < frameAsWord.length(); i++ )
+        {
+            if ( frameAsWord.charAt( i ) == '_' )
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private String getStringWithNoE( String wordWithE )
+    {
+        char[] wordAsCharArray = wordWithE.toCharArray();
+
+        for ( int i = 0; i < wordAsCharArray.length; i++ )
+        {
+            if ( wordAsCharArray[i] == 'E' )
+            {
+                wordAsCharArray[i] = '_';
+                break;
+            }
+        }
+
+        String stringWithNoE = new String( wordAsCharArray );
+
+        return stringWithNoE;
+    }
+
     private String getCommandPlaceWord()
     {
         System.out.println( "LETTERS IN FRAME: " + me.getFrameAsString() );
@@ -688,33 +845,25 @@ public class Bot1 implements BotAPI
 
                         if ( row >= 0 && column >= 0 && row < Board.BOARD_SIZE && column < Board.BOARD_SIZE )
                         {
-                            Word wordToPlace = new Word( row, column, isHorizontal, validWord, "E" );
+                            Word wordToPlace = new Word( row, column, isHorizontal, validWord );
 
                             Frame copyOfFrame = createFrame( me.getFrameAsString() );
 
-                            if ( board.isLegalPlay( copyOfFrame, wordToPlace ) )
+                            if ( isLegalPlayInCopy( wordToPlace ) )
                             {
-                                //TODO
-                                // Place word
-                                copyOfBoard.place( copyOfFrame, wordToPlace );
+                                placeInCopy( wordToPlace );
 
                                 ArrayList<Word> newWords = getAllWords( wordToPlace );
 
-                                System.out.println( "New words: " + newWords );
-
                                 if ( !dictionary.areWords( newWords ) )
                                 {
-                                    System.out.println( "Not a valid new word" );
-                                    //TODO
-                                    // Remove placed word
                                     continue;
                                 }
-
-                                //ArrayList<Word> wordsCreated = board.getAllWords( wordToPlace );
 
                                 char columnAsLetter = convertToLetterCord( column );
                                 System.out.println( "Column as letter: " + columnAsLetter );
                                 char direction = convertToDirection( directionOfLetter );
+
                                 row++;
 
                                 String command = "";
@@ -724,9 +873,22 @@ public class Bot1 implements BotAPI
                                 command += " ";
                                 command += direction;
                                 command += " ";
-                                command += wordToPlace.getLetters();
 
-                                System.out.println( command );
+                                if ( isBlankInFrame( getFrameAsWordWithBlank() ) )
+                                {
+                                    String wordWithE =  wordToPlace.getLetters();
+                                    String wordWithBlank = getStringWithNoE( wordWithE );
+
+                                    command += wordWithBlank;
+                                    command += " ";
+                                    command += "E";
+                                }
+
+                                else
+                                {
+                                    command += wordToPlace.getLetters();
+                                }
+
                                 return command;
                             }
                         }
@@ -768,14 +930,14 @@ public class Bot1 implements BotAPI
 
                 if ( command == null )
                 {
-                    if(board.isFirstPlay())
+                    if ( board.isFirstPlay() )
                     {
                         return "EXCHANGE " + '_';
                     }
 
                     Frame frame = createFrame( getFrameAsWordWithBlank() );
 
-                    if(frame.isFull())
+                    if ( frame.isFull() )
                     {
                         return "EXCHANGE " + getFrameAsWordWithBlank();
                     }
