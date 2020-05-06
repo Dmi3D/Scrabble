@@ -48,8 +48,16 @@
          an Arraylist of the locations of the repeated letters are stored.
          
          The locations are used to allow the checking of the word against few possible placements, before it is discarded
-         for reasons such as out of bounds invalid placement, invalid overlapping, creation of non-existing words in the
-         process.
+         for reasons such as out of bounds invalid placement, invalid overlapping, *creation of non-existing words in the
+         process*.
+
+	     *NOTE: The creation of non-existing words in the English Dictionary is avoided by the creation of a copy of the Board.
+	     A copy of the board has to be created because the Bot is not allowed to modify specific elements that would allow it to cheat,
+	     so in this way the Bot keeps up with what is happening in order to make an educated word placement.
+
+         This works by allowing the Bot to have the access the updated contents of the board in a separate copy and check for placement 
+         of words before actually placing them on the real Board. This in turn ensures the Bot will never place a word that will lead 
+         to the creation of non-existing words and so its placement will not be challengeable.*
          
          If at this point the word was successful in passing the legal checking, then the command is given to getCommand()
          to place the word at the correct starting location and in the correct direction (characteristics determined prior based
