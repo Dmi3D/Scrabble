@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.PriorityQueue;
 
 import static java.lang.Integer.compare;
@@ -386,7 +385,6 @@ public class Bot0 implements BotAPI
             int score = -1 * getScoreOfWord( permutation );
 
             WordEntry<Integer, String> entry = new WordEntry<>( score, permutation );
-            //System.out.println( "Perm: " + entry.getLetters() );
             permutations.add( entry );
         }
 
@@ -768,7 +766,7 @@ public class Bot0 implements BotAPI
 
     private String getCommandPlaceWord()
     {
-        System.out.println( "LETTERS IN FRAME: " + me.getFrameAsString() );
+        //System.out.println( "LETTERS IN FRAME: " + me.getFrameAsString() );
 
         // Get all combinations of letters in frame
         ArrayList<String> combinations = new ArrayList<>();
@@ -780,7 +778,7 @@ public class Bot0 implements BotAPI
         // Append first letter from board to copy of the array list, and to each combination
         PriorityQueue<WordEntry<Integer, String>> lettersOnBoard = getLettersOnBoard();
 
-        System.out.println( "Letters on board: " + lettersOnBoard );
+        //System.out.println( "Letters on board: " + lettersOnBoard );
 
         while ( !lettersOnBoard.isEmpty() )
         {
@@ -794,32 +792,21 @@ public class Bot0 implements BotAPI
             PriorityQueue<WordEntry<Integer, String>> permutations = new PriorityQueue<>();
             generatePermutations( appendedCombinations, permutations );
 
-            System.out.println( "Number of permutations: " + permutations.size() );
+            //System.out.println( "Number of permutations: " + permutations.size() );
 
             // Check each permutation to see if it is a word and store in max pq
             PriorityQueue<WordEntry<Integer, String>> validWords = getValidWords( permutations );
-            System.out.println( "Number of valid words from permutations: " + validWords.size() );
-            System.out.println( "Valid words: " + validWords );
+            //System.out.println( "Number of valid words from permutations: " + validWords.size() );
+            //System.out.println( "Valid words: " + validWords );
 
             // Get co-ordinates of letter on board
             ArrayList<int[]> locationsOfLetterOnBoard = getLocationsOfLetterOnBoard( letterOnBoard );
-            System.out.println( "Location of " + letterOnBoard + ": " + Arrays.toString( locationsOfLetterOnBoard.get( 0 ) ) );
+            //System.out.println( "Location of " + letterOnBoard + ": " + Arrays.toString( locationsOfLetterOnBoard.get( 0 ) ) );
 
             // Get direction for each letter on board
             ArrayList<Integer> directionsOfLettersOnBoard = getDirectionsOfLettersOnBoard( locationsOfLetterOnBoard );
 
-            String dir = "no direction";
-
-            if ( directionsOfLettersOnBoard.get( 0 ) == 2 )
-            {
-                dir = "vertical";
-            }
-            else if ( directionsOfLettersOnBoard.get( 0 ) == 1 )
-            {
-                dir = "horizontal";
-            }
-
-            System.out.println( "Should place in direction " + dir );
+            //System.out.println( "Should place in direction " + dir );
 
             // While there are still valid words to check at the locations
             while ( !validWords.isEmpty() )
@@ -861,7 +848,7 @@ public class Bot0 implements BotAPI
                                 }
 
                                 char columnAsLetter = convertToLetterCord( column );
-                                System.out.println( "Column as letter: " + columnAsLetter );
+                                //System.out.println( "Column as letter: " + columnAsLetter );
                                 char direction = convertToDirection( directionOfLetter );
 
                                 row++;
@@ -897,7 +884,7 @@ public class Bot0 implements BotAPI
             }
         }
 
-        System.out.println( "Returned null" );
+        //System.out.println( "Can't place word" );
         return null;
     }
 
