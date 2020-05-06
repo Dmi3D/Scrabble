@@ -61,6 +61,8 @@
          At this stage, if nothing worked, the Bot moves on to following these steps with the next letter taken from the
          Board and it will continue to do so until a valid word that can be placed is found.
          
-         If no valid word is ever found, the Bot will pass in defeat.
+         If no valid word is ever found, the Bot attempt to exchange its tiles given that it will be allowed to do so.
+         
+         If that is not possible, the Bot will ultimately pass in defeat.
 
 
