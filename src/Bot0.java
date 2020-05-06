@@ -70,51 +70,37 @@ public class Bot0 implements BotAPI
 
     private void updateCopyOfBoard()
     {
-        for(int i = 0; i < Board.BOARD_SIZE; i++)
+        for ( int i = 0; i < Board.BOARD_SIZE; i++ )
         {
-            for(int j = 0; j < Board.BOARD_SIZE; j++)
+            for ( int j = 0; j < Board.BOARD_SIZE; j++ )
             {
                 Square square = copyOfBoard.getSquare( i, j );
                 Square squareFromOriginal = board.getSquareCopy( i, j );
 
-                if(squareFromOriginal.isOccupied())
+                if ( squareFromOriginal.isOccupied() )
                 {
                     square.add( squareFromOriginal.getTile() );
+                    System.out.println( "Updating '" + square.getTile().getLetter() + "' to copy of board." );
                 }
             }
         }
     }
 
-    private void placeInCopy( Frame frame, Word word )
+    private String getFrameAsWordWithBlank()
     {
-        ArrayList<Coordinates> newLetterCoords = new ArrayList<>();
-        int r = word.getFirstRow();
-        int c = word.getFirstColumn();
+        String lettersInFrame;
+        lettersInFrame = me.getFrameAsString();
+        StringBuilder permutation = new StringBuilder();
 
-        for ( int i = 0; i < word.length(); i++ )
+        for ( int i = 1; i < lettersInFrame.length() - 1; i++ )
         {
-            if ( !copyOfBoard[r][c].isOccupied() )
+            if ( lettersInFrame.charAt( i ) != ',' && lettersInFrame.charAt( i ) != ' ' )
             {
-                char letter = word.getLetter( i );
-                Tile tile = frame.getTile( letter );
-                if ( tile.isBlank() )
-                {
-                    tile.designate( word.getDesignatedLetter( i ) );
-                }
-                squares[r][c].add( tile );
-                frame.removeTile( tile );
-                newLetterCoords.add( new Coordinates( r, c ) );
-            }
-            if ( word.isHorizontal() )
-            {
-                c++;
-            }
-            else
-            {
-                r++;
+                permutation.append( lettersInFrame.charAt( i ) );
             }
         }
-        numPlays++;
+
+        return permutation.toString();
     }
 
     private String getFrameAsWord()
@@ -167,9 +153,9 @@ public class Bot0 implements BotAPI
     private boolean isAdditionalWord( int r, int c, boolean isHorizontal )
     {
         if ( ( isHorizontal &&
-                ( ( r > 0 && board.getSquareCopy( r - 1, c ).isOccupied() ) || ( r < Board.BOARD_SIZE - 1 && board.getSquareCopy( r + 1, c ).isOccupied() ) ) ) ||
+                ( ( r > 0 && copyOfBoard.getSquare( r - 1, c ).isOccupied() ) || ( r < Board.BOARD_SIZE - 1 && copyOfBoard.getSquare( r + 1, c ).isOccupied() ) ) ) ||
                 ( !isHorizontal &&
-                        ( ( c > 0 && board.getSquareCopy( r, c - 1 ).isOccupied() ) || ( c < Board.BOARD_SIZE - 1 && board.getSquareCopy( r, c + 1 ).isOccupied() ) ) ) )
+                        ( ( c > 0 && copyOfBoard.getSquare( r, c - 1 ).isOccupied() ) || ( c < Board.BOARD_SIZE - 1 && copyOfBoard.getSquare( r, c + 1 ).isOccupied() ) ) ) )
         {
             return true;
         }
@@ -181,7 +167,7 @@ public class Bot0 implements BotAPI
         int firstRow = mainWordRow;
         int firstCol = mainWordCol;
         // search up or left for the first letter
-        while ( firstRow >= 0 && firstCol >= 0 && board.getSquareCopy( firstRow, firstCol ).isOccupied() )
+        while ( firstRow >= 0 && firstCol >= 0 && copyOfBoard.getSquare( firstRow, firstCol ).isOccupied() )
         {
             if ( mainWordIsHorizontal )
             {
@@ -205,9 +191,9 @@ public class Bot0 implements BotAPI
         String letters = "";
         int r = firstRow;
         int c = firstCol;
-        while ( r < Board.BOARD_SIZE && c < Board.BOARD_SIZE && board.getSquareCopy( r, c ).isOccupied() )
+        while ( r < Board.BOARD_SIZE && c < Board.BOARD_SIZE && copyOfBoard.getSquare( r, c ).isOccupied() )
         {
-            letters = letters + board.getSquareCopy( r, c ).getTile().getLetter();
+            letters = letters + copyOfBoard.getSquare( r, c ).getTile().getLetter();
             if ( mainWordIsHorizontal )
             {
                 r++;
@@ -354,16 +340,21 @@ public class Bot0 implements BotAPI
     {
         if ( board.isFirstPlay() )
         {
-            String word = getFirstWord( getFrameAsWord() );
+            String word = "";
+            word = getFirstWord( getFrameAsWordWithBlank() );
+
+            for ( int i = 0; i < word.length(); i++ )
+            {
+                if ( word.charAt( i ) == '_' )
+                {
+                    return null;
+                }
+            }
 
             if ( word == null )
             {
                 return null;
             }
-
-            //TODO
-            // If frameLetters length more than 4, check first and last letters
-            // Put towards left or right
 
             char column = (char) ( 73 - word.length() );
 
@@ -701,6 +692,7 @@ public class Bot0 implements BotAPI
                             {
                                 //TODO
                                 // Place word
+                                copyOfBoard.place( copyOfFrame, wordToPlace );
 
                                 ArrayList<Word> newWords = getAllWords( wordToPlace );
 
@@ -745,6 +737,8 @@ public class Bot0 implements BotAPI
 
     private String getPlaceCommand()
     {
+        updateCopyOfBoard();
+
         if ( board.isFirstPlay() )
         {
             return getCommandPlaceFirstWord();
@@ -759,23 +753,37 @@ public class Bot0 implements BotAPI
 
         // Your code must give the command NAME <botname> at the start of the game
         String command;
-
         switch ( turnCount )
         {
             case 0:
                 command = "NAME LeapCard";
+                turnCount++;
                 break;
             default:
                 command = getPlaceCommand();
 
                 if ( command == null )
                 {
-                    return "PASS";
+                    if ( board.isFirstPlay() )
+                    {
+                        return "EXCHANGE " + '_';
+                    }
+
+                    Frame frame = createFrame( getFrameAsWordWithBlank() );
+
+                    if ( frame.isFull() )
+                    {
+                        return "EXCHANGE " + getFrameAsWordWithBlank();
+                    }
+
+                    else
+                    {
+                        return "PASS";
+                    }
                 }
 
                 break;
         }
-        turnCount++;
         return command;
     }
 }
