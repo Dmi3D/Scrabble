@@ -6,6 +6,33 @@ import static java.lang.Integer.compare;
 //LEAP-CARD BOT
 public class LeapCard implements BotAPI
 {
+
+    // The public API of Bot must not change
+    // This is ONLY class that you can edit in the program
+    // Rename Bot to the name of your team. Use camel case.
+    // Bot may not alter the state of the game objects
+    // It may only inspect the state of the board and the player objects
+
+    private PlayerAPI me;
+    private OpponentAPI opponent;
+    private BoardAPI board;
+    private UserInterfaceAPI info;
+    private DictionaryAPI dictionary;
+    private int turnCount;
+    private Board copyOfBoard; //Stores a direct copy of the board so we can access square directly
+    private ArrayList<Coordinates> newLetterCoordsCopy;
+
+    LeapCard( PlayerAPI me, OpponentAPI opponent, BoardAPI board, UserInterfaceAPI ui, DictionaryAPI dictionary )
+    {
+        this.me = me;
+        this.opponent = opponent;
+        this.board = board;
+        this.info = ui;
+        this.dictionary = dictionary;
+        turnCount = 0;
+        copyOfBoard = new Board();
+    }
+
     private class WordEntry<Integer, String> implements Comparable<WordEntry<Integer, String>>
     {
         private int score;
@@ -40,32 +67,6 @@ public class LeapCard implements BotAPI
 
             return letters + " (" + scoreToPrint + ")";
         }
-    }
-
-    // The public API of Bot must not change
-    // This is ONLY class that you can edit in the program
-    // Rename Bot to the name of your team. Use camel case.
-    // Bot may not alter the state of the game objects
-    // It may only inspect the state of the board and the player objects
-
-    private PlayerAPI me;
-    private OpponentAPI opponent;
-    private BoardAPI board;
-    private UserInterfaceAPI info;
-    private DictionaryAPI dictionary;
-    private int turnCount;
-    private Board copyOfBoard; //Stores a direct copy of the board so we can access square directly
-    private ArrayList<Coordinates> newLetterCoordsCopy;
-
-    LeapCard( PlayerAPI me, OpponentAPI opponent, BoardAPI board, UserInterfaceAPI ui, DictionaryAPI dictionary )
-    {
-        this.me = me;
-        this.opponent = opponent;
-        this.board = board;
-        this.info = ui;
-        this.dictionary = dictionary;
-        turnCount = 0;
-        copyOfBoard = new Board();
     }
 
     /* PLACES WORD IN THE COPY OF BOARD */
