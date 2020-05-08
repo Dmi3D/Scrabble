@@ -4,7 +4,7 @@ import java.util.PriorityQueue;
 import static java.lang.Integer.compare;
 
 //LEAP-CARD BOT
-public class Bot0 implements BotAPI
+public class LeapCard implements BotAPI
 {
     private class WordEntry<Integer, String> implements Comparable<WordEntry<Integer, String>>
     {
@@ -54,9 +54,10 @@ public class Bot0 implements BotAPI
     private UserInterfaceAPI info;
     private DictionaryAPI dictionary;
     private int turnCount;
-    private Board copyOfBoard;
+    private Board copyOfBoard; //Stores a direct copy of the board so we can access square directly
+    private ArrayList<Coordinates> newLetterCoordsCopy;
 
-    Bot0( PlayerAPI me, OpponentAPI opponent, BoardAPI board, UserInterfaceAPI ui, DictionaryAPI dictionary )
+    LeapCard( PlayerAPI me, OpponentAPI opponent, BoardAPI board, UserInterfaceAPI ui, DictionaryAPI dictionary )
     {
         this.me = me;
         this.opponent = opponent;
@@ -67,9 +68,10 @@ public class Bot0 implements BotAPI
         copyOfBoard = new Board();
     }
 
-    // place precondition: isLegal is true
+    /* PLACES WORD IN THE COPY OF BOARD */
     public void placeInCopy( Word word )
     {
+        newLetterCoordsCopy = new ArrayList<>();
         int r = word.getFirstRow();
         int c = word.getFirstColumn();
         for ( int i = 0; i < word.length(); i++ )
@@ -86,6 +88,7 @@ public class Bot0 implements BotAPI
                 }
 
                 copyOfBoard.getSquare( r, c ).add( tile );
+                newLetterCoordsCopy.add( new Coordinates( r, c ) );
             }
             if ( word.isHorizontal() )
             {
@@ -98,6 +101,7 @@ public class Bot0 implements BotAPI
         }
     }
 
+    /* CHECKS IF IS LEGAL PLAY IN COPY OF BOARD */
     public boolean isLegalPlayInCopy( Word word )
     {
         boolean isLegal = true;
@@ -198,6 +202,23 @@ public class Bot0 implements BotAPI
         return isLegal;
     }
 
+    /* PICKS UP LATEST WORD PLACED IN COPY FROM BOARD */
+    private ArrayList<Tile> pickupLatestWordInCopy()
+    {
+        ArrayList<Tile> tiles = new ArrayList<>();
+        for ( Coordinates coord : newLetterCoordsCopy )
+        {
+            Tile tile = copyOfBoard.getSquare(coord.getRow(), coord.getCol()).removeTile();
+            if ( tile.isBlank() )
+            {
+                tile.removeDesignation();
+            }
+            tiles.add( tile );
+        }
+        return tiles;
+    }
+
+    /* UPDATES THE CONTENTS OF THE COPY OF BOARD WITH ACTUAL BOARD */
     private void updateCopyOfBoard()
     {
         for ( int i = 0; i < Board.BOARD_SIZE; i++ )
@@ -215,6 +236,7 @@ public class Bot0 implements BotAPI
         }
     }
 
+    /* GETS FRAME AS WORD WITH BLANK */
     private String getFrameAsWordWithBlank()
     {
         String lettersInFrame;
@@ -232,6 +254,7 @@ public class Bot0 implements BotAPI
         return permutation.toString();
     }
 
+    /* GETS FRAME AS WORD WITHOUT BLANK */
     private String getFrameAsWord()
     {
         String lettersInFrame;
@@ -256,6 +279,7 @@ public class Bot0 implements BotAPI
         return permutation.toString();
     }
 
+    /* GETS CO ORDINATES OF WORD */
     private ArrayList<Coordinates> getWordCords( Word mainWord )
     {
         int row = mainWord.getRow();
@@ -279,6 +303,7 @@ public class Bot0 implements BotAPI
         return cordList;
     }
 
+    /* CHECKS IF ANY ADDITIONAL WORDS CREATED */
     private boolean isAdditionalWord( int r, int c, boolean isHorizontal )
     {
         if ( ( isHorizontal &&
@@ -291,6 +316,7 @@ public class Bot0 implements BotAPI
         return false;
     }
 
+    /* RETURNS ADDITIONAL WORD CREATED */
     private Word getAdditionalWord( int mainWordRow, int mainWordCol, boolean mainWordIsHorizontal )
     {
         int firstRow = mainWordRow;
@@ -335,6 +361,7 @@ public class Bot0 implements BotAPI
         return new Word( firstRow, firstCol, !mainWordIsHorizontal, letters );
     }
 
+    /* RETURNS LIST OF ALL WORDS CREATED FROM A WORD PLACEMENT */
     private ArrayList<Word> getAllWords( Word mainWord )
     {
         ArrayList<Coordinates> newLetterCords = getWordCords( mainWord );
@@ -365,6 +392,7 @@ public class Bot0 implements BotAPI
         return words;
     }
 
+    /* GETS SCORE OF A WORD */
     private int getScoreOfWord( String word )
     {
         int score = 0;
@@ -378,6 +406,7 @@ public class Bot0 implements BotAPI
         return score;
     }
 
+    /* RECURSIVE CALL FOR PERMUTATION */
     private void generatePermutations( String permutation, String lettersToPermute, PriorityQueue<WordEntry<Integer, String>> permutations )
     {
         if ( lettersToPermute.length() == 0 )
@@ -394,6 +423,7 @@ public class Bot0 implements BotAPI
         }
     }
 
+    /* GENERATES PERMUTATIONS FOR LIST OF STRINGS */
     private void generatePermutations( ArrayList<String> combinations, PriorityQueue<WordEntry<Integer, String>> permutations )
     {
         for ( int i = 0; i < combinations.size(); i++ )
@@ -402,6 +432,7 @@ public class Bot0 implements BotAPI
         }
     }
 
+    /* RECURSIVE CALL FOR COMBINATION */
     private void generateCombinations( String combination, String lettersToCombine, ArrayList<String> combinations )
     {
         if ( combination.length() >= 1 )
@@ -416,11 +447,13 @@ public class Bot0 implements BotAPI
         }
     }
 
+    /* GENERATES COMBINATIONS FOR STRING */
     private void generateCombinations( String lettersToCombine, ArrayList<String> combinations )
     {
         generateCombinations( "", lettersToCombine, combinations );
     }
 
+    /* RETURNS HIGHEST SCORING WORD FOR FIRST PLAY */
     private String getFirstWord( String word )
     {
         ArrayList<String> combinations = new ArrayList<>();
@@ -464,6 +497,7 @@ public class Bot0 implements BotAPI
         }
     }
 
+    /* RETURNS BEST SCORING COMMAND FOR FIRST PLAY */
     private String getCommandPlaceFirstWord()
     {
         if ( board.isFirstPlay() )
@@ -484,7 +518,17 @@ public class Bot0 implements BotAPI
                 return null;
             }
 
-            char column = (char) ( 73 - word.length() );
+            char column;
+
+            if(word.length() >= 5)
+            {
+                column = (char) ( 73 - 5 );
+            }
+
+            else
+            {
+                column = (char) ( 73 - word.length() );
+            }
 
             return column + "8 A " + word;
         }
@@ -492,6 +536,7 @@ public class Bot0 implements BotAPI
         return null;
     }
 
+    /* RETURNS ALL LETTERS ON BOARD IN MAX PRIORITY QUEUE */
     private PriorityQueue<WordEntry<Integer, String>> getLettersOnBoard()
     {
         PriorityQueue<WordEntry<Integer, String>> lettersOnBoard = new PriorityQueue<>();
@@ -520,6 +565,7 @@ public class Bot0 implements BotAPI
         return lettersOnBoard;
     }
 
+    /* APPENDS A LETTER TO A LIST OF COMBINATIONS */
     private ArrayList<String> appendLetter( String letterToAppend, ArrayList<String> combinations )
     {
         ArrayList<String> combinationsWithLetterOnBoard = new ArrayList<>();
@@ -540,6 +586,7 @@ public class Bot0 implements BotAPI
         return combinationsWithLetterOnBoard;
     }
 
+    /* STORES ALL VALID WORDS IN A LIST OF PERMUTATIONS */
     private PriorityQueue<WordEntry<Integer, String>> getValidWords( PriorityQueue<WordEntry<Integer, String>> permutations )
     {
         PriorityQueue<WordEntry<Integer, String>> validWords = new PriorityQueue<>();
@@ -572,6 +619,7 @@ public class Bot0 implements BotAPI
         return validWords;
     }
 
+    /* GETS LOCATIONS OF LETTERS ON BOARD */
     private ArrayList<int[]> getLocationsOfLetterOnBoard( String letterOnBoard )
     {
         ArrayList<int[]> locationsOfLetterOnBoard = new ArrayList<>();
@@ -599,6 +647,7 @@ public class Bot0 implements BotAPI
         return locationsOfLetterOnBoard;
     }
 
+    /* GETS DIRECTION TO PLACE FOR EACH LETTER ON BOARD */
     private ArrayList<Integer> getDirectionsOfLettersOnBoard( ArrayList<int[]> locationsOfLetterOnBoard )
     {
         ArrayList<Integer> directionsOfLettersOnBoard = new ArrayList<>( locationsOfLetterOnBoard.size() );
@@ -641,6 +690,7 @@ public class Bot0 implements BotAPI
         return directionsOfLettersOnBoard;
     }
 
+    /* GET STARTING CO-ORDINATE TO PLACE WORD */
     private int[] getStartingLocation( String wordToTryPlace, String letterOnBoard, int[] locationOfLetter, int directionOfLetter )
     {
         // 1 = horizontal
@@ -686,6 +736,7 @@ public class Bot0 implements BotAPI
         return startingLocation;
     }
 
+    /* CONVERT COLUMN INDEX TO CHARACTER */
     private char convertToLetterCord( int column )
     {
         int a = 'A';
@@ -697,6 +748,7 @@ public class Bot0 implements BotAPI
         return cord;
     }
 
+    /* CONVERT DIRECTION INTEGER TO A CHARACTER DIRECTION */
     private char convertToDirection( int direction )
     {
         if ( direction == 1 )
@@ -712,6 +764,7 @@ public class Bot0 implements BotAPI
         else return '\u0000';
     }
 
+    /* CREATE A COPY OF FRAME */
     private Frame createFrame( String lettersInFrame )
     {
         ArrayList<Tile> tiles = new ArrayList<>();
@@ -733,6 +786,7 @@ public class Bot0 implements BotAPI
         return frame;
     }
 
+    /* CHeCK IF BLANK IS IN FRAME */
     private boolean isBlankInFrame( String frameAsWord )
     {
         for ( int i = 0; i < frameAsWord.length(); i++ )
@@ -746,6 +800,7 @@ public class Bot0 implements BotAPI
         return false;
     }
 
+    /* GET A WORD WITHOUT E (BLANK INSTEAD) */
     private String getStringWithNoE( String wordWithE )
     {
         char[] wordAsCharArray = wordWithE.toCharArray();
@@ -764,6 +819,7 @@ public class Bot0 implements BotAPI
         return stringWithNoE;
     }
 
+    /* GET COMMAND TO PLACE WORD (NOT FIRST PLAY) */
     private String getCommandPlaceWord()
     {
         //System.out.println( "LETTERS IN FRAME: " + me.getFrameAsString() );
@@ -844,6 +900,7 @@ public class Bot0 implements BotAPI
 
                                 if ( !dictionary.areWords( newWords ) )
                                 {
+                                    pickupLatestWordInCopy();
                                     continue;
                                 }
 
@@ -888,6 +945,7 @@ public class Bot0 implements BotAPI
         return null;
     }
 
+    /* GET COMMAND TO PLACE WORD */
     private String getPlaceCommand()
     {
         updateCopyOfBoard();
@@ -900,6 +958,7 @@ public class Bot0 implements BotAPI
         return getCommandPlaceWord();
     }
 
+    /* SELECTS WHICH COMMAND TO DO */
     public String getCommand()
     {
         // Add your code here to input your commands
