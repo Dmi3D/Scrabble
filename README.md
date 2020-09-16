@@ -1,58 +1,99 @@
-# Assignment Four
-### This branch oversees the implementation of the challenge functionality and blank tile handling in the game of Scrabble.
+# Scrabble
+
+Scrabble is a 2-player game that involves placing words on the board formed by the tiles drawn at random by each player during their turn. There are 100 tiles in the pool consisting of the letters of the alphabet together with 2 'wild cards' represented as * which can take the place of any letter in the alphabet.  The words placed by the players have to be part of the English Dictionary, otherwise they can be challenged and removed from the board during one of the players' turn. Each player can choose between challenging their opponents' last play (i.e. last word placement), placing a word, exchanging their tiles/letters, and passing during their turn. The game ends when one of two scenarios is met:
+    1. The players passed more than 2 times in a row, indicating they no longer have moves.
+    2. A player used all their letters and there are less than 7 letters in the pool.
 
 ### Prerequisites
     Running the jar requires the installation of Java SDK 8, due to IntelliJ issues regarding the building of JavaFX 
     applications for newer versions of Java and JavaFX. Please ensure you have the right sdk installed before attempting
     to run Scrabble.jar.
 
-### Points to note: 
+## Installation
 
-#### 1. To run the game, simply run the main of 'Scrabble', or the .jar file.
+Download all files and create a jar file called Scrabble.jar. If double-clicking doesn't start the application, use the following 
+command in the cmd/command line at the corresponding location:
 
+```bash 
+$ java -jar Scrabble.jar
+```
 
-#### 2. The Challenge Functionality can be accessed during a Player's turn by clicking the button 'CHALLENGE' on the interface display.
+## How it works
 
-
-#### 3. The Challenge Functionality is implemented as follows:
-    1. The challenger simply clicks the 'CHALLENGE' button during their move when they think their opponent's play is invalid.
-    2. Our implementation has the SOWPODS dictionary file loaded into the software when the game is started. i.e. 'START GAME'
-    button is pressed.
-    3. The file contains each valid word on a new line. When 'START GAME' button is pressed and the boardGraphic.fxml file
-    is loaded, the file is being read into HashSet dictionary declared in BoardController.java
-    4. Reading the file has a O(n) running time complexity, but it is only loaded once during the game. An InputStream
-    is used to read the file instead of Scanner due to increased efficiency when reading files composed of large number
-    of new lines, and to ensure the file is compiled into the jar file.
-    5. The dictionary is only ever accessed when the 'CHALLENGE' button is pressed by a Player.
-    6. This triggers the checking of not just the main word placed on the board, but also any additional words that may have
-    been created in the process. 
-    7. The validity checking is O(m) running time complexity, where m is the number of words created. This is due to O(1)
-    constant running time complexity of method contains() of the HashSet data structure.
-    8. When a word has been found to be invalid i.e. not found in dictionary (dictionary.contains(word) returns false),
-    then a message is displayed in the bottom right corner, announcing the failed challenge. The challenger will then lose
-    their turn.
-    9. When all words (if more than one) are valid i.e. found in dictionary, then a message is displayed in bottom right
-    corner, announcing the successful challenge. The challenger gets to make another move, while the word is removed from
-    the board and the opponent's score is returned to the one prior to word placement. 
-    10. The tiles of the word are also returned to the rightful owner.
+Scrabble is implemented in Java and JavaFX. Relevant information about the data structures and algorithms used to power the application are explained throughly in the branches correlating to the sprints during which they were coded. There are 4 branches relating to said sprints, them being AssignmentTwo, AssignmentThree, AssignmentFour, and AssignmentFive. Each branch contains its own README with comprehensive details regarding the backend implementation and corresponding functionalities.
 
 
-#### 4. The 'CHALLENGE' button is enabled during the game <b>EXCEPT</b> when: 
-    1. No first play has been made yet.
-    2. A Player placed a word on the board, and their opponent passed their turn, exchanged tiles, or challenged the
-     Player's word unsuccessfully. This ensures a player cannot challenge their own play.
-    3. When a Player placed a word on the board and their opponent successfully challenged it. This ensures the opponent
-    whose turn it is cannot challenge twice in a row.
+## The application
 
-#### 5. Blank tile handling is done as follows: 
-    1. When a Player places a word containing a blank tile, blankContent.fxml is loaded.
-    2. This file is controlled by BlankContentController.java
-    3. The Controller parses the input from the Player passed into the .fxml file. The input is the letter the Player 
-    wishes the blank tile to replace.
-    4. The letter is then passed to methods which replace the word that was already stored in the back-end and override 
-    it with a word containing the replacement letter instead of blank tile.
-    > This is done to facilitate challenge functionality, which is based on word checking against a dictionary. <
-    5. The word containing the replacement letter is displayed on the board and on the top right corner in the 'Words Created'
-    panel.
+### Main page
+The main page allows two users to input their names and start the game.
 
- 
+![Main Page](https://github.com/UCD-COMP20050/Leap-Card-port/blob/master/src/img/mainmenu.PNG?raw=true)
+
+### The playing area
+This is where the game is played. The area consists of the board on which tiles are placed, the name of the current player, the current player's tiles and score, the words placed by the opponent on their last play, the moves that the player can make, and lastly, an area where error messages appear or moves can be confirmed.
+
+![Playing area](https://github.com/UCD-COMP20050/Leap-Card-port/blob/master/src/img/playingarea.PNG?raw=true)
+
+### Options
+### Placing word
+The 'place word' button allows the player to place a word on the board. When the button is clicked, the player is allowed to indicate the word itself, the location and direction of its placement.
+
+![Placing word](https://github.com/UCD-COMP20050/Leap-Card-port/blob/master/src/img/placingword.PNG?raw=true)
+
+### Help 
+The 'help' button allows a player to quickly verify basic rules of the game, including information about the multiplication of scores determined by the color of certain squares.
+
+![Help](https://github.com/UCD-COMP20050/Leap-Card-port/blob/master/src/img/help.PNG?raw=true)
+
+### Challenge
+The 'challenge' button allows the player to challenge their opponent's last play if they think the word doesn't belong in the dictionary. A message will appear in the window informing the players of the success of the challenge.
+
+Outcome: successful
+![Challenge Successful](https://github.com/UCD-COMP20050/Leap-Card-port/blob/master/src/img/challenge-successful.PNG?raw=true)
+Outcome: unsuccessful (different play)
+![Challenge Unsuccessful](https://github.com/UCD-COMP20050/Leap-Card-port/blob/master/src/img/challenge-unsuccessful.PNG?raw=true)
+
+### Exchange tiles
+The 'exchange tiles' button allows the player to choose tiles in their frame they wish to return to the pool in exchange of new random ones. The press of the button triggers the message below:
+
+![Exchange Tiles](https://github.com/UCD-COMP20050/Leap-Card-port/blob/master/src/img/exchange.PNG?raw=true)
+
+### Pass
+The 'pass' button simply passes the current player's turn.
+
+### Quit
+The 'quit' button allows the players to end the game prematurely and exit the application, with no further indication of the score. A message appears in the window to allow the players to confirm their decision. This is done to prevent prematurely closing the application due to a missclick.
+
+![Quit](https://github.com/UCD-COMP20050/Leap-Card-port/blob/master/src/img/quit.PNG?raw=true)
+
+### Error handling
+Any errors that might be triggered during the game due to an invalid word placement or move are shown in the window to inform the players.
+
+![Error](https://github.com/UCD-COMP20050/Leap-Card-port/blob/master/src/img/errorhandling.PNG?raw=true)
+
+
+### Dealing with wild cards or *
+When a player wishes to use their * tile as replacement for a letter, they can do so. First, the word containing the * has to be input into the word placement functionality. Then the application detects the * and allows the player to indicate the letter that the * is replacing.
+
+Indicating the word
+
+![Placing wildcard](https://github.com/UCD-COMP20050/Leap-Card-port/blob/master/src/img/placing-wildcard.PNG?raw=true)
+
+Replacing *
+
+![Replacing *](https://github.com/UCD-COMP20050/Leap-Card-port/blob/master/src/img/placing-wildcard-handling.PNG?raw=true)
+
+### Game Over
+When the conditions for game ending are met, the window changes indicating the scores of each player and their status i.e. winner/loser.
+
+![Game Over](https://github.com/UCD-COMP20050/Leap-Card-port/blob/master/src/img/gameover.PNG?raw=true)
+
+
+
+
+
+
+
+
+
